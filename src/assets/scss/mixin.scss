@@ -1,0 +1,64 @@
+@mixin button {
+    background-color: transparent;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 31px;
+    background: 
+    linear-gradient(#090909 0 0) padding-box, /*this is your grey background*/
+    linear-gradient(to right, #F22323 2.68%, #33ADDF 103.41%) border-box;
+    color: white;
+    padding: 10px 10px 10px 35px;
+    border: 2px solid transparent;
+    border-radius: 15px;
+    margin-right: 42px;
+    position: relative;
+
+    &::before {
+        content: url(../../assets/images/icons/play.svg);
+        position: absolute;
+        left: 15px;
+        top: 9px;
+    }
+}
+
+@mixin buttonAddToList {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 31px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    position: relative;
+
+    &::before {
+        content: url(../../assets/images/icons/Plusicon.svg);
+        position: absolute;
+        top: 2px;
+        left: -23px;
+    }
+}
+
+@mixin background {
+    background-image: url("../../assets/images/naruto.png");
+    background-size: no-repeat;
+    background-position: center;;
+    background-size: cover;
+    height: 1250px;
+    max-width: 1800px;
+    position: relative;
+
+}
+
+@mixin overlay {
+    background: linear-gradient(113.28deg, rgba(0, 0, 0, 0.9506) -18.76%, rgba(0, 0, 0, 0.9604) 100%);
+    max-width: 1800px;
+    margin: 0;
+    padding: 0;
+    visibility: visible;
+    opacity: 1;
+    transition: 1s;
+    height: 1250px;
+    z-index: 1;
+}

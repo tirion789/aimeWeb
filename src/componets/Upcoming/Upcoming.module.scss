@@ -1,0 +1,76 @@
+.Upcoming {
+    position: relative;
+    padding: 20px 20px;
+
+    p{
+        font-family: 'Montserrat', sans-serif;
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 22px;
+        width: 338px;
+        margin-top: 25px;
+    }
+
+    h2{
+        font-family: 'Montserrat', sans-serif;
+        font-size: 30px;
+        font-weight: 600;
+        line-height: 37px;
+        border-bottom: 2px solid white;
+        width: max-content;
+        margin-bottom: 15px;
+    }
+
+    h3{
+        font-family: 'Montserrat', sans-serif;
+        font-size: 40px;
+        font-weight: 700;
+        line-height: 49px;
+
+    }
+    &::before {
+        content: '';
+        height: 3px;
+        width: 1750px;
+        position: absolute;
+        background: linear-gradient(90deg, #9747FF -0.92%, #F22323 101.37%);
+        left: 20px;
+        top: 0;
+
+    }
+    &__container{
+        display: flex;
+
+        ul{
+            display: flex;
+            margin-top: 20px;
+
+            li{
+                background-color: transparent;
+                font-family: 'Montserrat', sans-serif;
+                font-size: 18px;
+                font-weight: 600;
+                line-height: 22px;
+                background: 
+                linear-gradient(#090909 0 0) padding-box, /*this is your grey background*/
+                linear-gradient(to right, #DC781C 0%, #C93677 100%) border-box;
+                color: white;
+                padding: 10px;
+                border: 2px solid transparent;
+                border-radius: 15px;
+                margin-right: 42px;
+                position: relative;
+                
+
+                &:not(:last-child) {
+                    margin-right: 15px;
+                }
+            }
+        }
+    }
+
+    &__imageContainer {
+        margin-right: 65px;
+    }
+    
+}

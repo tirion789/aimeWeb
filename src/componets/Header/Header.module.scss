@@ -1,0 +1,69 @@
+.header {
+    padding: 23px 20px;
+    display: flex;
+
+    &__logoContainer {
+        margin-right: 90px;
+    }
+
+    &__navigationList {
+        display: flex;
+        color: white;
+        padding-top: 15px;
+
+        li{
+            font-family: 'Inter', sans-serif;
+            font-size: 20px;
+            line-height: 24px;
+            margin-right: 70px;
+            background: linear-gradient(113.83deg, #C93677 -2.94%, #33ADDF 41.89%),
+            linear-gradient(0deg, #FFFFFF, #FFFFFF);
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    }
+
+    &__searchContainer {
+        margin-left: auto;
+        padding-top: 10px;
+
+        &_premium{
+            padding: 0;
+            border: none;
+            font: inherit;
+            color: inherit;
+            background-color: transparent;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 19px;
+            letter-spacing: 0em;
+            text-align: center;
+            margin-right: 32px;
+        }
+        &_input{
+            border: 2px solid rgba(107, 107, 107, 1);
+            border-radius: 10px;
+            background: inherit;
+            height: 37.0461540222168px;
+            width: 438px;
+
+
+            &::placeholder{
+                font-family: 'Inter', sans-serif;
+                font-size: 20px;
+                font-weight: 500;
+                line-height: 24px;
+                letter-spacing: 0em;
+                text-align: center;
+
+            }
+        }
+        &_account{
+            background: inherit;
+            cursor: pointer;
+            margin-left: 32px;
+        }
+    }
+}

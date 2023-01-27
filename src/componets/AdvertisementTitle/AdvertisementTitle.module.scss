@@ -1,0 +1,64 @@
+@import '../../assets/scss/mixin.scss';
+
+.AdvertisementTitle {
+
+    padding: 20px 20px;
+    display: flex;
+
+    &::before {
+        content: '';
+        height: 3px;
+        width: 1750px;
+        position: absolute;
+        background: linear-gradient(90deg, #143562 -4.21%, rgba(205, 220, 28, 0.94) 101.26%);
+
+        left: 20px;
+        top: 0;
+
+    }
+    
+
+    &__imageContainer {
+        margin-right: 30px;
+    }
+
+    &__informationContainer {
+        p{
+            font-family: 'Montserrat', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            line-height: 28px;
+        }
+
+        h2{
+            font-family: 'Montserrat', sans-serif;
+            font-size: 55px;
+            font-weight: 700;
+            line-height: 67px;
+            letter-spacing: 0em;
+            text-align: left;
+            width: 551px;
+            margin-bottom: 9px;
+        }
+
+        h3{
+            font-family: 'Montserrat', sans-serif;
+            font-size: 30px;
+            font-weight: 700;
+            line-height: 37px;
+            margin-bottom: 43px;
+        }
+    }
+
+    &__buttonContainer {
+        margin-top: 100px;
+        a{
+            @include button
+        }
+
+        button{
+            @include buttonAddToList
+        }
+    }
+    
+}

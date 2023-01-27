@@ -1,0 +1,43 @@
+.Footer {
+    padding: 20px 20px;
+    display: flex;
+    justify-content: space-between;
+
+    &__navigationList {
+        h2{
+            font-family: 'Montserrat', sans-serif;
+            font-size: 25px;
+            font-weight: 700;
+            line-height: 46px;
+        }
+
+        li{
+            font-family: 'Montserrat', sans-serif;
+            font-size: 20px;
+            font-weight: 600;
+            line-height: 37px;
+
+        }
+    }
+
+    &__informationList {
+        li{
+            font-family: 'Montserrat', sans-serif;
+            font-size: 25px;
+            font-weight: 600;
+            line-height: 46px;
+
+        }
+    }
+
+    &__socialList {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 25px;
+        font-weight: 700;
+        line-height: 30px;
+        ul{
+            margin-top: 25px;
+        }
+
+    }
+}

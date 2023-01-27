@@ -1,0 +1,37 @@
+@import '../../assets/scss/mixin.scss';
+
+.AlphabetSearch {
+    padding: 50px 20px;
+    position: relative;
+
+    &::before {
+        content: '';
+        height: 3px;
+        width: 1750px;
+        position: absolute;
+        background: linear-gradient(270deg, #DC781C -4.62%, #C93677 104.5%);
+        left: 20px;
+        top: 0;
+
+    }
+     &__list {
+        display: flex;
+        margin-top: 15px;
+        li{
+            font-family: 'Montserrat', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 24px;
+            @include button;
+            background: 
+            linear-gradient(#090909 0 0) padding-box, /*this is your grey background*/
+            linear-gradient(to right, #CF427B 0%, #154587 100%) border-box;
+            margin-right: 31px;
+            padding: 5px 9px 5px 9px;
+            border-radius: 5px;
+            &::before{
+                content: ''
+            }
+        }
+     }
+}

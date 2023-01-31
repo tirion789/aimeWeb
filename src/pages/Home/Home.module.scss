@@ -3,7 +3,7 @@
 .wrapper {
     background-color: #090909;
     height: 100%;
-    margin: 50px auto;
+    margin: auto;
     max-width: 1920px;
     width: calc(100vw - 100px); 
 }
@@ -31,23 +31,11 @@
     height: 1250px;
     position: relative;
 
+}
 .mainOverlay {
     @include overlay;
     background: linear-gradient(113.28deg, rgba(0, 0, 0, 0.9506) -18.76%, rgba(0, 0, 0, 0.9604) 100%);
     height: 1250px;
-}
-}
-
-.footerBackground {
-    @include background;
-    background-image: url("https://s3-alpha-sig.figma.com/img/d7bc/6f82/6dd945bec6bb0b5e394d3f9a1c16e8c8?Expires=1675641600&Signature=HTtt45Qj6iCAL9mklwBjMwWrJf5ymnwzeeL1GH0FOVc4bsEvlErzkfd7uosk51ABBIG35Vwj8wk0ovsvmRXDTfowVksyLTY9K18R1FsgYtxAjV83m6-eeycFJ7gzq4rLK8WlTuxwquPSFurk3765AScFsUDx~qjznt8mpmUVsbGs7sxy8sLziqGqC~xreoe84rgLCche8aqRe61A86JTRlKWeg~uNU6~v5sM97Tb23LOH-qKeyIzuJce8ufWBJaGEWQS~U-bRyn~iWBlyrdgwfPG7l5LX-U6GI-h25x2c5EDu9PmyRU3A9nlBlNrQW7-OYucGdG2q4fR4rj3DYUh-Q__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4");
-    height: 400px;
-}
-
-.footerOverlay {
-    @include overlay;
-    background: linear-gradient(113.28deg, rgba(0, 0, 0, 0.9506) -18.76%, rgba(0, 0, 0, 0.9604) 100%);
-    height: 400px;
 }
 
 

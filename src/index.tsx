@@ -1,15 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import Home from './pages/Home/Home';
+import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
 import './assets/scss/global.scss';
+import { App } from './componets/App/App';
+import { store } from './redux/store';
 
 const rootElem = document.getElementById('root');
 
 if (rootElem) {
   const root = ReactDOM.createRoot(rootElem);
   root.render(
-    <React.StrictMode>
-      <Home />
-    </React.StrictMode>,
+    <BrowserRouter>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </BrowserRouter>,
   );
 }

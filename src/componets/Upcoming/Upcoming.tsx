@@ -5,7 +5,7 @@ import styles from './Upcoming.module.scss';
 const Upcoming = () => {
   return (
     <div className={styles.Upcoming}>
-      <h2>Upcoming</h2>
+      <h2 className={styles.Upcoming__title}>Upcoming</h2>
       <div className={styles.Upcoming__container}>
         <div className={styles.Upcoming__imageContainer}>
           <img
@@ -13,14 +13,16 @@ const Upcoming = () => {
             alt=""
           />
         </div>
-        <div className={styles.Upcoming__content}>
-          <h3>Suzume no tojimari</h3>
-          <ul>
-            {genresArray.map((obj) => (
-              <li>{obj}</li>
+        <div>
+          <h3 className={styles.Upcoming__name}>Suzume no tojimari</h3>
+          <ul className={styles.Upcoming__genresList}>
+            {genresArray.map((obj, index) => (
+              <li className={styles.Upcoming__genresListItem} key={index}>
+                {obj}
+              </li>
             ))}
           </ul>
-          <p>
+          <p className={styles.Upcoming__description}>
             A modern action adventure road story where a 17-year-old girl named Suzume helps a
             mysterious young man close doors from the outer side that are releasing disasters all
             over in Japan.

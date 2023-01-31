@@ -1,4 +1,4 @@
-.header {
+.Header {
     padding: 23px 20px;
     display: flex;
 
@@ -10,17 +10,17 @@
         display: flex;
         color: white;
         padding-top: 15px;
+    }
 
-        li{
-            font-family: 'Inter', sans-serif;
-            font-size: 20px;
-            line-height: 24px;
-            margin-right: 70px;
-            background: linear-gradient(113.83deg, #C93677 -2.94%, #33ADDF 41.89%),
-            linear-gradient(0deg, #FFFFFF, #FFFFFF);
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+    &__navigationListItem {
+        font-family: 'Inter', sans-serif;
+        font-size: 20px;
+        line-height: 24px;
+        margin-right: 70px;
+        background: linear-gradient(113.83deg, #C93677 -2.94%, #33ADDF 41.89%),
+        linear-gradient(0deg, #FFFFFF, #FFFFFF);
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
     }
 
     &__searchContainer {

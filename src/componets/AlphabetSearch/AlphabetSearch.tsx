@@ -10,9 +10,9 @@ const AlphabetSearch = () => {
         <p>Searching anime order by alphabet name A to Z.</p>
         <ul className={styles.AlphabetSearch__list}>
           {AlphabetArray.map((latter) => (
-            <a href="/">
-              <li>{latter}</li>
-            </a>
+            <li className={styles.AlphabetSearch__listItem}>
+              <a href="/">{latter}</a>
+            </li>
           ))}
         </ul>
       </div>

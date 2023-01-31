@@ -1,0 +1,47 @@
+@import '../../assets/scss/mixin.scss';
+
+.Player {
+    text-align: center;
+    position: relative;
+    height: 790px;
+    &::before {
+        content: '';
+        height: 3px;
+        width: 1770px;
+        position: absolute;
+        background: linear-gradient(90deg, #9747FF -0.92%, #F22323 101.37%);
+        left: 0px;
+        top: 0;
+        z-index: 23;
+
+    }
+
+    &::after {
+        content: '';
+        height: 3px;
+        width: 1770px;
+        position: absolute;
+        background: linear-gradient(270deg, #DC781C -4.62%, #C93677 104.5%);
+        left: 0px;
+        bottom: 0;
+        z-index: 23;
+
+    }
+    &__video {
+        text-align: center;
+        padding: 20px
+    }
+
+    &__background{
+        @include background;
+        background-image: url("../../assets/images/wp5104313\ 1.png");
+        height: 790px;
+        position: relative;
+    
+    }
+    &__overlay {
+        @include overlay;
+        background: linear-gradient(113.28deg, rgba(0, 0, 0, 0.9506) -18.76%, rgba(0, 0, 0, 0.9604) 100%);
+        height: 790px;
+    }
+}

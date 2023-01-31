@@ -17,21 +17,22 @@
      &__list {
         display: flex;
         margin-top: 15px;
-        li{
-            font-family: 'Montserrat', sans-serif;
-            font-size: 20px;
-            font-weight: 700;
-            line-height: 24px;
-            @include button;
-            background: 
-            linear-gradient(#090909 0 0) padding-box, /*this is your grey background*/
-            linear-gradient(to right, #CF427B 0%, #154587 100%) border-box;
-            margin-right: 31px;
-            padding: 5px 9px 5px 9px;
-            border-radius: 5px;
-            &::before{
-                content: ''
-            }
+     }
+
+     &__listItem {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 24px;
+        @include button;
+        background: 
+        linear-gradient(#090909 0 0) padding-box, /*this is your grey background*/
+        linear-gradient(to right, #CF427B 0%, #154587 100%) border-box;
+        margin-right: 31px;
+        padding: 5px 9px 5px 9px;
+        border-radius: 5px;
+        &::before{
+            content: ''
         }
      }
 }

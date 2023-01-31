@@ -2,7 +2,7 @@
     position: relative;
     padding: 20px 20px;
 
-    p{
+    &__description{
         font-family: 'Montserrat', sans-serif;
         font-size: 18px;
         font-weight: 600;
@@ -11,7 +11,7 @@
         margin-top: 25px;
     }
 
-    h2{
+    &__title{
         font-family: 'Montserrat', sans-serif;
         font-size: 30px;
         font-weight: 600;
@@ -21,7 +21,7 @@
         margin-bottom: 15px;
     }
 
-    h3{
+    &__name{
         font-family: 'Montserrat', sans-serif;
         font-size: 40px;
         font-weight: 700;
@@ -40,32 +40,31 @@
     }
     &__container{
         display: flex;
+    }
 
-        ul{
-            display: flex;
-            margin-top: 20px;
+    &__genresList {
+        display: flex;
+        margin-top: 20px;
+    }
+    &__genresListItem {
+        background-color: transparent;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 22px;
+        background: 
+        linear-gradient(#090909 0 0) padding-box, /*this is your grey background*/
+        linear-gradient(to right, #DC781C 0%, #C93677 100%) border-box;
+        color: white;
+        padding: 10px;
+        border: 2px solid transparent;
+        border-radius: 15px;
+        margin-right: 42px;
+        position: relative;
+        
 
-            li{
-                background-color: transparent;
-                font-family: 'Montserrat', sans-serif;
-                font-size: 18px;
-                font-weight: 600;
-                line-height: 22px;
-                background: 
-                linear-gradient(#090909 0 0) padding-box, /*this is your grey background*/
-                linear-gradient(to right, #DC781C 0%, #C93677 100%) border-box;
-                color: white;
-                padding: 10px;
-                border: 2px solid transparent;
-                border-radius: 15px;
-                margin-right: 42px;
-                position: relative;
-                
-
-                &:not(:last-child) {
-                    margin-right: 15px;
-                }
-            }
+        &:not(:last-child) {
+            margin-right: 15px;
         }
     }
 

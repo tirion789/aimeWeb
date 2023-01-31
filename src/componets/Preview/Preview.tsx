@@ -20,9 +20,9 @@ const Preview: React.FC = () => {
           ))}
         </ul>
         <ul className={styles.preview__seriesList}>
-          <li>TV</li>
-          <li>Ep 1 / ? </li>
-          <li>24m</li>
+          <li className={styles.preview__seriesListItem}>TV</li>
+          <li className={styles.preview__seriesListItem}>Ep 1 / ? </li>
+          <li className={styles.preview__seriesListItem}>24m</li>
         </ul>
       </div>
       <p className={styles.preview__description}>

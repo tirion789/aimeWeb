@@ -1,0 +1,35 @@
+.Discription {
+    padding: 20px;
+
+    &__info{
+        display: flex;
+        width: 500px;
+    }
+
+    &__row {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    &__rowFirstColumn{
+        margin-top: 15px;
+        width: 250px;
+    }
+
+    &__rowTwoColumn {
+        width: 250px;
+        margin-top: 15px;
+    }
+
+    &__player {
+        padding: 20px
+    }
+
+    &__text {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 28px;
+        margin-top: 25px;
+    }
+}

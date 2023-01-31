@@ -13,6 +13,7 @@
     border-radius: 15px;
     margin-right: 42px;
     position: relative;
+    cursor: pointer;
 
     &::before {
         content: url(../../assets/images/icons/play.svg);

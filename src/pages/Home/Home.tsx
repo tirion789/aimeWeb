@@ -9,7 +9,7 @@ import AlphabetSearch from '../../componets/AlphabetSearch/AlphabetSearch';
 import Footer from '../../componets/Footer/Footer';
 
 const Home: React.FC = () => {
-  fetch('http://api.anidb.net:9001/httpapi?request=anime')
+  fetch('https://gogoanime.consumet.stream/popular')
     .then((response) => response.json())
     .then((animelist) => console.log(animelist));
 
@@ -31,11 +31,7 @@ const Home: React.FC = () => {
           </div>
         </div>
       </main>
-      <footer className={styles.footerBackground}>
-        <div className={styles.footerOverlay}>
-          <Footer />
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };

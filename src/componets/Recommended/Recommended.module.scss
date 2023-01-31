@@ -15,37 +15,32 @@
         display: flex;
         position: relative;
 
-        li:not(:last-child){
-            margin-right: 42px;
-        }
-
-        li{
-            span{
-                font-family: 'Montserrat', sans-serif;
-                font-size: 25px;
-                font-weight: 600;
-                line-height: 30px;
-                background: linear-gradient(180deg, #DC781C 0%, #C93677 100%),
-                linear-gradient(0deg, #FFFFFF, #FFFFFF);
-                background-clip: text;
-                -webkit-text-fill-color: transparent;
-                margin-right: 10px;
-                margin-top: 2px;
-            }
-
-            img{
-                border-radius: 10px;
-            }
-        }
     }
+
+    &__titleListItem:not(:last-child){
+        margin-right: 42px;
+    }
+
+    &__image{
+        border-radius: 10px;
+    }
+    
     
     &__container {
         position: absolute;
         display: flex;
         justify-content: center;
-        width: 260px;
+        overflow: hidden;
         bottom: 4px;
+        width: 260px;
         background: linear-gradient(90deg, #101010 0%, rgba(0, 0, 0, 0.9) 100%);
+    }
+
+    &__titleListItemNames {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        width: 260px;
     }
 }
 
@@ -55,7 +50,7 @@
     background-position: center;
     background-size: cover;
     height: 1003px;
-    max-width: 1820px;
+    max-width: 1800px;
     &__overlay {
         background: linear-gradient(113.28deg, rgba(0, 0, 0, 0.9506) -18.76%, rgba(0, 0, 0, 0.9604) 100%);
         max-width: 1800px;

@@ -3,7 +3,7 @@
 .Player {
     text-align: center;
     position: relative;
-    height: 790px;
+    height: max-content;
     &::before {
         content: '';
         height: 3px;
@@ -29,19 +29,49 @@
     }
     &__video {
         text-align: center;
-        padding: 20px
+        padding: 20px;
     }
 
     &__background{
         @include background;
         background-image: url("../../assets/images/wp5104313\ 1.png");
-        height: 790px;
+        height: max-content;
         position: relative;
     
     }
     &__overlay {
         @include overlay;
         background: linear-gradient(113.28deg, rgba(0, 0, 0, 0.9506) -18.76%, rgba(0, 0, 0, 0.9604) 100%);
-        height: 790px;
+        height: max-content;
+    }
+
+    &__buttonsContainer {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 20px;
+    }
+
+    &__buttons {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 24px;
+        background-color: transparent;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 31px;
+        background: linear-gradient(#090909 0 0) padding-box, linear-gradient(to right, #F22323 2.68%, #33ADDF 103.41%) border-box;
+        color: white;
+        border: 2px solid transparent;
+        border-radius: 15px;
+        margin-right: 42px;
+        position: relative;
+        cursor: pointer;
+        background: linear-gradient(#090909 0 0) padding-box, linear-gradient(to right, #CF427B 0%, #154587 100%) border-box;
+        margin-right: 31px;
+        border-radius: 5px;
+        width: 50px;
+        margin-bottom: 10px;
     }
 }

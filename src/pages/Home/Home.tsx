@@ -3,16 +3,13 @@ import AdvertisementTitle from '../../componets/AdvertisementTitle/Advertisement
 import Upcoming from '../../componets/Upcoming/Upcoming';
 import Header from '../../componets/Header/Header';
 import Preview from '../../componets/Preview/Preview';
-import Recommended from '../../componets/Recommended/Recommended';
 import styles from './Home.module.scss';
 import AlphabetSearch from '../../componets/AlphabetSearch/AlphabetSearch';
 import Footer from '../../componets/Footer/Footer';
+import MostPopular from '../../componets/MostPopular/MostPopular';
+import TopAiring from '../../componets/TopAiring/TopAiring';
 
 const Home: React.FC = () => {
-  fetch('https://gogoanime.consumet.stream/popular')
-    .then((response) => response.json())
-    .then((animelist) => console.log(animelist));
-
   return (
     <div className={styles.wrapper}>
       <Header />
@@ -22,7 +19,12 @@ const Home: React.FC = () => {
             <Preview />
           </div>
         </div>
-        <Recommended />
+        <div className={styles.Recommended}>
+          <div className={styles.Recommended__overlay}>
+            <MostPopular />
+            <TopAiring />
+          </div>
+        </div>
         <div className={styles.mainBackground}>
           <div className={styles.mainOverlay}>
             <AdvertisementTitle />

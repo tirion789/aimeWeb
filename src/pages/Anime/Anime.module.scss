@@ -27,6 +27,7 @@
     &__addToList{
         @include button;
         width: 250px;
+        margin-top: 20px;
         &::before {
             content: url(../../assets/images/icons/Plusicon.svg)
         };

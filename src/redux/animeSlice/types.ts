@@ -1,16 +1,51 @@
 export type animeItem = {
-  names: { en: string; ru: string };
-  description: string;
-  code: string;
-  posters: { medium: { url: string }; original: { url: string }; small: { url: string } };
-  player: { alternative_player: string };
+  animeImg: string;
+  animeTitle: string;
   genres: string[];
-  status: { string: string };
-  type: { episodes: number; string: string; length: number };
-  announce: string;
-  season: { string: string; year: number };
-  team: { voice: string[] };
+  otherNames: string;
+  releasedDate: string;
+  status: string;
+  synopsis: string;
+  totalEpisodes: string;
+  type: string;
+  episodesList: { episodeId: string; episodeNum: string; episodeUrl: string }[];
 };
+
+export type popularAnimes = {
+  animeId: string;
+  animeTitle: string;
+  animeImg: string;
+  releasedData: string;
+};
+
+export type topAiringAnimes = {
+  animeId: string;
+  animeTitle: string;
+  animeImg: string;
+  releasedDate: string;
+};
+
+export type video = {
+  Referer: string;
+};
+
+export enum StatusPopularAnime {
+  LOADING = 'loading',
+  SUCCESS = 'success',
+  ERROR = 'error',
+}
+
+export enum StatusVideoAnime {
+  LOADING = 'loading',
+  SUCCESS = 'success',
+  ERROR = 'error',
+}
+
+export enum StatusTopAiringAnime {
+  LOADING = 'loading',
+  SUCCESS = 'success',
+  ERROR = 'error',
+}
 
 export enum StatusAnimes {
   LOADING = 'loading',
@@ -18,15 +53,13 @@ export enum StatusAnimes {
   ERROR = 'error',
 }
 
-export enum StatusAnime {
-  LOADING = 'loading',
-  SUCCESS = 'success',
-  ERROR = 'error',
-}
-
 export interface IAnimeSliceState {
   currentItem: animeItem | null;
-  items: animeItem[];
+  video: video | null;
+  statusPopularAnime: StatusPopularAnime;
+  statusTopAiringAnimes: StatusTopAiringAnime;
+  statusVideoAnime: StatusVideoAnime;
+  popularAnimes: popularAnimes[];
+  topAiringAnimes: topAiringAnimes[];
   status: StatusAnimes;
-  statusAnime: StatusAnime;
 }

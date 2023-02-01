@@ -1,0 +1,44 @@
+.TopAiring {
+    padding: 20px;
+    &__title {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 30px;
+        font-weight: 600;
+        line-height: 37px;
+        border-bottom: 2px solid white;
+        width: max-content;
+        margin-bottom: 15px;
+    }
+
+    &__titleList {
+        display: flex;
+        position: relative;
+
+    }
+
+    &__titleListItem:not(:last-child){
+        margin-right: 42px;
+    }
+
+    &__image{
+        border-radius: 10px;
+    }
+    
+    
+    &__container {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        overflow: hidden;
+        bottom: 4px;
+        width: 260px;
+        background: linear-gradient(90deg, #101010 0%, rgba(0, 0, 0, 0.9) 100%);
+    }
+
+    &__titleListItemNames {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        width: 260px;
+    }
+}

@@ -1,45 +1,33 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { RootState } from '../../redux/store';
+import { currentItem } from '../../redux/animeSlice/selectors';
 import styles from './Discription.module.scss';
 
 const Discription = () => {
-  const anime = useSelector((state: RootState) => state.anime.currentItem);
-  const genresArray = anime?.genres.join(', ');
-  const voicesArray = anime?.team.voice.join(', ');
+  const currentAnime = useSelector(currentItem);
+  const genresArray = currentAnime?.genres.join(', ');
 
   return (
     <div className={styles.Discription}>
       <div className={styles.Anime__discriptionAnimeTitle}>
-        <h1>{anime?.names.en}</h1>
-        <h2>{anime?.names.ru}</h2>
-        <h2>東京リベンジャーズ</h2>
+        <h1>{currentAnime?.animeTitle}</h1>
+        <h2>{currentAnime?.otherNames}</h2>
       </div>
       <div className={styles.Discription__info}>
         <dl className={styles.Discription__row}>
-          <dt className={styles.Discription__rowFirstColumn}>Тип</dt>
-          <dd className={styles.Discription__rowTwoColumn}>{anime?.type.string}</dd>
-          <dt className={styles.Discription__rowFirstColumn}>Эпизоды</dt>
-          <dd className={styles.Discription__rowTwoColumn}>{anime?.type.episodes}</dd>
-          <dt className={styles.Discription__rowFirstColumn}>Статус</dt>
-          <dd className={styles.Discription__rowTwoColumn}>{anime?.status.string}</dd>
-          <dt className={styles.Discription__rowFirstColumn}>Жанр</dt>
+          <dt className={styles.Discription__rowFirstColumn}>Type</dt>
+          <dd className={styles.Discription__rowTwoColumn}>{currentAnime?.type}</dd>
+          <dt className={styles.Discription__rowFirstColumn}>Episodes</dt>
+          <dd className={styles.Discription__rowTwoColumn}>{currentAnime?.totalEpisodes}</dd>
+          <dt className={styles.Discription__rowFirstColumn}>Status</dt>
+          <dd className={styles.Discription__rowTwoColumn}>{currentAnime?.status}</dd>
+          <dt className={styles.Discription__rowFirstColumn}>Genres</dt>
           <dd className={styles.Discription__rowTwoColumn}>{genresArray}</dd>
-          <dt className={styles.Discription__rowFirstColumn}>Анонс</dt>
-          <dd className={styles.Discription__rowTwoColumn}>
-            {!anime?.announce ? 'Анонсов нет' : anime.announce}
-          </dd>
-          <dt className={styles.Discription__rowFirstColumn}>Сезон</dt>
-          <dd className={styles.Discription__rowTwoColumn}>
-            {anime?.season.string} {anime?.season.year}
-          </dd>
-          <dt className={styles.Discription__rowFirstColumn}>Длительность</dt>
-          <dd className={styles.Discription__rowTwoColumn}>{anime?.type.length}</dd>
-          <dt className={styles.Discription__rowFirstColumn}>Озвучка</dt>
-          <dd className={styles.Discription__rowTwoColumn}>{voicesArray}</dd>
+          <dt className={styles.Discription__rowFirstColumn}>Released Date</dt>
+          <dd className={styles.Discription__rowTwoColumn}>{currentAnime?.releasedDate}</dd>
         </dl>
       </div>
-      <p className={styles.Discription__text}>{anime?.description}</p>
+      <p className={styles.Discription__text}>{currentAnime?.synopsis}</p>
     </div>
   );
 };

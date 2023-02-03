@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { IFilterSlice } from './types';
 
 const initialState: IFilterSlice = {
-  genre: '',
+  genreText: 'action',
 };
 
 const filterSlice = createSlice({
@@ -10,7 +10,7 @@ const filterSlice = createSlice({
   initialState,
   reducers: {
     setGenre(state, action) {
-      state.genre = action.payload;
+      state.genreText = action.payload;
     },
   },
 });

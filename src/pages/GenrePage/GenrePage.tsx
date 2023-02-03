@@ -15,6 +15,8 @@ const GenrePage = () => {
   const genreArray = useSelector(genre);
   useEffect(() => {
     dispatch(fetchGenresAnime(genreText));
+
+    return () => {};
   }, [dispatch, genreText]);
 
   return (

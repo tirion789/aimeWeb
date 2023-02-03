@@ -3,5 +3,5 @@ export type genreText = {
 };
 
 export interface IFilterSlice {
-  genre: '';
+  genreText: 'action';
 }

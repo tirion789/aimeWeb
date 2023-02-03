@@ -4,6 +4,8 @@ import logo from '../../assets/images/icons/MeWeeb.svg';
 import account from '../../assets/images/icons/Account.svg';
 import { navigationArray } from '../../common/const';
 import { Link } from 'react-router-dom';
+import Search from '../Search/Search';
+import Genres from '../Genres/Genres';
 
 const Header: React.FC = () => {
   return (
@@ -14,19 +16,21 @@ const Header: React.FC = () => {
         </div>
       </Link>
       <div className={styles.Header__navigationList}>
-        {navigationArray.map((string) => (
-          <li className={styles.Header__navigationListItem} key={string}>
-            <a href="/">{string}</a>
-          </li>
-        ))}
+        {navigationArray.map((string) =>
+          string === 'Genre' ? (
+            <li>
+              <Genres />
+            </li>
+          ) : (
+            <li className={styles.Header__navigationListItem} key={string}>
+              <a href="/">{string}</a>
+            </li>
+          ),
+        )}
       </div>
       <div className={styles.Header__searchContainer}>
         <button className={styles.Header__searchContainer_premium}>Premium</button>
-        <input
-          placeholder="Search anime"
-          className={styles.Header__searchContainer_input}
-          type="text"
-        />
+        <Search />
         <button className={styles.Header__searchContainer_account}>
           <img src={account} alt="account" />
         </button>

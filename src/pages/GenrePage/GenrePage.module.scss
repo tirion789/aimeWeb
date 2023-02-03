@@ -1,0 +1,17 @@
+.GenrePage {
+    background-color: #090909;
+    height: 100%;
+    margin: auto;
+    max-width: 1920px;
+    width: calc(100vw - 100px); 
+
+    &__list {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    &__listItem:not(:last-child) {
+        margin-right: 30px;
+        width: 257px;
+    }
+}

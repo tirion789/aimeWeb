@@ -1,0 +1,37 @@
+.Genres {
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    line-height: 24px;
+    margin-right: 70px;
+    background: linear-gradient(113.83deg, #C93677 -2.94%, #33ADDF 41.89%),
+    linear-gradient(0deg, #FFFFFF, #FFFFFF);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    cursor: pointer;
+    position: relative;
+
+    &__list {
+        font-weight: 400;
+        font-size: 24px;
+        line-height: 28px;
+        position: absolute;
+        width: 505px;
+        height: 420px;
+        border: 3px solid #B11226;
+        background: linear-gradient(#090909 0 0) padding-box, linear-gradient(to right,#9747FF -0.92%, #F22323 101.37%) border-box;
+        color: white;
+        padding: 10px;
+        border: 2px solid transparent;
+        border-radius: 20px;
+        z-index: 2;
+        padding: 20px 28px;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    &__listItem {
+        z-index: 3;
+        color: white;
+        padding: 5px;
+    }
+}

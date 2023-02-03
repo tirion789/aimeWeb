@@ -1,14 +1,18 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {
   fetchAnime,
+  fetchGenresAnime,
   fetchPopularAnimes,
+  fetchSearchAnime,
   fetchTopAiringAnimes,
   fetchVideoAnime,
 } from './asyncAction';
 import {
   IAnimeSliceState,
   StatusAnimes,
+  StatusGenre,
   StatusPopularAnime,
+  StatusSearch,
   StatusTopAiringAnime,
   StatusVideoAnime,
 } from './types';
@@ -22,6 +26,10 @@ const initialState: IAnimeSliceState = {
   statusTopAiringAnimes: StatusTopAiringAnime.LOADING,
   video: null,
   statusVideoAnime: StatusVideoAnime.LOADING,
+  searchAnime: [],
+  statusSearch: StatusSearch.LOADING,
+  genreAnime: [],
+  statusGenre: StatusGenre.LOADING,
 };
 
 const animeSlice = createSlice({
@@ -76,6 +84,30 @@ const animeSlice = createSlice({
     builder.addCase(fetchVideoAnime.rejected, (state) => {
       state.statusVideoAnime = StatusVideoAnime.ERROR;
       state.video = null;
+    });
+    builder.addCase(fetchSearchAnime.pending, (state) => {
+      state.statusSearch = StatusSearch.LOADING;
+      state.searchAnime = [];
+    });
+    builder.addCase(fetchSearchAnime.fulfilled, (state, action) => {
+      state.searchAnime = action.payload;
+      state.statusSearch = StatusSearch.SUCCESS;
+    });
+    builder.addCase(fetchSearchAnime.rejected, (state) => {
+      state.statusSearch = StatusSearch.ERROR;
+      state.searchAnime = [];
+    });
+    builder.addCase(fetchGenresAnime.pending, (state) => {
+      state.statusGenre = StatusGenre.LOADING;
+      state.genreAnime = [];
+    });
+    builder.addCase(fetchGenresAnime.fulfilled, (state, action) => {
+      state.genreAnime = action.payload;
+      state.statusGenre = StatusGenre.SUCCESS;
+    });
+    builder.addCase(fetchGenresAnime.rejected, (state) => {
+      state.statusGenre = StatusGenre.ERROR;
+      state.genreAnime = [];
     });
   },
 });

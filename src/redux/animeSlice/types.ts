@@ -16,6 +16,21 @@ export type popularAnimes = {
   animeTitle: string;
   animeImg: string;
   releasedData: string;
+  status: string;
+};
+
+export type genreAnime = {
+  animeId: string;
+  animeTitle: string;
+  animeImg: string;
+  releasedData: string;
+};
+
+export type searchAnime = {
+  animeId: string;
+  animeTitle: string;
+  animeImg: string;
+  releasedData: string;
 };
 
 export type topAiringAnimes = {
@@ -52,6 +67,17 @@ export enum StatusAnimes {
   SUCCESS = 'success',
   ERROR = 'error',
 }
+export enum StatusSearch {
+  LOADING = 'loading',
+  SUCCESS = 'success',
+  ERROR = 'error',
+}
+
+export enum StatusGenre {
+  LOADING = 'loading',
+  SUCCESS = 'success',
+  ERROR = 'error',
+}
 
 export interface IAnimeSliceState {
   currentItem: animeItem | null;
@@ -62,4 +88,8 @@ export interface IAnimeSliceState {
   popularAnimes: popularAnimes[];
   topAiringAnimes: topAiringAnimes[];
   status: StatusAnimes;
+  searchAnime: searchAnime[];
+  statusSearch: StatusSearch;
+  genreAnime: genreAnime[];
+  statusGenre: StatusGenre;
 }

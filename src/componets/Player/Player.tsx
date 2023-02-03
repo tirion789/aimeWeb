@@ -41,6 +41,7 @@ const Player = () => {
       <div className={styles.Player__background}>
         <div className={styles.Player__overlay}>
           <div className={styles.Player__video}>
+            <p>Series: {series}</p>
             <iframe
               src={animeVideo?.Referer}
               height={750}

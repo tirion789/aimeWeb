@@ -26,6 +26,7 @@
     &__searchContainer {
         margin-left: auto;
         padding-top: 10px;
+        display: flex;
 
         &_premium{
             padding: 0;
@@ -41,24 +42,6 @@
             letter-spacing: 0em;
             text-align: center;
             margin-right: 32px;
-        }
-        &_input{
-            border: 2px solid rgba(107, 107, 107, 1);
-            border-radius: 10px;
-            background: inherit;
-            height: 37.0461540222168px;
-            width: 438px;
-
-
-            &::placeholder{
-                font-family: 'Inter', sans-serif;
-                font-size: 20px;
-                font-weight: 500;
-                line-height: 24px;
-                letter-spacing: 0em;
-                text-align: center;
-
-            }
         }
         &_account{
             background: inherit;

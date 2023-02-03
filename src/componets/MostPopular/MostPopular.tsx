@@ -22,7 +22,7 @@ const MostPopular = () => {
     <div className={styles.mostPopular}>
       <h2 className={styles.mostPopular__title}>Most Popular</h2>
       <ul className={styles.mostPopular__titleList}>
-        {popularAnimesArray.slice(0, 6).map((obj, index) => (
+        {popularAnimesArray.slice(6, 12).map((obj, index) => (
           <li key={index} className={styles.mostPopular__titleListItem}>
             <Link to={`/anime/${obj.animeId}`}>
               <img

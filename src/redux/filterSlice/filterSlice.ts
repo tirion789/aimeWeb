@@ -6,7 +6,7 @@ const initialState: IFilterSlice = {
 };
 
 const filterSlice = createSlice({
-  name: 'animeSlice',
+  name: 'filterSlice',
   initialState,
   reducers: {
     setGenre(state, action) {

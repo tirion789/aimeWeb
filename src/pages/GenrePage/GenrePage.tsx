@@ -22,18 +22,20 @@ const GenrePage = () => {
   return (
     <div className={styles.GenrePage}>
       <Header />
-      <h1>{genreText}</h1>
-      <ul className={styles.GenrePage__list}>
-        {genreArray.map((obj) => (
-          <li className={styles.GenrePage__listItem}>
-            <Link to={`/anime/${obj.animeId}`}>
-              <img width={257} height={400} src={obj.animeImg} alt="imageAnime" />
-              <p>{obj.animeTitle}</p>
-              <span>{obj.releasedData}</span>
-            </Link>
-          </li>
-        ))}
-      </ul>
+      <main>
+        <h1>{genreText}</h1>
+        <ul className={styles.GenrePage__list}>
+          {genreArray.map((obj) => (
+            <li className={styles.GenrePage__listItem}>
+              <Link to={`/anime/${obj.animeId}`}>
+                <img width={257} height={400} src={obj.animeImg} alt="imageAnime" />
+                <p>{obj.animeTitle}</p>
+                <span>{obj.releasedData}</span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </main>
       <Footer />
     </div>
   );

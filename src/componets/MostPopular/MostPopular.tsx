@@ -32,10 +32,10 @@ const MostPopular = () => {
                 src={obj.animeImg}
                 alt=""
               />
+              <div className={styles.mostPopular__container}>
+                <h2 className={styles.mostPopular__titleListItemNames}>{obj.animeTitle}</h2>
+              </div>
             </Link>
-            <div className={styles.mostPopular__container}>
-              <h2 className={styles.mostPopular__titleListItemNames}>{obj.animeTitle}</h2>
-            </div>
           </li>
         ))}
       </ul>

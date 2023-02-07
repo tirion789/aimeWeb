@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import {
   fetchAnime,
   fetchGenresAnime,
+  fetchMoviesAnime,
   fetchPopularAnimes,
   fetchSearchAnime,
   fetchTopAiringAnimes,
@@ -11,6 +12,7 @@ import {
   IAnimeSliceState,
   StatusAnimes,
   StatusGenre,
+  StatusMovieAnimes,
   StatusPopularAnime,
   StatusSearch,
   StatusTopAiringAnime,
@@ -30,6 +32,8 @@ const initialState: IAnimeSliceState = {
   statusSearch: StatusSearch.LOADING,
   genreAnime: [],
   statusGenre: StatusGenre.LOADING,
+  statusMoviesAnimes: StatusMovieAnimes.LOADING,
+  moviesAnimes: [],
 };
 
 const animeSlice = createSlice({
@@ -37,6 +41,7 @@ const animeSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
+    // get popular anime
     builder.addCase(fetchPopularAnimes.pending, (state) => {
       state.statusPopularAnime = StatusPopularAnime.LOADING;
       state.popularAnimes = [];
@@ -49,6 +54,8 @@ const animeSlice = createSlice({
       state.statusPopularAnime = StatusPopularAnime.ERROR;
       state.topAiringAnimes = [];
     });
+
+    // get top airing anime
     builder.addCase(fetchTopAiringAnimes.pending, (state) => {
       state.statusTopAiringAnimes = StatusTopAiringAnime.LOADING;
       state.popularAnimes = [];
@@ -61,6 +68,8 @@ const animeSlice = createSlice({
       state.statusTopAiringAnimes = StatusTopAiringAnime.ERROR;
       state.topAiringAnimes = [];
     });
+
+    // get current anime
     builder.addCase(fetchAnime.pending, (state) => {
       state.status = StatusAnimes.LOADING;
       state.currentItem = null;
@@ -73,6 +82,8 @@ const animeSlice = createSlice({
       state.status = StatusAnimes.ERROR;
       state.currentItem = null;
     });
+
+    // get player video
     builder.addCase(fetchVideoAnime.pending, (state) => {
       state.statusVideoAnime = StatusVideoAnime.LOADING;
       state.video = null;
@@ -85,6 +96,8 @@ const animeSlice = createSlice({
       state.statusVideoAnime = StatusVideoAnime.ERROR;
       state.video = null;
     });
+
+    // get search anime
     builder.addCase(fetchSearchAnime.pending, (state) => {
       state.statusSearch = StatusSearch.LOADING;
       state.searchAnime = [];
@@ -97,6 +110,8 @@ const animeSlice = createSlice({
       state.statusSearch = StatusSearch.ERROR;
       state.searchAnime = [];
     });
+
+    // get anime genre
     builder.addCase(fetchGenresAnime.pending, (state) => {
       state.statusGenre = StatusGenre.LOADING;
       state.genreAnime = [];
@@ -108,6 +123,20 @@ const animeSlice = createSlice({
     builder.addCase(fetchGenresAnime.rejected, (state) => {
       state.statusGenre = StatusGenre.ERROR;
       state.genreAnime = [];
+    });
+
+    // get movies anime
+    builder.addCase(fetchMoviesAnime.pending, (state) => {
+      state.statusMoviesAnimes = StatusMovieAnimes.LOADING;
+      state.moviesAnimes = [];
+    });
+    builder.addCase(fetchMoviesAnime.fulfilled, (state, action) => {
+      state.moviesAnimes = action.payload;
+      state.statusMoviesAnimes = StatusMovieAnimes.SUCCESS;
+    });
+    builder.addCase(fetchMoviesAnime.rejected, (state) => {
+      state.statusMoviesAnimes = StatusMovieAnimes.ERROR;
+      state.moviesAnimes = [];
     });
   },
 });

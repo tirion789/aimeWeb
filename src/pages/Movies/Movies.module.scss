@@ -1,0 +1,22 @@
+.wrapper {
+    background-color: #090909;
+    height: 100%;
+    margin: auto;
+    max-width: 1920px;
+    width: calc(100vw - 100px); 
+}
+
+.Movies {
+
+    padding: 20px;
+    &__list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 25px
+        ;
+    }
+
+    &__listItem {
+        width: 257px;
+    }
+}

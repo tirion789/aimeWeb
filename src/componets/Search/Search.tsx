@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { fetchSearchAnime } from '../../redux/animeSlice/asyncAction';
 import { search } from '../../redux/animeSlice/selectors';
 import { useAppDispatch } from '../../redux/store';
+import { debounce } from 'lodash';
 import styles from './Search.module.scss';
 
 const Search = () => {
@@ -16,12 +17,16 @@ const Search = () => {
     dispatch(fetchSearchAnime(value));
   }, [dispatch, value]);
 
-  const changeValue = (text: string) => {
+  const onChangeValue = (text: string) => {
     setValue(text);
   };
 
+  const updateSearchValue = debounce((str: string) => {
+    onChangeValue(str);
+  }, 500);
+
   const onChangeSearch = (event: ChangeEvent<HTMLInputElement>) => {
-    changeValue(event.target.value);
+    updateSearchValue(event.target.value);
   };
 
   return (

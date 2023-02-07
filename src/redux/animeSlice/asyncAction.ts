@@ -1,6 +1,14 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { animeItem, genreAnime, popularAnimes, searchAnime, topAiringAnimes, video } from './types';
+import {
+  animeItem,
+  genreAnime,
+  moviesAnimes,
+  popularAnimes,
+  searchAnime,
+  topAiringAnimes,
+  video,
+} from './types';
 
 export const fetchPopularAnimes = createAsyncThunk<popularAnimes[]>(
   'animes/fetchAnimesPopularStatus',
@@ -48,6 +56,13 @@ export const fetchSearchAnime = createAsyncThunk('anime/searchAnime', async (val
 export const fetchGenresAnime = createAsyncThunk('anime/genreAnime', async (genreText: string) => {
   const { data } = await axios.get<genreAnime[]>(
     `https://gogoanime.consumet.stream/genre/${genreText}`,
+  );
+  return data;
+});
+
+export const fetchMoviesAnime = createAsyncThunk('anime/moviesAnime', async () => {
+  const { data } = await axios.get<moviesAnimes[]>(
+    'https://gogoanime.consumet.stream/anime-movies',
   );
   return data;
 });

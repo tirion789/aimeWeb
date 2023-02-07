@@ -13,3 +13,5 @@ export const video = (state: RootState) => state.anime.video;
 export const search = (state: RootState) => state.anime.searchAnime;
 
 export const genre = (state: RootState) => state.anime.genreAnime;
+
+export const movies = (state: RootState) => state.anime.moviesAnimes;

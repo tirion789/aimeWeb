@@ -15,26 +15,26 @@ const GenrePage = () => {
   const genreArray = useSelector(genre);
   useEffect(() => {
     dispatch(fetchGenresAnime(genreText));
-
-    return () => {};
   }, [dispatch, genreText]);
 
   return (
-    <div className={styles.GenrePage}>
+    <div className={styles.wrapper}>
       <Header />
-      <main>
-        <h1>{genreText}</h1>
-        <ul className={styles.GenrePage__list}>
-          {genreArray.map((obj) => (
-            <li className={styles.GenrePage__listItem}>
-              <Link to={`/anime/${obj.animeId}`}>
-                <img width={257} height={400} src={obj.animeImg} alt="imageAnime" />
-                <p>{obj.animeTitle}</p>
-                <span>{obj.releasedData}</span>
-              </Link>
-            </li>
-          ))}
-        </ul>
+      <main className={styles.GenrePage}>
+        <div className={styles.GenrePage__overlay}>
+          <h1>{genreText}</h1>
+          <ul className={styles.GenrePage__list}>
+            {genreArray.map((obj) => (
+              <li className={styles.GenrePage__listItem}>
+                <Link to={`/anime/${obj.animeId}`}>
+                  <img width={257} height={400} src={obj.animeImg} alt="imageAnime" />
+                  <p>{obj.animeTitle}</p>
+                  <span>{obj.releasedData}</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
       </main>
       <Footer />
     </div>

@@ -1,17 +1,32 @@
-.GenrePage {
+@import '../../assets/scss/mixin.scss';
+
+.wrapper {
     background-color: #090909;
     height: 100%;
     margin: auto;
     max-width: 1920px;
     width: calc(100vw - 100px); 
+}
 
+.GenrePage {
+    @include background;
+    background-image: url("../../assets/images/naruto.png");
+    height: max-content;
+    position: relative;
     &__list {
         display: flex;
         flex-wrap: wrap;
+        padding: 20px;
     }
 
     &__listItem:not(:last-child) {
         margin-right: 30px;
         width: 257px;
     }
-}
+
+    &__overlay {
+        @include overlay;
+        background: linear-gradient(113.28deg, rgba(0, 0, 0, 0.9506) -18.76%, rgba(0, 0, 0, 0.9604) 100%);
+        height: max-content;
+    }
+} 

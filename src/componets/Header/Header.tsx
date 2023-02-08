@@ -28,7 +28,9 @@ const Header: React.FC = () => {
         <button className={styles.Header__searchContainer_premium}>Premium</button>
         <Search />
         <button className={styles.Header__searchContainer_account}>
-          <img src={account} alt="account" />
+          <Link to={'/profile'}>
+            <img src={account} alt="account" />
+          </Link>
         </button>
       </div>
     </header>

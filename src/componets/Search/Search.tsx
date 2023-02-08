@@ -37,15 +37,17 @@ const Search = () => {
         className={styles.Search__input}
         type="text"
       />
-      <ul className={styles.Search__list}>
-        {searchAnime.slice(0, 5).map((obj) => (
-          <li>
-            <Link to={`/anime/${obj.animeId}`}>
-              <p>{obj.animeTitle}</p>
-            </Link>
-          </li>
-        ))}
-      </ul>
+      {!!searchAnime.length && (
+        <ul className={styles.Search__list}>
+          {searchAnime.slice(0, 5).map((obj) => (
+            <li>
+              <Link to={`/anime/${obj.animeId}`}>
+                <p>{obj.animeTitle}</p>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 };

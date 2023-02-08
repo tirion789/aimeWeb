@@ -4,7 +4,7 @@ import { Routes, Route } from 'react-router-dom';
 import Anime from '../../pages/Anime/Anime';
 import GenrePage from '../../pages/GenrePage/GenrePage';
 import Movies from '../../pages/Movies/Movies';
-import Profile from '../../pages/Profile/Profile';
+import Profile from '../../pages/profile/Profile';
 
 const App = () => {
   return (

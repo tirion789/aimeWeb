@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { genreArray } from '../../common/const';
 import { MouseEvent } from 'react';
 import styles from './Genres.module.scss';
 import { useAppDispatch } from '../../redux/store';
 import { setGenre } from '../../redux/filterSlice/filterSlice';
+import useComponentVisible from '../../hooks/useComponentsVisible';
 
 const Genres = () => {
-  const [isVisibleGenreList, setisVisibleGenreList] = useState(false);
+  const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible();
+
   const dispatch = useAppDispatch();
 
   const handleOnGenreClick = (value: string) => {
@@ -21,10 +23,13 @@ const Genres = () => {
 
   return (
     <>
-      <button onClick={() => setisVisibleGenreList(true)} className={styles.Genres}>
+      <button
+        ref={ref}
+        onClick={() => setIsComponentVisible(!isComponentVisible)}
+        className={styles.Genres}>
         Genre
       </button>
-      {isVisibleGenreList && (
+      {isComponentVisible && (
         <ul className={styles.Genres__list}>
           {genreArray.map((string) => (
             <li className={styles.Genres__listItem}>

@@ -1,0 +1,48 @@
+@import '../../assets/scss/mixin.scss';
+
+.Login {
+    display: flex;
+
+    &__container {
+        @include modalContainer
+    }
+
+    &__title {
+        @include modalTitle
+    }
+
+    &__inputsContainer {
+        @include modalInputsContainer
+    }
+
+    &__input {
+        @include modalInput
+    }
+
+    &__inputContainer {
+        @include modalInputContainer
+    }
+
+    &__inputName {
+        @include modalInputName
+    }
+
+    &__button {
+        @include modalButton
+    }
+
+    &__buttonText {
+        @include modalButtonText
+    }
+
+    &__additionalInformationText {
+        @include modalAdditionalInformationText
+    }
+    &__additionalInformation {
+        @include modalAdditionalInformation
+    }
+
+    &__additionalInformationButton {
+        @include modalAdditionalInformationButton
+    }
+}

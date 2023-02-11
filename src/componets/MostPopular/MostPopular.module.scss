@@ -13,12 +13,13 @@
 
     &__titleList {
         display: flex;
-        position: relative;
-
+        flex-wrap: wrap;
+        gap: 37px;
+        justify-content: center;
     }
 
-    &__titleListItem:not(:last-child){
-        margin-right: 42px;
+    &__titleListItem{
+        position: relative;
     }
 
     &__image{

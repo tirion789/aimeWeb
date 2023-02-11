@@ -63,3 +63,81 @@
     height: 1250px;
     z-index: 1;
 }
+
+@mixin modalContainer {
+    padding: 44px;
+    max-width: 600px;
+}
+
+@mixin modalTitle {
+    font-family: 'Roboto', sans-serif;
+    font-size: 64px;
+    line-height: 75px;
+    width: max-content;
+    margin-bottom: 15px;
+}
+
+@mixin modalInputsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 510px;
+}
+
+@mixin modalInput {
+    width: 100%;
+    height: 87px;
+    padding: 26px 16px;
+    background: rgba(48, 45, 45, 1);
+    border-radius: 5px;
+}
+
+@mixin modalInputContainer {
+    width: 510px;
+}
+
+@mixin modalInputName {
+    font-family: 'Roboto', sans-serif;
+    font-size: 24px;
+    line-height: 28px;
+    width: max-content;
+    margin-bottom: 15px;
+}
+
+@mixin modalButton {
+    border: 4px solid rgba(189, 0, 255, 1);
+    border-radius: 5px;
+    width: 100%;
+    height: 87px;
+    text-align: center;
+    background: transparent;
+    cursor: pointer;
+}
+
+@mixin modalButtonText {
+    font-family: 'Roboto', sans-serif;
+    font-size: 24px;
+    line-height: 28px;
+}
+
+@mixin modalAdditionalInformationText {
+    font-family: 'Roboto', sans-serif;
+    font-size: 24px;
+    line-height: 28px;
+}
+
+@mixin modalAdditionalInformation {
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+}
+
+@mixin  modalAdditionalInformationButton{
+    font-family: 'Roboto', sans-serif;
+    font-size: 24px;
+    line-height: 28px;
+    color: rgba(189, 0, 255, 1);
+    background-color: transparent;
+    cursor: pointer;
+    border: none;
+}

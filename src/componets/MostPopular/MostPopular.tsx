@@ -11,13 +11,9 @@ const MostPopular = () => {
 
   const dispatch = useAppDispatch();
 
-  const getFilms = () => {
-    dispatch(fetchPopularAnimes());
-  };
-
   useEffect(() => {
-    getFilms();
-  }, []);
+    dispatch(fetchPopularAnimes());
+  }, [dispatch]);
   return (
     <div className={styles.mostPopular}>
       <h2 className={styles.mostPopular__title}>Most Popular</h2>

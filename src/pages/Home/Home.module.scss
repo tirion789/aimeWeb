@@ -43,7 +43,7 @@
     background-size: no-repeat;
     background-position: center;
     background-size: cover;
-    height: 1003px;
+    height: max-content;
     max-width: 1800px;
     &__overlay {
         background: linear-gradient(113.28deg, rgba(0, 0, 0, 0.9506) -18.76%, rgba(0, 0, 0, 0.9604) 100%);
@@ -53,7 +53,7 @@
         visibility: visible;
         opacity: 1;
         transition: 1s;
-        height: 1003px;
+        height: max-content;
     }
 }
 

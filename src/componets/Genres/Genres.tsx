@@ -1,16 +1,22 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { genreArray } from '../../common/const';
 import { MouseEvent } from 'react';
 import styles from './Genres.module.scss';
 import { useAppDispatch } from '../../redux/store';
 import { setGenre } from '../../redux/filterSlice/filterSlice';
-import useComponentVisible from '../../hooks/useComponentsVisible';
+import { useOutsideClick } from '../../hooks/useOutsideClick';
 
 const Genres = () => {
-  const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible();
-
+  const refBtn = useRef(null);
   const dispatch = useAppDispatch();
+  const [openGenrePopup, setOpenGenrePopup] = useState(false);
+
+  const onOutsideClick = () => {
+    setOpenGenrePopup(false);
+  };
+
+  useOutsideClick(refBtn, onOutsideClick, openGenrePopup);
 
   const handleOnGenreClick = (value: string) => {
     dispatch(setGenre(value));
@@ -23,14 +29,11 @@ const Genres = () => {
 
   return (
     <>
-      <button
-        ref={ref}
-        onClick={() => setIsComponentVisible(!isComponentVisible)}
-        className={styles.Genres}>
+      <button onClick={() => setOpenGenrePopup(true)} className={styles.Genres}>
         Genre
       </button>
-      {isComponentVisible && (
-        <ul className={styles.Genres__list}>
+      {openGenrePopup && (
+        <ul ref={refBtn} className={styles.Genres__list}>
           {genreArray.map((string) => (
             <li className={styles.Genres__listItem}>
               <Link onClick={onActiveSeries} to={`/genre/${string}`}>

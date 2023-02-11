@@ -145,3 +145,8 @@ export const genreArray = [
   'thriller',
   'vampire',
 ];
+
+export const FORM_TYPES = {
+  signUp: 'Sing Up',
+  singIn: 'Sing In',
+};

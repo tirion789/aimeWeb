@@ -1,11 +1,7 @@
 @import '../../assets/scss/mixin.scss';
 
 .wrapper {
-    background-color: #090909;
-    height: 100%;
-    margin: auto;
-    max-width: 1920px;
-    width: calc(100vw - 100px); 
+    @include wrapper
 }
 
 .Profile {
@@ -23,10 +19,18 @@
 
     &__favoriteListItemTitle {
         width: 100%;
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 31px;
+        margin: auto;
     }
 
     &__favoritelistItemEpisodes {
         width: 10%;
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 31px;
+        margin: auto;
     }
 
     &__background {
@@ -41,5 +45,12 @@
         background: linear-gradient(113.28deg, rgba(0, 0, 0, 0.9506) -18.76%, rgba(0, 0, 0, 0.9604) 100%);
         min-height: 1000px;
         max-height: max-content;
+    }
+    &__favoriteListItemButtonDeleted{
+        @include button;
+        padding: 10px 10px 10px 10px;
+        &:before {
+            content: '';
+        }
     }
 }

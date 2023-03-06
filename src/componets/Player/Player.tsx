@@ -12,10 +12,14 @@ const Player = () => {
   const { animeId } = useParams();
   const animeVideo = useSelector(video);
   const currentAnime = useSelector(currentItem);
-  const [series, setSeries] = useState('1');
+  const state = localStorage.getItem('currentSeries' + currentAnime?.animeTitle);
+  const [currentSeries, setCurrentSeries] = useState(state);
+
+  console.log(state);
 
   const handleOnSeriesClick = (value: string) => {
-    setSeries(value);
+    setCurrentSeries(value);
+    localStorage.setItem('currentSeries' + currentAnime?.animeTitle, JSON.stringify(value));
   };
 
   const onActiveSeries = (event: MouseEvent<HTMLButtonElement>) => {
@@ -33,15 +37,16 @@ const Player = () => {
 
   useEffect(() => {
     if (animeId) {
-      dispatch(fetchVideoAnime({ animeId, series }));
+      setCurrentSeries(JSON.parse(state || 'false'));
+      dispatch(fetchVideoAnime({ animeId, currentSeries }));
     }
-  }, [animeId, series, dispatch]);
+  }, [animeId, dispatch, currentSeries, currentAnime?.animeTitle, state]);
   return (
     <div className={styles.Player}>
       <div className={styles.Player__background}>
         <div className={styles.Player__overlay}>
           <div className={styles.Player__video}>
-            <p>Series: {series}</p>
+            <p>Series: {currentSeries ? currentSeries : '1'}</p>
             <iframe
               src={animeVideo?.Referer}
               height={750}

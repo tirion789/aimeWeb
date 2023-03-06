@@ -1,3 +1,5 @@
+@import '../../assets/scss/variables';
+
 .Header {
     padding: 23px 20px;
     display: flex;
@@ -17,8 +19,7 @@
         font-size: 20px;
         line-height: 24px;
         margin-right: 70px;
-        background: linear-gradient(113.83deg, #C93677 -2.94%, #33ADDF 41.89%),
-        linear-gradient(0deg, #FFFFFF, #FFFFFF);
+        background: $basic-gradient-red-blue;
         background-clip: text;
         -webkit-text-fill-color: transparent;
     }
@@ -27,26 +28,59 @@
         margin-left: auto;
         padding-top: 10px;
         display: flex;
-
-        &_premium{
-            padding: 0;
-            border: none;
-            font: inherit;
-            color: inherit;
-            background-color: transparent;
-            cursor: pointer;
-            font-family: 'Inter', sans-serif;
-            font-size: 16px;
-            font-weight: 500;
-            line-height: 19px;
-            letter-spacing: 0em;
-            text-align: center;
-            margin-right: 32px;
-        }
+        gap: 25px;
         &_account{
             background: inherit;
             cursor: pointer;
             margin-left: 32px;
         }
+    }
+
+    &__searchContainer_account {
+        border: none;
+    }
+
+    &__buttonExit {
+        background-color: inherit;
+        border: none;
+        cursor: pointer;
+        margin-left: auto;
+    }
+
+
+    &__profileLink {
+        margin-top: auto;
+        margin-bottom: auto;
+        font-family: 'Inter', sans-serif;
+        font-size: 20px;
+        line-height: 24px;
+        margin-right: 20px;
+        background: $basic-gradient-red-blue;
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        position: relative;
+        &:after {
+          position: absolute;
+          content:"";
+          width: 0;
+          height: 2px;
+          background: $basic-gradient-purple-red;
+          bottom: -5px;
+          right: 0;
+          left: 0;
+          transition: all .5s;   
+        } 
+
+        &:hover {
+            &:after {
+              width: 100%; 
+            }
+    }
+}
+
+    &__userButton {
+        display: flex;
+        height: 50px;
     }
 }

@@ -37,10 +37,12 @@ export const fetchAnime = createAsyncThunk('anime/fetchAnime', async (animeId: s
 
 export const fetchVideoAnime = createAsyncThunk(
   'anime/fetcVideoAnime',
-  async (params: { animeId: string; series: string }) => {
-    const { animeId, series } = params;
+  async (params: { animeId: string; currentSeries: string | null }) => {
+    const { animeId, currentSeries } = params;
     const { data } = await axios.get<video>(
-      `https://gogoanime.consumet.stream/vidcdn/watch/${animeId}-episode-${series}`,
+      `https://gogoanime.consumet.stream/vidcdn/watch/${animeId}-episode-${
+        currentSeries === null ? '1' : currentSeries
+      }`,
     );
     return data;
   },

@@ -1,16 +1,17 @@
 @import '../../assets/scss/mixin.scss';
+@import '../../assets/scss/variables';
 
 .Footer {
 
     &__background {
         @include background;
-        background-image: url("https://s3-alpha-sig.figma.com/img/d7bc/6f82/6dd945bec6bb0b5e394d3f9a1c16e8c8?Expires=1676851200&Signature=GmjmvKgHbT6yZKqu-f27RY3PTVRcWeglT4uF4-0kVELdZIeW3DEyqBrnz--NN1~naWop6rUwyB1Q8hTqt6aCSt9vJSZoMK~TucPk~g35vAoCnHtNlFjc9xuIRHRQytgpIQovav3A8I9sJGr9Tvh9-o-DT2QayGibhw8579GS7xKybxaVfZqSPk3VOo~rRj38qcl657Amj0fbNqS2XZk~yUbk1N26Nyku-T~uXyQs6gUirXrUodxcw70gqiSHZYsAqLt90~PR~3WDBjiRUg~bX48o9ucRAh0T3lQx4EwvGixa7LjFfQRZYo7OxOG~otoMlW7RWHjKB-jB2WvOFI9ZYg__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4");
+        background-image: utl('../../assets/images/footer.png');
         height: 400px;
     }
     
     &__overlay {
         @include overlay;
-        background: linear-gradient(113.28deg, rgba(0, 0, 0, 0.9506) -18.76%, rgba(0, 0, 0, 0.9604) 100%);
+        background: $basic-gradient-overlay;
         height: 400px;
     }
 

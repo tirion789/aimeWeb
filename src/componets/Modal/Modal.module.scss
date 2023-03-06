@@ -1,13 +1,14 @@
+@import '../../assets/scss/variables';
+
 .Modal {
     width: 1129px;
-    background: #070707;
+    background: $basic-black;
     height: 660px;
     position: fixed;
     top: 12%;
     left: 50%;
     margin: 0;
     padding: 0;
-    transition: transform 1s ease;
     transform: translateX(-1000%);
     transition: transform 1s ease;
     transition: 1s;
@@ -16,7 +17,7 @@
     z-index: 1000;
 
     &__overlay {
-        background: rgba(0, 0, 0, 0.84);
+        background: $basic-modal-overlay;
         position: fixed;
         top: 0;
         left: 0;

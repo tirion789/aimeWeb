@@ -13,4 +13,6 @@ export type addItem = {
 
 export interface IProfileSlice {
   items: addItem[];
+  planned: addItem[];
+  reviewing: addItem[];
 }

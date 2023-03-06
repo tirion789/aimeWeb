@@ -22,16 +22,18 @@ const Movies = () => {
     <div className={styles.wrapper}>
       <Header />
       <main className={styles.Movies}>
-        <ul className={styles.Movies__list}>
-          {moviesAnime.map((obj) => (
-            <Link to={`/anime/${obj.animeId}`}>
-              <li className={styles.Movies__listItem}>
-                <img width={257} height={364} src={obj.animeImg} alt="anime movie" />
-                <p>{obj.animeTitle}</p>
-              </li>
-            </Link>
-          ))}
-        </ul>
+        <div className={styles.Movies__overlay}>
+          <ul className={styles.Movies__list}>
+            {moviesAnime.map((obj) => (
+              <Link to={`/anime/${obj.animeId}`}>
+                <li className={styles.Movies__listItem}>
+                  <img width={257} height={364} src={obj.animeImg} alt="anime movie" />
+                  <p>{obj.animeTitle}</p>
+                </li>
+              </Link>
+            ))}
+          </ul>
+        </div>
       </main>
       <Footer />
     </div>

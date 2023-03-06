@@ -1,11 +1,8 @@
 @import '../../assets/scss/mixin.scss';
+@import '../../assets/scss/variables'; 
 
 .wrapper {
-    background-color: #090909;
-    height: 100%;
-    margin: auto;
-    max-width: 1920px;
-    width: calc(100vw - 100px); 
+    @include wrapper
 }
 
 .GenrePage {
@@ -16,17 +13,19 @@
     &__list {
         display: flex;
         flex-wrap: wrap;
-        padding: 20px;
+        justify-content: center;
+        gap: 40px;
+        margin-top: 25px;
     }
 
-    &__listItem:not(:last-child) {
-        margin-right: 30px;
+    &__listItem {
         width: 257px;
     }
 
     &__overlay {
         @include overlay;
         background: linear-gradient(113.28deg, rgba(0, 0, 0, 0.9506) -18.76%, rgba(0, 0, 0, 0.9604) 100%);
+        padding: 20px;
         height: max-content;
     }
 } 

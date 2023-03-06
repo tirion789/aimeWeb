@@ -150,3 +150,8 @@ export const FORM_TYPES = {
   signUp: 'Sing Up',
   singIn: 'Sing In',
 };
+
+export const BUTTON_TYPES = {
+  favorite: 'favorite',
+  planned: 'planned',
+};

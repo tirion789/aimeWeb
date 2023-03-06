@@ -14,7 +14,6 @@ const TopAiring = () => {
   useEffect(() => {
     dispatch(fetchTopAiringAnimes());
   }, [dispatch]);
-
   return (
     <div className={styles.TopAiring}>
       <h2 className={styles.TopAiring__title}>Top Airing</h2>

@@ -1,3 +1,5 @@
+@import '../../assets/scss/variables';
+
 .TopAiring {
     padding: 20px;
     &__title {
@@ -5,7 +7,7 @@
         font-size: 30px;
         font-weight: 600;
         line-height: 37px;
-        border-bottom: 2px solid white;
+        border-bottom: 2px solid $basic-white;
         width: max-content;
         margin-bottom: 15px;
     }

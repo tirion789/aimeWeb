@@ -1,3 +1,5 @@
+@import './variables';
+
 @mixin button {
     background-color: transparent;
     font-family: 'Montserrat', sans-serif;
@@ -21,6 +23,14 @@
         left: 15px;
         top: 9px;
     }
+}
+
+@mixin wrapper {
+    background-color: $basic-black-amber;
+    height: 100%;
+    margin: auto;
+    max-width: 1920px;
+    width: calc(100vw - 100px); 
 }
 
 @mixin buttonAddToList {

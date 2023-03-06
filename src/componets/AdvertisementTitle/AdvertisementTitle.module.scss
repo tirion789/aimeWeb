@@ -1,4 +1,5 @@
 @import '../../assets/scss/mixin.scss';
+@import '../../assets/scss/variables';
 
 .AdvertisementTitle {
 
@@ -10,8 +11,7 @@
         height: 3px;
         width: 1750px;
         position: absolute;
-        background: linear-gradient(90deg, #143562 -4.21%, rgba(205, 220, 28, 0.94) 101.26%);
-
+        background: $basic-gradient-darkBlue-yellow;
         left: 20px;
         top: 0;
 

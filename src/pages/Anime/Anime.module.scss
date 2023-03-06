@@ -1,11 +1,10 @@
 @import '../../assets/scss/mixin.scss';
+@import '../../assets/scss/variables';
+
+
 
 .wrapper {
-    background-color: #090909;
-    height: 100%;
-    margin: auto;
-    max-width: 1920px;
-    width: calc(100vw - 100px); 
+    @include wrapper;
 }
 
 .Anime {
@@ -46,6 +45,29 @@
     &__player {
         text-align: center;
         padding: 20px
+    }
+
+    &__btnContainer {
+        width: 250px;
+        margin-top: 20px;
+    }
+
+
+    &__hiddenBtn {
+        max-height: 0;
+        transition: max-height 0.7s ease-out;
+        overflow: hidden;
+    }
+
+    &__hiddenBtnShow {
+        max-height: 500px;
+        overflow: hidden;
+        transition: max-height 0.7s ease-in;
+    }
+
+    &__mainBtn {
+        display: flex;
+        margin-right: 0;
     }
 
 }

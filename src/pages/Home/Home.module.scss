@@ -1,11 +1,8 @@
 @import '../../assets/scss/mixin.scss';
+@import '../../assets/scss/variables';
 
 .wrapper {
-    background-color: #090909;
-    height: 100%;
-    margin: auto;
-    max-width: 1920px;
-    width: calc(100vw - 100px); 
+    @include wrapper;
 }
 
 

@@ -9,10 +9,10 @@
     &::before {
         content: '';
         height: 3px;
-        width: 1750px;
+        width: 100%;
         position: absolute;
         background: $basic-gradient-darkBlue-yellow;
-        left: 20px;
+        left: 0px;
         top: 0;
 
     }
@@ -23,23 +23,6 @@
     }
 
     &__informationContainer {
-        p{
-            font-family: 'Montserrat', sans-serif;
-            font-size: 18px;
-            font-weight: 600;
-            line-height: 28px;
-        }
-
-        h2{
-            font-family: 'Montserrat', sans-serif;
-            font-size: 55px;
-            font-weight: 700;
-            line-height: 67px;
-            letter-spacing: 0em;
-            text-align: left;
-            width: 551px;
-            margin-bottom: 9px;
-        }
 
         h3{
             font-family: 'Montserrat', sans-serif;
@@ -51,14 +34,97 @@
     }
 
     &__buttonContainer {
-        margin-top: 100px;
-        a{
-            @include button
-        }
+        margin-top: 20px;
+    }
 
-        button{
-            @include buttonAddToList
-        }
+    &__informationContainerTitle {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 55px;
+        font-weight: 700;
+        line-height: 67px;
+        letter-spacing: 0em;
+        text-align: left;
+        margin-bottom: 9px;
+    }
+
+    &__informationContainerText {
+        @include discription;
+        max-width: 400px;
+    }
+    &__informationButton_watch {
+        @include button
+    }
+    &__informationButton_addToList {
+        @include buttonAddToList
     }
     
+}
+
+@media (max-width: $tablet) {
+    .AdvertisementTitle {
+        display: flex;
+        flex-direction: column;
+
+        &__imageContainer {
+            margin-right: 0;
+        }
+
+        &__buttonContainer {
+            display: flex;
+            justify-content: center;
+        }
+
+        &__informationContainerText {
+            max-width: max-content;
+            text-align: center;
+        }
+
+        &__informationButton_addToList {
+            ::before {
+                top: 13px;
+            }
+        }
+
+        &__informationContainerTitle {
+            text-align: center;
+        }
+
+
+    }
+}
+
+@media (max-width: $modile) {
+    .AdvertisementTitle {
+        &__informationButton_watch {
+            padding: 5px 5px 5px 5px;
+            font-size: 13px;
+            font-weight: 600;
+            line-height: 30px;
+            margin-right: 0;
+
+            &::before {
+                content: '';
+            }
+        }
+
+        &__informationButton_addToList {
+            font-size: 13px;
+            font-weight: 600;
+            line-height: 30px;
+
+            &::before {
+                content: '';
+            }
+        }
+
+        &__informationContainerTitle {
+            font-size: 33px;
+            font-weight: 600;
+            line-height: 43px;
+        }
+
+        &__iformationContainerText {
+            text-align: center;
+        }
+    }
 }

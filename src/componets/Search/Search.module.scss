@@ -1,14 +1,18 @@
+@import '../../assets/scss/variables';
+
 .Search{
 
-    position: relative;
+    width: 100%;
+    display: flex;
 
     &__input {
-        border: 2px solid rgba(107, 107, 107, 1);
+        border: 2px solid $basic-search-border-color;
         border-radius: 10px;
         background: inherit;
         height: 37.0461540222168px;
-        width: 438px;
+        width: 100%;
         padding: 22px;
+        display: block;
     
     
         &::placeholder{
@@ -22,16 +26,54 @@
         }
     }
 
+    &__inputButton {
+        display: none;
+        margin-left: auto;
+        background-color: inherit;
+        cursor: pointer;
+        position: relative;
+    }
+
     &__list {
         position: absolute;
         z-index: 2;
-        width: 100%;
         border: 1px solid;
         border-radius: 12px;
-        top: 53px;
+        top: 79px;
         padding: 15px;
         display: grid;
         gap: 6px;
         background: #090909;
+    };
+
+    &__buttonActive {
+        display: block;
     }
+
+}
+
+@media (max-width: $tablet) {
+    .Search__input {
+        display: none;
+    }
+
+    .Search__list {
+        left: 0;
+        top: 128px;
+        width: 100%;
+    }
+
+    .Search__inputButton {
+        display: block;
+        border: none;
+    }
+
+    .Search__buttonActive {
+        display: block;
+        left: 0;
+        top: 81px;
+        z-index: 5;
+        position: absolute;
+    }
+
 }

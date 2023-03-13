@@ -11,17 +11,23 @@ const AdvertisementTitle = () => {
         />
       </div>
       <div className={styles.AdvertisementTitle__informationContainer}>
-        <h2>Don't Toy with Me, Miss Nagatoro </h2>
+        <h2 className={styles.AdvertisementTitle__informationContainerTitle}>
+          Don't Toy with Me, Miss Nagatoro{' '}
+        </h2>
         <h3>2nd Season</h3>
-        <p>
+        <p className={styles.AdvertisementTitle__informationContainerText}>
           "A girl in a lower grade just made me cry!" One day, Senpai visits the library after
           school and becomes the target of a super sadistic junior! The name of the girl who teases,
           torments, and tantalizes Senpai is "Nagatoro!" She's annoying yet adorable. It's painf...
           More
         </p>
         <div className={styles.AdvertisementTitle__buttonContainer}>
-          <a href="/">Watch Now</a>
-          <button>Add to list</button>
+          <a className={styles.AdvertisementTitle__informationButton_watch} href="/">
+            Watch Now
+          </a>
+          <button className={styles.AdvertisementTitle__informationButton_addToList}>
+            Add to list
+          </button>
         </div>
       </div>
     </div>

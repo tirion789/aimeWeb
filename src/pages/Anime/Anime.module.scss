@@ -8,19 +8,19 @@
 }
 
 .Anime {
-    height: 790px;
+    height: max-content;
 
     &__background{
         @include background;
         background-image: url("../../assets/images/naruto.png");
-        height: 790px;
+        height: max-content;
         position: relative;
     
     }
     &__overlay {
         @include overlay;
-        background: linear-gradient(113.28deg, rgba(0, 0, 0, 0.9506) -18.76%, rgba(0, 0, 0, 0.9604) 100%);
-        height: 790px;
+        background: $basic-gradient-overlay;
+        height: max-content;
     }
 
     &__addToList{
@@ -36,6 +36,11 @@
         display: flex;
         flex-direction: column;
         padding: 20px;
+    }
+
+    &__image {
+        width: 250px;
+        height: 350px;
     }
 
     &__container {
@@ -70,5 +75,17 @@
         margin-right: 0;
     }
 
+}
+
+@media (max-width: $tablet) {
+    .Anime {
+        &__container {
+            flex-direction: column;
+        }
+
+        &__imgContaier {
+            margin: 0 auto;
+        }
+    }
 }
 

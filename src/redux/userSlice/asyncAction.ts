@@ -1,12 +1,17 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { setUser } from './userSlice';
-import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import {
+  createUserWithEmailAndPassword,
+  getAuth,
+  signInWithEmailAndPassword,
+  updateProfile,
+} from 'firebase/auth';
 import { setPopup } from '../filterSlice/filterSlice';
 
 export const getAuthentication = createAsyncThunk(
   'auth/login',
-  async (params: { email: string; password: string }, { dispatch }) => {
-    const { email, password } = params;
+  async (params: { email: string; password: string; nickname: string }, { dispatch }) => {
+    const { email, password, nickname } = params;
     const auth = getAuth();
     const { user } = await signInWithEmailAndPassword(auth, email, password);
     dispatch(
@@ -14,6 +19,7 @@ export const getAuthentication = createAsyncThunk(
         email: user.email,
         id: user.uid,
         token: user.refreshToken,
+        nickName: nickname,
       }),
     );
     localStorage.setItem('users', JSON.stringify(user));
@@ -23,17 +29,25 @@ export const getAuthentication = createAsyncThunk(
 
 export const getRegister = createAsyncThunk(
   'reg/signUp',
-  async (params: { email: string; password: string }, { dispatch }) => {
-    const { email, password } = params;
+  async (params: { email: string; password: string; nickname: string }, { dispatch }) => {
+    const { email, password, nickname } = params;
     const auth = getAuth();
     const { user } = await createUserWithEmailAndPassword(auth, email, password);
-    dispatch(
-      setUser({
-        email: user.email,
-        id: user.uid,
-        token: user.refreshToken,
-      }),
-    );
+    if (user) {
+      updateProfile(user, {
+        displayName: nickname,
+      });
+      // user.displayName = nickname;
+      console.log(user);
+      dispatch(
+        setUser({
+          email: user.email,
+          id: user.uid,
+          token: user.refreshToken,
+          nickName: user.displayName,
+        }),
+      );
+    }
     localStorage.setItem('users', JSON.stringify(user));
     dispatch(setPopup(false));
   },

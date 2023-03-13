@@ -1,6 +1,7 @@
 @import '../../assets/scss/variables';
+@import '../../assets/scss/mixin.scss';
 
-.mostPopular {
+.MainCategories {
     padding: 20px 20px;
 
     &__title {
@@ -26,6 +27,8 @@
 
     &__image{
         border-radius: 10px;
+        width: 257px;
+        height: 400px;
     }
     
     
@@ -36,13 +39,10 @@
         overflow: hidden;
         bottom: 4px;
         width: 260px;
-        background: linear-gradient(90deg, #101010 0%, rgba(0, 0, 0, 0.9) 100%);
+        background: $basic-mainCategories-background;
     }
 
     &__titleListItemNames {
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        overflow: hidden;
-        width: 260px;
+        @include listItemName
     }
 }

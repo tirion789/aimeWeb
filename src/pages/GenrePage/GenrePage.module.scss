@@ -18,14 +18,72 @@
         margin-top: 25px;
     }
 
+    &__listItemName {
+        @include listItemName
+    }
+
     &__listItem {
         width: 257px;
+        position: relative
     }
 
     &__overlay {
         @include overlay;
-        background: linear-gradient(113.28deg, rgba(0, 0, 0, 0.9506) -18.76%, rgba(0, 0, 0, 0.9604) 100%);
+        background: $basic-gradient-overlay;
         padding: 20px;
         height: max-content;
     }
+
+    &__container {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        overflow: hidden;
+        bottom: 4px;
+        width: 260px;
+        background: $basic-mainCategories-background
+    }
+
+    &__image {
+        width: 257px;
+        height: 400px;
+    }
+
+    &__listButton {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 28px;
+        display: flex;
+        margin-top: 15px;
+        gap: 45px;
+        flex-wrap: wrap
+     }
+
+     &__listItemButton {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 24px;
+        background-color: transparent;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 31px;
+        color: white;
+        border: 2px solid transparent;
+        border-radius: 15px;
+        margin-right: 42px;
+        position: relative;
+        cursor: pointer;
+        background: linear-gradient(#090909 0 0) padding-box, linear-gradient(to right, #CF427B 0%, #154587 100%) border-box;
+        margin-right: 0;
+        border-radius: 5px;
+        width: 40px;
+        padding: 5px;
+        text-align: center;
+          &::before{
+              content: ''
+          }
+       }
 } 

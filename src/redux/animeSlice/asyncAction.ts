@@ -4,7 +4,9 @@ import {
   animeItem,
   genreAnime,
   moviesAnimes,
+  moviesAph,
   popularAnimes,
+  recentEpisodes,
   searchAnime,
   topAiringAnimes,
   video,
@@ -35,14 +37,19 @@ export const fetchAnime = createAsyncThunk('anime/fetchAnime', async (animeId: s
   return data;
 });
 
+export const fetchRecentEpisodes = createAsyncThunk('anime/fetchRecentEpisodes', async () => {
+  const { data } = await axios.get<recentEpisodes[]>(
+    'https://gogoanime.consumet.stream/recent-release',
+  );
+  return data;
+});
+
 export const fetchVideoAnime = createAsyncThunk(
   'anime/fetcVideoAnime',
-  async (params: { animeId: string; currentSeries: string | null }) => {
-    const { animeId, currentSeries } = params;
+  async (params: { animeId: string; series: string | null }) => {
+    const { animeId, series } = params;
     const { data } = await axios.get<video>(
-      `https://gogoanime.consumet.stream/vidcdn/watch/${animeId}-episode-${
-        currentSeries === null ? '1' : currentSeries
-      }`,
+      `https://gogoanime.consumet.stream/vidcdn/watch/${animeId}-episode-${series}`,
     );
     return data;
   },
@@ -55,12 +62,16 @@ export const fetchSearchAnime = createAsyncThunk('anime/searchAnime', async (val
   return data;
 });
 
-export const fetchGenresAnime = createAsyncThunk('anime/genreAnime', async (genreText: string) => {
-  const { data } = await axios.get<genreAnime[]>(
-    `https://gogoanime.consumet.stream/genre/${genreText}`,
-  );
-  return data;
-});
+export const fetchGenresAnime = createAsyncThunk(
+  'anime/genreAnime',
+  async (params: { genreText: string; currentPaginationButton: string }) => {
+    const { genreText, currentPaginationButton } = params;
+    const { data } = await axios.get<genreAnime[]>(
+      `https://gogoanime.consumet.stream/genre/${genreText}?page=${currentPaginationButton}`,
+    );
+    return data;
+  },
+);
 
 export const fetchMoviesAnime = createAsyncThunk('anime/moviesAnime', async () => {
   const { data } = await axios.get<moviesAnimes[]>(
@@ -68,3 +79,13 @@ export const fetchMoviesAnime = createAsyncThunk('anime/moviesAnime', async () =
   );
   return data;
 });
+
+export const fetchMoviesAnimeAph = createAsyncThunk(
+  'anime/moviesAnimeAph',
+  async (currentLetter: string) => {
+    const { data } = await axios.get<moviesAph[]>(
+      `https://gogoanime.consumet.stream/anime-movies?aph=${currentLetter}`,
+    );
+    return data;
+  },
+);

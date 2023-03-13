@@ -1,4 +1,5 @@
 @import '../../assets/scss/mixin.scss';
+@import '../../assets/scss/variables';
 
 .Player {
     text-align: center;
@@ -7,21 +8,35 @@
     &::before {
         content: '';
         height: 3px;
-        width: 1770px;
+        width: 100%;
         position: absolute;
-        background: linear-gradient(90deg, #9747FF -0.92%, #F22323 101.37%);
+        background:  $basic-gradient-purple-red-border;
         left: 0px;
         top: 0;
         z-index: 23;
 
     }
 
+    &__iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    &__iframeContainer {
+        position: relative;
+        padding: 0 0 56.25% 0;
+        height: 0;
+    }
+
     &::after {
         content: '';
         height: 3px;
-        width: 1770px;
+        width: 100%;
         position: absolute;
-        background: linear-gradient(270deg, #DC781C -4.62%, #C93677 104.5%);
+        background: $basic-gradient-orange-red;
         left: 0px;
         bottom: 0;
         z-index: 23;
@@ -41,37 +56,71 @@
     }
     &__overlay {
         @include overlay;
-        background: linear-gradient(113.28deg, rgba(0, 0, 0, 0.9506) -18.76%, rgba(0, 0, 0, 0.9604) 100%);
+        background: $basic-gradient-overlay;
         height: max-content;
     }
 
     &__buttonsContainer {
         display: flex;
         flex-wrap: wrap;
-        padding: 20px;
+        justify-content: center;
+        gap: 15px;
     }
 
-    &__buttons {
-        font-family: 'Montserrat', sans-serif;
-        font-size: 20px;
-        font-weight: 700;
-        line-height: 24px;
-        background-color: transparent;
-        font-family: 'Montserrat', sans-serif;
-        font-size: 20px;
-        font-weight: 600;
-        line-height: 31px;
-        background: linear-gradient(#090909 0 0) padding-box, linear-gradient(to right, #F22323 2.68%, #33ADDF 103.41%) border-box;
-        color: white;
+    // &__buttons {
+    //     font-family: 'Montserrat', sans-serif;
+    //     font-size: 20px;
+    //     font-weight: 700;
+    //     line-height: 24px;
+    //     background-color: transparent;
+    //     font-family: 'Montserrat', sans-serif;
+    //     font-size: 20px;
+    //     font-weight: 600;
+    //     line-height: 31px;
+    //     background: linear-gradient(#090909 0 0) padding-box, linear-gradient(to right, #F22323 2.68%, #33ADDF 103.41%) border-box;
+    //     color: white;
+    //     border: 2px solid transparent;
+    //     border-radius: 15px;
+    //     margin-right: 42px;
+    //     position: relative;
+    //     cursor: pointer;
+    //     background: linear-gradient(#090909 0 0) padding-box, linear-gradient(to right, #CF427B 0%, #154587 100%) border-box;
+    //     margin-right: 31px;
+    //     border-radius: 5px;
+    //     width: 50px;
+    //     margin-bottom: 10px;
+    // }
+
+    &__selector {
+        @include playerSelectAndSearchInput;
         border: 2px solid transparent;
-        border-radius: 15px;
-        margin-right: 42px;
         position: relative;
         cursor: pointer;
-        background: linear-gradient(#090909 0 0) padding-box, linear-gradient(to right, #CF427B 0%, #154587 100%) border-box;
-        margin-right: 31px;
+        background: $basic-gradient-border-red-darkBlue;
         border-radius: 5px;
-        width: 50px;
+        width: 80px;
         margin-bottom: 10px;
+        text-align: center;
+        height: 37px;
+    }
+
+    &__selectorOption {
+        color: $basic-white;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 28px;
+        margin-top: 25px;
+        background-color: $basic-black;
+    }
+    
+    &__searchSeries {
+        border: 2px solid #6b6b6b;
+        border-radius: 10px;
+        background: inherit;
+        height: 37.0461540222168px;
+        width: 120px;
+        padding: 11px;
+        @include playerSelectAndSearchInput;
     }
 }

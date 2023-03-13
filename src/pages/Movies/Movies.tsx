@@ -24,11 +24,13 @@ const Movies = () => {
       <main className={styles.Movies}>
         <div className={styles.Movies__overlay}>
           <ul className={styles.Movies__list}>
-            {moviesAnime.map((obj) => (
-              <Link to={`/anime/${obj.animeId}`}>
+            {moviesAnime.map(({ animeId, animeTitle, animeImg }) => (
+              <Link key={animeId} to={`/anime/${animeId}`}>
                 <li className={styles.Movies__listItem}>
-                  <img width={257} height={364} src={obj.animeImg} alt="anime movie" />
-                  <p>{obj.animeTitle}</p>
+                  <img width={257} height={364} src={animeImg} alt="anime movie" />
+                  <div className={styles.Movies__conteiner}>
+                    <h2 className={styles.Movies__listItemName}>{animeTitle}</h2>
+                  </div>
                 </li>
               </Link>
             ))}

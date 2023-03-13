@@ -3,7 +3,9 @@ import {
   fetchAnime,
   fetchGenresAnime,
   fetchMoviesAnime,
+  fetchMoviesAnimeAph,
   fetchPopularAnimes,
+  fetchRecentEpisodes,
   fetchSearchAnime,
   fetchTopAiringAnimes,
   fetchVideoAnime,
@@ -13,7 +15,9 @@ import {
   StatusAnimes,
   StatusGenre,
   StatusMovieAnimes,
+  StatusMoviesAph,
   StatusPopularAnime,
+  StatusRecentEpisodes,
   StatusSearch,
   StatusTopAiringAnime,
   StatusVideoAnime,
@@ -34,6 +38,10 @@ const initialState: IAnimeSliceState = {
   statusGenre: StatusGenre.LOADING,
   statusMoviesAnimes: StatusMovieAnimes.LOADING,
   moviesAnimes: [],
+  statusRecentEpisodes: StatusRecentEpisodes.LOADING,
+  recentEpisodes: [],
+  moviesAph: [],
+  statusMoviesAph: StatusMoviesAph.LOADING,
 };
 
 const animeSlice = createSlice({
@@ -137,6 +145,34 @@ const animeSlice = createSlice({
     builder.addCase(fetchMoviesAnime.rejected, (state) => {
       state.statusMoviesAnimes = StatusMovieAnimes.ERROR;
       state.moviesAnimes = [];
+    });
+
+    // get recent episodes
+    builder.addCase(fetchRecentEpisodes.pending, (state) => {
+      state.statusRecentEpisodes = StatusRecentEpisodes.LOADING;
+      state.recentEpisodes = [];
+    });
+    builder.addCase(fetchRecentEpisodes.fulfilled, (state, action) => {
+      state.recentEpisodes = action.payload;
+      state.statusRecentEpisodes = StatusRecentEpisodes.SUCCESS;
+    });
+    builder.addCase(fetchRecentEpisodes.rejected, (state) => {
+      state.statusRecentEpisodes = StatusRecentEpisodes.ERROR;
+      state.recentEpisodes = [];
+    });
+
+    // get moviesAph
+    builder.addCase(fetchMoviesAnimeAph.pending, (state) => {
+      state.statusMoviesAph = StatusMoviesAph.LOADING;
+      state.recentEpisodes = [];
+    });
+    builder.addCase(fetchMoviesAnimeAph.fulfilled, (state, action) => {
+      state.moviesAph = action.payload;
+      state.statusMoviesAph = StatusMoviesAph.SUCCESS;
+    });
+    builder.addCase(fetchMoviesAnimeAph.rejected, (state) => {
+      state.statusMoviesAph = StatusMoviesAph.ERROR;
+      state.recentEpisodes = [];
     });
   },
 });

@@ -14,6 +14,7 @@ export interface IUser {
   email: null;
   token: null;
   id: null;
+  nickName: null;
   statusLogin: StatusLogin;
   statusRegister: StatusRegister;
   error: boolean;

@@ -38,20 +38,14 @@ const Profile = () => {
       <main className={styles.Profile__background}>
         <div className={styles.Profile__overlay}>
           <main className={styles.Profile}>
-            <div className={styles.Profile__favorite}>
-              <h1>Favorites</h1>
+            <div className={styles.Profile__favorites}>
+              <h1 className={styles.Profile__favoritesTitle}>Favorites</h1>
               <ul className={styles.Profile__favoriteList}>
                 {favoritesArray.map((obj) => (
                   <li key={obj.animeTitle} className={styles.Profile__favoriteListItem}>
                     <p className={styles.Profile__favoriteListItemTitle}>{obj.animeTitle}</p>
                     <div className={styles.Profile__favoritelistItemEpisodes}>
-                      <span>
-                        {' '}
-                        {localStorage.getItem('currentSeries' + obj.animeTitle)
-                          ? localStorage.getItem('currentSeries' + obj.animeTitle)
-                          : '0'}
-                      </span>
-                      / <span>{obj.episodesList.length}</span>
+                      <span>{obj.currentAnimeSeries}</span>/ <span>{obj.episodesList.length}</span>
                     </div>
                     <button
                       className={styles.Profile__favoriteListItemButtonDeleted}
@@ -62,20 +56,14 @@ const Profile = () => {
                 ))}
               </ul>
             </div>
-            <div>
-              <h1>Planned</h1>
+            <div className={styles.Profile__favorites}>
+              <h1 className={styles.Profile__favoritesTitle}>Planned</h1>
               <ul className={styles.Profile__favoriteList}>
                 {plannedArray.map((obj) => (
                   <li key={obj.animeTitle} className={styles.Profile__favoriteListItem}>
                     <p className={styles.Profile__favoriteListItemTitle}>{obj.animeTitle}</p>
                     <div className={styles.Profile__favoritelistItemEpisodes}>
-                      <span>
-                        {' '}
-                        {localStorage.getItem('currentSeries' + obj.animeTitle)
-                          ? localStorage.getItem('currentSeries' + obj.animeTitle)
-                          : '0'}
-                      </span>
-                      / <span>{obj.episodesList.length}</span>
+                      <span>{obj.currentAnimeSeries}</span>/ <span>{obj.episodesList.length}</span>
                     </div>
                     <button
                       className={styles.Profile__favoriteListItemButtonDeleted}
@@ -86,20 +74,14 @@ const Profile = () => {
                 ))}
               </ul>
             </div>
-            <div>
-              <h1>Reviewing</h1>
+            <div className={styles.Profile__favorites}>
+              <h1 className={styles.Profile__favoritesTitle}>Reviewing</h1>
               <ul className={styles.Profile__favoriteList}>
                 {reviewingArray.map((obj) => (
                   <li key={obj.animeTitle} className={styles.Profile__favoriteListItem}>
                     <p className={styles.Profile__favoriteListItemTitle}>{obj.animeTitle}</p>
                     <div className={styles.Profile__favoritelistItemEpisodes}>
-                      <span>
-                        {' '}
-                        {localStorage.getItem('currentSeries' + obj.animeTitle)
-                          ? localStorage.getItem('currentSeries' + obj.animeTitle)
-                          : '0'}
-                      </span>
-                      / <span>{obj.episodesList.length}</span>
+                      <span>{obj.currentAnimeSeries}</span>/ <span>{obj.episodesList.length}</span>
                     </div>
                     <button
                       className={styles.Profile__favoriteListItemButtonDeleted}

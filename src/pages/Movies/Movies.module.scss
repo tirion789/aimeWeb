@@ -20,11 +20,20 @@
 
     &__listItem {
         width: 257px;
+        position: relative;
+    }
+
+    &__container {
+        position: absolute;
+    }
+
+    &__listItemName {
+        @include listItemName;
     }
 
     &__overlay {
         @include overlay;
-        background: linear-gradient(113.28deg, rgba(0, 0, 0, 0.9506) -18.76%, rgba(0, 0, 0, 0.9604) 100%);
+        background: $basic-gradient-overlay;
         padding: 20px;
         height: max-content;
     }

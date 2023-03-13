@@ -1,3 +1,5 @@
+@import '../../assets/scss/mixin.scss';
+
 .Discription {
     padding: 20px;
 
@@ -26,10 +28,22 @@
     }
 
     &__text {
-        font-family: 'Montserrat', sans-serif;
-        font-size: 18px;
-        font-weight: 600;
-        line-height: 28px;
-        margin-top: 25px;
+        @include discription;
+    }
+}
+
+@media (max-width: $tablet) {
+    .Discription {
+        &__rowFirstColumn {
+            width: 50%;
+        }
+
+        &__rowTwoColumn {
+            width: 50%;
+        }
+
+        &__info {
+            width: auto;
+        }
     }
 }

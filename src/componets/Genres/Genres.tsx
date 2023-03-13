@@ -35,7 +35,7 @@ const Genres = () => {
       {openGenrePopup && (
         <ul ref={refBtn} className={styles.Genres__list}>
           {genreArray.map((string) => (
-            <li className={styles.Genres__listItem}>
+            <li key={string} className={styles.Genres__listItem}>
               <Link onClick={onActiveSeries} to={`/genre/${string}`}>
                 {string}
               </Link>

@@ -6,6 +6,7 @@ const initialState: IUser = {
   email: null,
   token: null,
   id: null,
+  nickName: null,
   statusLogin: StatusLogin.LOADING,
   statusRegister: StatusRegister.LOADING,
   error: false,
@@ -19,11 +20,13 @@ const userSlice = createSlice({
       state.email = action.payload.email;
       state.id = action.payload.id;
       state.token = action.payload.token;
+      state.nickName = action.payload.nickName;
     },
     removeUser(state) {
       state.email = null;
       state.id = null;
       state.token = null;
+      state.nickName = null;
     },
   },
   extraReducers: (builder) => {
@@ -33,6 +36,7 @@ const userSlice = createSlice({
       state.email = null;
       state.id = null;
       state.token = null;
+      state.nickName = null;
     });
     builder.addCase(getAuthentication.fulfilled, (state) => {
       state.statusLogin = StatusLogin.SUCCESS;

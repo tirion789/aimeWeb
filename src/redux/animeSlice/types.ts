@@ -19,6 +19,23 @@ export type popularAnimes = {
   status: string;
 };
 
+export type moviesAph = {
+  animeId: string;
+  animeTitle: string;
+  animeImg: string;
+  releasedDate: string;
+  animeUrl: string;
+};
+
+export type recentEpisodes = {
+  episodeId: string;
+  animeTitle: string;
+  episodeNum: string;
+  subOrDub: string;
+  animeImg: string;
+  episodeUrl: string;
+};
+
 export type moviesAnimes = {
   animeId: string;
   animeTitle: string;
@@ -53,6 +70,12 @@ export type video = {
 };
 
 export enum StatusPopularAnime {
+  LOADING = 'loading',
+  SUCCESS = 'success',
+  ERROR = 'error',
+}
+
+export enum StatusRecentEpisodes {
   LOADING = 'loading',
   SUCCESS = 'success',
   ERROR = 'error',
@@ -93,18 +116,28 @@ export enum StatusGenre {
   ERROR = 'error',
 }
 
+export enum StatusMoviesAph {
+  LOADING = 'loading',
+  SUCCESS = 'success',
+  ERROR = 'error',
+}
+
 export interface IAnimeSliceState {
   currentItem: animeItem | null;
   video: video | null;
   statusPopularAnime: StatusPopularAnime;
   statusTopAiringAnimes: StatusTopAiringAnime;
+  statusMoviesAph: StatusMoviesAph;
   statusMoviesAnimes: StatusMovieAnimes;
   statusVideoAnime: StatusVideoAnime;
+  statusRecentEpisodes: StatusRecentEpisodes;
   statusSearch: StatusSearch;
   statusGenre: StatusGenre;
   status: StatusAnimes;
   popularAnimes: popularAnimes[];
+  recentEpisodes: recentEpisodes[];
   topAiringAnimes: topAiringAnimes[];
+  moviesAph: moviesAph[];
   searchAnime: searchAnime[];
   moviesAnimes: moviesAnimes[];
   genreAnime: genreAnime[];

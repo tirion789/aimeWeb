@@ -2,50 +2,54 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { currentItem } from '../../redux/animeSlice/selectors';
 import {
-  deletePlanned,
+  setActiveButton,
   setItems,
   setPlanned,
   setReviewing,
 } from '../../redux/profileSlice/profileSlice';
-import { getAnimeListName } from '../../redux/profileSlice/selectors';
+import { activeButton, getAnimeListName } from '../../redux/profileSlice/selectors';
+import { listNames } from '../../redux/profileSlice/types';
 import { useAppDispatch, useAppSelector } from '../../redux/store';
 import styles from './AnimeControls.module.scss';
-const buttonsMap = ['planned', 'favorite', 'reviewing'];
+const buttonsMap = Object.values(listNames);
 
 const AnimeControls = () => {
-  const [activeButton, setActiveButton] = useState('planned');
   const [showHiddenButton, setShowHiddenButton] = useState(false);
-  const [tick, setTick] = useState(false);
+  // const [activeButton, setActiveButton] = useState('planned');
+  const currentActiveButton = useSelector(activeButton);
   const currentAnime = useSelector(currentItem);
-  const state = localStorage.getItem('tick' + currentAnime?.animeTitle);
   const currentAnimeListName = useAppSelector((state) =>
     getAnimeListName(state, currentAnime?.animeTitle),
   );
   const dispatch = useAppDispatch();
-  const filteredButtons = activeButton
-    ? buttonsMap.filter((button) => button !== activeButton)
+  const filteredButtons = currentActiveButton
+    ? buttonsMap.filter((button) => button !== currentActiveButton)
     : buttonsMap;
-  const onButtonClick = (button: string) => {
-    setActiveButton(button);
-    if (currentAnime && button === 'favorite') {
+  const onButtonClick = (button: listNames) => {
+    dispatch(setActiveButton(button));
+    if (currentAnime && button === listNames.FAVORITES) {
       dispatch(setItems(currentAnime));
     }
-    if (currentAnime && button === 'planned') {
+    if (currentAnime && button === listNames.PLANNED) {
       dispatch(setPlanned(currentAnime));
     }
-    if (currentAnime && button === 'reviewing') {
+    if (currentAnime && button === listNames.REVIEWING) {
       dispatch(setReviewing(currentAnime));
     }
-    setTick(true);
-    localStorage.setItem('tick' + currentAnime?.animeTitle, JSON.stringify(true));
   };
 
+  console.log(currentAnimeListName);
+
   const onButtonClickActive = () => {
-    if (currentAnime && activeButton === 'planned') {
-      dispatch(deletePlanned(currentAnime.animeTitle));
+    if (currentAnime && currentActiveButton === listNames.PLANNED && !currentAnimeListName) {
       dispatch(setPlanned(currentAnime));
     }
-    localStorage.setItem('tick' + currentAnime?.animeTitle, JSON.stringify(true));
+    if (currentAnime && currentActiveButton === listNames.FAVORITES && !currentAnimeListName) {
+      dispatch(setItems(currentAnime));
+    }
+    if (currentAnime && currentActiveButton === listNames.REVIEWING && !currentAnimeListName) {
+      dispatch(setReviewing(currentAnime));
+    }
   };
 
   const onShowHiddenButtons = () => {
@@ -54,21 +58,23 @@ const AnimeControls = () => {
 
   useEffect(() => {
     if (currentAnimeListName) {
-      setTick(Boolean(JSON.parse(state || 'null')));
-      setActiveButton(currentAnimeListName);
+      dispatch(setActiveButton(currentAnimeListName));
     }
-  }, [currentAnime, currentAnimeListName, dispatch, state]);
+  }, [currentAnime, currentAnimeListName, dispatch]);
 
   return (
     <div className={styles.AnimeControls}>
       <button onClick={onShowHiddenButtons}>show</button>
       <button
         onClick={onButtonClickActive}
-        className={`${tick ? styles.AnimeControls__activeButton : styles.AnimeControls__button}`}>
-        {activeButton}
+        className={`${
+          currentAnimeListName ? styles.AnimeControls__activeButton : styles.AnimeControls__button
+        }`}>
+        {currentActiveButton}
       </button>
-      {filteredButtons.map((button) => (
+      {filteredButtons.map((button, index) => (
         <ul
+          key={index}
           className={`${
             showHiddenButton ? styles.AnimeControls__hiddenBtnShow : styles.AnimeControls__hiddenBtn
           }`}>

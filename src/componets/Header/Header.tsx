@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './Header.module.scss';
-import logo from '../../assets/images/icons/MeWeeb.svg';
-import account from '../../assets/images/icons/Account.svg';
+import { ReactComponent as Logo } from '../../assets/images/icons/MeWeeb.svg';
+import { ReactComponent as Account } from '../../assets/images/icons/Account.svg';
 import { Link } from 'react-router-dom';
 import Search from '../Search/Search';
 import Genres from '../Genres/Genres';
@@ -10,13 +10,18 @@ import { setPopup } from '../../redux/filterSlice/filterSlice';
 import Modal from '../Modal/Modal';
 import { useAuth } from '../../hooks/useAuth';
 import { removeUser } from '../../redux/userSlice/userSlice';
-import exit from '../../assets/images/icons/exit.svg';
+import { ReactComponent as Exit } from '../../assets/images/icons/exit.svg';
 
 const Header: React.FC = () => {
   const dispatch = useAppDispatch();
   const { isAuth, email } = useAuth();
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const onClickLoginBtn = () => {
     dispatch(setPopup(true));
+  };
+
+  const onClickDropdownButton = () => {
+    setIsDropdownOpen((prev) => !prev);
   };
 
   const onExit = () => {
@@ -26,24 +31,26 @@ const Header: React.FC = () => {
 
   return (
     <header className={styles.Header}>
-      <Link to={'/'}>
+      <div className={styles.Header__menuLogo}>
+        <button onClick={onClickDropdownButton} className={styles.Header__dropdownMenu}></button>
         <div className={styles.Header__logoContainer}>
-          <img src={logo} alt="logo" />
+          <Link to={'/'}>
+            <Logo />
+          </Link>
         </div>
-      </Link>
-      <nav>
-        <ul className={styles.Header__navigationList}>
-          <li>
+        <nav
+          className={`${styles.Header__navigationList} ${isDropdownOpen && styles.Header__active}`}>
+          <div>
             <Genres />
-          </li>
-          <li className={styles.Header__navigationListItem}>
+          </div>
+          <div className={styles.Header__navigationListItem}>
             <Link to={'/movies'}>Movies</Link>
-          </li>
-          <li className={styles.Header__navigationListItem}>
+          </div>
+          <div className={styles.Header__navigationListItem}>
             <a href="/">ONas</a>
-          </li>
-        </ul>
-      </nav>
+          </div>
+        </nav>
+      </div>
       <div className={styles.Header__searchContainer}>
         <Search />
         {isAuth ? (
@@ -52,12 +59,12 @@ const Header: React.FC = () => {
               <Link to={'/profile'}>{email}</Link>
             </p>
             <button className={styles.Header__buttonExit} onClick={onExit}>
-              <img width={50} src={exit} alt="exit" />
+              <Exit />
             </button>
           </div>
         ) : (
           <button onClick={onClickLoginBtn} className={styles.Header__searchContainer_account}>
-            <img src={account} alt="account" />
+            <Account />
           </button>
         )}
       </div>

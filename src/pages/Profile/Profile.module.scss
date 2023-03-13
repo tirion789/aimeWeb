@@ -1,4 +1,5 @@
 @import '../../assets/scss/mixin.scss';
+@import '../../assets/scss/variables';
 
 .wrapper {
     @include wrapper
@@ -15,42 +16,63 @@
     &__favoriteListItem {
         display: flex;
         width: 100%;
+        margin-bottom: 25px;
     }
 
     &__favoriteListItemTitle {
-        width: 100%;
-        font-size: 20px;
-        font-weight: 600;
-        line-height: 31px;
-        margin: auto;
+        @include discription;
     }
 
     &__favoritelistItemEpisodes {
-        width: 10%;
         font-size: 20px;
         font-weight: 600;
         line-height: 31px;
-        margin: auto;
+        margin-left: auto;
+        margin-top: 10px;
+        margin-right: 15px;
+    }
+
+    &__favoritesTitle {
+        border: 2px white solid;
+        background: black;
+        border-radius: 14px;
+        z-index: 3;
+        color: white;
+        padding: 10px;
+        background: $basic-gradient-text-border-blue-red;
+        border: 1px solid transparent;
+        border-radius: 9px;
+        margin-bottom: 15px
     }
 
     &__background {
         @include background;
         background-image: url("../../assets/images/wp5104313\ 1.png");
-        min-height: 1000px;
-        max-height: max-content
+        height: max-content
     }
     
     &__overlay {
         @include overlay;
-        background: linear-gradient(113.28deg, rgba(0, 0, 0, 0.9506) -18.76%, rgba(0, 0, 0, 0.9604) 100%);
-        min-height: 1000px;
-        max-height: max-content;
+        background: $basic-gradient-overlay;
+        height: max-content;
     }
     &__favoriteListItemButtonDeleted{
         @include button;
+        margin-right: 0;
         padding: 10px 10px 10px 10px;
         &:before {
             content: '';
+        }
+    }
+}
+
+@media (max-width: $modile) {
+    .Profile {
+        &__favoriteListItem {
+            flex-direction: column;
+        }
+        &__favoritelistItemEpisodes {
+            margin: 5px 0;
         }
     }
 }

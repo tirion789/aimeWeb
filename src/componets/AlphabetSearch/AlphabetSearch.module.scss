@@ -8,28 +8,51 @@
     &::before {
         content: '';
         height: 3px;
-        width: 1750px;
+        width: 100%;
         position: absolute;
         background: $basic-gradient-orange-red;
-        left: 20px;
+        left: 0px;
         top: 0;
 
     }
      &__list {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 28px;
         display: flex;
         margin-top: 15px;
+        gap: 45px;
+        flex-wrap: wrap
+     }
+
+     &__title {
+        @include discription;
+        margin-top: 10px;
      }
 
      &__listItem {
-        font-family: 'Montserrat', sans-serif;
-        font-size: 20px;
-        font-weight: 700;
-        line-height: 24px;
-        @include button;
-        background: $basic-gradient-border-red-darkBlue;
-        margin-right: 31px;
-        padding: 5px 9px 5px 9px;
-        border-radius: 5px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 24px;
+      background-color: transparent;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 31px;
+      color: white;
+      border: 2px solid transparent;
+      border-radius: 15px;
+      margin-right: 42px;
+      position: relative;
+      cursor: pointer;
+      background: linear-gradient(#090909 0 0) padding-box, linear-gradient(to right, #CF427B 0%, #154587 100%) border-box;
+      margin-right: 0;
+      border-radius: 5px;
+      width: 40px;
+      padding: 5px;
+      text-align: center;
         &::before{
             content: ''
         }

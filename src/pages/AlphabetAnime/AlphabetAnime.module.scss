@@ -1,0 +1,43 @@
+@import '../../assets/scss/mixin.scss';
+
+.wrapper {
+    @include wrapper
+}
+
+.AlphabetAnime {
+    @include background;
+
+    &__list {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 40px;
+    }
+
+    &__overlay {
+        @include overlay;
+        padding: 20px;
+    }
+    &__listItemImg {
+        width: 257px;
+        height: 400px;
+    }
+
+    &__listItem {
+        position: relative;
+    }
+
+    &__container {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        overflow: hidden;
+        bottom: 4px;
+        width: 260px;
+        background: $basic-mainCategories-background
+    }
+
+    &__listItemTitle {
+        @include listItemName
+    }
+}

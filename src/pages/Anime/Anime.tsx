@@ -35,7 +35,7 @@ const Anime = () => {
             <div className={styles.Anime__overlay}>
               <div className={styles.Anime__container}>
                 <div className={styles.Anime__imgContaier}>
-                  <img width={250} height={350} src={currentAnime?.animeImg} alt="anime" />
+                  <img className={styles.Anime__image} src={currentAnime?.animeImg} alt="anime" />
                   <div className={styles.Anime__btnContainer}>
                     <AnimeControls />
                   </div>

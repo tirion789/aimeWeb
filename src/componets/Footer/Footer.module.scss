@@ -5,14 +5,12 @@
 
     &__background {
         @include background;
-        background-image: utl('../../assets/images/footer.png');
-        height: 400px;
+        background-image: url('../../assets/images/footer.png');
     }
     
     &__overlay {
         @include overlay;
         background: $basic-gradient-overlay;
-        height: 400px;
     }
 
     &__container {
@@ -56,4 +54,37 @@
     &__socialList{
         margin-top: 15px;
     }
+
+    &__aboutTitle {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 25px;
+        font-weight: 700;
+        line-height: 46px;
+    }
+
+    &__listItem {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 37px;
+    }
+}
+
+@media (max-width: $modile) {
+    .Footer{
+        &__container {
+            flex-direction: column;
+        }
+
+        &__navigationListItem  {
+            width: max-content;
+            margin: 0 auto;
+        }
+
+        &__listItem {
+            width: max-content;
+            margin: 0 auto;
+        }
+
+    } 
 }

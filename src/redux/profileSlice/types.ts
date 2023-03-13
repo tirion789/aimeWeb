@@ -1,4 +1,4 @@
-export type addItem = {
+export interface IAnime {
   animeImg: string;
   animeTitle: string;
   genres: string[];
@@ -9,10 +9,26 @@ export type addItem = {
   totalEpisodes: string;
   type: string;
   episodesList: { episodeId: string; episodeNum: string; episodeUrl: string }[];
-};
+}
+
+export enum listNames {
+  FAVORITES = 'favorites',
+  PLANNED = 'planned',
+  REVIEWING = 'reviewing',
+}
+
+export interface ICurrentSeries {
+  title: string;
+  series: string;
+}
+
+export interface IProfileAnime extends IAnime {
+  currentAnimeSeries?: string;
+}
 
 export interface IProfileSlice {
-  items: addItem[];
-  planned: addItem[];
-  reviewing: addItem[];
+  favorites: IProfileAnime[];
+  planned: IProfileAnime[];
+  reviewing: IProfileAnime[];
+  activeButton: listNames | null;
 }

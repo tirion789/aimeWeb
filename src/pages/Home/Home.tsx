@@ -6,8 +6,9 @@ import Preview from '../../componets/Preview/Preview';
 import styles from './Home.module.scss';
 import AlphabetSearch from '../../componets/AlphabetSearch/AlphabetSearch';
 import Footer from '../../componets/Footer/Footer';
-import MostPopular from '../../componets/MostPopular/MostPopular';
-import TopAiring from '../../componets/TopAiring/TopAiring';
+// import MostPopular from '../../componets/MostPopular/MostPopular';
+// import TopAiring from '../../componets/TopAiring/TopAiring';
+import MainCategories from '../../componets/MainCategories/MainCategories';
 
 const Home: React.FC = () => {
   return (
@@ -21,8 +22,7 @@ const Home: React.FC = () => {
         </div>
         <div className={styles.Recommended}>
           <div className={styles.Recommended__overlay}>
-            <MostPopular />
-            <TopAiring />
+            <MainCategories />
           </div>
         </div>
         <div className={styles.mainBackground}>

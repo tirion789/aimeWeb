@@ -1,6 +1,5 @@
 import React from 'react';
 import AdvertisementTitle from '../../componets/AdvertisementTitle/AdvertisementTitle';
-import Upcoming from '../../componets/Upcoming/Upcoming';
 import Header from '../../componets/Header/Header';
 import Preview from '../../componets/Preview/Preview';
 import styles from './Home.module.scss';
@@ -28,7 +27,6 @@ const Home: React.FC = () => {
         <div className={styles.mainBackground}>
           <div className={styles.mainOverlay}>
             <AdvertisementTitle />
-            <Upcoming />
             <AlphabetSearch />
           </div>
         </div>

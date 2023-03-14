@@ -4,9 +4,11 @@ import {
   fetchGenresAnime,
   fetchMoviesAnime,
   fetchMoviesAnimeAph,
+  fetchNagatoro,
   fetchPopularAnimes,
   fetchRecentEpisodes,
   fetchSearchAnime,
+  fetchTokyoRevenger,
   fetchTopAiringAnimes,
   fetchVideoAnime,
 } from './asyncAction';
@@ -19,12 +21,14 @@ import {
   StatusPopularAnime,
   StatusRecentEpisodes,
   StatusSearch,
+  StatusTokyoRevenger,
   StatusTopAiringAnime,
   StatusVideoAnime,
 } from './types';
 
 const initialState: IAnimeSliceState = {
   currentItem: null,
+  tokyoRevenger: null,
   popularAnimes: [],
   topAiringAnimes: [],
   statusPopularAnime: StatusPopularAnime.LOADING,
@@ -42,6 +46,8 @@ const initialState: IAnimeSliceState = {
   recentEpisodes: [],
   moviesAph: [],
   statusMoviesAph: StatusMoviesAph.LOADING,
+  tokyoRevengerStatus: StatusTokyoRevenger.LOADING,
+  nagatoro: null,
 };
 
 const animeSlice = createSlice({
@@ -89,6 +95,33 @@ const animeSlice = createSlice({
     builder.addCase(fetchAnime.rejected, (state) => {
       state.status = StatusAnimes.ERROR;
       state.currentItem = null;
+    });
+
+    // tokyo revenger
+    builder.addCase(fetchTokyoRevenger.pending, (state) => {
+      state.tokyoRevengerStatus = StatusTokyoRevenger.LOADING;
+    });
+    builder.addCase(fetchTokyoRevenger.fulfilled, (state, action) => {
+      state.tokyoRevenger = action.payload;
+      state.tokyoRevengerStatus = StatusTokyoRevenger.SUCCESS;
+    });
+    builder.addCase(fetchTokyoRevenger.rejected, (state) => {
+      state.tokyoRevengerStatus = StatusTokyoRevenger.ERROR;
+    });
+
+    // nagatoro
+
+    builder.addCase(fetchNagatoro.pending, (state) => {
+      state.status = StatusAnimes.LOADING;
+      state.nagatoro = null;
+    });
+    builder.addCase(fetchNagatoro.fulfilled, (state, action) => {
+      state.nagatoro = action.payload;
+      state.status = StatusAnimes.SUCCESS;
+    });
+    builder.addCase(fetchNagatoro.rejected, (state) => {
+      state.status = StatusAnimes.ERROR;
+      state.nagatoro = null;
     });
 
     // get player video

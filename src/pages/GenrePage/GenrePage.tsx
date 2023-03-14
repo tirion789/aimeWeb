@@ -32,7 +32,7 @@ const GenrePage = () => {
       <Header />
       <main className={styles.GenrePage}>
         <div className={styles.GenrePage__overlay}>
-          <h1>{genreText}</h1>
+          <h1 className={styles.GenrePage__title}>{genreText}</h1>
           <ul className={styles.GenrePage__list}>
             {genreArray.map(({ animeId, animeImg, animeTitle }) => (
               <li key={animeId} className={styles.GenrePage__listItem}>

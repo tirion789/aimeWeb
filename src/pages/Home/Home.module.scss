@@ -1,9 +1,6 @@
 @import '../../assets/scss/mixin.scss';
 @import '../../assets/scss/variables';
 
-.wrapper {
-    @include wrapper;
-}
 
 
 .previewBackground{
@@ -39,10 +36,8 @@
     background-position: center;
     background-size: cover;
     height: max-content;
-    max-width: 1800px;
     &__overlay {
         background: $basic-gradient-overlay;
-        max-width: 1800px;
         margin: 0;
         padding: 0;
         visibility: visible;

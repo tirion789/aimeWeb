@@ -1,19 +1,22 @@
-import React, { ChangeEvent, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { fetchVideoAnime } from '../../redux/animeSlice/asyncAction';
 import { useAppDispatch, useAppSelector } from '../../redux/store';
 import styles from './Player.module.scss';
-import { currentItem, video } from '../../redux/animeSlice/selectors';
+import { currentItem, statusPlayer, video } from '../../redux/animeSlice/selectors';
 import { setCurrentSeries } from '../../redux/profileSlice/profileSlice';
 import { getCurrentAnime } from '../../redux/profileSlice/selectors';
-import { debounce } from 'lodash';
+import { MouseEvent } from 'react';
+import Loader from '../Loader/Loader';
+import Select from '../Select/Select';
 
 const Player = () => {
   const dispatch = useAppDispatch();
   const { animeId } = useParams();
   const animeVideo = useSelector(video);
   const currentAnime = useSelector(currentItem);
+  const statusVideo = useSelector(statusPlayer);
   const animeItem = useAppSelector((state) => getCurrentAnime(state, currentAnime?.animeTitle));
   const [series, setSeries] = useState<string>(animeItem?.currentAnimeSeries || '1');
 
@@ -28,20 +31,10 @@ const Player = () => {
     }
   };
 
-  const onSearchSeries = debounce((value) => {
+  const onActiveSeriesClick = (event: MouseEvent<HTMLButtonElement>) => {
+    const target = event.target as HTMLButtonElement;
+    const value = target.innerHTML;
     handleOnSeriesClick(value);
-  }, 1500);
-
-  const onActiveSeriesClick = (event: ChangeEvent<HTMLSelectElement>) => {
-    const target = event.target as HTMLSelectElement;
-    const value = target.value;
-    handleOnSeriesClick(value);
-  };
-
-  const onActiveSeriesSearch = (event: ChangeEvent<HTMLInputElement>) => {
-    const target = event.target as HTMLInputElement;
-    const value = target.value;
-    onSearchSeries(value);
   };
 
   let arraySeries: number[] = [];
@@ -52,39 +45,26 @@ const Player = () => {
     }
   }
 
-  console.log(series);
-
   useEffect(() => {
     if (animeId) {
       dispatch(fetchVideoAnime({ animeId, series }));
     }
   }, [animeId, dispatch, currentAnime?.animeTitle, series]);
 
+  if (statusVideo === 'loading') {
+    return <Loader />;
+  }
+
   return (
     <div className={styles.Player}>
       <div className={styles.Player__background}>
         <div className={styles.Player__overlay}>
           <div className={styles.Player__video}>
-            <div className={styles.Player__buttonsContainer}>
-              <select
-                className={styles.Player__selector}
-                onChange={onActiveSeriesClick}
-                value={series}>
-                {arraySeries.map((button) => (
-                  <option className={styles.Player__selectorOption} value={button}>
-                    {button}
-                  </option>
-                ))}
-              </select>
-              <label>
-                <input
-                  placeholder="Search"
-                  className={styles.Player__searchSeries}
-                  onChange={onActiveSeriesSearch}
-                  type="number"
-                />
-              </label>
-            </div>
+            <Select
+              arraySeries={arraySeries}
+              series={series}
+              onActiveSeriesClick={onActiveSeriesClick}
+            />
             <div className={styles.Player__iframeContainer}>
               <iframe
                 className={styles.Player__iframe}
@@ -99,13 +79,5 @@ const Player = () => {
     </div>
   );
 };
-
-{
-  /* <li>
-<button className={styles.Player__buttons} onClick={onActiveSeries}>
-  {button}
-</button>
-</li> */
-}
 
 export default Player;

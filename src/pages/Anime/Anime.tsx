@@ -10,11 +10,13 @@ import { currentItem } from '../../redux/animeSlice/selectors';
 import { useAppDispatch } from '../../redux/store';
 import styles from './Anime.module.scss';
 import AnimeControls from '../../componets/AnimeControls/AnimeControls';
+import { useAuth } from '../../hooks/useAuth';
 
 const Anime = () => {
   const { animeId } = useParams();
   const dispatch = useAppDispatch();
   const currentAnime = useSelector(currentItem);
+  const { isAuth } = useAuth();
 
   useEffect(() => {
     if (animeId) {
@@ -37,7 +39,11 @@ const Anime = () => {
                 <div className={styles.Anime__imgContaier}>
                   <img className={styles.Anime__image} src={currentAnime?.animeImg} alt="anime" />
                   <div className={styles.Anime__btnContainer}>
-                    <AnimeControls />
+                    {isAuth ? (
+                      <AnimeControls />
+                    ) : (
+                      <p>in order to add anime to the lists - log in</p>
+                    )}
                   </div>
                 </div>
                 <Discription />

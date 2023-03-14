@@ -122,8 +122,17 @@ export enum StatusMoviesAph {
   ERROR = 'error',
 }
 
+export enum StatusTokyoRevenger {
+  LOADING = 'loading',
+  SUCCESS = 'success',
+  ERROR = 'error',
+}
+
 export interface IAnimeSliceState {
   currentItem: animeItem | null;
+  tokyoRevenger: animeItem | null;
+  nagatoro: animeItem | null;
+  tokyoRevengerStatus: StatusTokyoRevenger;
   video: video | null;
   statusPopularAnime: StatusPopularAnime;
   statusTopAiringAnimes: StatusTopAiringAnime;

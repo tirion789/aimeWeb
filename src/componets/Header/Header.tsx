@@ -14,7 +14,7 @@ import { ReactComponent as Exit } from '../../assets/images/icons/exit.svg';
 
 const Header: React.FC = () => {
   const dispatch = useAppDispatch();
-  const { isAuth, email } = useAuth();
+  const { isAuth } = useAuth();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const onClickLoginBtn = () => {
     dispatch(setPopup(true));
@@ -32,7 +32,13 @@ const Header: React.FC = () => {
   return (
     <header className={styles.Header}>
       <div className={styles.Header__menuLogo}>
-        <button onClick={onClickDropdownButton} className={styles.Header__dropdownMenu}></button>
+        <button
+          onClick={onClickDropdownButton}
+          className={
+            !isDropdownOpen ? styles.Header__dropdownMenu : styles.Header__dropdownMenuClose
+          }>
+          <span></span>
+        </button>
         <div className={styles.Header__logoContainer}>
           <Link to={'/'}>
             <Logo />
@@ -56,7 +62,7 @@ const Header: React.FC = () => {
         {isAuth ? (
           <div className={styles.Header__userButton}>
             <p className={styles.Header__profileLink}>
-              <Link to={'/profile'}>{email}</Link>
+              <Link to={'/profile'}>P</Link>
             </p>
             <button className={styles.Header__buttonExit} onClick={onExit}>
               <Exit />

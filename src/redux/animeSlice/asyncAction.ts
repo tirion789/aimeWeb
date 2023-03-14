@@ -89,3 +89,17 @@ export const fetchMoviesAnimeAph = createAsyncThunk(
     return data;
   },
 );
+
+export const fetchTokyoRevenger = createAsyncThunk('anime/tokyoRevenger', async () => {
+  const { data } = await axios.get<animeItem>(
+    'https://gogoanime.consumet.stream/anime-details/tokyo-revengers-seiya-kessen-hen',
+  );
+  return data;
+});
+
+export const fetchNagatoro = createAsyncThunk('anime/Nagatoro', async () => {
+  const { data } = await axios.get<animeItem>(
+    'https://gogoanime.consumet.stream/anime-details/ijiranaide-nagatoro-san-2nd-attack',
+  );
+  return data;
+});

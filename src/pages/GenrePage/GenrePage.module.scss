@@ -1,9 +1,6 @@
 @import '../../assets/scss/mixin.scss';
 @import '../../assets/scss/variables'; 
 
-.wrapper {
-    @include wrapper
-}
 
 .GenrePage {
     @include background;
@@ -25,6 +22,11 @@
     &__listItem {
         width: 257px;
         position: relative
+    }
+
+    &__title {
+        @include discription;
+        font-size: 38px;
     }
 
     &__overlay {

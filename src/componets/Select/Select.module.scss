@@ -1,0 +1,93 @@
+@import '../../assets/scss/mixin.scss';
+@import '../../assets/scss/variables';
+
+.Select {
+    &__buttonsContainer {
+        display: flex;
+        flex-direction: column;
+        width: 140px;
+        margin: 0 auto;
+        position: relative;
+    }
+    &__selectorHidden {
+        @include playerSelectAndSearchInput;
+        border: 2px solid transparent;
+        position: relative;
+        cursor: pointer;
+        background: $basic-gradient-border-red-darkBlue;
+        border-radius: 5px;
+        width: 80px;
+        margin-bottom: 10px;
+        text-align: center;
+        height: 37px;
+        width: 100%;
+
+        &::before {
+            content: url(../../assets/images/icons/sort.svg);
+            background-size: 25px 25px;
+            position: absolute;
+            right: 0;
+            top: 5px
+        }
+    }
+
+    &__selectorOpen {
+        @include playerSelectAndSearchInput;
+        border: 2px solid transparent;
+        position: relative;
+        cursor: pointer;
+        background: $basic-gradient-border-red-darkBlue;
+        border-radius: 5px;
+        width: 80px;
+        margin-bottom: 10px;
+        text-align: center;
+        height: 37px;
+        width: 100%;
+        ::before {
+            content: url(../../assets/images/icons/sort.svg);
+            background-size: 25px 25px;
+            position: absolute;
+            right: 0;
+            bottom: 4px;
+            transform: rotate(180deg);
+        }
+    }
+
+    &__container {
+        overflow: hidden auto;
+        height: 234px;
+        gap: 14px;
+        display: flex;
+        flex-direction: column;
+        background: $basic-gradient-border-black-purple-red;
+        border: 2px solid transparent;
+        padding: 7px;
+        position: absolute;
+        top: 38px;
+        z-index: 4;
+    }
+
+    &__searchSeries {
+        border: 2px solid #6b6b6b;
+        border-radius: 10px;
+        background: inherit;
+        height: 37.0461540222168px;
+        width: 100%;
+        padding: 11px;
+        @include playerSelectAndSearchInput;
+    }
+
+    &__selectorButtons {
+        @include playerSelectAndSearchInput;
+        border: 2px solid transparent;
+        position: relative;
+        cursor: pointer;
+        background: $basic-gradient-border-red-darkBlue;
+        border-radius: 5px;
+        width: 80px;
+        margin-bottom: 10px;
+        text-align: center;
+        height: 37px;
+        width: 100%;
+    }
+}

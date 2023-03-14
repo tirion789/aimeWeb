@@ -9,6 +9,7 @@
         display: flex;
         color: white;
         padding-top: 15px;
+        margin-left: 17px;
     }
 
     &__navigationListItem {
@@ -58,7 +59,8 @@
         font-family: 'Inter', sans-serif;
         font-size: 20px;
         line-height: 24px;
-        margin-right: 20px;
+        margin-right: 5px;
+        margin-left: 5px;
         background: $basic-gradient-red-blue;
         -webkit-background-clip: text;
         background-clip: text;
@@ -107,10 +109,74 @@
         cursor: pointer;
         position: relative;
         margin-right: 10px;
+        background-color: inherit;
+
+        &::before {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 3px;
+            background-color: white;
+            left: 8px;
+            top: 10px;
+        }
+
+        span {
+            position: absolute;
+            width: 30px;
+            height: 3px;
+            background-color: white;
+            left: 8px;
+            top: 22px;
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 3px;
+            left: 8px;
+            bottom: 10px;
+            background-color: white;
+        }
+    }
+
+    .Header__dropdownMenuClose {
+        display: block;
+        width: 50px;
+        height: 50px;
+        cursor: pointer;
+        position: relative;
+        margin-right: 10px;
+        background-color: inherit;
+
+        &::before {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 3px;
+            background-color: white;
+            left: 8px;
+            top: 22px;
+            transform: rotate(138deg);
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 3px;
+            left: 8px;
+            bottom: 10px;
+            bottom: 21px;
+            background-color: white;
+            transform: rotate(45deg);
+        }
     }
 
     .Header__navigationList {
         display: none;
+        margin-left: 0;
     }
 
     .Header__searchContainer_account {
@@ -124,7 +190,6 @@
         border: 2px white solid;
         z-index: 6;
         top: 72px;
-        left: 61px;
         background-color: $basic-black;
         border-radius: 5px;
     }

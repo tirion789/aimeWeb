@@ -2,7 +2,11 @@ import { RootState } from '../store';
 
 export const anime = (state: RootState) => state.anime;
 
-export const status = (state: RootState) => state.anime.statusPopularAnime;
+export const statusPopular = (state: RootState) => state.anime.statusPopularAnime;
+
+export const statusTopAiring = (state: RootState) => state.anime.statusTopAiringAnimes;
+
+export const statusPlayer = (state: RootState) => state.anime.statusVideoAnime;
 
 export const popularAnimes = (state: RootState) => state.anime.popularAnimes;
 
@@ -21,3 +25,7 @@ export const movies = (state: RootState) => state.anime.moviesAnimes;
 export const recent = (state: RootState) => state.anime.recentEpisodes;
 
 export const aph = (state: RootState) => state.anime.moviesAph;
+
+export const tokyoRevenger = (state: RootState) => state.anime.tokyoRevenger;
+
+export const nagatoroSan = (state: RootState) => state.anime.nagatoro;

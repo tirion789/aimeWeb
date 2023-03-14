@@ -1,7 +1,25 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { fetchNagatoro } from '../../redux/animeSlice/asyncAction';
+import { nagatoroSan } from '../../redux/animeSlice/selectors';
+import { setItems } from '../../redux/profileSlice/profileSlice';
+import { useAppDispatch } from '../../redux/store';
 import styles from './AdvertisementTitle.module.scss';
 
 const AdvertisementTitle = () => {
+  const nagatoro = useSelector(nagatoroSan);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(fetchNagatoro());
+  }, [dispatch]);
+
+  const onClickAddButton = () => {
+    if (nagatoro) {
+      dispatch(setItems(nagatoro));
+    }
+  };
   return (
     <div className={styles.AdvertisementTitle}>
       <div className={styles.AdvertisementTitle__imageContainer}>
@@ -12,7 +30,7 @@ const AdvertisementTitle = () => {
       </div>
       <div className={styles.AdvertisementTitle__informationContainer}>
         <h2 className={styles.AdvertisementTitle__informationContainerTitle}>
-          Don't Toy with Me, Miss Nagatoro{' '}
+          Don't Toy with Me, Miss Nagatoro
         </h2>
         <h3>2nd Season</h3>
         <p className={styles.AdvertisementTitle__informationContainerText}>
@@ -22,10 +40,14 @@ const AdvertisementTitle = () => {
           More
         </p>
         <div className={styles.AdvertisementTitle__buttonContainer}>
-          <a className={styles.AdvertisementTitle__informationButton_watch} href="/">
+          <Link
+            to={'/anime/ijiranaide-nagatoro-san-2nd-attack'}
+            className={styles.AdvertisementTitle__informationButton_watch}>
             Watch Now
-          </a>
-          <button className={styles.AdvertisementTitle__informationButton_addToList}>
+          </Link>
+          <button
+            onClick={onClickAddButton}
+            className={styles.AdvertisementTitle__informationButton_addToList}>
             Add to list
           </button>
         </div>

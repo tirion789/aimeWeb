@@ -1,12 +1,32 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styles from './Preview.module.scss';
 import R from '../../assets/images/icons/R.svg';
 import HD from '../../assets/images/icons/4K.svg';
 import DUB from '../../assets/images/icons/DUB.svg';
 import SUB from '../../assets/images/icons/SUB.svg';
+import { useSelector } from 'react-redux';
+import { tokyoRevenger } from '../../redux/animeSlice/selectors';
+import { useAppDispatch } from '../../redux/store';
+import { fetchTokyoRevenger } from '../../redux/animeSlice/asyncAction';
+import { setItems } from '../../redux/profileSlice/profileSlice';
+import { Link } from 'react-router-dom';
 
 const Preview: React.FC = () => {
+  const tokyoRevengers = useSelector(tokyoRevenger);
   const iconArray = [R, HD, DUB, SUB];
+  const dispatch = useAppDispatch();
+
+  console.log(tokyoRevengers);
+
+  useEffect(() => {
+    dispatch(fetchTokyoRevenger());
+  }, [dispatch]);
+
+  const onClickAddListButton = () => {
+    if (tokyoRevengers) {
+      dispatch(setItems(tokyoRevengers));
+    }
+  };
   return (
     <div className={styles.preview}>
       <p className={styles.preview__spotlight}>#1 Spotlight</p>
@@ -31,10 +51,16 @@ const Preview: React.FC = () => {
         villainous group known as the Tokyo Manji Gang. He lives in a crappy apartment with t...More
       </p>
       <div className={styles.preview__buttonsContainer}>
-        <a href="/" className={styles.preview__buttonsContainer_watchLink}>
+        <Link
+          to={`/anime/tokyo-revengers-seiya-kessen-hen`}
+          className={styles.preview__buttonsContainer_watchLink}>
           Watch Now
-        </a>
-        <button className={styles.preview__buttonsContainer_addToList}>Add to list</button>
+        </Link>
+        <button
+          onClick={onClickAddListButton}
+          className={styles.preview__buttonsContainer_addToList}>
+          Add to list
+        </button>
       </div>
     </div>
   );

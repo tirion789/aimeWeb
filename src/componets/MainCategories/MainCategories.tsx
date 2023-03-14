@@ -2,7 +2,12 @@ import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchPopularAnimes, fetchTopAiringAnimes } from '../../redux/animeSlice/asyncAction';
-import { popularAnimes, status, topAiringAnimes } from '../../redux/animeSlice/selectors';
+import {
+  popularAnimes,
+  statusPopular,
+  statusTopAiring,
+  topAiringAnimes,
+} from '../../redux/animeSlice/selectors';
 import { useAppDispatch } from '../../redux/store';
 import Loader from '../Loader/Loader';
 import styles from './MainCategories.module.scss';
@@ -10,7 +15,8 @@ import styles from './MainCategories.module.scss';
 const MainCategories = () => {
   const popularAnimesArray = useSelector(popularAnimes);
   const topAiringAnimesArray = useSelector(topAiringAnimes);
-  const statusMainCatgeroies = useSelector(status);
+  const statusPopularAnimes = useSelector(statusPopular);
+  const statusTopAiringAnimes = useSelector(statusTopAiring);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -18,7 +24,7 @@ const MainCategories = () => {
     dispatch(fetchPopularAnimes());
   }, [dispatch]);
 
-  if (statusMainCatgeroies === 'loading') {
+  if (statusPopularAnimes === 'loading' || statusTopAiringAnimes === 'loading') {
     return <Loader />;
   }
   return (

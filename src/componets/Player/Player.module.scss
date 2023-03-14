@@ -21,14 +21,17 @@
         position: absolute;
         top: 0;
         left: 0;
+        bottom: 0;
+        right: 0;
         width: 100%;
         height: 100%;
     }
 
     &__iframeContainer {
         position: relative;
-        padding: 0 0 56.25% 0;
-        height: 0;
+        overflow: hidden;
+        width: 100%;
+        padding-top: 56.25%;
     }
 
     &::after {
@@ -54,6 +57,17 @@
         position: relative;
     
     }
+
+    &__container {
+        overflow: hidden auto;
+        height: 234px;
+        gap: 14px;
+        display: flex;
+        flex-direction: column;
+        background: $basic-gradient-border-black-purple-red;
+        border: 2px solid transparent;
+        padding: 7px;
+    }
     &__overlay {
         @include overlay;
         background: $basic-gradient-overlay;
@@ -62,36 +76,12 @@
 
     &__buttonsContainer {
         display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 15px;
+        flex-direction: column;
+        width: 140px;
+        margin: 0 auto;
     }
 
-    // &__buttons {
-    //     font-family: 'Montserrat', sans-serif;
-    //     font-size: 20px;
-    //     font-weight: 700;
-    //     line-height: 24px;
-    //     background-color: transparent;
-    //     font-family: 'Montserrat', sans-serif;
-    //     font-size: 20px;
-    //     font-weight: 600;
-    //     line-height: 31px;
-    //     background: linear-gradient(#090909 0 0) padding-box, linear-gradient(to right, #F22323 2.68%, #33ADDF 103.41%) border-box;
-    //     color: white;
-    //     border: 2px solid transparent;
-    //     border-radius: 15px;
-    //     margin-right: 42px;
-    //     position: relative;
-    //     cursor: pointer;
-    //     background: linear-gradient(#090909 0 0) padding-box, linear-gradient(to right, #CF427B 0%, #154587 100%) border-box;
-    //     margin-right: 31px;
-    //     border-radius: 5px;
-    //     width: 50px;
-    //     margin-bottom: 10px;
-    // }
-
-    &__selector {
+    &__selectorHidden {
         @include playerSelectAndSearchInput;
         border: 2px solid transparent;
         position: relative;
@@ -102,6 +92,51 @@
         margin-bottom: 10px;
         text-align: center;
         height: 37px;
+        width: 100%;
+
+        &::before {
+            content: url(../../assets/images/icons/sort.svg);
+            background-size: 25px 25px;
+            position: absolute;
+            right: 0;
+            top: 5px
+        }
+    }
+
+    &__selectorOpen {
+        @include playerSelectAndSearchInput;
+        border: 2px solid transparent;
+        position: relative;
+        cursor: pointer;
+        background: $basic-gradient-border-red-darkBlue;
+        border-radius: 5px;
+        width: 80px;
+        margin-bottom: 10px;
+        text-align: center;
+        height: 37px;
+        width: 100%;
+        ::before {
+            content: url(../../assets/images/icons/sort.svg);
+            background-size: 25px 25px;
+            position: absolute;
+            right: 0;
+            bottom: 4px;
+            transform: rotate(180deg);
+        }
+    }
+
+    &__selectorButtons {
+        @include playerSelectAndSearchInput;
+        border: 2px solid transparent;
+        position: relative;
+        cursor: pointer;
+        background: $basic-gradient-border-red-darkBlue;
+        border-radius: 5px;
+        width: 80px;
+        margin-bottom: 10px;
+        text-align: center;
+        height: 37px;
+        width: 100%;
     }
 
     &__selectorOption {
@@ -119,8 +154,14 @@
         border-radius: 10px;
         background: inherit;
         height: 37.0461540222168px;
-        width: 120px;
+        width: 100%;
         padding: 11px;
         @include playerSelectAndSearchInput;
+    }
+}
+
+@media (max-width: $modile) {
+    .Player__iframeContainer {
+        padding-top: 85%;
     }
 }

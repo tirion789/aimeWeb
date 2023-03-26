@@ -1,6 +1,4 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-import { errorMessage } from '../../redux/userSlice/selectors';
 import onePanchMan from '../../assets/images/onePanchMan.png';
 import rectangle from '../../assets/images/rectangle.png';
 import styles from './LoginModal.module.scss';
@@ -9,7 +7,6 @@ import { useUserModal } from '../../hooks/useUserModal';
 import { useInput } from '../../hooks/useValidation';
 
 const LoginLogup = () => {
-  const error = useSelector(errorMessage);
   const {
     email,
     password,
@@ -64,7 +61,6 @@ const LoginLogup = () => {
                 <p className={styles.Login__validationError}>Maximum number of characters: 12</p>
               )}
             </div>
-            {error && <p style={{ textAlign: 'center' }}>ОШИБКА</p>}
             <button
               disabled={!emailsValidation.inputValid || !passwordValidation.inputValid}
               onClick={handleClickSubmitButton}

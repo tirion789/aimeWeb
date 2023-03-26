@@ -6,6 +6,8 @@ import { useAppDispatch } from '../../redux/store';
 import { setPopup } from '../../redux/filterSlice/filterSlice';
 import { useOutsideClick } from '../../hooks/useOutsideClick';
 import LoginModal from '../LoginModal/LoginModal';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Modal = () => {
   const popupModal = useSelector(popup);
@@ -25,6 +27,18 @@ const Modal = () => {
           <LoginModal />
         </div>
       </div>
+      <ToastContainer
+        position="bottom-right"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
     </div>
   );
 };

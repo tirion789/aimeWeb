@@ -1,27 +1,42 @@
 @import '../../assets/scss/variables';
 
 .Header {
-    padding: 23px 20px 0;
+    padding: 24px 41px 0;
     display: flex;
     margin-bottom: 48px;
 
     &__navigationList {
         display: flex;
         color: white;
-        padding-top: 15px;
-        margin-left: 17px;
+        margin-left: 93px;
+        margin-top: 17px;
+        gap: 74px;
     }
 
-    &__navigationListItem {
+    // &__navigationListItem {
+    //     font-family: 'Inter', sans-serif;
+    //     font-size: 20px;
+    //     line-height: 24px;
+    //     background: $basic-gradient-red-blue;
+    //     background-clip: text;
+    //     -webkit-text-fill-color: transparent;
+
+    // }
+
+    &__navigationListMovies {
         font-family: 'Inter', sans-serif;
         font-size: 20px;
         line-height: 24px;
-        background: $basic-gradient-red-blue;
-        background-clip: text;
-        -webkit-text-fill-color: transparent;
-
-        &:not(:last-child) {
-            margin-right: 70px;
+        cursor: pointer;
+        position: relative;
+        border: none;
+        display: block;
+        &::first-letter {
+            background: linear-gradient(188.73deg, #1DA1F2 11.03%, #C93677 79.85%, rgba(255, 255, 255, 0) 79.85%),
+            linear-gradient(0deg, #FFFFFF, #FFFFFF);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
     }
 
@@ -141,6 +156,10 @@
         }
     }
 
+    .Header__navigation {
+        position: relative
+    }
+
     .Header__dropdownMenuClose {
         display: block;
         width: 50px;
@@ -156,9 +175,9 @@
             width: 30px;
             height: 3px;
             background-color: white;
-            left: 8px;
-            top: 22px;
-            transform: rotate(138deg);
+            left: 11px;
+            top: 23px;
+            transform: rotate(134deg);
         }
 
         &::after {
@@ -166,17 +185,18 @@
             position: absolute;
             width: 30px;
             height: 3px;
-            left: 8px;
+            left: 11px;
             bottom: 10px;
-            bottom: 21px;
+            bottom: 24px;
             background-color: white;
-            transform: rotate(45deg);
+            transform: rotate(45deg)
         }
     }
 
     .Header__navigationList {
         display: none;
         margin-left: 0;
+        gap: 25px;
     }
 
     .Header__searchContainer_account {
@@ -189,9 +209,10 @@
         position: absolute;
         border: 2px white solid;
         z-index: 6;
-        top: 72px;
-        background-color: $basic-black;
+        top: 34px;
+        background-color: #070707;
         border-radius: 5px;
+        right: 55px;
     }
 }
 

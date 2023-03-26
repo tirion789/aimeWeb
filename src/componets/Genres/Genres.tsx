@@ -1,7 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { genreArray } from '../../common/const';
-import { MouseEvent } from 'react';
 import styles from './Genres.module.scss';
 import { useAppDispatch } from '../../redux/store';
 import { setGenre } from '../../redux/filterSlice/filterSlice';
@@ -22,9 +21,8 @@ const Genres = () => {
     dispatch(setGenre(value));
   };
 
-  const onActiveSeries = (event: MouseEvent<HTMLAnchorElement>) => {
-    const value = event.currentTarget.innerHTML;
-    handleOnGenreClick(value);
+  const onActiveSeries = (string: string) => {
+    handleOnGenreClick(string);
   };
 
   return (
@@ -33,10 +31,10 @@ const Genres = () => {
         Genre
       </button>
       {openGenrePopup && (
-        <ul ref={refBtn} className={styles.Genres__list}>
+        <ul ref={refBtn} className={`${styles.Genres__list} scrollbar`}>
           {genreArray.map((string) => (
             <li key={string} className={styles.Genres__listItem}>
-              <Link onClick={onActiveSeries} to={`/genre/${string}`}>
+              <Link onClick={() => onActiveSeries(string)} to={`/genre/${string}`}>
                 {string}
               </Link>
             </li>

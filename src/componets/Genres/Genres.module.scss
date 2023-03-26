@@ -1,16 +1,8 @@
 @import '../../assets/scss/variables';
+@import '../../assets/scss/mixin';
 
 .Genres {
-    font-family: 'Inter', sans-serif;
-    font-size: 20px;
-    line-height: 24px;
-    margin-right: 70px;
-    background: $basic-gradient-red-blue;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    cursor: pointer;
-    position: relative;
-    border: none;
+    @include navLinks;
 
     &__list {
         font-weight: 400;
@@ -37,5 +29,22 @@
         background: $basic-gradient-border-black-purple-red;
         border: 1px solid transparent;
         border-radius: 9px;
+    }
+}
+
+
+@media (max-width: $modile) {
+    .Genres {
+        &__list {
+            justify-content: center;
+            height: 323px;
+            overflow: hidden auto;
+            width: auto
+        }
+
+        &__listItem {
+            width: 200px;
+            text-align: center;
+        }
     }
 }

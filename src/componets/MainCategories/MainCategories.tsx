@@ -29,47 +29,61 @@ const MainCategories = () => {
   }
   return (
     <div className={styles.MainCategories}>
-      <div>
-        <h2 className={styles.MainCategories__title}>Most Popular</h2>
-        <ul className={styles.MainCategories__titleList}>
-          {popularAnimesArray.slice(6, 12).map((obj, index) => (
-            <li key={index} className={styles.MainCategories__titleListItem}>
-              <Link to={`/anime/${obj.animeId}`}>
-                <img
-                  className={styles.MainCategories__image}
-                  width={257}
-                  height={400}
-                  src={obj.animeImg}
-                  alt=""
-                />
-                <div className={styles.MainCategories__container}>
-                  <h2 className={styles.MainCategories__titleListItemNames}>{obj.animeTitle}</h2>
-                </div>
-              </Link>
-            </li>
-          ))}
-        </ul>
+      <div className={styles.MainCategories__container}>
+        <div className={styles.MainCategories__headerContainer}>
+          <h2 className={styles.MainCategories__title}>Most Popular</h2>
+          <button className={styles.MainCategories__viewMore}>View more</button>
+        </div>
+        {statusPopularAnimes === 'error' ? (
+          <p className={styles.MainCategories__error}>Server error</p>
+        ) : (
+          <ul className={styles.MainCategories__titleList}>
+            {popularAnimesArray.slice(0, 6).map((obj, index) => (
+              <li key={index} className={styles.MainCategories__titleListItem}>
+                <Link to={`/anime/${obj.animeId}`}>
+                  <img
+                    className={styles.MainCategories__image}
+                    width={257}
+                    height={400}
+                    src={obj.animeImg}
+                    alt=""
+                  />
+                  <div className={styles.MainCategories__titleListContainer}>
+                    <h2 className={styles.MainCategories__titleListItemNames}>{obj.animeTitle}</h2>
+                  </div>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
-      <div>
-        <h2 className={styles.MainCategories__title}>Top Airing</h2>
-        <ul className={styles.MainCategories__titleList}>
-          {topAiringAnimesArray.slice(0, 6).map((obj, index) => (
-            <li key={index} className={styles.MainCategories__titleListItem}>
-              <Link to={`/anime/${obj.animeId}`}>
-                <img
-                  className={styles.MainCategories__image}
-                  width={257}
-                  height={400}
-                  src={obj.animeImg}
-                  alt=""
-                />
-              </Link>
-              <div className={styles.MainCategories__container}>
-                <h2 className={styles.MainCategories__titleListItemNames}>{obj.animeTitle}</h2>
-              </div>
-            </li>
-          ))}
-        </ul>
+      <div className={styles.MainCategories__container}>
+        <div className={styles.MainCategories__headerContainer}>
+          <h2 className={styles.MainCategories__title}>Top Airing</h2>
+          <button className={styles.MainCategories__viewMore}>View more</button>
+        </div>
+        {statusTopAiringAnimes === 'error' ? (
+          <p className={styles.MainCategories__error}>Server error</p>
+        ) : (
+          <ul className={styles.MainCategories__titleList}>
+            {topAiringAnimesArray.slice(0, 6).map((obj, index) => (
+              <li key={index} className={styles.MainCategories__titleListItem}>
+                <Link to={`/anime/${obj.animeId}`}>
+                  <img
+                    className={styles.MainCategories__image}
+                    width={257}
+                    height={400}
+                    src={obj.animeImg}
+                    alt=""
+                  />
+                  <div className={styles.MainCategories__titleListContainer}>
+                    <h2 className={styles.MainCategories__titleListItemNames}>{obj.animeTitle}</h2>
+                  </div>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
     </div>
   );

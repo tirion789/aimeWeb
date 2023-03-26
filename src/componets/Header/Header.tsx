@@ -4,15 +4,15 @@ import { ReactComponent as Logo } from '../../assets/images/icons/MeWeeb.svg';
 import { ReactComponent as Account } from '../../assets/images/icons/Account.svg';
 import { Link } from 'react-router-dom';
 import Search from '../Search/Search';
-import Genres from '../Genres/Genres';
 import { useAppDispatch } from '../../redux/store';
 import { setPopup } from '../../redux/filterSlice/filterSlice';
 import Modal from '../Modal/Modal';
 import { useAuth } from '../../hooks/useAuth';
-import { removeUser } from '../../redux/userSlice/userSlice';
+import { removeUser, setStatusMessage } from '../../redux/userSlice/userSlice';
 import { ReactComponent as Exit } from '../../assets/images/icons/exit.svg';
+import Navigation from '../Navigation/Navigation';
 
-const Header: React.FC = () => {
+const Header = () => {
   const dispatch = useAppDispatch();
   const { isAuth } = useAuth();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -27,6 +27,7 @@ const Header: React.FC = () => {
   const onExit = () => {
     dispatch(removeUser());
     localStorage.removeItem('users');
+    dispatch(setStatusMessage('loading'));
   };
 
   return (
@@ -44,18 +45,7 @@ const Header: React.FC = () => {
             <Logo />
           </Link>
         </div>
-        <nav
-          className={`${styles.Header__navigationList} ${isDropdownOpen && styles.Header__active}`}>
-          <div>
-            <Genres />
-          </div>
-          <div className={styles.Header__navigationListItem}>
-            <Link to={'/movies'}>Movies</Link>
-          </div>
-          <div className={styles.Header__navigationListItem}>
-            <a href="/">ONas</a>
-          </div>
-        </nav>
+        <Navigation isDropdownOpen={isDropdownOpen} />
       </div>
       <div className={styles.Header__searchContainer}>
         <Search />

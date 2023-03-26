@@ -6,47 +6,33 @@ import {
   fetchMoviesAnimeAph,
   fetchNagatoro,
   fetchPopularAnimes,
-  fetchRecentEpisodes,
   fetchSearchAnime,
   fetchTokyoRevenger,
   fetchTopAiringAnimes,
   fetchVideoAnime,
 } from './asyncAction';
-import {
-  IAnimeSliceState,
-  StatusAnimes,
-  StatusGenre,
-  StatusMovieAnimes,
-  StatusMoviesAph,
-  StatusPopularAnime,
-  StatusRecentEpisodes,
-  StatusSearch,
-  StatusTokyoRevenger,
-  StatusTopAiringAnime,
-  StatusVideoAnime,
-} from './types';
+import { IAnimeSliceState, StatusServer } from './types';
 
 const initialState: IAnimeSliceState = {
   currentItem: null,
   tokyoRevenger: null,
   popularAnimes: [],
   topAiringAnimes: [],
-  statusPopularAnime: StatusPopularAnime.LOADING,
-  status: StatusAnimes.LOADING,
-  statusTopAiringAnimes: StatusTopAiringAnime.LOADING,
+  statusPopularAnime: StatusServer.LOADING,
+  status: StatusServer.LOADING,
+  statusTopAiringAnimes: StatusServer.LOADING,
   video: null,
-  statusVideoAnime: StatusVideoAnime.LOADING,
+  statusVideoAnime: StatusServer.LOADING,
   searchAnime: [],
-  statusSearch: StatusSearch.LOADING,
+  statusSearch: StatusServer.LOADING,
   genreAnime: [],
-  statusGenre: StatusGenre.LOADING,
-  statusMoviesAnimes: StatusMovieAnimes.LOADING,
+  statusGenre: StatusServer.LOADING,
+  statusMoviesAnimes: StatusServer.LOADING,
   moviesAnimes: [],
-  statusRecentEpisodes: StatusRecentEpisodes.LOADING,
-  recentEpisodes: [],
+  statusRecentEpisodes: StatusServer.LOADING,
   moviesAph: [],
-  statusMoviesAph: StatusMoviesAph.LOADING,
-  tokyoRevengerStatus: StatusTokyoRevenger.LOADING,
+  statusMoviesAph: StatusServer.LOADING,
+  tokyoRevengerStatus: StatusServer.LOADING,
   nagatoro: null,
 };
 
@@ -57,155 +43,141 @@ const animeSlice = createSlice({
   extraReducers: (builder) => {
     // get popular anime
     builder.addCase(fetchPopularAnimes.pending, (state) => {
-      state.statusPopularAnime = StatusPopularAnime.LOADING;
+      state.statusPopularAnime = StatusServer.LOADING;
       state.popularAnimes = [];
     });
     builder.addCase(fetchPopularAnimes.fulfilled, (state, action) => {
       state.popularAnimes = action.payload;
-      state.statusPopularAnime = StatusPopularAnime.SUCCESS;
+      state.statusPopularAnime = StatusServer.SUCCESS;
     });
     builder.addCase(fetchPopularAnimes.rejected, (state) => {
-      state.statusPopularAnime = StatusPopularAnime.ERROR;
+      state.statusPopularAnime = StatusServer.ERROR;
       state.topAiringAnimes = [];
     });
 
     // get top airing anime
     builder.addCase(fetchTopAiringAnimes.pending, (state) => {
-      state.statusTopAiringAnimes = StatusTopAiringAnime.LOADING;
+      state.statusTopAiringAnimes = StatusServer.LOADING;
       state.popularAnimes = [];
     });
     builder.addCase(fetchTopAiringAnimes.fulfilled, (state, action) => {
       state.topAiringAnimes = action.payload;
-      state.statusTopAiringAnimes = StatusTopAiringAnime.SUCCESS;
+      state.statusTopAiringAnimes = StatusServer.SUCCESS;
     });
     builder.addCase(fetchTopAiringAnimes.rejected, (state) => {
-      state.statusTopAiringAnimes = StatusTopAiringAnime.ERROR;
+      state.statusTopAiringAnimes = StatusServer.ERROR;
       state.topAiringAnimes = [];
     });
 
     // get current anime
     builder.addCase(fetchAnime.pending, (state) => {
-      state.status = StatusAnimes.LOADING;
+      state.status = StatusServer.LOADING;
       state.currentItem = null;
     });
     builder.addCase(fetchAnime.fulfilled, (state, action) => {
       state.currentItem = action.payload;
-      state.status = StatusAnimes.SUCCESS;
+      state.status = StatusServer.SUCCESS;
     });
     builder.addCase(fetchAnime.rejected, (state) => {
-      state.status = StatusAnimes.ERROR;
+      state.status = StatusServer.ERROR;
       state.currentItem = null;
     });
 
     // tokyo revenger
     builder.addCase(fetchTokyoRevenger.pending, (state) => {
-      state.tokyoRevengerStatus = StatusTokyoRevenger.LOADING;
+      state.tokyoRevengerStatus = StatusServer.LOADING;
     });
     builder.addCase(fetchTokyoRevenger.fulfilled, (state, action) => {
       state.tokyoRevenger = action.payload;
-      state.tokyoRevengerStatus = StatusTokyoRevenger.SUCCESS;
+      state.tokyoRevengerStatus = StatusServer.SUCCESS;
     });
     builder.addCase(fetchTokyoRevenger.rejected, (state) => {
-      state.tokyoRevengerStatus = StatusTokyoRevenger.ERROR;
+      state.tokyoRevengerStatus = StatusServer.ERROR;
     });
 
     // nagatoro
 
     builder.addCase(fetchNagatoro.pending, (state) => {
-      state.status = StatusAnimes.LOADING;
+      state.status = StatusServer.LOADING;
       state.nagatoro = null;
     });
     builder.addCase(fetchNagatoro.fulfilled, (state, action) => {
       state.nagatoro = action.payload;
-      state.status = StatusAnimes.SUCCESS;
+      state.status = StatusServer.SUCCESS;
     });
     builder.addCase(fetchNagatoro.rejected, (state) => {
-      state.status = StatusAnimes.ERROR;
+      state.status = StatusServer.ERROR;
       state.nagatoro = null;
     });
 
     // get player video
     builder.addCase(fetchVideoAnime.pending, (state) => {
-      state.statusVideoAnime = StatusVideoAnime.LOADING;
+      state.statusVideoAnime = StatusServer.LOADING;
       state.video = null;
     });
     builder.addCase(fetchVideoAnime.fulfilled, (state, action) => {
       state.video = action.payload;
-      state.statusVideoAnime = StatusVideoAnime.SUCCESS;
+      state.statusVideoAnime = StatusServer.SUCCESS;
     });
     builder.addCase(fetchVideoAnime.rejected, (state) => {
-      state.statusVideoAnime = StatusVideoAnime.ERROR;
+      state.statusVideoAnime = StatusServer.ERROR;
       state.video = null;
     });
 
     // get search anime
     builder.addCase(fetchSearchAnime.pending, (state) => {
-      state.statusSearch = StatusSearch.LOADING;
+      state.statusSearch = StatusServer.LOADING;
       state.searchAnime = [];
     });
     builder.addCase(fetchSearchAnime.fulfilled, (state, action) => {
       state.searchAnime = action.payload;
-      state.statusSearch = StatusSearch.SUCCESS;
+      state.statusSearch = StatusServer.SUCCESS;
     });
     builder.addCase(fetchSearchAnime.rejected, (state) => {
-      state.statusSearch = StatusSearch.ERROR;
+      state.statusSearch = StatusServer.ERROR;
       state.searchAnime = [];
     });
 
     // get anime genre
     builder.addCase(fetchGenresAnime.pending, (state) => {
-      state.statusGenre = StatusGenre.LOADING;
+      state.statusGenre = StatusServer.LOADING;
       state.genreAnime = [];
     });
     builder.addCase(fetchGenresAnime.fulfilled, (state, action) => {
       state.genreAnime = action.payload;
-      state.statusGenre = StatusGenre.SUCCESS;
+      state.statusGenre = StatusServer.SUCCESS;
     });
     builder.addCase(fetchGenresAnime.rejected, (state) => {
-      state.statusGenre = StatusGenre.ERROR;
+      state.statusGenre = StatusServer.ERROR;
       state.genreAnime = [];
     });
 
     // get movies anime
     builder.addCase(fetchMoviesAnime.pending, (state) => {
-      state.statusMoviesAnimes = StatusMovieAnimes.LOADING;
+      state.statusMoviesAnimes = StatusServer.LOADING;
       state.moviesAnimes = [];
     });
     builder.addCase(fetchMoviesAnime.fulfilled, (state, action) => {
       state.moviesAnimes = action.payload;
-      state.statusMoviesAnimes = StatusMovieAnimes.SUCCESS;
+      state.statusMoviesAnimes = StatusServer.SUCCESS;
     });
     builder.addCase(fetchMoviesAnime.rejected, (state) => {
-      state.statusMoviesAnimes = StatusMovieAnimes.ERROR;
+      state.statusMoviesAnimes = StatusServer.ERROR;
       state.moviesAnimes = [];
-    });
-
-    // get recent episodes
-    builder.addCase(fetchRecentEpisodes.pending, (state) => {
-      state.statusRecentEpisodes = StatusRecentEpisodes.LOADING;
-      state.recentEpisodes = [];
-    });
-    builder.addCase(fetchRecentEpisodes.fulfilled, (state, action) => {
-      state.recentEpisodes = action.payload;
-      state.statusRecentEpisodes = StatusRecentEpisodes.SUCCESS;
-    });
-    builder.addCase(fetchRecentEpisodes.rejected, (state) => {
-      state.statusRecentEpisodes = StatusRecentEpisodes.ERROR;
-      state.recentEpisodes = [];
     });
 
     // get moviesAph
     builder.addCase(fetchMoviesAnimeAph.pending, (state) => {
-      state.statusMoviesAph = StatusMoviesAph.LOADING;
-      state.recentEpisodes = [];
+      state.statusMoviesAph = StatusServer.LOADING;
+      state.moviesAph = [];
     });
     builder.addCase(fetchMoviesAnimeAph.fulfilled, (state, action) => {
       state.moviesAph = action.payload;
-      state.statusMoviesAph = StatusMoviesAph.SUCCESS;
+      state.statusMoviesAph = StatusServer.SUCCESS;
     });
     builder.addCase(fetchMoviesAnimeAph.rejected, (state) => {
-      state.statusMoviesAph = StatusMoviesAph.ERROR;
-      state.recentEpisodes = [];
+      state.statusMoviesAph = StatusServer.ERROR;
+      state.moviesAph = [];
     });
   },
 });

@@ -11,37 +11,65 @@ const Footer = () => {
             <div className={styles.Footer__navigation}>
               <h2 className={styles.Footer__navigationTitle}>Navigation</h2>
               <ul className={styles.Footer__navigationList}>
-                <li className={styles.Footer__listItem}>Browse Popular</li>
-                <li className={styles.Footer__listItem}>Browse Manga</li>
-                <li className={styles.Footer__listItem}>Release Calendar</li>
-                <li className={styles.Footer__listItem}>News</li>
+                <li className={styles.Footer__listItemNavigation}>
+                  <Link className={styles.Footer__listNavigationItem} to={'/'}>
+                    Browse Popular
+                  </Link>
+                </li>
+                <li className={styles.Footer__listItemNavigation}>
+                  <Link className={styles.Footer__listNavigationItem} to={'/'}>
+                    Browse Manga
+                  </Link>
+                </li>
+                <li className={styles.Footer__listItemNavigation}>
+                  <Link className={styles.Footer__listNavigationItem} to={'/'}>
+                    Release Calendar
+                  </Link>
+                </li>
+                <li className={styles.Footer__listItemNavigation}>
+                  <Link className={styles.Footer__listNavigationItem} to={'/'}>
+                    News
+                  </Link>
+                </li>
               </ul>
             </div>
             <div>
               <h2 className={styles.Footer__aboutTitle}>About</h2>
               <ul className={styles.Footer__informationList}>
                 <li className={styles.Footer__listItem}>
-                  <Link to={'/inDevelopment'}>Privacy Policy</Link>
+                  <Link className={styles.Footer__listItemLink} to={'/inDevelopment'}>
+                    Privacy Policy
+                  </Link>
                 </li>
                 <li className={styles.Footer__listItem}>
-                  <Link to={'/inDevelopment'}>Disclaimer</Link>
+                  <Link className={styles.Footer__listItemLink} to={'/inDevelopment'}>
+                    Disclaimer
+                  </Link>
                 </li>
                 <li className={styles.Footer__listItem}>
-                  <Link to={'/inDevelopment'}>Help</Link>
+                  <Link className={styles.Footer__listItemLink} to={'/inDevelopment'}>
+                    Help
+                  </Link>
                 </li>
                 <li className={styles.Footer__listItem}>
-                  <Link to={'/inDevelopment'}>FAQ</Link>
+                  <Link className={styles.Footer__listItemLink} to={'/inDevelopment'}>
+                    FAQ
+                  </Link>
                 </li>
               </ul>
             </div>
             <div className={styles.Footer__social}>
-              <h2>Account</h2>
+              <h2 className={styles.Footer__accountTitle}>Account</h2>
               <ul className={styles.Footer__socialList}>
                 <li className={styles.Footer__listItem}>
-                  <a href="/">Create Account</a>
+                  <a className={styles.Footer__listItemAccountLink} href="/">
+                    Create Account
+                  </a>
                 </li>
                 <li className={styles.Footer__listItem}>
-                  <a href="/">Login</a>
+                  <a className={styles.Footer__listItemAccountLink} href="/">
+                    Login
+                  </a>
                 </li>
               </ul>
             </div>

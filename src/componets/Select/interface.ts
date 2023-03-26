@@ -4,4 +4,5 @@ export interface ISelectProps {
   arraySeries: number[];
   series: string;
   onActiveSeriesClick: (event: MouseEvent<HTMLButtonElement>) => void;
+  setSeries: any;
 }

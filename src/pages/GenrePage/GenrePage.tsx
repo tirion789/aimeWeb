@@ -14,8 +14,45 @@ const GenrePage = () => {
   const dispatch = useAppDispatch();
   const genreText = useSelector(text);
   const genreArray = useSelector(genre);
-  const buttonsArray = ['1', '2', '3', '4', '5', '6'];
+  const [visible, setVisible] = useState(6);
+  const [prev, setPrev] = useState(0);
+  const buttonsArray = [
+    '1',
+    '2',
+    '3',
+    '4',
+    '5',
+    '6',
+    '7',
+    '8',
+    '9',
+    '10',
+    '11',
+    '12',
+    '13',
+    '14',
+    '15',
+    '16',
+    '17',
+    '18',
+    '19',
+    '20',
+    '21',
+    '22',
+    '23',
+    '24',
+  ];
   const [currentPaginationButton, setCurrentPaginationButton] = useState('1');
+
+  const handlePaginationClickNext = () => {
+    setVisible((prev) => prev + 6);
+    setPrev((prev) => prev + 6);
+  };
+
+  const handlePaginationClickPrev = () => {
+    setVisible((prev) => prev - 6);
+    setPrev((prev) => prev - 6);
+  };
 
   const onClickPaginationButton = (event: MouseEvent<HTMLButtonElement>) => {
     const target = event.target as HTMLButtonElement;
@@ -51,17 +88,31 @@ const GenrePage = () => {
               </li>
             ))}
           </ul>
-          <ul className={styles.GenrePage__listButton}>
-            {buttonsArray.map((button) => (
-              <li>
-                <button
-                  className={styles.GenrePage__listItemButton}
-                  onClick={onClickPaginationButton}>
-                  {button}
-                </button>
-              </li>
-            ))}
-          </ul>
+          <div className={styles.GenrePage__pagination}>
+            <button
+              className={styles.GenrePage__buttonPagination}
+              disabled={visible === 6}
+              onClick={handlePaginationClickPrev}>
+              PREV
+            </button>
+            <ul className={styles.GenrePage__listButton}>
+              {buttonsArray.slice(prev, visible).map((button) => (
+                <li>
+                  <button
+                    className={styles.GenrePage__listItemButton}
+                    onClick={onClickPaginationButton}>
+                    {button}
+                  </button>
+                </li>
+              ))}
+            </ul>
+            <button
+              className={styles.GenrePage__buttonPagination}
+              disabled={visible === 24}
+              onClick={handlePaginationClickNext}>
+              NEXT
+            </button>
+          </div>
         </div>
       </main>
       <Footer />

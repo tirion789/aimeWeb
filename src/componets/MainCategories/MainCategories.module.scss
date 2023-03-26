@@ -2,7 +2,7 @@
 @import '../../assets/scss/mixin.scss';
 
 .MainCategories {
-    padding: 20px 20px;
+    padding: 70px 60px 113px;
 
     &__title {
         font-family: 'Montserrat', sans-serif;
@@ -19,10 +19,30 @@
         flex-wrap: wrap;
         gap: 37px;
         justify-content: center;
+        margin-top: 50px;
+    }
+
+    &__error {
+        @include discription
+    }
+
+    &__headerContainer {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__viewMore {
+        height: max-content;
+        margin: auto 0;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 16px;
+        line-height: 20px;
     }
 
     &__titleListItem{
         position: relative;
+        display: flex;
+        justify-content: center;
     }
 
     &__image{
@@ -32,8 +52,7 @@
     }
     
     
-    &__container {
-        position: absolute;
+    &__titleListContainer {
         display: flex;
         justify-content: center;
         overflow: hidden;
@@ -42,7 +61,55 @@
         background: $basic-mainCategories-background;
     }
 
+    &__container:not(:first-child) {
+        margin-top: 94px;
+    }
+
     &__titleListItemNames {
-        @include listItemName
+        @include listItemName;
+    }
+}
+
+@media (max-width: $modile) {
+    .MainCategories {
+        padding: 76px 20px;
+    }
+}
+
+@media (max-width: $main-categories-width) {
+    .MainCategories {
+        &__titleList {
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            grid-template-rows: repeat(2,1fr);
+            grid-gap: 50px;
+        }
+    }
+}
+
+@media (max-width: 1300px ) {
+    .MainCategories {
+        &__titleList {
+            grid-template-columns: repeat(3,1fr);
+            grid-column-gap: 50px;
+        }
+    }
+}
+
+@media (max-width: 1048px ) {
+    .MainCategories {
+        &__titleList {
+            grid-template-columns: repeat(2,1fr);
+        }
+    }
+}
+
+@media (max-width: 670px ) {
+    
+    .MainCategories {
+        padding: 70px 20px 113px;
+        &__titleList {
+            grid-template-columns: repeat(1,1fr);
+        }
     }
 }

@@ -24,6 +24,13 @@
         position: relative
     }
 
+    &__pagination {
+        display: flex;
+        gap: 15px;
+        margin-top: 15px;
+        justify-content: center
+    }
+
     &__title {
         @include discription;
         font-size: 38px;
@@ -32,7 +39,7 @@
     &__overlay {
         @include overlay;
         background: $basic-gradient-overlay;
-        padding: 20px;
+        padding: 20px 60px;
         height: max-content;
     }
 
@@ -57,14 +64,36 @@
         font-weight: 600;
         line-height: 28px;
         display: flex;
-        margin-top: 15px;
         gap: 45px;
         flex-wrap: wrap
      }
 
+     &__buttonPagination {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 700;
+        line-height: 24px;
+        background-color: transparent;
+        font-size: 10px;
+        color: white;
+        border: 2px solid transparent;
+        position: relative;
+        cursor: pointer;
+        background: linear-gradient(#090909 0 0) padding-box, linear-gradient(to right, #CF427B 0%, #154587 100%) border-box;
+        margin-right: 0;
+        border-radius: 5px;
+        width: 30px;
+        text-align: center;
+        height: 44px;
+          &::before{
+              content: ''
+          }
+          &:disabled {
+            border-color: #6b6b6b;
+          }
+     }
+
      &__listItemButton {
         font-family: 'Montserrat', sans-serif;
-        font-size: 20px;
         font-weight: 700;
         line-height: 24px;
         background-color: transparent;

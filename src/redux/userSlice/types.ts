@@ -18,4 +18,5 @@ export interface IUser {
   statusLogin: StatusLogin;
   statusRegister: StatusRegister;
   error: boolean;
+  toast: any;
 }

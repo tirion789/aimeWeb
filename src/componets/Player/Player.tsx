@@ -63,6 +63,7 @@ const Player = () => {
             <Select
               arraySeries={arraySeries}
               series={series}
+              setSeries={setSeries}
               onActiveSeriesClick={onActiveSeriesClick}
             />
             <div className={styles.Player__iframeContainer}>

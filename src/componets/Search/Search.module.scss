@@ -2,7 +2,7 @@
 
 .Search{
 
-    width: 100%;
+    margin-left: auto;
     display: flex;
 
     &__input {
@@ -10,9 +10,10 @@
         border-radius: 10px;
         background: inherit;
         height: 37.0461540222168px;
-        width: 100%;
         padding: 22px;
         display: block;
+        margin-left: auto;
+        width: 300px;
     
     
         &::placeholder{
@@ -55,6 +56,7 @@
 @media (max-width: $tablet) {
     .Search__input {
         display: none;
+        width: 100%;
     }
 
     .Search__list {

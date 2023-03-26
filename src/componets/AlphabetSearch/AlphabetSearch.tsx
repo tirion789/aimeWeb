@@ -2,29 +2,32 @@ import React from 'react';
 import { AlphabetArray } from '../../common/const';
 import { useAppDispatch } from '../../redux/store';
 import styles from './AlphabetSearch.module.scss';
-import { MouseEvent } from 'react';
 import { Link } from 'react-router-dom';
 import { setLetter } from '../../redux/filterSlice/filterSlice';
 
 const AlphabetSearch = () => {
   const dispatch = useAppDispatch();
 
-  const onClickLetter = (event: MouseEvent<HTMLAnchorElement>) => {
-    const target = event.target as HTMLAnchorElement;
-    dispatch(setLetter(target.innerHTML));
+  const onClickLetter = (latter: string) => {
+    dispatch(setLetter(latter));
   };
 
   return (
     <div className={styles.AlphabetSearch}>
       <div>
-        <h2>A-Z List</h2>
-        <p className={styles.AlphabetSearch__title}>
-          Searching anime order by alphabet name A to Z.
-        </p>
+        <div className={styles.AlphabetSearch__container}>
+          <h2 className={styles.AlphabetSearch__header}>A-Z List</h2>
+          <p className={styles.AlphabetSearch__title}>
+            Searching anime order by alphabet name A to Z.
+          </p>
+        </div>
         <ul className={styles.AlphabetSearch__list}>
           {AlphabetArray.map((latter) => (
             <li key={latter} className={styles.AlphabetSearch__listItem}>
-              <Link onClick={onClickLetter} to={`/AlphabetAnime/${latter}`}>
+              <Link
+                className={styles.AlphabetSearch__listItemLink}
+                onClick={() => onClickLetter(latter)}
+                to={`/AlphabetAnime/${latter}`}>
                 {latter}
               </Link>
             </li>

@@ -27,6 +27,7 @@ const Preview: React.FC = () => {
       dispatch(setItems(tokyoRevengers));
     }
   };
+
   return (
     <div className={styles.preview}>
       <p className={styles.preview__spotlight}>#1 Spotlight</p>
@@ -59,7 +60,7 @@ const Preview: React.FC = () => {
         <button
           onClick={onClickAddListButton}
           className={styles.preview__buttonsContainer_addToList}>
-          Add to list
+          Add to List
         </button>
       </div>
     </div>

@@ -1,7 +1,7 @@
 @import '../../assets/scss/mixin.scss';
 
 .preview {
-    padding: 60px 20px;
+    padding: 76px 113px;
 
     &__spotlight {
         font-family: 'Montserrat', sans-serif;
@@ -12,11 +12,13 @@
 
     &__title{
         font-family: 'Montserrat', sans-serif;
-        font-size: 61px;
+        font-size: 75px;
         font-weight: 600;
         line-height: 91px;
         text-align: left;
-        max-width: 750px;
+        max-width: 874px;
+        margin-bottom: 39px;
+        margin-top: 9px;
     }
 
     &__listContaier{
@@ -26,7 +28,7 @@
 
     &__iconList{
         display: flex;
-        margin-right: 50px;
+        margin-right: 16px;
 
         li:not(:last-child){
             margin-right: 15px;
@@ -42,8 +44,14 @@
         text-align: left;
     }
 
+    &__seriesListItem {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 20px;
+        line-height: 24px;
+    }
+
     &__seriesListItem:not(:last-child) {
-        margin-right: 60px;
+        margin-right: 61px;
     }
 
     
@@ -78,13 +86,16 @@
 
     &__description {
         @include discription;
+        margin-top: 40px;
         max-width: 550px;
     }
 
     &__buttonsContainer {
-        margin-top: 100px;
+        margin-top: 94px;
         &_watchLink {
             @include button;
+            margin-right: 48px;
+            border: 3px solid transparent;
         }
 
         &_addToList {
@@ -94,6 +105,10 @@
 }
 
 @media (max-width: $modile) {
+
+    .preview {
+        padding: 76px 20px;
+    }
     .preview__title {
         font-family: 'Montserrat', sans-serif;
         font-size: 33px;

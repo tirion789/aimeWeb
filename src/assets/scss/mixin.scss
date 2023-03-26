@@ -10,9 +10,9 @@
     linear-gradient(#090909 0 0) padding-box, /*this is your grey background*/
     linear-gradient(to right, #F22323 2.68%, #33ADDF 103.41%) border-box;
     color: white;
-    padding: 10px 10px 10px 35px;
+    padding: 15px 20px 15px 40px;
     border: 2px solid transparent;
-    border-radius: 15px;
+    border-radius: 100px;
     margin-right: 42px;
     position: relative;
     cursor: pointer;
@@ -20,8 +20,8 @@
     &::before {
         content: url(../../assets/images/icons/play.svg);
         position: absolute;
-        left: 15px;
-        top: 9px;
+        left: 17px;
+        top: 14px;
     }
 }
 
@@ -85,6 +85,10 @@
     text-overflow: ellipsis;
     overflow: hidden;
     width: 260px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 25px;
+    font-weight: 600;
+    line-height: 30px;
 }
 
 @mixin playerSelectAndSearchInput {
@@ -101,4 +105,21 @@
     font-size: 18px;
     font-weight: 600;
     line-height: 28px;
+}
+
+@mixin navLinks {
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    line-height: 24px;
+    background-clip: text;
+    cursor: pointer;
+    position: relative;
+    border: none;
+    display: block;
+    &::first-letter {
+        background: $basic-gradient-nav-links;
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
 }

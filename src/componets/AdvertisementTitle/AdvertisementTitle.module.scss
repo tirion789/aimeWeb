@@ -3,7 +3,7 @@
 
 .AdvertisementTitle {
 
-    padding: 20px 20px;
+    padding: 72px 60px 70px ;
     display: flex;
 
     &::before {
@@ -19,7 +19,7 @@
     
 
     &__imageContainer {
-        margin-right: 30px;
+        margin-right: 68px;
     }
 
     &__informationContainer {
@@ -49,10 +49,13 @@
 
     &__informationContainerText {
         @include discription;
-        max-width: 400px;
+        max-width: 575px;
+        margin-top: 43px;
+        margin-bottom: 81px;
     }
     &__informationButton_watch {
-        @include button
+        @include button;
+        border: 3px solid transparent;
     }
     &__informationButton_addToList {
         @include buttonAddToList
@@ -80,13 +83,13 @@
         }
 
         &__informationButton_addToList {
-            ::before {
-                top: 13px;
-            }
+            @include buttonAddToList;
+            top: 18;
         }
 
         &__informationContainerTitle {
             text-align: center;
+            max-width: auto;
         }
 
 
@@ -95,6 +98,7 @@
 
 @media (max-width: $modile) {
     .AdvertisementTitle {
+        padding: 50px 20px;
         &__informationButton_watch {
             padding: 5px 5px 5px 5px;
             font-size: 13px;

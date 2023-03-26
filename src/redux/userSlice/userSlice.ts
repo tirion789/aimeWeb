@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { getAuthentication, getRegister } from './asyncAction';
 import { IUser, StatusLogin, StatusRegister } from './types';
 
@@ -10,6 +10,7 @@ const initialState: IUser = {
   statusLogin: StatusLogin.LOADING,
   statusRegister: StatusRegister.LOADING,
   error: false,
+  toast: null,
 };
 
 const userSlice = createSlice({
@@ -28,6 +29,13 @@ const userSlice = createSlice({
       state.token = null;
       state.nickName = null;
     },
+    setError(state, action: PayloadAction<boolean>) {
+      state.error = action.payload;
+    },
+    setStatusMessage(state, action) {
+      state.statusLogin = action.payload;
+      state.statusRegister = action.payload;
+    },
   },
   extraReducers: (builder) => {
     // auth
@@ -40,11 +48,9 @@ const userSlice = createSlice({
     });
     builder.addCase(getAuthentication.fulfilled, (state) => {
       state.statusLogin = StatusLogin.SUCCESS;
-      state.error = false;
     });
     builder.addCase(getAuthentication.rejected, (state) => {
       state.statusLogin = StatusLogin.ERROR;
-      state.error = true;
     });
 
     // register
@@ -53,15 +59,13 @@ const userSlice = createSlice({
     });
     builder.addCase(getRegister.fulfilled, (state) => {
       state.statusRegister = StatusRegister.SUCCESS;
-      state.error = false;
     });
     builder.addCase(getRegister.rejected, (state) => {
       state.statusRegister = StatusRegister.ERROR;
-      state.error = true;
     });
   },
 });
 
-export const { setUser, removeUser } = userSlice.actions;
+export const { setUser, removeUser, setError, setStatusMessage } = userSlice.actions;
 
 export default userSlice.reducer;

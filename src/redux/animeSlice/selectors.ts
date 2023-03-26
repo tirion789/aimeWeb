@@ -8,6 +8,8 @@ export const statusTopAiring = (state: RootState) => state.anime.statusTopAiring
 
 export const statusPlayer = (state: RootState) => state.anime.statusVideoAnime;
 
+export const statusTokyoRevenger = (state: RootState) => state.anime.tokyoRevengerStatus;
+
 export const popularAnimes = (state: RootState) => state.anime.popularAnimes;
 
 export const topAiringAnimes = (state: RootState) => state.anime.topAiringAnimes;
@@ -21,8 +23,6 @@ export const search = (state: RootState) => state.anime.searchAnime;
 export const genre = (state: RootState) => state.anime.genreAnime;
 
 export const movies = (state: RootState) => state.anime.moviesAnimes;
-
-export const recent = (state: RootState) => state.anime.recentEpisodes;
 
 export const aph = (state: RootState) => state.anime.moviesAph;
 

@@ -7,6 +7,8 @@ import Movies from '../../pages/Movies/Movies';
 import Profile from '../../pages/Profile/Profile';
 import InDevelopment from '../../pages/InDevelopment/InDevelopment';
 import AlphabetAnime from '../../pages/AlphabetAnime/AlphabetAnime';
+import '../../assets/scss/index.scss';
+
 const App = () => {
   return (
     <Routes>

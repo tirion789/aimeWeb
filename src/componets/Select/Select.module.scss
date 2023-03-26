@@ -2,13 +2,43 @@
 @import '../../assets/scss/variables';
 
 .Select {
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    margin: 0 auto;
+    position: relative;
+
     &__buttonsContainer {
         display: flex;
-        flex-direction: column;
-        width: 140px;
-        margin: 0 auto;
-        position: relative;
+        gap: 15px;
     }
+
+    &__buttons {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 700;
+        line-height: 24px;
+        background-color: transparent;
+        font-size: 10px;
+        color: white;
+        border: 2px solid transparent;
+        position: relative;
+        cursor: pointer;
+        background: linear-gradient(#090909 0 0) padding-box, linear-gradient(to right, #CF427B 0%, #154587 100%) border-box;
+        margin-right: 0;
+        border-radius: 5px;
+        text-align: center;
+        height: 37px;
+          &::before{
+              content: ''
+          }
+
+          &:disabled {
+            border-color: #6b6b6b;
+          }
+    }
+
+    
+    
     &__selectorHidden {
         @include playerSelectAndSearchInput;
         border: 2px solid transparent;
@@ -54,17 +84,30 @@
     }
 
     &__container {
-        overflow: hidden auto;
-        height: 234px;
+        overflow-y: scroll;
+        scrollbar-color: #6969dd #e0e0e0;
+        scrollbar-width: thin;
+        scrollbar-width: thin;
+        height: 247px;
         gap: 14px;
         display: flex;
         flex-direction: column;
         background: $basic-gradient-border-black-purple-red;
         border: 2px solid transparent;
-        padding: 7px;
         position: absolute;
         top: 38px;
         z-index: 4;
+    }
+    
+    &__inputContainer {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background: black;
+    }
+
+    &__selectList {
+        padding: 7px;
     }
 
     &__searchSeries {
@@ -74,6 +117,9 @@
         height: 37.0461540222168px;
         width: 100%;
         padding: 11px;
+        position: sticky;
+        top: 0;
+        z-index: 40;
         @include playerSelectAndSearchInput;
     }
 

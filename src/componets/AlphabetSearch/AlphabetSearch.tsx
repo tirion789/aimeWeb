@@ -1,17 +1,9 @@
 import React from 'react';
 import { AlphabetArray } from '../../common/const';
-import { useAppDispatch } from '../../redux/store';
 import styles from './AlphabetSearch.module.scss';
-import { Link } from 'react-router-dom';
-import { setLetter } from '../../redux/filterSlice/filterSlice';
+import AlphabeticalSearchListItem from './AlphabeticalSearchListItem/AlphabeticalSearchListItem';
 
 const AlphabetSearch = () => {
-  const dispatch = useAppDispatch();
-
-  const onClickLetter = (latter: string) => {
-    dispatch(setLetter(latter));
-  };
-
   return (
     <div className={styles.AlphabetSearch}>
       <div>
@@ -22,15 +14,8 @@ const AlphabetSearch = () => {
           </p>
         </div>
         <ul className={styles.AlphabetSearch__list}>
-          {AlphabetArray.map((latter) => (
-            <li key={latter} className={styles.AlphabetSearch__listItem}>
-              <Link
-                className={styles.AlphabetSearch__listItemLink}
-                onClick={() => onClickLetter(latter)}
-                to={`/AlphabetAnime/${latter}`}>
-                {latter}
-              </Link>
-            </li>
+          {AlphabetArray.map((latter, index) => (
+            <AlphabeticalSearchListItem latter={latter} key={index} />
           ))}
         </ul>
       </div>

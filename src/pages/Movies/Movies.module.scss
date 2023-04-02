@@ -35,3 +35,13 @@
         height: max-content;
     }
 }
+
+.FooterBackground {
+    @include background;
+    background-image: url('../../assets/images/footer.png');
+}
+
+.FooterOverlay {
+    @include overlay;
+    background: $basic-gradient-overlay;
+}

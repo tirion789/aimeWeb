@@ -6,7 +6,7 @@ import {
   signInWithEmailAndPassword,
   updateProfile,
 } from 'firebase/auth';
-import { setPopup } from '../filterSlice/filterSlice';
+import { setIsOpenPopupLogin } from '../filterSlice/filterSlice';
 
 export const getAuthentication = createAsyncThunk(
   'auth/login',
@@ -23,7 +23,7 @@ export const getAuthentication = createAsyncThunk(
       }),
     );
     localStorage.setItem('users', JSON.stringify(user));
-    dispatch(setPopup(false));
+    dispatch(setIsOpenPopupLogin(false));
   },
 );
 
@@ -37,8 +37,6 @@ export const getRegister = createAsyncThunk(
       updateProfile(user, {
         displayName: nickname,
       });
-      // user.displayName = nickname;
-      console.log(user);
       dispatch(
         setUser({
           email: user.email,
@@ -49,6 +47,6 @@ export const getRegister = createAsyncThunk(
       );
     }
     localStorage.setItem('users', JSON.stringify(user));
-    dispatch(setPopup(false));
+    dispatch(setIsOpenPopupLogin(false));
   },
 );

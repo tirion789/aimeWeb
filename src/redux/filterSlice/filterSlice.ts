@@ -1,11 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { IFilterSlice } from './types';
+import { FilterSlice } from './types';
 
-const initialState: IFilterSlice = {
+const initialState: FilterSlice = {
   genreText: 'action',
   popup: false,
   series: '1',
   letter: '',
+  isGenrePopupOpen: false,
 };
 
 const filterSlice = createSlice({
@@ -15,7 +16,7 @@ const filterSlice = createSlice({
     setGenre(state, action: PayloadAction<string>) {
       state.genreText = action.payload;
     },
-    setPopup(state, action: PayloadAction<boolean>) {
+    setIsOpenPopupLogin(state, action: PayloadAction<boolean>) {
       state.popup = action.payload;
     },
     setSeries(state, action: PayloadAction<string>) {
@@ -24,9 +25,13 @@ const filterSlice = createSlice({
     setLetter(state, action: PayloadAction<string>) {
       state.letter = action.payload;
     },
+    setIsGenrePopupOpen(state, action: PayloadAction<boolean>) {
+      state.isGenrePopupOpen = action.payload;
+    },
   },
 });
 
-export const { setGenre, setPopup, setSeries, setLetter } = filterSlice.actions;
+export const { setGenre, setIsOpenPopupLogin, setSeries, setLetter, setIsGenrePopupOpen } =
+  filterSlice.actions;
 
 export default filterSlice.reducer;

@@ -10,7 +10,7 @@ export enum StatusRegister {
   ERROR = 'error',
 }
 
-export interface IUser {
+export interface User {
   email: null;
   token: null;
   id: null;

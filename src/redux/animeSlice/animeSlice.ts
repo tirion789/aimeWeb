@@ -11,9 +11,9 @@ import {
   fetchTopAiringAnimes,
   fetchVideoAnime,
 } from './asyncAction';
-import { IAnimeSliceState, StatusServer } from './types';
+import { AnimeSliceState, StatusServer } from './types';
 
-const initialState: IAnimeSliceState = {
+const initialState: AnimeSliceState = {
   currentItem: null,
   tokyoRevenger: null,
   popularAnimes: [],

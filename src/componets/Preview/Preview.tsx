@@ -4,19 +4,16 @@ import R from '../../assets/images/icons/R.svg';
 import HD from '../../assets/images/icons/4K.svg';
 import DUB from '../../assets/images/icons/DUB.svg';
 import SUB from '../../assets/images/icons/SUB.svg';
-import { useSelector } from 'react-redux';
-import { tokyoRevenger } from '../../redux/animeSlice/selectors';
-import { useAppDispatch } from '../../redux/store';
+import { tokyoRevengerSelector } from '../../redux/animeSlice/selectors';
 import { fetchTokyoRevenger } from '../../redux/animeSlice/asyncAction';
 import { setItems } from '../../redux/profileSlice/profileSlice';
 import { Link } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 
 const Preview: React.FC = () => {
-  const tokyoRevengers = useSelector(tokyoRevenger);
+  const tokyoRevengers = useAppSelector(tokyoRevengerSelector);
   const iconArray = [R, HD, DUB, SUB];
   const dispatch = useAppDispatch();
-
-  console.log(tokyoRevengers);
 
   useEffect(() => {
     dispatch(fetchTokyoRevenger());

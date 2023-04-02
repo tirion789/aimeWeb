@@ -117,4 +117,40 @@
               content: ''
           }
        }
+
+       &__listItemInactiveButton {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 700;
+        line-height: 24px;
+        background-color: transparent;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 31px;
+        color: white;
+        border: 2px solid transparent;
+        border-radius: 15px;
+        margin-right: 42px;
+        position: relative;
+        cursor: pointer;
+        margin-right: 0;
+        border-radius: 5px;
+        width: 40px;
+        padding: 5px;
+        text-align: center;
+          &::before{
+              content: ''
+          }
+       }
 } 
+
+
+.FooterBackground {
+    @include background;
+    background-image: url('../../assets/images/footer.png');
+}
+
+.FooterOverlay {
+    @include overlay;
+    background: $basic-gradient-overlay;
+}

@@ -68,7 +68,7 @@ export const titleArray = [
   },
 ];
 
-export const genresArray = ['Animation', 'Action', 'Adventure'];
+export const genresArray = ['Animation', 'Action', 'Adventure'] as const;
 
 export const AlphabetArray = [
   'A',
@@ -97,9 +97,9 @@ export const AlphabetArray = [
   'X',
   'Y',
   'Z',
-];
+] as const;
 
-export const navigationArray = ['Genre', 'Movies', 'ONas', 'News'];
+export const navigationArray = ['Genre', 'Movies', 'ONas', 'News'] as const;
 
 export const genreArray = [
   'action',
@@ -144,7 +144,7 @@ export const genreArray = [
   'suspense',
   'thriller',
   'vampire',
-];
+] as const;
 
 export const FORM_TYPES = {
   signUp: 'Sing Up',

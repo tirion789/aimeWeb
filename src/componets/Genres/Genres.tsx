@@ -1,43 +1,29 @@
-import React, { useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useRef } from 'react';
 import { genreArray } from '../../common/const';
 import styles from './Genres.module.scss';
-import { useAppDispatch } from '../../redux/store';
-import { setGenre } from '../../redux/filterSlice/filterSlice';
+import { setIsGenrePopupOpen } from '../../redux/filterSlice/filterSlice';
 import { useOutsideClick } from '../../hooks/useOutsideClick';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+import { isGenrePopupOpenSelector } from '../../redux/filterSlice/selectors';
+import GenreListItem from './GenreListItem/GenreListItem';
 
 const Genres = () => {
   const refBtn = useRef(null);
   const dispatch = useAppDispatch();
-  const [openGenrePopup, setOpenGenrePopup] = useState(false);
+  const isGenrePopupOpen = useAppSelector(isGenrePopupOpenSelector);
 
-  const onOutsideClick = () => {
-    setOpenGenrePopup(false);
+  const handleOutsideClick = () => {
+    dispatch(setIsGenrePopupOpen(false));
   };
 
-  useOutsideClick(refBtn, onOutsideClick, openGenrePopup);
-
-  const handleOnGenreClick = (value: string) => {
-    dispatch(setGenre(value));
-  };
-
-  const onActiveSeries = (string: string) => {
-    handleOnGenreClick(string);
-  };
+  useOutsideClick(refBtn, handleOutsideClick, isGenrePopupOpen);
 
   return (
     <>
-      <button onClick={() => setOpenGenrePopup(true)} className={styles.Genres}>
-        Genre
-      </button>
-      {openGenrePopup && (
+      {isGenrePopupOpen && (
         <ul ref={refBtn} className={`${styles.Genres__list} scrollbar`}>
-          {genreArray.map((string) => (
-            <li key={string} className={styles.Genres__listItem}>
-              <Link onClick={() => onActiveSeries(string)} to={`/genre/${string}`}>
-                {string}
-              </Link>
-            </li>
+          {genreArray.map((genre, index) => (
+            <GenreListItem genre={genre} key={index} />
           ))}
         </ul>
       )}

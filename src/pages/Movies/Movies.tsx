@@ -1,15 +1,14 @@
 import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Footer from '../../componets/Footer/Footer';
 import Header from '../../componets/Header/Header';
 import { fetchMoviesAnime } from '../../redux/animeSlice/asyncAction';
-import { movies } from '../../redux/animeSlice/selectors';
-import { useAppDispatch } from '../../redux/store';
+import { moviesSelector } from '../../redux/animeSlice/selectors';
 import styles from './Movies.module.scss';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 
 const Movies = () => {
-  const moviesAnime = useSelector(movies);
+  const moviesAnime = useAppSelector(moviesSelector);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -37,7 +36,11 @@ const Movies = () => {
           </ul>
         </div>
       </main>
-      <Footer />
+      <footer className={styles.FooterBackground}>
+        <div className={styles.FooterOverlay}>
+          <Footer />
+        </div>
+      </footer>
     </div>
   );
 };

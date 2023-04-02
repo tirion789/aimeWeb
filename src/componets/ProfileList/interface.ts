@@ -1,7 +1,7 @@
-import { IProfileAnime } from '../../redux/profileSlice/types';
+import { ProfileAnime } from '../../redux/profileSlice/types';
 
-export interface IProfileList {
+export interface ProfileListProps {
   title: string;
-  items: IProfileAnime[];
+  items: ProfileAnime[];
   handleDeleteButtonClick: (title: string) => void;
 }

@@ -21,15 +21,6 @@
         flex-wrap: wrap;
         gap: 10px;
     }
-
-    &__listItem {
-        z-index: 3;
-        color: white;
-        padding: 10px;
-        background: $basic-gradient-border-black-purple-red;
-        border: 1px solid transparent;
-        border-radius: 9px;
-    }
 }
 
 

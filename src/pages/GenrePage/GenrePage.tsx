@@ -1,68 +1,16 @@
-import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import Footer from '../../componets/Footer/Footer';
 import Header from '../../componets/Header/Header';
-import { fetchGenresAnime } from '../../redux/animeSlice/asyncAction';
-import { genre } from '../../redux/animeSlice/selectors';
-import { text } from '../../redux/filterSlice/selectors';
-import { useAppDispatch } from '../../redux/store';
+import Pagination from '../../componets/Pagination/Pagination';
+import { genreSelector } from '../../redux/animeSlice/selectors';
+import { genreTextSelector } from '../../redux/filterSlice/selectors';
 import styles from './GenrePage.module.scss';
-import { MouseEvent } from 'react';
+import { useAppSelector } from '../../redux/hooks';
 
 const GenrePage = () => {
-  const dispatch = useAppDispatch();
-  const genreText = useSelector(text);
-  const genreArray = useSelector(genre);
-  const [visible, setVisible] = useState(6);
-  const [prev, setPrev] = useState(0);
-  const buttonsArray = [
-    '1',
-    '2',
-    '3',
-    '4',
-    '5',
-    '6',
-    '7',
-    '8',
-    '9',
-    '10',
-    '11',
-    '12',
-    '13',
-    '14',
-    '15',
-    '16',
-    '17',
-    '18',
-    '19',
-    '20',
-    '21',
-    '22',
-    '23',
-    '24',
-  ];
-  const [currentPaginationButton, setCurrentPaginationButton] = useState('1');
-
-  const handlePaginationClickNext = () => {
-    setVisible((prev) => prev + 6);
-    setPrev((prev) => prev + 6);
-  };
-
-  const handlePaginationClickPrev = () => {
-    setVisible((prev) => prev - 6);
-    setPrev((prev) => prev - 6);
-  };
-
-  const onClickPaginationButton = (event: MouseEvent<HTMLButtonElement>) => {
-    const target = event.target as HTMLButtonElement;
-    setCurrentPaginationButton(target.innerHTML);
-  };
-
-  console.log(currentPaginationButton);
-  useEffect(() => {
-    dispatch(fetchGenresAnime({ genreText, currentPaginationButton }));
-  }, [currentPaginationButton, dispatch, genreText]);
+  const genreText = useAppSelector(genreTextSelector);
+  const genreArray = useAppSelector(genreSelector);
 
   return (
     <div className={styles.wrapper}>
@@ -88,34 +36,14 @@ const GenrePage = () => {
               </li>
             ))}
           </ul>
-          <div className={styles.GenrePage__pagination}>
-            <button
-              className={styles.GenrePage__buttonPagination}
-              disabled={visible === 6}
-              onClick={handlePaginationClickPrev}>
-              PREV
-            </button>
-            <ul className={styles.GenrePage__listButton}>
-              {buttonsArray.slice(prev, visible).map((button) => (
-                <li>
-                  <button
-                    className={styles.GenrePage__listItemButton}
-                    onClick={onClickPaginationButton}>
-                    {button}
-                  </button>
-                </li>
-              ))}
-            </ul>
-            <button
-              className={styles.GenrePage__buttonPagination}
-              disabled={visible === 24}
-              onClick={handlePaginationClickNext}>
-              NEXT
-            </button>
-          </div>
+          <Pagination />
         </div>
       </main>
-      <Footer />
+      <footer className={styles.FooterBackground}>
+        <div className={styles.FooterOverlay}>
+          <Footer />
+        </div>
+      </footer>
     </div>
   );
 };

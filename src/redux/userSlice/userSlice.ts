@@ -1,8 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { getAuthentication, getRegister } from './asyncAction';
-import { IUser, StatusLogin, StatusRegister } from './types';
+import { User, StatusLogin, StatusRegister } from './types';
 
-const initialState: IUser = {
+const initialState: User = {
   email: null,
   token: null,
   id: null,
@@ -41,10 +41,6 @@ const userSlice = createSlice({
     // auth
     builder.addCase(getAuthentication.pending, (state) => {
       state.statusLogin = StatusLogin.LOADING;
-      state.email = null;
-      state.id = null;
-      state.token = null;
-      state.nickName = null;
     });
     builder.addCase(getAuthentication.fulfilled, (state) => {
       state.statusLogin = StatusLogin.SUCCESS;

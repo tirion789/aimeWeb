@@ -17,7 +17,11 @@ const InDevelopment = () => {
           </div>
         </div>
       </div>
-      <Footer />
+      <footer className={styles.FooterBackground}>
+        <div className={styles.FooterOverlay}>
+          <Footer />
+        </div>
+      </footer>
     </div>
   );
 };

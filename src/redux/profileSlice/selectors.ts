@@ -1,16 +1,16 @@
 import { RootState } from '../store';
-import { listNames } from './types';
-export const favorite = (state: RootState) => state.profile.favorites;
-export const planned = (state: RootState) => state.profile.planned;
-export const reviewing = (state: RootState) => state.profile.reviewing;
-export const activeButton = (state: RootState) => state.profile.activeButton;
-export const getCurrentAnime = (state: RootState, animeTitle?: string) => {
+import { ListNames } from './types';
+export const favoriteSelector = (state: RootState) => state.profile.favorites;
+export const plannedSelector = (state: RootState) => state.profile.planned;
+export const reviewingSelector = (state: RootState) => state.profile.reviewing;
+export const activeButtonSelector = (state: RootState) => state.profile.activeButton;
+export const getCurrentAnimeSelector = (state: RootState, animeTitle?: string) => {
   const activeList = state.profile.activeButton;
   if (activeList && animeTitle) {
     return state.profile[activeList].find((item) => item.animeTitle === animeTitle);
   }
 };
-export const getAnimeListName = (state: RootState, animeName?: string) => {
+export const getAnimeListNameSelector = (state: RootState, animeName?: string) => {
   if (!animeName) {
     return '';
   }
@@ -18,12 +18,12 @@ export const getAnimeListName = (state: RootState, animeName?: string) => {
   const planned = state.profile.planned.some(({ animeTitle }) => animeTitle === animeName);
   const reviewing = state.profile.reviewing.some(({ animeTitle }) => animeTitle === animeName);
   if (favotires) {
-    return listNames.FAVORITES;
+    return ListNames.FAVORITES;
   }
   if (planned) {
-    return listNames.PLANNED;
+    return ListNames.PLANNED;
   }
   if (reviewing) {
-    return listNames.REVIEWING;
+    return ListNames.REVIEWING;
   }
 };

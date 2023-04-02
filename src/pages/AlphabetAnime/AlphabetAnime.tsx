@@ -1,20 +1,18 @@
 import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import AlphabetSearch from '../../componets/AlphabetSearch/AlphabetSearch';
 import Footer from '../../componets/Footer/Footer';
 import Header from '../../componets/Header/Header';
 import { fetchMoviesAnimeAph } from '../../redux/animeSlice/asyncAction';
-import { aph } from '../../redux/animeSlice/selectors';
-import { letter } from '../../redux/filterSlice/selectors';
-import { useAppDispatch } from '../../redux/store';
+import { aphSelector } from '../../redux/animeSlice/selectors';
+import { letterSelector } from '../../redux/filterSlice/selectors';
 import styles from './AlphabetAnime.module.scss';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 
 const AlphabetAnime = () => {
-  const animeAphArray = useSelector(aph);
+  const animeAphArray = useAppSelector(aphSelector);
   const dispatch = useAppDispatch();
-  const currentLetter = useSelector(letter);
-  console.log(animeAphArray);
+  const currentLetter = useAppSelector(letterSelector);
 
   useEffect(() => {
     dispatch(fetchMoviesAnimeAph(currentLetter));
@@ -39,7 +37,11 @@ const AlphabetAnime = () => {
           <AlphabetSearch />
         </div>
       </main>
-      <Footer />
+      <footer className={styles.FooterBackground}>
+        <div className={styles.FooterOverlay}>
+          <Footer />
+        </div>
+      </footer>
     </div>
   );
 };

@@ -1,10 +1,10 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-import { currentItem } from '../../redux/animeSlice/selectors';
+import { currentItemSelector } from '../../redux/animeSlice/selectors';
 import styles from './Discription.module.scss';
+import { useAppSelector } from '../../redux/hooks';
 
 const Discription = () => {
-  const currentAnime = useSelector(currentItem);
+  const currentAnime = useAppSelector(currentItemSelector);
   const genresArray = currentAnime?.genres.join(', ');
 
   return (

@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import './assets/scss/global.scss';
-import { App } from './componets/App/App';
 import { store } from './redux/store';
 import './firebase';
+import { App } from './componets/AppRoutes/AppRoutes';
 
 const rootElem = document.getElementById('root');
 

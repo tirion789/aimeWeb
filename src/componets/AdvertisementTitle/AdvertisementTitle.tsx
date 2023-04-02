@@ -1,14 +1,13 @@
 import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchNagatoro } from '../../redux/animeSlice/asyncAction';
-import { nagatoroSan } from '../../redux/animeSlice/selectors';
+import { nagatoroSanSelector } from '../../redux/animeSlice/selectors';
 import { setItems } from '../../redux/profileSlice/profileSlice';
-import { useAppDispatch } from '../../redux/store';
 import styles from './AdvertisementTitle.module.scss';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 
 const AdvertisementTitle = () => {
-  const nagatoro = useSelector(nagatoroSan);
+  const nagatoro = useAppSelector(nagatoroSanSelector);
   const dispatch = useAppDispatch();
 
   useEffect(() => {

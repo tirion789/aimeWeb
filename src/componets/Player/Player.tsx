@@ -1,23 +1,28 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { fetchVideoAnime } from '../../redux/animeSlice/asyncAction';
-import { useAppDispatch, useAppSelector } from '../../redux/store';
 import styles from './Player.module.scss';
-import { currentItem, statusPlayer, video } from '../../redux/animeSlice/selectors';
+import {
+  currentItemSelector,
+  statusPlayerSelector,
+  videoSelector,
+} from '../../redux/animeSlice/selectors';
 import { setCurrentSeries } from '../../redux/profileSlice/profileSlice';
-import { getCurrentAnime } from '../../redux/profileSlice/selectors';
+import { getCurrentAnimeSelector } from '../../redux/profileSlice/selectors';
 import { MouseEvent } from 'react';
 import Loader from '../Loader/Loader';
 import Select from '../Select/Select';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 
 const Player = () => {
   const dispatch = useAppDispatch();
   const { animeId } = useParams();
-  const animeVideo = useSelector(video);
-  const currentAnime = useSelector(currentItem);
-  const statusVideo = useSelector(statusPlayer);
-  const animeItem = useAppSelector((state) => getCurrentAnime(state, currentAnime?.animeTitle));
+  const animeVideo = useAppSelector(videoSelector);
+  const currentAnime = useAppSelector(currentItemSelector);
+  const statusVideo = useAppSelector(statusPlayerSelector);
+  const animeItem = useAppSelector((state) =>
+    getCurrentAnimeSelector(state, currentAnime?.animeTitle),
+  );
   const [series, setSeries] = useState<string>(animeItem?.currentAnimeSeries || '1');
 
   const handleOnSeriesClick = (value: string) => {
@@ -31,7 +36,7 @@ const Player = () => {
     }
   };
 
-  const onActiveSeriesClick = (event: MouseEvent<HTMLButtonElement>) => {
+  const handleActiveSeriesClick = (event: MouseEvent<HTMLButtonElement>) => {
     const target = event.target as HTMLButtonElement;
     const value = target.innerHTML;
     handleOnSeriesClick(value);
@@ -64,7 +69,7 @@ const Player = () => {
               arraySeries={arraySeries}
               series={series}
               setSeries={setSeries}
-              onActiveSeriesClick={onActiveSeriesClick}
+              handleActiveSeriesClick={handleActiveSeriesClick}
             />
             <div className={styles.Player__iframeContainer}>
               <iframe

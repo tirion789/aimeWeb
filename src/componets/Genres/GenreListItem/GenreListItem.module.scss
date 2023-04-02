@@ -1,0 +1,18 @@
+@import '../../../assets/scss/variables';
+@import '../../../assets/scss/mixin';
+
+.GenreListItem {
+        z-index: 3;
+        color: white;
+        padding: 10px;
+        background: $basic-gradient-border-black-purple-red;
+        border: 1px solid transparent;
+        border-radius: 9px;
+}
+
+@media (max-width: $modile) {
+    .GenrelistItem {
+        width: 200px;
+        text-align: center;
+    }
+}

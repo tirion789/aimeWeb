@@ -1,4 +1,4 @@
-export type animeItem = {
+export type AnimeItem = {
   animeImg: string;
   animeTitle: string;
   genres: string[];
@@ -11,18 +11,18 @@ export type animeItem = {
   episodesList: { episodeId: string; episodeNum: string; episodeUrl: string }[];
 };
 
-export interface ISearchAnime {
+export interface SearchAnime {
   animeId: string;
   animeTitle: string;
   animeImg: string;
   releasedData: string;
 }
 
-export interface IAnimeObject extends ISearchAnime {
+export interface AnimeObject extends SearchAnime {
   status: string;
 }
 
-export type video = {
+export type Video = {
   Referer: string;
 };
 
@@ -32,12 +32,12 @@ export enum StatusServer {
   ERROR = 'error',
 }
 
-export interface IAnimeSliceState {
-  currentItem: animeItem | null;
-  tokyoRevenger: animeItem | null;
-  nagatoro: animeItem | null;
+export interface AnimeSliceState {
+  currentItem: AnimeItem | null;
+  tokyoRevenger: AnimeItem | null;
+  nagatoro: AnimeItem | null;
   tokyoRevengerStatus: StatusServer;
-  video: video | null;
+  video: Video | null;
   statusPopularAnime: StatusServer;
   statusTopAiringAnimes: StatusServer;
   statusMoviesAph: StatusServer;
@@ -47,10 +47,10 @@ export interface IAnimeSliceState {
   statusSearch: StatusServer;
   statusGenre: StatusServer;
   status: StatusServer;
-  popularAnimes: IAnimeObject[];
-  topAiringAnimes: IAnimeObject[];
-  moviesAph: ISearchAnime[];
-  searchAnime: ISearchAnime[];
-  moviesAnimes: IAnimeObject[];
-  genreAnime: IAnimeObject[];
+  popularAnimes: AnimeObject[];
+  topAiringAnimes: AnimeObject[];
+  moviesAph: SearchAnime[];
+  searchAnime: SearchAnime[];
+  moviesAnimes: AnimeObject[];
+  genreAnime: AnimeObject[];
 }

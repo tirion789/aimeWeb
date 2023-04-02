@@ -1,10 +1,18 @@
 import React from 'react';
 import styles from './Navigation.module.scss';
 import { Link } from 'react-router-dom';
-import Genres from '../Genres/Genres';
 import { INavigation } from './interface';
+import { useAppDispatch } from '../../redux/hooks';
+import { setIsGenrePopupOpen } from '../../redux/filterSlice/filterSlice';
+import Genres from '../Genres/Genres';
 
 const Navigation: React.FC<INavigation> = ({ isDropdownOpen }) => {
+  const dispatch = useAppDispatch();
+
+  const handleIsPopapOpen = () => {
+    dispatch(setIsGenrePopupOpen(true));
+  };
+
   return (
     <nav className={styles.Navigation__navigation}>
       <ul
@@ -12,6 +20,9 @@ const Navigation: React.FC<INavigation> = ({ isDropdownOpen }) => {
           isDropdownOpen && styles.Navigation__active
         }`}>
         <li>
+          <button onClick={handleIsPopapOpen} className={styles.Navigation__genreButton}>
+            Genre
+          </button>
           <Genres />
         </li>
         <li className={styles.Navigation__navigationListItem}>

@@ -1,0 +1,111 @@
+.Pagination {
+
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+    justify-content: center;
+    &__listItemButton {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 700;
+        line-height: 24px;
+        background-color: transparent;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 31px;
+        color: white;
+        border: 2px solid transparent;
+        border-radius: 15px;
+        margin-right: 42px;
+        position: relative;
+        cursor: pointer;
+        background: linear-gradient(#090909 0 0) padding-box, linear-gradient(to right, #CF427B 0%, #154587 100%) border-box;
+        margin-right: 0;
+        border-radius: 20px;
+        width: 40px;
+        padding: 5px;
+        text-align: center;
+          &::before{
+              content: ''
+          }
+       }
+
+       &__listItemInactiveButton {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 700;
+        line-height: 24px;
+        background-color: transparent;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 31px;
+        color: white;
+        border: 2px solid transparent;
+        border-radius: 15px;
+        margin-right: 42px;
+        position: relative;
+        cursor: pointer;
+        margin-right: 0;
+        border-radius: 5px;
+        width: 40px;
+        padding: 5px;
+        text-align: center;
+          &::before{
+              content: ''
+          }
+       }
+
+
+       &__listButton {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 28px;
+        display: flex;
+        gap: 45px;
+        flex-wrap: wrap
+     }
+
+     &__buttonPagination {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 700;
+        line-height: 24px;
+        background-color: transparent;
+        font-size: 10px;
+        color: white;
+        border: 2px solid transparent;
+        position: relative;
+        cursor: pointer;
+        background: linear-gradient(#090909 0 0) padding-box, linear-gradient(to right, #CF427B 0%, #154587 100%) border-box;
+        margin-right: 0;
+        border-radius: 5px;
+        width: 30px;
+        text-align: center;
+        height: 44px;
+          &::before{
+              content: ''
+          }
+          &:disabled {
+            border-color: #6b6b6b;
+          }
+     }
+
+     &__buttonSwapPage {
+      height: max-content;
+      border: 2px solid transparent;
+      background-color: transparent;
+      background: linear-gradient(#090909 0 0) padding-box, linear-gradient(to right, #CF427B 0%, #154587 100%) border-box;
+      display: flex;
+      border-radius: 25px;
+      margin: auto 0;
+      &:disabled {
+        border-color: #6b6b6b;
+
+        svg {
+          path {
+            fill:#6b6b6b ;
+          }
+        }
+      }
+     }
+}

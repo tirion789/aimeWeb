@@ -1,5 +1,4 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import animeSlice from './animeSlice/animeSlice';
 import filterSlice from './filterSlice/filterSlice';
 import profileSlice, { initialState } from './profileSlice/profileSlice';
@@ -23,7 +22,3 @@ export const store = configureStore({
 });
 
 export type RootState = ReturnType<typeof store.getState>;
-
-export type AppDispatch = typeof store.dispatch;
-export const useAppDispatch: () => AppDispatch = useDispatch;
-export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;

@@ -1,7 +1,11 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { ICurrentSeries, IProfileAnime, IProfileSlice, listNames } from './types';
+import {
+  getDeletedCurrentAnimeFromProfile,
+  getPushCurrentlyObjectInArray,
+} from '../../common/util';
+import { CurrentSeries, ProfileAnime, ProfileSlice, ListNames } from './types';
 
-export const initialState: IProfileSlice = {
+export const initialState: ProfileSlice = {
   favorites: [],
   planned: [],
   reviewing: [],
@@ -12,30 +16,40 @@ const profileSlice = createSlice({
   name: 'profileSlice',
   initialState,
   reducers: {
-    setItems(state, action: PayloadAction<IProfileAnime>) {
-      state.favorites.push(action.payload);
-      state.planned = state.planned.filter((obj) => obj.animeTitle !== action.payload.animeTitle);
-      state.reviewing = state.reviewing.filter(
-        (obj) => obj.animeTitle !== action.payload.animeTitle,
+    setItems(state, action: PayloadAction<ProfileAnime>) {
+      const newAnimeCollection = getPushCurrentlyObjectInArray(
+        state.favorites,
+        state.planned,
+        state.reviewing,
+        action.payload,
       );
+      state.favorites = newAnimeCollection.mainArray;
+      state.planned = newAnimeCollection.firstArray;
+      state.reviewing = newAnimeCollection.secondArray;
     },
-    setReviewing(state, action: PayloadAction<IProfileAnime>) {
-      state.reviewing.push(action.payload);
-      state.planned = state.planned.filter((obj) => obj.animeTitle !== action.payload.animeTitle);
-      state.favorites = state.favorites.filter(
-        (obj) => obj.animeTitle !== action.payload.animeTitle,
+    setReviewing(state, action: PayloadAction<ProfileAnime>) {
+      const newAnimeCollection = getPushCurrentlyObjectInArray(
+        state.reviewing,
+        state.planned,
+        state.favorites,
+        action.payload,
       );
+      state.reviewing = newAnimeCollection.mainArray;
+      state.planned = newAnimeCollection.firstArray;
+      state.favorites = newAnimeCollection.secondArray;
     },
-    setPlanned(state, action: PayloadAction<IProfileAnime>) {
-      state.planned.push(action.payload);
-      state.favorites = state.favorites.filter(
-        (obj) => obj.animeTitle !== action.payload.animeTitle,
+    setPlanned(state, action: PayloadAction<ProfileAnime>) {
+      const newAnimeCollection = getPushCurrentlyObjectInArray(
+        state.planned,
+        state.favorites,
+        state.reviewing,
+        action.payload,
       );
-      state.reviewing = state.reviewing.filter(
-        (obj) => obj.animeTitle !== action.payload.animeTitle,
-      );
+      state.planned = newAnimeCollection.mainArray;
+      state.favorites = newAnimeCollection.firstArray;
+      state.reviewing = newAnimeCollection.secondArray;
     },
-    setCurrentSeries(state, action: PayloadAction<ICurrentSeries>) {
+    setCurrentSeries(state, action: PayloadAction<CurrentSeries>) {
       const { title, series } = action.payload;
       const currentList = state.activeButton;
       if (currentList) {
@@ -45,17 +59,17 @@ const profileSlice = createSlice({
         );
       }
     },
-    setActiveButton(state, action: PayloadAction<listNames>) {
+    setActiveButton(state, action: PayloadAction<ListNames>) {
       state.activeButton = action.payload;
     },
     deleteReviewing(state, action: PayloadAction<string>) {
-      state.reviewing = state.reviewing.filter((obj) => obj.animeTitle !== action.payload);
+      state.reviewing = getDeletedCurrentAnimeFromProfile(state.reviewing, action.payload);
     },
     deleteAnimes(state, action: PayloadAction<string>) {
-      state.favorites = state.favorites.filter((obj) => obj.animeTitle !== action.payload);
+      state.favorites = getDeletedCurrentAnimeFromProfile(state.favorites, action.payload);
     },
     deletePlanned(state, action: PayloadAction<string>) {
-      state.planned = state.planned.filter((obj) => obj.animeTitle !== action.payload);
+      state.planned = getDeletedCurrentAnimeFromProfile(state.planned, action.payload);
     },
   },
 });

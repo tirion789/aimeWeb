@@ -17,6 +17,10 @@
     &__navigationListMovies {
         @include navLinks;
     }
+
+    &__genreButton {
+        @include navLinks
+    }
 }
 
 @media (max-width: $modile) {

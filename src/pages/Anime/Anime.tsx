@@ -1,21 +1,20 @@
 import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import Discription from '../../componets/Discription/Discription';
 import Footer from '../../componets/Footer/Footer';
 import Header from '../../componets/Header/Header';
 import Player from '../../componets/Player/Player';
 import { fetchAnime } from '../../redux/animeSlice/asyncAction';
-import { currentItem } from '../../redux/animeSlice/selectors';
-import { useAppDispatch } from '../../redux/store';
+import { currentItemSelector } from '../../redux/animeSlice/selectors';
 import styles from './Anime.module.scss';
 import AnimeControls from '../../componets/AnimeControls/AnimeControls';
 import { useAuth } from '../../hooks/useAuth';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 
 const Anime = () => {
   const { animeId } = useParams();
   const dispatch = useAppDispatch();
-  const currentAnime = useSelector(currentItem);
+  const currentAnime = useAppSelector(currentItemSelector);
   const { isAuth } = useAuth();
 
   useEffect(() => {
@@ -53,7 +52,11 @@ const Anime = () => {
         </div>
         <Player />
       </main>
-      <Footer />
+      <footer className={styles.FooterBackground}>
+        <div className={styles.FooterOverlay}>
+          <Footer />
+        </div>
+      </footer>
     </div>
   );
 };

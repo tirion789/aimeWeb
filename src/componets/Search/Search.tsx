@@ -1,19 +1,18 @@
 import React, { ChangeEvent, useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchSearchAnime } from '../../redux/animeSlice/asyncAction';
-import { search } from '../../redux/animeSlice/selectors';
-import { useAppDispatch } from '../../redux/store';
+import { searchSelector } from '../../redux/animeSlice/selectors';
 import { debounce } from 'lodash';
 import styles from './Search.module.scss';
 import { ReactComponent as SearchImg } from '../../assets/images/icons/search.svg';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 
 const Search = () => {
   const [value, setValue] = useState('');
   const dispatch = useAppDispatch();
   const [isSearchOpen, setIsSearchOpen] = useState(false);
 
-  const searchAnime = useSelector(search);
+  const searchAnime = useAppSelector(searchSelector);
 
   useEffect(() => {
     dispatch(fetchSearchAnime(value));

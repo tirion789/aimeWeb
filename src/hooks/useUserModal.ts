@@ -1,19 +1,21 @@
 import { ChangeEvent, useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { FORM_TYPES } from '../common/const';
-import { useAppDispatch } from '../redux/store';
 import { getAuthentication, getRegister } from '../redux/userSlice/asyncAction';
-import { errorMessageLogin, errorMessageReister } from '../redux/userSlice/selectors';
+import {
+  errorMessageLoginSelector,
+  errorMessageReisterSelector,
+} from '../redux/userSlice/selectors';
 import { setError, setStatusMessage, setUser } from '../redux/userSlice/userSlice';
+import { useAppDispatch, useAppSelector } from '../redux/hooks';
 
 export const useUserModal = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [formType, setFormType] = useState(FORM_TYPES.singIn);
   const [nickname, setNickname] = useState('');
-  const serverStatusLogin = useSelector(errorMessageLogin);
-  const serverStatusRegister = useSelector(errorMessageReister);
+  const serverStatusLogin = useAppSelector(errorMessageLoginSelector);
+  const serverStatusRegister = useAppSelector(errorMessageReisterSelector);
   const dispatch = useAppDispatch();
 
   const handleEmailChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -54,12 +56,14 @@ export const useUserModal = () => {
     }
     if (serverStatusLogin === 'success') {
       toast.success('You have successfully login!');
+      dispatch(setStatusMessage('loading'));
     }
     if (serverStatusLogin === 'error') {
       toast.error('It looks like something went wrong, check your data');
     }
     if (serverStatusRegister === 'success') {
       toast.success('You have successfully register!');
+      dispatch(setStatusMessage('loading'));
     }
     if (serverStatusRegister === 'error') {
       toast.error('It looks like something went wrong, check your data');

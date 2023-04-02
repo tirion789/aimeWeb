@@ -1,31 +1,31 @@
 import { RootState } from '../store';
 
-export const anime = (state: RootState) => state.anime;
+export const animeSelector = (state: RootState) => state.anime;
 
-export const statusPopular = (state: RootState) => state.anime.statusPopularAnime;
+export const statusPopularSelector = (state: RootState) => state.anime.statusPopularAnime;
 
-export const statusTopAiring = (state: RootState) => state.anime.statusTopAiringAnimes;
+export const statusTopAiringSelector = (state: RootState) => state.anime.statusTopAiringAnimes;
 
-export const statusPlayer = (state: RootState) => state.anime.statusVideoAnime;
+export const statusPlayerSelector = (state: RootState) => state.anime.statusVideoAnime;
 
-export const statusTokyoRevenger = (state: RootState) => state.anime.tokyoRevengerStatus;
+export const statusTokyoRevengerSelector = (state: RootState) => state.anime.tokyoRevengerStatus;
 
-export const popularAnimes = (state: RootState) => state.anime.popularAnimes;
+export const popularAnimesSelector = (state: RootState) => state.anime.popularAnimes;
 
-export const topAiringAnimes = (state: RootState) => state.anime.topAiringAnimes;
+export const topAiringAnimesSelector = (state: RootState) => state.anime.topAiringAnimes;
 
-export const currentItem = (state: RootState) => state.anime.currentItem;
+export const currentItemSelector = (state: RootState) => state.anime.currentItem;
 
-export const video = (state: RootState) => state.anime.video;
+export const videoSelector = (state: RootState) => state.anime.video;
 
-export const search = (state: RootState) => state.anime.searchAnime;
+export const searchSelector = (state: RootState) => state.anime.searchAnime;
 
-export const genre = (state: RootState) => state.anime.genreAnime;
+export const genreSelector = (state: RootState) => state.anime.genreAnime;
 
-export const movies = (state: RootState) => state.anime.moviesAnimes;
+export const moviesSelector = (state: RootState) => state.anime.moviesAnimes;
 
-export const aph = (state: RootState) => state.anime.moviesAph;
+export const aphSelector = (state: RootState) => state.anime.moviesAph;
 
-export const tokyoRevenger = (state: RootState) => state.anime.tokyoRevenger;
+export const tokyoRevengerSelector = (state: RootState) => state.anime.tokyoRevenger;
 
-export const nagatoroSan = (state: RootState) => state.anime.nagatoro;
+export const nagatoroSanSelector = (state: RootState) => state.anime.nagatoro;

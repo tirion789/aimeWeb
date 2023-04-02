@@ -1,8 +1,8 @@
 import { MouseEvent } from 'react';
 
-export interface ISelectProps {
+export interface SelectProps {
   arraySeries: number[];
   series: string;
-  onActiveSeriesClick: (event: MouseEvent<HTMLButtonElement>) => void;
+  handleActiveSeriesClick: (event: MouseEvent<HTMLButtonElement>) => void;
   setSeries: any;
 }

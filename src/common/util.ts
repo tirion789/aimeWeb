@@ -1,20 +1,16 @@
-import { IProfileAnime } from '../redux/profileSlice/types';
+import { ProfileAnime } from '../redux/profileSlice/types';
 
-export const getAnimeFromLocalStorage = () => {
-  // const massive = localStorage.getItem('favorite');
-  return [];
-};
-
-export const getAnimePlannedFromLocalStorage = () => {
-  // const massive = localStorage.getItem('planned');
-  return [];
-};
+interface ReplacedAnime {
+  mainArray: ProfileAnime[];
+  firstArray: ProfileAnime[];
+  secondArray: ProfileAnime[];
+}
 
 export const getCurrentAnimeArray = (
   listName: string,
-  planned: IProfileAnime[],
-  favorites: IProfileAnime[],
-  reviewing: IProfileAnime[],
+  planned: ProfileAnime[],
+  favorites: ProfileAnime[],
+  reviewing: ProfileAnime[],
 ) => {
   switch (listName) {
     case 'planned':
@@ -26,4 +22,25 @@ export const getCurrentAnimeArray = (
     default:
       return [];
   }
+};
+
+export const getDeletedCurrentAnimeFromProfile = (
+  usedArray: ProfileAnime[],
+  actionPayload: string,
+) => usedArray.filter((obj) => obj.animeTitle !== actionPayload);
+
+export const getPushCurrentlyObjectInArray = (
+  usedArray: ProfileAnime[],
+  firstUnusedArray: ProfileAnime[],
+  secondUnusedArray: ProfileAnime[],
+  actionPayload: ProfileAnime,
+): ReplacedAnime => {
+  const newArray = [...usedArray, actionPayload];
+  getDeletedCurrentAnimeFromProfile(firstUnusedArray, actionPayload.animeTitle);
+  getDeletedCurrentAnimeFromProfile(secondUnusedArray, actionPayload.animeTitle);
+  return {
+    mainArray: newArray,
+    firstArray: getDeletedCurrentAnimeFromProfile(firstUnusedArray, actionPayload.animeTitle),
+    secondArray: getDeletedCurrentAnimeFromProfile(secondUnusedArray, actionPayload.animeTitle),
+  };
 };

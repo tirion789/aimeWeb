@@ -13,7 +13,7 @@ import { useAppDispatch } from '../../../redux/hooks';
 const AnimeControlsListItems = ({ button, key, currentAnime }: AnimeControlsListItemProps) => {
   const dispatch = useAppDispatch();
 
-  const onButtonClick = (button: ListNames) => {
+  const handleButtonClick = (button: ListNames) => {
     dispatch(setActiveButton(button));
     if (currentAnime && button === ListNames.FAVORITES) {
       dispatch(setItems(currentAnime));
@@ -27,7 +27,7 @@ const AnimeControlsListItems = ({ button, key, currentAnime }: AnimeControlsList
   };
   return (
     <li key={key}>
-      <button onClick={() => onButtonClick(button)} className={styles.AnimeControlsButton}>
+      <button onClick={() => handleButtonClick(button)} className={styles.AnimeControlsButton}>
         {button}
       </button>
     </li>

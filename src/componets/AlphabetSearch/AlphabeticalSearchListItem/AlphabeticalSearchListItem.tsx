@@ -8,7 +8,7 @@ import { useAppDispatch } from '../../../redux/hooks';
 const AlphabeticalSearchListItem = ({ latter, key }: AlphabeticalSearchListItemProps) => {
   const dispatch = useAppDispatch();
 
-  const onClickLetter = () => {
+  const handleClickLetter = () => {
     dispatch(setLetter(latter));
   };
 
@@ -16,7 +16,7 @@ const AlphabeticalSearchListItem = ({ latter, key }: AlphabeticalSearchListItemP
     <li key={key} className={styles.AlphabeticalSearchListItem__listItem}>
       <Link
         className={styles.AlphabeticalSearchListItem__listItemLink}
-        onMouseDown={onClickLetter}
+        onMouseDown={handleClickLetter}
         to={`/AlphabetAnime/${latter}`}>
         {latter}
       </Link>

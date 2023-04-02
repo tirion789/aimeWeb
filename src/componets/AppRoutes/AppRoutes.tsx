@@ -13,7 +13,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ProtectedRoute from './ProtectedRoute/ProtectedRoute';
 
-const App = () => {
+const AppRoutes = () => {
   const { isLoading, isAuth } = useAuth();
 
   if (isLoading) {
@@ -53,4 +53,4 @@ const App = () => {
   );
 };
 
-export { App };
+export { AppRoutes };

@@ -1,18 +1,12 @@
-// import { Navigate } from 'react-router-dom';
-// import React from 'react';
+import React from 'react';
+import { AppRoutes } from '../AppRoutes/AppRoutes';
 
-// interface ProtectedRouteProps {
-//   children: JSX.Element;
-//   user: boolean;
-// }
+const App = () => {
+  return (
+    <>
+      <AppRoutes />
+    </>
+  );
+};
 
-// const ProtectedRoute = ({ children, user }: ProtectedRouteProps) => {
-//   if (user) {
-//     return children;
-//   }
-
-//   return <Navigate to="/" />;
-// };
-// export default ProtectedRoute;
-
-export {};
+export default App;

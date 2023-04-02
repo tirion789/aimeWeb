@@ -5,7 +5,7 @@ import { BrowserRouter } from 'react-router-dom';
 import './assets/scss/global.scss';
 import { store } from './redux/store';
 import './firebase';
-import { App } from './componets/AppRoutes/AppRoutes';
+import App from './componets/App/App';
 
 const rootElem = document.getElementById('root');
 

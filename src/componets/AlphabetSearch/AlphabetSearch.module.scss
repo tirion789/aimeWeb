@@ -31,10 +31,7 @@
      }
 
      &__title {
-        @include discription;
-        font-size: 15px;
-        font-weight: 600;
-        line-height: 18px;
+        @include mediumText;
         margin-top: 16px;
      }
 

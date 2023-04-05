@@ -1,15 +1,87 @@
-export type AnimeItem = {
-  animeImg: string;
-  animeTitle: string;
+export interface AnimeArray {
+  cover: string;
+  description: string;
+  duration: string;
   genres: string[];
-  otherNames: string;
-  releasedDate: string;
+  id: string;
+  image: string;
+  rating: number;
+  releaseDate: string;
   status: string;
-  synopsis: string;
-  totalEpisodes: string;
+  title: { romaji: string; english: string; native: string };
+  totalEpisodes: number;
+  trailer: {
+    id: string;
+    site: string;
+    thumbnail: string;
+  };
   type: string;
-  episodesList: { episodeId: string; episodeNum: string; episodeUrl: string }[];
-};
+}
+
+export interface AnimeApi {
+  results: AnimeArray;
+  currentPage: number;
+  hasNextPage: boolean;
+  totalPages?: number;
+  totalResults?: number;
+}
+
+export interface CurrentAnime extends AnimeArray {
+  characters: [
+    {
+      image: string;
+      name: { first: string; full: string; last: string | null; userPreffered: string };
+      role: string;
+    },
+  ];
+  countryOfOrigin: string;
+  currentEpisode: number;
+  endDate: { year: number; month: number; day: number };
+  episodes: [
+    {
+      airData: string;
+      description: string;
+      id: string;
+      image: string;
+      number: number;
+      title: string;
+    },
+  ];
+  popularity: number;
+  recommendations: [
+    {
+      cover: string;
+      episodes: number;
+      id: number;
+      image: string;
+      rating: number;
+      status: string;
+      title: { romaji: string; english: string; native: string };
+    },
+  ];
+  relations: [
+    {
+      color: string;
+      cover: string;
+      id: number;
+      rating: number;
+      relationType: string;
+      status: string;
+      title: { romaji: string; english: string; native: string };
+      type: string;
+    },
+  ];
+  season: string;
+  startDate: { year: number; month: number; day: number };
+  studios: string[];
+  subOrDub: string;
+  synonyms: string[];
+  trailer: {
+    id: string;
+    site: string;
+    thumbnail: string;
+  };
+}
 
 export interface SearchAnime {
   animeId: string;
@@ -23,7 +95,7 @@ export interface AnimeObject extends SearchAnime {
 }
 
 export type Video = {
-  Referer: string;
+  headers: { Referer: string };
 };
 
 export enum StatusServer {
@@ -33,9 +105,9 @@ export enum StatusServer {
 }
 
 export interface AnimeSliceState {
-  currentItem: AnimeItem | null;
-  tokyoRevenger: AnimeItem | null;
-  nagatoro: AnimeItem | null;
+  currentItem: CurrentAnime | null;
+  tokyoRevenger: CurrentAnime | null;
+  nagatoro: CurrentAnime | null;
   tokyoRevengerStatus: StatusServer;
   video: Video | null;
   statusPopularAnime: StatusServer;
@@ -47,10 +119,10 @@ export interface AnimeSliceState {
   statusSearch: StatusServer;
   statusGenre: StatusServer;
   status: StatusServer;
-  popularAnimes: AnimeObject[];
-  topAiringAnimes: AnimeObject[];
+  popularAnimes: AnimeArray[];
+  topAiringAnimes: AnimeArray[];
   moviesAph: SearchAnime[];
-  searchAnime: SearchAnime[];
+  searchAnime: AnimeArray[];
   moviesAnimes: AnimeObject[];
-  genreAnime: AnimeObject[];
+  genreAnime: AnimeArray[];
 }

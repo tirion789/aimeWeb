@@ -1,8 +1,13 @@
 import React, { ChangeEvent, useState } from 'react';
 import { SelectProps } from './interface';
 import styles from './Select.module.scss';
+import { useAppSelector } from '../../redux/hooks';
+import { currentItemSelector } from '../../redux/animeSlice/selectors';
+import { ReactComponent as Arrow } from '../../assets/images/icons/paginationArrow.svg';
 
-const Select = ({ setSeries, arraySeries, series, handleActiveSeriesClick }: SelectProps) => {
+const Select = ({ setSeries, series, handleActiveSeriesClick }: SelectProps) => {
+  const SERIES = 1;
+  const currentAnime = useAppSelector(currentItemSelector);
   const [showSeriesSelector, setShowSeriesSelector] = useState(false);
   const [filterSeries, setFilterSeries] = useState('');
 
@@ -17,22 +22,25 @@ const Select = ({ setSeries, arraySeries, series, handleActiveSeriesClick }: Sel
   };
 
   const handleClickSetNextSeries = () => {
-    setSeries((prev: string) => Number(prev) + 1);
+    setSeries((prev: string) => Number(prev) + SERIES);
   };
 
   const handleClickSetPrevSeries = () => {
-    setSeries((prev: string) => Number(prev) - 1);
+    setSeries((prev: string) => Number(prev) - SERIES);
   };
-  const filterArray = arraySeries.filter((number) => String(number).includes(filterSeries));
+
+  const filterArray = currentAnime?.episodes.filter((obj) =>
+    String(obj.number).includes(filterSeries),
+  );
+
   return (
     <div className={styles.Select}>
       <div className={styles.Select__buttonsContainer}>
         <button
           className={styles.Select__buttons}
-          disabled={series === '1'}
-          onClick={handleClickSetPrevSeries}
-          style={{ color: 'red' }}>
-          prev series
+          disabled={Number(series) === SERIES}
+          onClick={handleClickSetPrevSeries}>
+          <Arrow transform="rotate(180)" />
         </button>
         <button
           className={
@@ -43,10 +51,9 @@ const Select = ({ setSeries, arraySeries, series, handleActiveSeriesClick }: Sel
         </button>
         <button
           className={styles.Select__buttons}
-          disabled={series === String(arraySeries.length)}
-          onClick={handleClickSetNextSeries}
-          style={{ color: 'red' }}>
-          next series
+          disabled={Number(series) === currentAnime?.episodes.length}
+          onClick={handleClickSetNextSeries}>
+          <Arrow />
         </button>
       </div>
       {showSeriesSelector && (
@@ -60,12 +67,12 @@ const Select = ({ setSeries, arraySeries, series, handleActiveSeriesClick }: Sel
             />
           </div>
           <ul className={styles.Select__selectList}>
-            {filterArray.map((series) => (
+            {filterArray?.map(({ id, number }) => (
               <li>
                 <button
                   className={styles.Select__selectorButtons}
-                  onClick={handleActiveSeriesClick}>
-                  {series}
+                  onClick={() => handleActiveSeriesClick(number, id)}>
+                  {number}
                 </button>
               </li>
             ))}

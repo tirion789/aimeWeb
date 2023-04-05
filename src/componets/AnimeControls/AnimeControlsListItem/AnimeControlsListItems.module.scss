@@ -1,7 +1,7 @@
 @import '../../../assets/scss/mixin.scss';
 
 .AnimeControlsButton {
-    &__button{
+    
         @include button;
         width: 250px;
         border-radius: 0;
@@ -9,5 +9,5 @@
         &::before {
             content: url(../../../assets/images/icons/Plusicon.svg)
         };
-    }
+    
 }

@@ -1,0 +1,98 @@
+@import '../../assets/scss/mixin.scss';
+@import '../../assets/scss/variables';
+
+.Recommended {
+    position: relative;
+
+    @include background;
+    background-image: url(https://s4.anilist.co/file/anilistcdn/media/anime/banner/128893-pAA7PjY8l7dy.jpg);
+
+    &::after {
+        @include border;
+    }
+
+
+    &__overlay {
+        @include overlay;
+        padding: 20px 60px
+    }
+
+    &__episodes {
+        @include mediumText;
+        margin-top: 0;
+    }
+
+    &__swapSlideButton {
+        &:disabled {   
+            svg {
+              path {
+                fill:#6b6b6b ;
+              }
+            }
+          }
+        
+    }
+
+    &__item {
+        transition: 1s;
+    }
+
+    &__slider {
+        display: flex;
+        gap: 170px;
+    }
+
+    &__list {
+        display: flex;
+        overflow-x: hidden;
+        gap: 30px;
+        transition: 1s;
+    }
+
+    &__image {
+        width: 250px;
+        height: 350px;
+        filter: brightness(0.6);
+    }
+
+    &__contentContainer {
+        position: absolute;
+        bottom: 0;
+    }
+
+    &__title {
+        @include componentHeader;
+    }
+
+    &__titleListContainer {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        overflow: hidden;
+        bottom: 4px;
+        width: 250px;
+        background: $basic-mainCategories-background;
+        flex-direction: column;
+    }
+
+    &__recommendationsTitle {
+        text-align: left;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 30px;
+        font-weight: 600;
+        line-height: 37px;
+        border-bottom: 2px solid $basic-white;
+        width: max-content;
+        margin-bottom: 15px;
+    }
+
+    &__titleListItemNames {
+        @include listItemName;
+    }
+}
+
+@media (max-width: $modile) {
+    .Recommended__overlay {
+        padding: 20px;
+    }
+}

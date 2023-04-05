@@ -28,11 +28,11 @@ const AuthModal = () => {
   const refModal = useRef(null);
   const dispatch = useAppDispatch();
 
-  const onClickOutside = () => {
+  const handleClickOutside = () => {
     dispatch(setIsOpenPopupLogin(false));
   };
 
-  useOutsideClick(refModal, onClickOutside, popupModal);
+  useOutsideClick(refModal, handleClickOutside, popupModal);
 
   return (
     <div className={`${popupModal && styles.Login__overlay}`}>

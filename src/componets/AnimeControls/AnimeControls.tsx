@@ -11,6 +11,7 @@ import { ListNames } from '../../redux/profileSlice/types';
 import styles from './AnimeControls.module.scss';
 import AnimeControlsListItems from './AnimeControlsListItem/AnimeControlsListItems';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+import { ReactComponent as Sort } from '../../assets/images/icons/sort.svg';
 
 const buttonsList = Object.values(ListNames);
 
@@ -20,14 +21,13 @@ const AnimeControls = () => {
   const currentActiveButton = useAppSelector(activeButtonSelector);
   const currentAnime = useAppSelector(currentItemSelector);
   const currentAnimeListName = useAppSelector((state) =>
-    getAnimeListNameSelector(state, currentAnime?.animeTitle),
+    getAnimeListNameSelector(state, currentAnime?.title.romaji),
   );
   const dispatch = useAppDispatch();
+
   const filteredButtons = currentActiveButton
     ? buttonsList.filter((button) => button !== currentActiveButton)
     : buttonsList;
-
-  console.log(currentAnimeListName);
 
   const handleButtonClickActive = () => {
     if (currentAnime && currentActiveButton === ListNames.PLANNED && !currentAnimeListName) {
@@ -53,7 +53,13 @@ const AnimeControls = () => {
 
   return (
     <div className={styles.AnimeControls}>
-      <button onClick={handleShowHiddenButtons}>show</button>
+      <button className={styles.AnimeControls__showButton} onClick={handleShowHiddenButtons}>
+        {!showHiddenButton ? (
+          <Sort width={30} height={30} />
+        ) : (
+          <Sort width={30} height={30} transform="rotate(180)" />
+        )}
+      </button>
       <button
         onClick={handleButtonClickActive}
         className={`${

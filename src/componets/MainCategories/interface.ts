@@ -1,7 +1,7 @@
-import { AnimeObject } from '../../redux/animeSlice/types';
+import { AnimeArray } from '../../redux/animeSlice/types';
 
 export interface MainCategoriesProps {
-  items: AnimeObject[];
+  items: AnimeArray[];
   status: string;
   name: string;
 }

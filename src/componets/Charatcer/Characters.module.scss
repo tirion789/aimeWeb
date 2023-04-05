@@ -1,0 +1,23 @@
+@import '../../assets/scss/mixin.scss';
+
+.Characters {
+    @include background;
+
+    &__overlay {
+        @include overlay;
+        padding: 20px 60px;
+    }
+
+    &__header {
+        @include componentHeader;
+    }
+}
+
+@media (max-width: $modile) {
+    .Characters__overlay {
+        padding: 20px;
+        &__list {
+            justify-content: center;
+        }
+    }
+}

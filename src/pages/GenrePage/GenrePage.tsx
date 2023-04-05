@@ -12,25 +12,27 @@ const GenrePage = () => {
   const genreText = useAppSelector(genreTextSelector);
   const genreArray = useAppSelector(genreSelector);
 
+  console.log(genreArray);
+
   return (
-    <div className={styles.wrapper}>
+    <>
       <Header />
       <main className={styles.GenrePage}>
         <div className={styles.GenrePage__overlay}>
           <h1 className={styles.GenrePage__title}>{genreText}</h1>
           <ul className={styles.GenrePage__list}>
-            {genreArray.map(({ animeId, animeImg, animeTitle }) => (
-              <li key={animeId} className={styles.GenrePage__listItem}>
-                <Link to={`/anime/${animeId}`}>
+            {genreArray.map(({ id, image, title }) => (
+              <li key={id} className={styles.GenrePage__listItem}>
+                <Link to={`/anime/${id}`}>
                   <img
                     className={styles.GenrePage__image}
                     width={257}
                     height={400}
-                    src={animeImg}
+                    src={image}
                     alt="imageAnime"
                   />
                   <div className={styles.GenrePage__container}>
-                    <h2 className={styles.GenrePage__listItemName}>{animeTitle}</h2>
+                    <h2 className={styles.GenrePage__listItemName}>{title.romaji}</h2>
                   </div>
                 </Link>
               </li>
@@ -44,7 +46,7 @@ const GenrePage = () => {
           <Footer />
         </div>
       </footer>
-    </div>
+    </>
   );
 };
 

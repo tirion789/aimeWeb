@@ -1,15 +1,4 @@
-export interface Anime {
-  animeImg: string;
-  animeTitle: string;
-  genres: string[];
-  otherNames: string;
-  releasedDate: string;
-  status: string;
-  synopsis: string;
-  totalEpisodes: string;
-  type: string;
-  episodesList: { episodeId: string; episodeNum: string; episodeUrl: string }[];
-}
+import { AnimeArray } from '../animeSlice/types';
 
 export enum ListNames {
   FAVORITES = 'favorites',
@@ -22,7 +11,7 @@ export interface CurrentSeries {
   series: string;
 }
 
-export interface ProfileAnime extends Anime {
+export interface ProfileAnime extends AnimeArray {
   currentAnimeSeries?: string;
 }
 

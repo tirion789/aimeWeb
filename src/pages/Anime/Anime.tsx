@@ -10,54 +10,63 @@ import styles from './Anime.module.scss';
 import AnimeControls from '../../componets/AnimeControls/AnimeControls';
 import { useAuth } from '../../hooks/useAuth';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+import Recommended from '../../componets/Recommended/Recommended';
+import Characters from '../../componets/Charatcer/Characters';
+import { setIsOpenPopupLogin } from '../../redux/filterSlice/filterSlice';
 
 const Anime = () => {
-  const { animeId } = useParams();
+  const { id } = useParams();
   const dispatch = useAppDispatch();
   const currentAnime = useAppSelector(currentItemSelector);
   const { isAuth } = useAuth();
 
   useEffect(() => {
-    if (animeId) {
-      dispatch(fetchAnime(animeId));
+    if (id) {
+      dispatch(fetchAnime(id));
     }
-  }, [animeId, dispatch]);
+  }, [id, dispatch]);
 
   if (!currentAnime) {
     return <p>Loading...</p>;
   }
 
+  const handleClickLogin = () => {
+    dispatch(setIsOpenPopupLogin(true));
+  };
+
   return (
-    <div className={styles.wrapper}>
+    <>
       <Header />
       <main>
-        <div className={styles.Anime}>
-          <div className={styles.Anime__background}>
-            <div className={styles.Anime__overlay}>
-              <div className={styles.Anime__container}>
-                <div className={styles.Anime__imgContaier}>
-                  <img className={styles.Anime__image} src={currentAnime?.animeImg} alt="anime" />
-                  <div className={styles.Anime__btnContainer}>
-                    {isAuth ? (
-                      <AnimeControls />
-                    ) : (
-                      <p>in order to add anime to the lists - log in</p>
-                    )}
-                  </div>
+        <div className={styles.Anime__background}>
+          <div className={styles.Anime__overlay}>
+            <div className={styles.Anime__container}>
+              <div className={styles.Anime__imgContaier}>
+                <img className={styles.Anime__image} src={currentAnime?.image} alt="anime" />
+                <div className={styles.Anime__btnContainer}>
+                  {isAuth ? (
+                    <AnimeControls />
+                  ) : (
+                    <button onClick={handleClickLogin} className={styles.Anime__loginButton}>
+                      Login
+                    </button>
+                  )}
                 </div>
-                <Discription />
               </div>
+              <Discription />
             </div>
           </div>
         </div>
         <Player />
+        <Characters />
+        {currentAnime.recommendations.length ? <Recommended /> : null}
       </main>
       <footer className={styles.FooterBackground}>
         <div className={styles.FooterOverlay}>
           <Footer />
         </div>
       </footer>
-    </div>
+    </>
   );
 };
 

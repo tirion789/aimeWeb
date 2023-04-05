@@ -50,7 +50,7 @@ const Preview: React.FC = () => {
       </p>
       <div className={styles.preview__buttonsContainer}>
         <Link
-          to={`/anime/tokyo-revengers-seiya-kessen-hen`}
+          to={`/anime/${tokyoRevengers?.id}`}
           className={styles.preview__buttonsContainer_watchLink}>
           Watch Now
         </Link>

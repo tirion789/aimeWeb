@@ -1,17 +1,17 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { AnimeItem, AnimeObject, SearchAnime, Video } from './types';
+import { AnimeApi, AnimeArray, AnimeObject, CurrentAnime, SearchAnime, Video } from './types';
 
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 export const animeApi = createApi({
   reducerPath: 'animeApi',
-  baseQuery: fetchBaseQuery({ baseUrl: 'https://gogoanime.consumet.stream/' }),
+  baseQuery: fetchBaseQuery({ baseUrl: 'https://api.consumet.org/meta/anilist/' }),
   endpoints: (builder) => ({
-    getPopularAnime: builder.query<AnimeObject[], string>({
+    getPopularAnime: builder.query<AnimeArray[], string>({
       query: (name) => name,
     }),
-    getTopAiringAnime: builder.query<AnimeObject[], string>({
+    getTopAiringAnime: builder.query<AnimeArray[], string>({
       query: (name) => name,
     }),
   }),
@@ -19,55 +19,53 @@ export const animeApi = createApi({
 
 export const { useGetPopularAnimeQuery, useGetTopAiringAnimeQuery } = animeApi;
 
-export const fetchPopularAnimes = createAsyncThunk<AnimeObject[]>(
-  'animes/fetchAnimesPopularStatus',
-  async () => {
-    const { data } = await axios.get<AnimeObject[]>('https://gogoanime.consumet.stream/popular');
-    return data;
-  },
-);
+export const fetchPopularAnimes = createAsyncThunk('animes/fetchAnimesPopularStatus', async () => {
+  const { data } = await axios.get<AnimeApi>(
+    'https://api.consumet.org/meta/anilist/popular?perPage=18',
+  );
+  return data.results;
+});
 
-export const fetchTopAiringAnimes = createAsyncThunk<AnimeObject[]>(
-  'animes/fetchAnimesTopAiring',
-  async () => {
-    const { data } = await axios.get<AnimeObject[]>('https://gogoanime.consumet.stream/top-airing');
-    return data;
-  },
-);
+export const fetchTopAiringAnimes = createAsyncThunk('animes/fetchAnimesTopAiring', async () => {
+  const { data } = await axios.get<AnimeApi>(
+    'https://api.consumet.org/meta/anilist/trending?perPage=18',
+  );
+  return data.results;
+});
 
-export const fetchAnime = createAsyncThunk('anime/fetchAnime', async (animeId: string) => {
-  const { data } = await axios.get<AnimeItem>(
-    'https://gogoanime.consumet.stream/anime-details/' + animeId,
+export const fetchAnime = createAsyncThunk('anime/fetchAnime', async (id: string) => {
+  const { data } = await axios.get<CurrentAnime>(
+    'https://api.consumet.org/meta/anilist/info/' + id,
   );
   return data;
 });
 
 export const fetchVideoAnime = createAsyncThunk(
   'anime/fetcVideoAnime',
-  async (params: { animeId: string; series: string | number | null }) => {
-    const { animeId, series } = params;
+  async (params: { currentEpisode: string | undefined }) => {
+    const { currentEpisode } = params;
     const { data } = await axios.get<Video>(
-      `https://gogoanime.consumet.stream/vidcdn/watch/${animeId}-episode-${series}`,
+      `https://api.consumet.org/meta/anilist/watch/${currentEpisode}`,
     );
     return data;
   },
 );
 
 export const fetchSearchAnime = createAsyncThunk('anime/searchAnime', async (value: string) => {
-  const { data } = await axios.get<SearchAnime[]>(
-    `https://gogoanime.consumet.stream/search?keyw=${value}`,
+  const { data } = await axios.get<AnimeApi>(
+    `https://api.consumet.org/meta/anilist/${value === '' ? 'empty value' : value}`,
   );
-  return data;
+  return data.results;
 });
 
 export const fetchGenresAnime = createAsyncThunk(
   'anime/genreAnime',
   async (params: { genreText: string; currentPaginationButton: number }) => {
     const { genreText, currentPaginationButton } = params;
-    const { data } = await axios.get<AnimeObject[]>(
-      `https://gogoanime.consumet.stream/genre/${genreText}?page=${currentPaginationButton}`,
+    const { data } = await axios.get<AnimeApi>(
+      `https://api.consumet.org/meta/anilist/advanced-search?genres=["${genreText}"]&page=${currentPaginationButton}`,
     );
-    return data;
+    return data.results;
   },
 );
 
@@ -87,15 +85,15 @@ export const fetchMoviesAnimeAph = createAsyncThunk(
 );
 
 export const fetchTokyoRevenger = createAsyncThunk('anime/tokyoRevenger', async () => {
-  const { data } = await axios.get<AnimeItem>(
-    'https://gogoanime.consumet.stream/anime-details/tokyo-revengers-seiya-kessen-hen',
+  const { data } = await axios.get<CurrentAnime>(
+    `https://api.consumet.org/meta/anilist/info/${142853}`,
   );
   return data;
 });
 
 export const fetchNagatoro = createAsyncThunk('anime/Nagatoro', async () => {
-  const { data } = await axios.get<AnimeItem>(
-    'https://gogoanime.consumet.stream/anime-details/ijiranaide-nagatoro-san-2nd-attack',
+  const { data } = await axios.get<CurrentAnime>(
+    `https://api.consumet.org/meta/anilist/info/${142853}`,
   );
   return data;
 });

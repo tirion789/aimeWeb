@@ -102,8 +102,8 @@ export const AlphabetArray = [
 export const navigationArray = ['Genre', 'Movies', 'ONas', 'News'] as const;
 
 export const genreArray = [
-  'action',
-  'adventure',
+  'Action',
+  'Adventure',
   'cars',
   'comedy',
   'crime',

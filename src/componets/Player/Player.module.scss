@@ -6,15 +6,7 @@
     position: relative;
     height: max-content;
     &::before {
-        content: '';
-        height: 3px;
-        width: 100%;
-        position: absolute;
-        background:  $basic-gradient-purple-red-border;
-        left: 0px;
-        top: 0;
-        z-index: 23;
-
+        @include border
     }
 
     &__iframe {

@@ -47,6 +47,7 @@ const animeSlice = createSlice({
       state.popularAnimes = [];
     });
     builder.addCase(fetchPopularAnimes.fulfilled, (state, action) => {
+      // @ts-ignore
       state.popularAnimes = action.payload;
       state.statusPopularAnime = StatusServer.SUCCESS;
     });
@@ -61,6 +62,7 @@ const animeSlice = createSlice({
       state.popularAnimes = [];
     });
     builder.addCase(fetchTopAiringAnimes.fulfilled, (state, action) => {
+      // @ts-ignore
       state.topAiringAnimes = action.payload;
       state.statusTopAiringAnimes = StatusServer.SUCCESS;
     });
@@ -130,6 +132,7 @@ const animeSlice = createSlice({
       state.searchAnime = [];
     });
     builder.addCase(fetchSearchAnime.fulfilled, (state, action) => {
+      // @ts-ignore
       state.searchAnime = action.payload;
       state.statusSearch = StatusServer.SUCCESS;
     });
@@ -144,6 +147,7 @@ const animeSlice = createSlice({
       state.genreAnime = [];
     });
     builder.addCase(fetchGenresAnime.fulfilled, (state, action) => {
+      // @ts-ignore
       state.genreAnime = action.payload;
       state.statusGenre = StatusServer.SUCCESS;
     });

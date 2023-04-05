@@ -9,52 +9,46 @@ import {
 } from '../../redux/animeSlice/selectors';
 import { setCurrentSeries } from '../../redux/profileSlice/profileSlice';
 import { getCurrentAnimeSelector } from '../../redux/profileSlice/selectors';
-import { MouseEvent } from 'react';
 import Loader from '../Loader/Loader';
 import Select from '../Select/Select';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 
 const Player = () => {
+  const FIRST_SERIES = '1';
   const dispatch = useAppDispatch();
-  const { animeId } = useParams();
+  const { id } = useParams();
   const animeVideo = useAppSelector(videoSelector);
   const currentAnime = useAppSelector(currentItemSelector);
+  const [currentEpisode, setCurrentEpisode] = useState<string | undefined>(
+    currentAnime?.episodes[0]?.id,
+  );
   const statusVideo = useAppSelector(statusPlayerSelector);
   const animeItem = useAppSelector((state) =>
-    getCurrentAnimeSelector(state, currentAnime?.animeTitle),
+    getCurrentAnimeSelector(state, currentAnime?.title.romaji),
   );
-  const [series, setSeries] = useState<string>(animeItem?.currentAnimeSeries || '1');
+  const [series, setSeries] = useState<string>(animeItem?.currentAnimeSeries || FIRST_SERIES);
 
   const handleOnSeriesClick = (value: string) => {
     setSeries(value);
     if (currentAnime) {
       const options = {
-        title: currentAnime.animeTitle,
+        title: currentAnime.title.romaji,
         series: value,
       };
       dispatch(setCurrentSeries(options));
     }
   };
 
-  const handleActiveSeriesClick = (event: MouseEvent<HTMLButtonElement>) => {
-    const target = event.target as HTMLButtonElement;
-    const value = target.innerHTML;
-    handleOnSeriesClick(value);
+  const handleActiveSeriesClick = (episodeNumber: number, episodeId: string) => {
+    handleOnSeriesClick(String(episodeNumber));
+    setCurrentEpisode(episodeId);
   };
 
-  let arraySeries: number[] = [];
-
-  if (currentAnime) {
-    for (let i = 1; i <= currentAnime.episodesList.length; i++) {
-      arraySeries.push(i);
-    }
-  }
-
   useEffect(() => {
-    if (animeId) {
-      dispatch(fetchVideoAnime({ animeId, series }));
+    if (id) {
+      dispatch(fetchVideoAnime({ currentEpisode }));
     }
-  }, [animeId, dispatch, currentAnime?.animeTitle, series]);
+  }, [id, dispatch, currentEpisode]);
 
   if (statusVideo === 'loading') {
     return <Loader />;
@@ -66,7 +60,6 @@ const Player = () => {
         <div className={styles.Player__overlay}>
           <div className={styles.Player__video}>
             <Select
-              arraySeries={arraySeries}
               series={series}
               setSeries={setSeries}
               handleActiveSeriesClick={handleActiveSeriesClick}
@@ -74,7 +67,7 @@ const Player = () => {
             <div className={styles.Player__iframeContainer}>
               <iframe
                 className={styles.Player__iframe}
-                src={animeVideo?.Referer}
+                src={animeVideo?.headers.Referer}
                 frameBorder="0"
                 scrolling="no"
                 allowFullScreen></iframe>

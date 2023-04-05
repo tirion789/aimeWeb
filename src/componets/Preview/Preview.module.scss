@@ -11,14 +11,16 @@
     }
 
     &__title{
+        margin-bottom: 39px;
+        margin-top: 9px;
+
+        max-width: 874px;
+
         font-family: 'Montserrat', sans-serif;
         font-size: 75px;
         font-weight: 600;
         line-height: 91px;
         text-align: left;
-        max-width: 874px;
-        margin-bottom: 39px;
-        margin-top: 9px;
     }
 
     &__listContaier{
@@ -27,8 +29,9 @@
     }
 
     &__iconList{
-        display: flex;
         margin-right: 16px;
+
+        display: flex;
 
         li:not(:last-child){
             margin-right: 15px;
@@ -37,6 +40,7 @@
 
     &__seriesList{
         display: flex;
+
         font-family: 'Montserrat', sans-serif;
         font-size: 20px;
         font-weight: 600;
@@ -85,7 +89,7 @@
     }
 
     &__description {
-        @include discription;
+        @include mediumText;
         margin-top: 40px;
         max-width: 550px;
     }

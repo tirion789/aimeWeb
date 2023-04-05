@@ -22,6 +22,7 @@ const Pagination = () => {
   } = usePagination(buttonsArray);
   const PREV = firestIndexSlice > 0 ? firestIndexSlice + 1 : firestIndexSlice;
   const VISIBLE = lastIndexSlice === buttonsArray.length - 1 ? lastIndexSlice + 1 : lastIndexSlice;
+  const LAST_ELEMENT_OF_ARRAY = buttonsArray.length - 1;
 
   useEffect(() => {
     dispatch(fetchGenresAnime({ genreText, currentPaginationButton }));
@@ -73,7 +74,7 @@ const Pagination = () => {
       <button
         className={styles.Pagination__buttonSwapPage}
         disabled={
-          lastIndexSlice === buttonsArray.length - 1 &&
+          lastIndexSlice === LAST_ELEMENT_OF_ARRAY &&
           currentPaginationButton === buttonsArray.length
         }
         onClick={handlePaginationClickNext}>

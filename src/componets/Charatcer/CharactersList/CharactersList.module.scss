@@ -1,0 +1,61 @@
+@import '../../../assets/scss/mixin.scss';
+
+.CharactersList {
+    &__list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 35px;
+        justify-content: center;
+        &:not(:last-child) {
+            margin-bottom: 25px;
+        }
+    }
+
+    &__item {
+        position: relative;
+    }
+
+    &__name {
+        @include mediumText;
+    }
+
+    &__swapButton {
+        svg {
+            transition: transform .15s ease-in-out,-webkit-transform .15s ease-in-out;
+            display: block;
+        }
+    }
+
+    &__charactersConteiner {
+        @include mediumText;
+        display: flex;
+        margin-bottom: 25px;
+        background: $basic-gradient-text-border-blue-red;
+        border: 2px solid transparent;
+        border-radius: 20px;
+        padding: 8px;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__headerText {
+        @include mediumText;
+    }
+
+    &__nameContainer {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        overflow: hidden;
+        bottom: 4px;
+        width: 260px;
+        background: linear-gradient(90deg, #101010 0%, rgba(0, 0, 0, 0.9) 100%);
+        flex-direction: column;
+    }
+
+    &__image {
+        width: 150px;
+        height: 250px;
+    }
+}

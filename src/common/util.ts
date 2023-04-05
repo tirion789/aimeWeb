@@ -27,7 +27,7 @@ export const getCurrentAnimeArray = (
 export const getDeletedCurrentAnimeFromProfile = (
   usedArray: ProfileAnime[],
   actionPayload: string,
-) => usedArray.filter((obj) => obj.animeTitle !== actionPayload);
+) => usedArray.filter((obj) => obj.title.romaji !== actionPayload);
 
 export const getPushCurrentlyObjectInArray = (
   usedArray: ProfileAnime[],
@@ -36,11 +36,11 @@ export const getPushCurrentlyObjectInArray = (
   actionPayload: ProfileAnime,
 ): ReplacedAnime => {
   const newArray = [...usedArray, actionPayload];
-  getDeletedCurrentAnimeFromProfile(firstUnusedArray, actionPayload.animeTitle);
-  getDeletedCurrentAnimeFromProfile(secondUnusedArray, actionPayload.animeTitle);
+  getDeletedCurrentAnimeFromProfile(firstUnusedArray, actionPayload.title.romaji);
+  getDeletedCurrentAnimeFromProfile(secondUnusedArray, actionPayload.title.romaji);
   return {
     mainArray: newArray,
-    firstArray: getDeletedCurrentAnimeFromProfile(firstUnusedArray, actionPayload.animeTitle),
-    secondArray: getDeletedCurrentAnimeFromProfile(secondUnusedArray, actionPayload.animeTitle),
+    firstArray: getDeletedCurrentAnimeFromProfile(firstUnusedArray, actionPayload.title.romaji),
+    secondArray: getDeletedCurrentAnimeFromProfile(secondUnusedArray, actionPayload.title.romaji),
   };
 };

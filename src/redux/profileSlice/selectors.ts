@@ -7,16 +7,16 @@ export const activeButtonSelector = (state: RootState) => state.profile.activeBu
 export const getCurrentAnimeSelector = (state: RootState, animeTitle?: string) => {
   const activeList = state.profile.activeButton;
   if (activeList && animeTitle) {
-    return state.profile[activeList].find((item) => item.animeTitle === animeTitle);
+    return state.profile[activeList].find((item) => item.title.romaji === animeTitle);
   }
 };
 export const getAnimeListNameSelector = (state: RootState, animeName?: string) => {
   if (!animeName) {
     return '';
   }
-  const favotires = state.profile.favorites.some(({ animeTitle }) => animeTitle === animeName);
-  const planned = state.profile.planned.some(({ animeTitle }) => animeTitle === animeName);
-  const reviewing = state.profile.reviewing.some(({ animeTitle }) => animeTitle === animeName);
+  const favotires = state.profile.favorites.some((obj) => obj.title.romaji === animeName);
+  const planned = state.profile.planned.some((obj) => obj.title.romaji === animeName);
+  const reviewing = state.profile.reviewing.some((obj) => obj.title.romaji === animeName);
   if (favotires) {
     return ListNames.FAVORITES;
   }

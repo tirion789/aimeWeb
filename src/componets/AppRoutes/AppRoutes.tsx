@@ -23,7 +23,7 @@ const AppRoutes = () => {
     <>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/anime/:animeId" element={<Anime />} />
+        <Route path="/anime/:id" element={<Anime />} />
         <Route path="/genre/:genreText" element={<GenrePage />} />
         <Route path="/movies" element={<Movies />} />
         <Route

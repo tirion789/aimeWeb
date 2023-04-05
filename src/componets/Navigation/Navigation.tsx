@@ -1,12 +1,12 @@
 import React from 'react';
 import styles from './Navigation.module.scss';
 import { Link } from 'react-router-dom';
-import { INavigation } from './interface';
+import { NavigationProps } from './interface';
 import { useAppDispatch } from '../../redux/hooks';
 import { setIsGenrePopupOpen } from '../../redux/filterSlice/filterSlice';
 import Genres from '../Genres/Genres';
 
-const Navigation: React.FC<INavigation> = ({ isDropdownOpen }) => {
+const Navigation = ({ isDropdownOpen }: NavigationProps) => {
   const dispatch = useAppDispatch();
 
   const handleIsPopapOpen = () => {

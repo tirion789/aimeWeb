@@ -53,7 +53,7 @@ const profileSlice = createSlice({
       const { title, series } = action.payload;
       const currentList = state.activeButton;
       if (currentList) {
-        const currentAnime = state[currentList].find((item) => item.animeTitle === title);
+        const currentAnime = state[currentList].find((item) => item.title.romaji === title);
         state[currentList] = state[currentList].map((item) =>
           item === currentAnime ? { ...currentAnime, currentAnimeSeries: series } : item,
         );

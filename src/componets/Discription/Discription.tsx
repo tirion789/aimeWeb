@@ -10,8 +10,8 @@ const Discription = () => {
   return (
     <div className={styles.Discription}>
       <div className={styles.Anime__discriptionAnimeTitle}>
-        <h1>{currentAnime?.animeTitle}</h1>
-        <h2>{currentAnime?.otherNames}</h2>
+        <h1>{currentAnime?.title.romaji}</h1>
+        <h2>{currentAnime?.title.native}</h2>
       </div>
       <div className={styles.Discription__info}>
         <dl className={styles.Discription__row}>
@@ -24,10 +24,15 @@ const Discription = () => {
           <dt className={styles.Discription__rowFirstColumn}>Genres</dt>
           <dd className={styles.Discription__rowTwoColumn}>{genresArray}</dd>
           <dt className={styles.Discription__rowFirstColumn}>Released Date</dt>
-          <dd className={styles.Discription__rowTwoColumn}>{currentAnime?.releasedDate}</dd>
+          <dd className={styles.Discription__rowTwoColumn}>{currentAnime?.releaseDate}</dd>
         </dl>
       </div>
-      <p className={styles.Discription__text}>{currentAnime?.synopsis}</p>
+      {currentAnime?.description && (
+        <div
+          className={styles.Discription__text}
+          dangerouslySetInnerHTML={{ __html: currentAnime?.description }}
+        />
+      )}
     </div>
   );
 };

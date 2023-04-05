@@ -3,11 +3,10 @@
 
 
 .Anime {
-    height: max-content;
 
     &__background{
         @include background;
-        background-image: url("../../assets/images/naruto.png");
+        background-image: url(../../assets/images/naruto.png);
         height: max-content;
         position: relative;
     
@@ -31,6 +30,17 @@
         display: flex;
         flex-direction: column;
         margin-right: 30px;
+    }
+
+    &__loginButton {
+        @include button;
+        width: 100%;
+
+        margin-right: 0;
+        
+        &::before {
+            content: '';
+        }
     }
 
     &__image {
@@ -92,6 +102,12 @@
         &__imgContaier {
             margin: 0 auto;
         }
+    }
+}
+
+@media (max-width: $modile) {
+    .Anime__container {
+        padding: 20px 20px;
     }
 }
 

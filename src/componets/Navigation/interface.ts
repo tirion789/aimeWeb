@@ -1,3 +1,3 @@
-export interface INavigation {
+export interface NavigationProps {
   isDropdownOpen: boolean;
 }

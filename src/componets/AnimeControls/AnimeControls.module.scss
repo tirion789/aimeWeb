@@ -1,6 +1,7 @@
 @import '../../assets/scss/mixin.scss';
 
 .AnimeControls {
+    position: relative;
     &__button{
         @include button;
         width: 250px;
@@ -19,6 +20,13 @@
         &::before {
             content: url(../../assets/images/icons/tick.svg)
         };
+    }
+
+    &__showButton {
+        position: absolute;
+        z-index: 2;
+        right: 15px;
+        top: 18px;
     }
 
     &__hiddenBtn {

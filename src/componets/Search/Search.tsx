@@ -8,10 +8,13 @@ import { ReactComponent as SearchImg } from '../../assets/images/icons/search.sv
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 
 const Search = () => {
+  const LAST_INDEX_ELEMENT_SLICE_ARRAY = 5;
+  const FIRST_INDEX_ELEMENT_SLICE_ARRAY = 0;
+  const SEARCH_DELAY = 700;
+
   const [value, setValue] = useState('');
   const dispatch = useAppDispatch();
   const [isSearchOpen, setIsSearchOpen] = useState(false);
-
   const searchAnime = useAppSelector(searchSelector);
 
   useEffect(() => {
@@ -24,7 +27,7 @@ const Search = () => {
 
   const updateSearchValue = debounce((str: string) => {
     onChangeValue(str);
-  }, 500);
+  }, SEARCH_DELAY);
 
   const onChangeSearch = (event: ChangeEvent<HTMLInputElement>) => {
     updateSearchValue(event.target.value);
@@ -47,13 +50,15 @@ const Search = () => {
       </button>
       {!!searchAnime.length && (
         <ul className={styles.Search__list}>
-          {searchAnime.slice(0, 5).map((obj) => (
-            <li>
-              <Link to={`/anime/${obj.animeId}`}>
-                <p>{obj.animeTitle}</p>
-              </Link>
-            </li>
-          ))}
+          {searchAnime
+            .slice(FIRST_INDEX_ELEMENT_SLICE_ARRAY, LAST_INDEX_ELEMENT_SLICE_ARRAY)
+            .map((obj) => (
+              <li>
+                <Link to={`/anime/${obj.id}`}>
+                  <p>{obj.title.romaji}</p>
+                </Link>
+              </li>
+            ))}
         </ul>
       )}
     </div>

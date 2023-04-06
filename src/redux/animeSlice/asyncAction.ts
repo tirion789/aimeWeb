@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { AnimeApi, AnimeArray, AnimeObject, CurrentAnime, SearchAnime, Video } from './types';
+import { AnimeApi, AnimeObject, CurrentAnime, SearchAnime, Video } from './types';
 
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
@@ -8,16 +8,27 @@ export const animeApi = createApi({
   reducerPath: 'animeApi',
   baseQuery: fetchBaseQuery({ baseUrl: 'https://api.consumet.org/meta/anilist/' }),
   endpoints: (builder) => ({
-    getPopularAnime: builder.query<AnimeArray[], string>({
+    getPopularAnime: builder.query<AnimeApi, string>({
       query: (name) => name,
     }),
-    getTopAiringAnime: builder.query<AnimeArray[], string>({
+    getTopAiringAnime: builder.query<AnimeApi, string>({
       query: (name) => name,
+    }),
+    getCurrentAnime: builder.query<CurrentAnime, string>({
+      query: (id) => `/info/${id}`,
+    }),
+    getAnimeViedo: builder.query<Video, string>({
+      query: (id) => `/watch/${id}`,
     }),
   }),
 });
 
-export const { useGetPopularAnimeQuery, useGetTopAiringAnimeQuery } = animeApi;
+export const {
+  useGetPopularAnimeQuery,
+  useGetTopAiringAnimeQuery,
+  useGetCurrentAnimeQuery,
+  useGetAnimeViedoQuery,
+} = animeApi;
 
 export const fetchPopularAnimes = createAsyncThunk('animes/fetchAnimesPopularStatus', async () => {
   const { data } = await axios.get<AnimeApi>(

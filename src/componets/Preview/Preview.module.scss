@@ -3,6 +3,19 @@
 .preview {
     padding: 76px 113px;
 
+    &__background {
+        @include background;
+        background: $basic-prewiev-two-overlay ,url("../../assets//images/tokyorevenge.png");
+        background-size: no-repeat;
+        background-position: center;;
+        background-size: cover;
+    }
+
+    &__overlay {
+        @include overlay;
+        background: $basic-prewiev-first-overlay;
+    }
+
     &__spotlight {
         font-family: 'Montserrat', sans-serif;
         font-size: 18px;
@@ -91,11 +104,11 @@
     &__description {
         @include mediumText;
         margin-top: 40px;
-        max-width: 550px;
+        max-width: 1000px;
     }
 
     &__buttonsContainer {
-        margin-top: 94px;
+        margin-top: 44px;
         &_watchLink {
             @include button;
             margin-right: 48px;

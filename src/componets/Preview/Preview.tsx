@@ -1,64 +1,67 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styles from './Preview.module.scss';
 import R from '../../assets/images/icons/R.svg';
 import HD from '../../assets/images/icons/4K.svg';
 import DUB from '../../assets/images/icons/DUB.svg';
 import SUB from '../../assets/images/icons/SUB.svg';
-import { tokyoRevengerSelector } from '../../redux/animeSlice/selectors';
-import { fetchTokyoRevenger } from '../../redux/animeSlice/asyncAction';
 import { setItems } from '../../redux/profileSlice/profileSlice';
 import { Link } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+import { useAppDispatch } from '../../redux/hooks';
+import { PreviewProps } from './interface';
+import Loader from '../Loader/Loader';
 
-const Preview: React.FC = () => {
-  const tokyoRevengers = useAppSelector(tokyoRevengerSelector);
+const Preview = ({ items, loading }: PreviewProps) => {
   const iconArray = [R, HD, DUB, SUB];
   const dispatch = useAppDispatch();
 
-  useEffect(() => {
-    dispatch(fetchTokyoRevenger());
-  }, [dispatch]);
-
-  const onClickAddListButton = () => {
-    if (tokyoRevengers) {
-      dispatch(setItems(tokyoRevengers));
+  const handleClickAddListButton = () => {
+    if (items) {
+      dispatch(setItems(items));
     }
   };
 
+  if (loading) {
+    return <Loader />;
+  }
+
   return (
-    <div className={styles.preview}>
-      <p className={styles.preview__spotlight}>#1 Spotlight</p>
-      <h1 className={styles.preview__title}>Tokyo Revengers: Christmas Showdown</h1>
-      <div className={styles.preview__listContaier}>
-        <ul className={styles.preview__iconList}>
-          {iconArray.map((icon, index) => (
-            <li key={index}>
-              <img src={icon} alt="icon" />
-            </li>
-          ))}
-        </ul>
-        <ul className={styles.preview__seriesList}>
-          <li className={styles.preview__seriesListItem}>TV</li>
-          <li className={styles.preview__seriesListItem}>Ep 1 / ? </li>
-          <li className={styles.preview__seriesListItem}>24m</li>
-        </ul>
-      </div>
-      <p className={styles.preview__description}>
-        Watching the news, Takemichi Hanagaki learns that his girlfriend from way back in middle
-        school, Hinata Tachibana, has died. The only girlfriend he ever had was just killed by a
-        villainous group known as the Tokyo Manji Gang. He lives in a crappy apartment with t...More
-      </p>
-      <div className={styles.preview__buttonsContainer}>
-        <Link
-          to={`/anime/${tokyoRevengers?.id}`}
-          className={styles.preview__buttonsContainer_watchLink}>
-          Watch Now
-        </Link>
-        <button
-          onClick={onClickAddListButton}
-          className={styles.preview__buttonsContainer_addToList}>
-          Add to List
-        </button>
+    <div style={{ backgroundImage: `url(${items?.cover})` }} className={styles.preview__background}>
+      <div className={styles.preview__overlay}>
+        <div className={styles.preview}>
+          {loading && <Loader />}
+          <p className={styles.preview__spotlight}>#1 spotlight</p>
+          <h1 className={styles.preview__title}>{items?.title.english}</h1>
+          <div className={styles.preview__listContaier}>
+            <ul className={styles.preview__iconList}>
+              {iconArray.map((icon, index) => (
+                <li key={index}>
+                  <img src={icon} alt="icon" />
+                </li>
+              ))}
+            </ul>
+            <ul className={styles.preview__seriesList}>
+              <li className={styles.preview__seriesListItem}>{items?.type}</li>
+              <li className={styles.preview__seriesListItem}>Ep 1 / {items?.totalEpisodes} </li>
+              <li className={styles.preview__seriesListItem}>{items?.duration}m</li>
+            </ul>
+          </div>
+          {items?.description && (
+            <div
+              className={styles.preview__description}
+              dangerouslySetInnerHTML={{ __html: items?.description }}
+            />
+          )}
+          <div className={styles.preview__buttonsContainer}>
+            <Link to={`/anime/${items?.id}`} className={styles.preview__buttonsContainer_watchLink}>
+              Watch Now
+            </Link>
+            <button
+              onClick={handleClickAddListButton}
+              className={styles.preview__buttonsContainer_addToList}>
+              Add to List
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );

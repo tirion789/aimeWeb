@@ -1,4 +1,5 @@
 @import '../../../assets/scss/mixin.scss';
+@import '../../../assets/scss/variables';
 
 .CharactersList {
     &__list {
@@ -21,7 +22,7 @@
 
     &__swapButton {
         svg {
-            transition: transform .15s ease-in-out,-webkit-transform .15s ease-in-out;
+            transition: $animate-for-svg;
             display: block;
         }
     }
@@ -49,7 +50,7 @@
         justify-content: center;
         overflow: hidden;
         bottom: 4px;
-        width: 260px;
+        width: 150px;
         background: linear-gradient(90deg, #101010 0%, rgba(0, 0, 0, 0.9) 100%);
         flex-direction: column;
     }

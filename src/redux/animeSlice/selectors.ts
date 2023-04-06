@@ -2,17 +2,9 @@ import { RootState } from '../store';
 
 export const animeSelector = (state: RootState) => state.anime;
 
-export const statusPopularSelector = (state: RootState) => state.anime.statusPopularAnime;
-
-export const statusTopAiringSelector = (state: RootState) => state.anime.statusTopAiringAnimes;
-
 export const statusPlayerSelector = (state: RootState) => state.anime.statusVideoAnime;
 
 export const statusTokyoRevengerSelector = (state: RootState) => state.anime.tokyoRevengerStatus;
-
-export const popularAnimesSelector = (state: RootState) => state.anime.popularAnimes;
-
-export const topAiringAnimesSelector = (state: RootState) => state.anime.topAiringAnimes;
 
 export const currentItemSelector = (state: RootState) => state.anime.currentItem;
 

@@ -9,7 +9,8 @@ import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 const Pagination = () => {
   const dispatch = useAppDispatch();
   const genreText = useAppSelector(genreTextSelector);
-  const buttonsArray = Array.from({ length: 12 }, (_, i = 1) => i + 1);
+
+  const buttonsArray = Array.from({ length: 100 }, (_, i = 1) => i + 1);
   const {
     handleClickOnFirstPage,
     handleClickOnLastPage,

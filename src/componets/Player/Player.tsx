@@ -19,6 +19,7 @@ const Player = () => {
   const { id } = useParams();
   const animeVideo = useAppSelector(videoSelector);
   const currentAnime = useAppSelector(currentItemSelector);
+
   const [currentEpisode, setCurrentEpisode] = useState<string | undefined>(
     currentAnime?.episodes[0]?.id,
   );
@@ -39,6 +40,13 @@ const Player = () => {
     }
   };
 
+  const handleSwapNextSeries = () => {
+    setCurrentEpisode(currentAnime?.episodes[Number(series)]?.id);
+  };
+
+  const handleSwapPrevSeries = () => {
+    setCurrentEpisode(currentAnime?.episodes[Number(series) - 2]?.id);
+  };
   const handleActiveSeriesClick = (episodeNumber: number, episodeId: string) => {
     handleOnSeriesClick(String(episodeNumber));
     setCurrentEpisode(episodeId);
@@ -60,6 +68,8 @@ const Player = () => {
         <div className={styles.Player__overlay}>
           <div className={styles.Player__video}>
             <Select
+              handleSwapNextSeries={handleSwapNextSeries}
+              handleSwapPrevSeries={handleSwapPrevSeries}
               series={series}
               setSeries={setSeries}
               handleActiveSeriesClick={handleActiveSeriesClick}

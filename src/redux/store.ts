@@ -22,7 +22,7 @@ export const store = configureStore({
   },
   // middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(animeApi.middleware),
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(listenerMiddleware.middleware),
+    getDefaultMiddleware().concat(listenerMiddleware.middleware).concat(animeApi.middleware),
 });
 
 setupListeners(store.dispatch);

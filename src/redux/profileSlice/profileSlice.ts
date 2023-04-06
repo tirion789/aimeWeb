@@ -9,7 +9,7 @@ export const initialState: ProfileSlice = {
   favorites: [],
   planned: [],
   reviewing: [],
-  activeButton: null,
+  activeButton: ListNames.FAVORITES,
 };
 
 const profileSlice = createSlice({

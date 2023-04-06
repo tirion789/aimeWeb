@@ -5,10 +5,8 @@ import {
   fetchMoviesAnime,
   fetchMoviesAnimeAph,
   fetchNagatoro,
-  fetchPopularAnimes,
   fetchSearchAnime,
   fetchTokyoRevenger,
-  fetchTopAiringAnimes,
   fetchVideoAnime,
 } from './asyncAction';
 import { AnimeSliceState, StatusServer } from './types';
@@ -16,11 +14,7 @@ import { AnimeSliceState, StatusServer } from './types';
 const initialState: AnimeSliceState = {
   currentItem: null,
   tokyoRevenger: null,
-  popularAnimes: [],
-  topAiringAnimes: [],
-  statusPopularAnime: StatusServer.LOADING,
   status: StatusServer.LOADING,
-  statusTopAiringAnimes: StatusServer.LOADING,
   video: null,
   statusVideoAnime: StatusServer.LOADING,
   searchAnime: [],
@@ -41,36 +35,6 @@ const animeSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    // get popular anime
-    builder.addCase(fetchPopularAnimes.pending, (state) => {
-      state.statusPopularAnime = StatusServer.LOADING;
-      state.popularAnimes = [];
-    });
-    builder.addCase(fetchPopularAnimes.fulfilled, (state, action) => {
-      // @ts-ignore
-      state.popularAnimes = action.payload;
-      state.statusPopularAnime = StatusServer.SUCCESS;
-    });
-    builder.addCase(fetchPopularAnimes.rejected, (state) => {
-      state.statusPopularAnime = StatusServer.ERROR;
-      state.topAiringAnimes = [];
-    });
-
-    // get top airing anime
-    builder.addCase(fetchTopAiringAnimes.pending, (state) => {
-      state.statusTopAiringAnimes = StatusServer.LOADING;
-      state.popularAnimes = [];
-    });
-    builder.addCase(fetchTopAiringAnimes.fulfilled, (state, action) => {
-      // @ts-ignore
-      state.topAiringAnimes = action.payload;
-      state.statusTopAiringAnimes = StatusServer.SUCCESS;
-    });
-    builder.addCase(fetchTopAiringAnimes.rejected, (state) => {
-      state.statusTopAiringAnimes = StatusServer.ERROR;
-      state.topAiringAnimes = [];
-    });
-
     // get current anime
     builder.addCase(fetchAnime.pending, (state) => {
       state.status = StatusServer.LOADING;
@@ -132,7 +96,6 @@ const animeSlice = createSlice({
       state.searchAnime = [];
     });
     builder.addCase(fetchSearchAnime.fulfilled, (state, action) => {
-      // @ts-ignore
       state.searchAnime = action.payload;
       state.statusSearch = StatusServer.SUCCESS;
     });
@@ -147,9 +110,8 @@ const animeSlice = createSlice({
       state.genreAnime = [];
     });
     builder.addCase(fetchGenresAnime.fulfilled, (state, action) => {
-      // @ts-ignore
-      state.genreAnime = action.payload;
       state.statusGenre = StatusServer.SUCCESS;
+      state.genreAnime = action.payload;
     });
     builder.addCase(fetchGenresAnime.rejected, (state) => {
       state.statusGenre = StatusServer.ERROR;

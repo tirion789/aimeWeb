@@ -5,7 +5,13 @@ import { useAppSelector } from '../../redux/hooks';
 import { currentItemSelector } from '../../redux/animeSlice/selectors';
 import { ReactComponent as Arrow } from '../../assets/images/icons/paginationArrow.svg';
 
-const Select = ({ setSeries, series, handleActiveSeriesClick }: SelectProps) => {
+const Select = ({
+  setSeries,
+  series,
+  handleActiveSeriesClick,
+  handleSwapNextSeries,
+  handleSwapPrevSeries,
+}: SelectProps) => {
   const SERIES = 1;
   const currentAnime = useAppSelector(currentItemSelector);
   const [showSeriesSelector, setShowSeriesSelector] = useState(false);
@@ -23,10 +29,12 @@ const Select = ({ setSeries, series, handleActiveSeriesClick }: SelectProps) => 
 
   const handleClickSetNextSeries = () => {
     setSeries((prev: string) => Number(prev) + SERIES);
+    handleSwapNextSeries();
   };
 
   const handleClickSetPrevSeries = () => {
     setSeries((prev: string) => Number(prev) - SERIES);
+    handleSwapPrevSeries();
   };
 
   const filterArray = currentAnime?.episodes.filter((obj) =>

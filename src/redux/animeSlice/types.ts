@@ -1,3 +1,14 @@
+export type Recommendations = {
+  cover: string;
+  episodes: number;
+  id: number;
+  image: string;
+  rating: number;
+  status: string;
+  title: { romaji: string; english: string; native: string };
+  totalEpisodes?: number;
+};
+
 export interface AnimeArray {
   cover: string;
   description: string;
@@ -19,7 +30,7 @@ export interface AnimeArray {
 }
 
 export interface AnimeApi {
-  results: AnimeArray;
+  results: AnimeArray[];
   currentPage: number;
   hasNextPage: boolean;
   totalPages?: number;
@@ -48,17 +59,7 @@ export interface CurrentAnime extends AnimeArray {
     },
   ];
   popularity: number;
-  recommendations: [
-    {
-      cover: string;
-      episodes: number;
-      id: number;
-      image: string;
-      rating: number;
-      status: string;
-      title: { romaji: string; english: string; native: string };
-    },
-  ];
+  recommendations: Recommendations[];
   relations: [
     {
       color: string;
@@ -110,8 +111,6 @@ export interface AnimeSliceState {
   nagatoro: CurrentAnime | null;
   tokyoRevengerStatus: StatusServer;
   video: Video | null;
-  statusPopularAnime: StatusServer;
-  statusTopAiringAnimes: StatusServer;
   statusMoviesAph: StatusServer;
   statusMoviesAnimes: StatusServer;
   statusVideoAnime: StatusServer;
@@ -119,8 +118,6 @@ export interface AnimeSliceState {
   statusSearch: StatusServer;
   statusGenre: StatusServer;
   status: StatusServer;
-  popularAnimes: AnimeArray[];
-  topAiringAnimes: AnimeArray[];
   moviesAph: SearchAnime[];
   searchAnime: AnimeArray[];
   moviesAnimes: AnimeObject[];

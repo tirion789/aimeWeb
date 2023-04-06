@@ -5,7 +5,6 @@
 
 .previewBackground{
     @include background;
-    background: $basic-prewiev-two-overlay ,url("../../assets//images/tokyorevenge.png");
     background-size: no-repeat;
     background-position: center;;
     background-size: cover;

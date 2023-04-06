@@ -1,7 +1,8 @@
 import { AnimeArray } from '../../redux/animeSlice/types';
 
 export interface MainCategoriesProps {
-  items: AnimeArray[];
-  status: string;
+  items?: AnimeArray[];
+  isError: boolean;
+  isLoading: boolean;
   name: string;
 }

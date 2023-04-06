@@ -19,6 +19,9 @@ $basic-gradient-nav-links: linear-gradient(188.73deg, #1DA1F2 11.03%, #C93677 79
 linear-gradient(0deg, #FFFFFF, #FFFFFF);
 
 
+$animate-for-svg: transform .15s ease-in-out,-webkit-transform .15s ease-in-out;
+
+
 $modile: 670px;
 $tablet: 1024px;
 $main-categories-width: 1669px

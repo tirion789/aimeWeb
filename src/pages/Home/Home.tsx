@@ -7,28 +7,33 @@ import AlphabetSearch from '../../componets/AlphabetSearch/AlphabetSearch';
 import Footer from '../../componets/Footer/Footer';
 import MainCategories from '../../componets/MainCategories/MainCategories';
 import {
-  statusTopAiringSelector,
-  statusPopularSelector,
-  topAiringAnimesSelector,
-  popularAnimesSelector,
-} from '../../redux/animeSlice/selectors';
-import { useAppSelector } from '../../redux/hooks';
+  useGetPopularAnimeQuery,
+  useGetTopAiringAnimeQuery,
+} from '../../redux/animeSlice/asyncAction';
 
 const Home: React.FC = () => {
-  const popularAnimesArray = useAppSelector(popularAnimesSelector);
-  const topAiringAnimesArray = useAppSelector(topAiringAnimesSelector);
-  const statusPopularAnimes = useAppSelector(statusPopularSelector);
-  const statusTopAiringAnimes = useAppSelector(statusTopAiringSelector);
+  const {
+    data: popularAnimeArray,
+    isLoading: popularLoading,
+    isError: popularError,
+  } = useGetPopularAnimeQuery('popular?perPage=18');
+  const {
+    data: trendingAnimeArray,
+    isLoading: trendingLoading,
+    isError: trendingError,
+  } = useGetTopAiringAnimeQuery('trending?perPage=18');
 
   const mainCategoriesArray = [
     {
-      items: popularAnimesArray,
-      status: statusPopularAnimes,
+      items: popularAnimeArray?.results,
+      isLoading: popularLoading,
+      isError: popularError,
       name: 'Most Popular',
     },
     {
-      items: topAiringAnimesArray,
-      status: statusTopAiringAnimes,
+      items: trendingAnimeArray?.results,
+      isLoading: trendingLoading,
+      isError: trendingError,
       name: 'Top Airing',
     },
   ];
@@ -37,10 +42,8 @@ const Home: React.FC = () => {
     <div className={styles.wrapper}>
       <Header />
       <main>
-        <div className={styles.previewBackground}>
-          <div className={styles.previewOverlay}>
-            <Preview />
-          </div>
+        <div className={styles.preview__container}>
+          <Preview items={trendingAnimeArray?.results[5]} loading={trendingLoading} />
         </div>
         <div className={styles.Recommended}>
           <div className={styles.Recommended__overlay}>

@@ -13,6 +13,7 @@ import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import Recommended from '../../componets/Recommended/Recommended';
 import Characters from '../../componets/Charatcer/Characters';
 import { setIsOpenPopupLogin } from '../../redux/filterSlice/filterSlice';
+import Relations from '../../componets/Relations/Relations';
 
 const Anime = () => {
   const { id } = useParams();
@@ -57,9 +58,10 @@ const Anime = () => {
             </div>
           </div>
         </div>
-        <Player />
+        {currentAnime.type === 'MANGA' ? '' : <Player />}
         <Characters />
         {currentAnime.recommendations.length ? <Recommended /> : null}
+        {currentAnime.relations.length ? <Relations /> : null}
       </main>
       <footer className={styles.FooterBackground}>
         <div className={styles.FooterOverlay}>

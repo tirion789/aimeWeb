@@ -1,14 +1,9 @@
 import React from 'react';
-import Loader from '../Loader/Loader';
 import { MainCategoriesProps } from './interface';
 import styles from './MainCategories.module.scss';
 import Slider from '../Slider/Slider';
 
-const MainCategories = ({ items, isError, isLoading, name }: MainCategoriesProps) => {
-  if (isLoading) {
-    return <Loader />;
-  }
-
+const MainCategories = ({ items, isError, name }: MainCategoriesProps) => {
   return (
     <div className={styles.MainCategories}>
       <div className={styles.MainCategories__container}>

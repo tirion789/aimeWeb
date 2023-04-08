@@ -101,7 +101,12 @@ export const AlphabetArray = [
 
 export const navigationArray = ['Genre', 'Movies', 'ONas', 'News'] as const;
 
+export const seasonArray = ['Any', 'WINTER', 'SUMMER', 'SPRING', 'FALL'];
+
+export const typeArray = ['ANIME', 'MANGA'];
+
 export const genreArray = [
+  'Any',
   'Action',
   'Adventure',
   'Cars',
@@ -120,7 +125,9 @@ export const genreArray = [
   'Sports',
   'Supernatural',
   'Thriller',
-] as const;
+];
+
+export const formatArray = ['Any', 'TV', 'OVA', 'ONA', 'MOVIE', 'SPECIAL'];
 
 export const FORM_TYPES = {
   signUp: 'Sing Up',

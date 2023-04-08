@@ -2,17 +2,8 @@ import React from 'react';
 import styles from './Navigation.module.scss';
 import { Link } from 'react-router-dom';
 import { NavigationProps } from './interface';
-import { useAppDispatch } from '../../redux/hooks';
-import { setIsGenrePopupOpen } from '../../redux/filterSlice/filterSlice';
-import Genres from '../Genres/Genres';
 
 const Navigation = ({ isDropdownOpen }: NavigationProps) => {
-  const dispatch = useAppDispatch();
-
-  const handleIsPopapOpen = () => {
-    dispatch(setIsGenrePopupOpen(true));
-  };
-
   return (
     <nav className={styles.Navigation__navigation}>
       <ul
@@ -20,10 +11,9 @@ const Navigation = ({ isDropdownOpen }: NavigationProps) => {
           isDropdownOpen && styles.Navigation__active
         }`}>
         <li>
-          <button onClick={handleIsPopapOpen} className={styles.Navigation__genreButton}>
-            Genre
-          </button>
-          <Genres />
+          <Link to={'/filters'} className={styles.Navigation__genreButton}>
+            Anime
+          </Link>
         </li>
         <li className={styles.Navigation__navigationListItem}>
           <Link className={styles.Navigation__navigationListMovies} to={'/movies'}>

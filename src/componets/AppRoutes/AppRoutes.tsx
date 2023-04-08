@@ -12,19 +12,20 @@ import { useAuth } from '../../hooks/useAuth';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ProtectedRoute from './ProtectedRoute/ProtectedRoute';
+import Loader from '../Loader/Loader';
 
 const AppRoutes = () => {
   const { isLoading, isAuth } = useAuth();
 
   if (isLoading) {
-    return <p>loading...</p>;
+    return <Loader />;
   }
   return (
     <>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/anime/:id" element={<Anime />} />
-        <Route path="/genre/:genreText" element={<GenrePage />} />
+        <Route path="/filters" element={<GenrePage />} />
         <Route path="/movies" element={<Movies />} />
         <Route
           path="/profile"

@@ -1,33 +1,24 @@
-import React, { useEffect } from 'react';
-import { fetchGenresAnime } from '../../redux/animeSlice/asyncAction';
-import { genreTextSelector } from '../../redux/filterSlice/selectors';
+import React from 'react';
 import styles from './Pagination.module.scss';
 import { ReactComponent as Arrow } from '../../assets/images/icons/paginationArrow.svg';
-import { usePagination } from '../../hooks/usePagination';
-import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+import { PaginationProps } from './interface';
 
-const Pagination = () => {
-  const dispatch = useAppDispatch();
-  const genreText = useAppSelector(genreTextSelector);
-
-  const buttonsArray = Array.from({ length: 100 }, (_, i = 1) => i + 1);
-  const {
-    handleClickOnFirstPage,
-    handleClickOnLastPage,
-    handlePaginationClickNext,
-    handlePaginationClickPrev,
-    handleClickPaginationButton,
-    lastIndexSlice,
-    firestIndexSlice,
-    currentPaginationButton,
-  } = usePagination(buttonsArray);
+const Pagination = ({
+  buttonsArray,
+  currentPaginationButton,
+  handleClickOnLastPage,
+  firestIndexSlice,
+  lastIndexSlice,
+  handlePaginationClickPrev,
+  handleClickOnFirstPage,
+  handleClickPaginationButton,
+  handlePaginationClickNext,
+}: PaginationProps) => {
   const PREV = firestIndexSlice > 0 ? firestIndexSlice + 1 : firestIndexSlice;
   const VISIBLE = lastIndexSlice === buttonsArray.length - 1 ? lastIndexSlice + 1 : lastIndexSlice;
   const LAST_ELEMENT_OF_ARRAY = buttonsArray.length - 1;
 
-  useEffect(() => {
-    dispatch(fetchGenresAnime({ genreText, currentPaginationButton }));
-  }, [currentPaginationButton, dispatch, genreText]);
+  console.log(currentPaginationButton);
 
   return (
     <div className={styles.Pagination}>

@@ -107,19 +107,15 @@ export enum StatusServer {
 
 export interface AnimeSliceState {
   currentItem: CurrentAnime | null;
-  tokyoRevenger: CurrentAnime | null;
   nagatoro: CurrentAnime | null;
-  tokyoRevengerStatus: StatusServer;
   video: Video | null;
   statusMoviesAph: StatusServer;
   statusMoviesAnimes: StatusServer;
   statusVideoAnime: StatusServer;
   statusRecentEpisodes: StatusServer;
   statusSearch: StatusServer;
-  statusGenre: StatusServer;
   status: StatusServer;
   moviesAph: SearchAnime[];
   searchAnime: AnimeArray[];
   moviesAnimes: AnimeObject[];
-  genreAnime: AnimeArray[];
 }

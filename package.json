@@ -9,6 +9,8 @@
     "@testing-library/user-event": "^13.5.0",
     "@types/lodash": "^4.14.191",
     "axios": "^1.2.3",
+    "eslint": "^8.37.0",
+    "eslint-plugin-only-warn": "^1.1.0",
     "firebase": "^9.17.2",
     "lodash": "^4.17.21",
     "node-sass": "^8.0.0",
@@ -31,7 +33,10 @@
     "extends": [
       "react-app",
       "react-app/jest"
-    ]
+    ],
+    "rules": {
+      "no-console": "warn"
+    }
   },
   "browserslist": {
     "production": [
@@ -44,5 +49,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "eslint-config-react-app": "^7.0.1"
   }
 }

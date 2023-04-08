@@ -1,32 +1,26 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {
   fetchAnime,
-  fetchGenresAnime,
   fetchMoviesAnime,
   fetchMoviesAnimeAph,
   fetchNagatoro,
   fetchSearchAnime,
-  fetchTokyoRevenger,
   fetchVideoAnime,
 } from './asyncAction';
 import { AnimeSliceState, StatusServer } from './types';
 
 const initialState: AnimeSliceState = {
   currentItem: null,
-  tokyoRevenger: null,
   status: StatusServer.LOADING,
   video: null,
   statusVideoAnime: StatusServer.LOADING,
   searchAnime: [],
   statusSearch: StatusServer.LOADING,
-  genreAnime: [],
-  statusGenre: StatusServer.LOADING,
   statusMoviesAnimes: StatusServer.LOADING,
   moviesAnimes: [],
   statusRecentEpisodes: StatusServer.LOADING,
   moviesAph: [],
   statusMoviesAph: StatusServer.LOADING,
-  tokyoRevengerStatus: StatusServer.LOADING,
   nagatoro: null,
 };
 
@@ -47,18 +41,6 @@ const animeSlice = createSlice({
     builder.addCase(fetchAnime.rejected, (state) => {
       state.status = StatusServer.ERROR;
       state.currentItem = null;
-    });
-
-    // tokyo revenger
-    builder.addCase(fetchTokyoRevenger.pending, (state) => {
-      state.tokyoRevengerStatus = StatusServer.LOADING;
-    });
-    builder.addCase(fetchTokyoRevenger.fulfilled, (state, action) => {
-      state.tokyoRevenger = action.payload;
-      state.tokyoRevengerStatus = StatusServer.SUCCESS;
-    });
-    builder.addCase(fetchTokyoRevenger.rejected, (state) => {
-      state.tokyoRevengerStatus = StatusServer.ERROR;
     });
 
     // nagatoro
@@ -102,20 +84,6 @@ const animeSlice = createSlice({
     builder.addCase(fetchSearchAnime.rejected, (state) => {
       state.statusSearch = StatusServer.ERROR;
       state.searchAnime = [];
-    });
-
-    // get anime genre
-    builder.addCase(fetchGenresAnime.pending, (state) => {
-      state.statusGenre = StatusServer.LOADING;
-      state.genreAnime = [];
-    });
-    builder.addCase(fetchGenresAnime.fulfilled, (state, action) => {
-      state.statusGenre = StatusServer.SUCCESS;
-      state.genreAnime = action.payload;
-    });
-    builder.addCase(fetchGenresAnime.rejected, (state) => {
-      state.statusGenre = StatusServer.ERROR;
-      state.genreAnime = [];
     });
 
     // get movies anime

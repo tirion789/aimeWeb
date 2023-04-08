@@ -53,6 +53,14 @@
         background: $basic-mainCategories-background
     }
 
+    &__filtersContainer {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 40px;
+        
+    }
+
     &__image {
         width: 257px;
         height: 400px;

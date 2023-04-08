@@ -20,6 +20,9 @@ export const animeApi = createApi({
     getAnimeViedo: builder.query<Video, string>({
       query: (id) => `/watch/${id}`,
     }),
+    getFiltersAnime: builder.query<AnimeApi, string>({
+      query: (filters) => `/advanced-search?${filters}`,
+    }),
   }),
 });
 
@@ -28,21 +31,8 @@ export const {
   useGetTopAiringAnimeQuery,
   useGetCurrentAnimeQuery,
   useGetAnimeViedoQuery,
+  useGetFiltersAnimeQuery,
 } = animeApi;
-
-export const fetchPopularAnimes = createAsyncThunk('animes/fetchAnimesPopularStatus', async () => {
-  const { data } = await axios.get<AnimeApi>(
-    'https://api.consumet.org/meta/anilist/popular?perPage=18',
-  );
-  return data.results;
-});
-
-export const fetchTopAiringAnimes = createAsyncThunk('animes/fetchAnimesTopAiring', async () => {
-  const { data } = await axios.get<AnimeApi>(
-    'https://api.consumet.org/meta/anilist/trending?perPage=18',
-  );
-  return data.results;
-});
 
 export const fetchAnime = createAsyncThunk('anime/fetchAnime', async (id: string) => {
   const { data } = await axios.get<CurrentAnime>(
@@ -69,16 +59,26 @@ export const fetchSearchAnime = createAsyncThunk('anime/searchAnime', async (val
   return data.results;
 });
 
-export const fetchGenresAnime = createAsyncThunk(
-  'anime/genreAnime',
-  async (params: { genreText: string; currentPaginationButton: number }) => {
-    const { genreText, currentPaginationButton } = params;
-    const { data } = await axios.get<AnimeApi>(
-      `https://api.consumet.org/meta/anilist/advanced-search?genres=["${genreText}"]&page=${currentPaginationButton}`,
-    );
-    return data.results;
-  },
-);
+// export const fetchGenresAnime = createAsyncThunk(
+//   'anime/genreAnime',
+//   async (params: {
+//     genreText: string;
+//     currentPaginationButton: number;
+//     season: string;
+//     format: string;
+//     type: string;
+//   }) => {
+//     const { genreText, currentPaginationButton, season, format, type } = params;
+//     const { data } = await axios.get<AnimeApi>(
+//       `https://api.consumet.org/meta/anilist/advanced-search?${
+//         genreText === 'Any' ? '' : `genres=["${genreText}"]`
+//       }${season === 'Any' ? '' : `&season=${season}`}${
+//         format === 'Any' ? '' : `&format=${format}`
+//       }&type=${type}&page=${currentPaginationButton}`,
+//     );
+//     return data.results;
+//   },
+// );
 
 export const fetchMoviesAnime = createAsyncThunk('anime/moviesAnime', async () => {
   const { data } = await axios.get<AnimeObject[]>('https://gogoanime.consumet.stream/anime-movies');
@@ -94,13 +94,6 @@ export const fetchMoviesAnimeAph = createAsyncThunk(
     return data;
   },
 );
-
-export const fetchTokyoRevenger = createAsyncThunk('anime/tokyoRevenger', async () => {
-  const { data } = await axios.get<CurrentAnime>(
-    `https://api.consumet.org/meta/anilist/info/${142853}`,
-  );
-  return data;
-});
 
 export const fetchNagatoro = createAsyncThunk('anime/Nagatoro', async () => {
   const { data } = await axios.get<CurrentAnime>(

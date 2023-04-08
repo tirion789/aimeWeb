@@ -3,5 +3,8 @@ export interface FilterSlice {
   genreText: string;
   series: string;
   letter: string;
-  isGenrePopupOpen: boolean;
+  season: string;
+  format: string;
+  type: string;
+  currentPaginationButtons: number;
 }

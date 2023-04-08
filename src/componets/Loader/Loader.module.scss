@@ -1,12 +1,9 @@
 @import '../../assets/scss/_variables';
 
 .lds_ring {
-    display: inline-block;
-    position: relative;
-    width: 80px;
-    height: 80px;
-    margin: 0 auto;
-    display: flex;
+  left:47%;
+  top:45%;
+  position:fixed;
   }
   .lds_ring div {
     box-sizing: border-box;

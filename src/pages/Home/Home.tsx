@@ -10,6 +10,7 @@ import {
   useGetPopularAnimeQuery,
   useGetTopAiringAnimeQuery,
 } from '../../redux/animeSlice/asyncAction';
+import Loader from '../../componets/Loader/Loader';
 
 const Home: React.FC = () => {
   const {
@@ -26,24 +27,26 @@ const Home: React.FC = () => {
   const mainCategoriesArray = [
     {
       items: popularAnimeArray?.results,
-      isLoading: popularLoading,
       isError: popularError,
       name: 'Most Popular',
     },
     {
       items: trendingAnimeArray?.results,
-      isLoading: trendingLoading,
       isError: trendingError,
       name: 'Top Airing',
     },
   ];
+
+  if (popularLoading || trendingLoading) {
+    return <Loader />;
+  }
 
   return (
     <div className={styles.wrapper}>
       <Header />
       <main>
         <div className={styles.preview__container}>
-          <Preview items={trendingAnimeArray?.results[5]} loading={trendingLoading} />
+          <Preview items={trendingAnimeArray?.results[2]} loading={trendingLoading} />
         </div>
         <div className={styles.Recommended}>
           <div className={styles.Recommended__overlay}>

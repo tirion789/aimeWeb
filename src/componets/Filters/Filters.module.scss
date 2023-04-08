@@ -1,0 +1,47 @@
+@import '../../assets/scss/variables';
+@import '../../assets/scss/mixin.scss';
+
+.Filter {
+    position: relative;
+    &__conteiner {
+        display: flex;
+        gap: 25px;
+        position: relative;
+    }
+
+
+    &__list {
+        border: 1px solid transparent;
+        background: $basic-gradient-text-border-blue-red;
+        position: absolute;
+        z-index: 2;
+        left: 147px;
+        text-align: center;
+        background-color: black;
+        height: 116px;
+        overflow-y: scroll;
+    }
+
+    h1 {
+        width: 123px;
+    }
+
+    &__item {
+        width: 140px;
+        padding: 5px;
+        @include mediumText;
+        border-bottom: 1px solid transparent;
+        background: $basic-gradient-text-border-blue-red;
+    }
+
+    &__button {
+        width: 146px;
+        border: 1px solid transparent;
+        background: $basic-gradient-text-border-blue-red;
+        @include mediumText;
+
+        &:disabled {
+            border-color: #6b6b6b;
+          }
+    }
+}

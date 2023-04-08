@@ -17,8 +17,12 @@ const Discription = () => {
         <dl className={styles.Discription__row}>
           <dt className={styles.Discription__rowFirstColumn}>Type</dt>
           <dd className={styles.Discription__rowTwoColumn}>{currentAnime?.type}</dd>
-          <dt className={styles.Discription__rowFirstColumn}>Episodes</dt>
-          <dd className={styles.Discription__rowTwoColumn}>{currentAnime?.totalEpisodes}</dd>
+          <dt className={styles.Discription__rowFirstColumn}>
+            {!currentAnime?.totalEpisodes ? 'Chapters' : 'Episodes'}
+          </dt>
+          <dd className={styles.Discription__rowTwoColumn}>
+            {currentAnime?.totalEpisodes ? currentAnime?.totalEpisodes : '?'}
+          </dd>
           <dt className={styles.Discription__rowFirstColumn}>Status</dt>
           <dd className={styles.Discription__rowTwoColumn}>{currentAnime?.status}</dd>
           <dt className={styles.Discription__rowFirstColumn}>Genres</dt>

@@ -44,3 +44,8 @@ export const getPushCurrentlyObjectInArray = (
     secondArray: getDeletedCurrentAnimeFromProfile(secondUnusedArray, actionPayload.title.romaji),
   };
 };
+
+export const getNormalizeTitle = (string: string) => {
+  const lowerCaseString = string.toLowerCase();
+  return lowerCaseString.charAt(0).toUpperCase() + lowerCaseString.slice(1);
+};

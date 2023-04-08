@@ -46,7 +46,8 @@ const Slider = ({ items }: SliderProps) => {
                 <h2 className={styles.Slider__titleListItemNames}>{title.romaji}</h2>
                 <div style={{ display: 'flex' }}>
                   <p className={styles.Slider__episodes}>
-                    Episodes: {totalEpisodes ? totalEpisodes : episodes}
+                    {episodes || totalEpisodes ? 'Episodes: ' : 'Chapters'}
+                    {totalEpisodes || episodes ? totalEpisodes || episodes : '?'}
                   </p>
                   <div style={{ marginLeft: 'auto' }}>
                     <Star width={19} height={19} />

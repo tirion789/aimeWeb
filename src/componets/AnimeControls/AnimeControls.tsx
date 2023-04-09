@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { currentItemSelector } from '../../redux/animeSlice/selectors';
 import {
   setActiveButton,
   setItems,
@@ -12,14 +11,13 @@ import styles from './AnimeControls.module.scss';
 import AnimeControlsListItems from './AnimeControlsListItem/AnimeControlsListItems';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { ReactComponent as Sort } from '../../assets/images/icons/sort.svg';
+import { AnimeControlsInterface } from './AnimeControlsInterface';
 
 const buttonsList = Object.values(ListNames);
 
-const AnimeControls = () => {
+const AnimeControls = ({ currentAnime }: AnimeControlsInterface) => {
   const [showHiddenButton, setShowHiddenButton] = useState(false);
-  // const [activeButton, setActiveButton] = useState('planned');
   const currentActiveButton = useAppSelector(activeButtonSelector);
-  const currentAnime = useAppSelector(currentItemSelector);
   const currentAnimeListName = useAppSelector((state) =>
     getAnimeListNameSelector(state, currentAnime?.title.romaji),
   );

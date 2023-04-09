@@ -1,8 +1,6 @@
 import React, { ChangeEvent, useState } from 'react';
 import { SelectProps } from './interface';
 import styles from './Select.module.scss';
-import { useAppSelector } from '../../redux/hooks';
-import { currentItemSelector } from '../../redux/animeSlice/selectors';
 import { ReactComponent as Arrow } from '../../assets/images/icons/paginationArrow.svg';
 
 const Select = ({
@@ -11,9 +9,9 @@ const Select = ({
   handleActiveSeriesClick,
   handleSwapNextSeries,
   handleSwapPrevSeries,
+  currentAnime,
 }: SelectProps) => {
   const SERIES = 1;
-  const currentAnime = useAppSelector(currentItemSelector);
   const [showSeriesSelector, setShowSeriesSelector] = useState(false);
   const [filterSeries, setFilterSeries] = useState('');
 

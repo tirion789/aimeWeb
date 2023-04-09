@@ -16,11 +16,6 @@ const Navigation = ({ isDropdownOpen }: NavigationProps) => {
           </Link>
         </li>
         <li className={styles.Navigation__navigationListItem}>
-          <Link className={styles.Navigation__navigationListMovies} to={'/movies'}>
-            Movies
-          </Link>
-        </li>
-        <li className={styles.Navigation__navigationListItem}>
           <a className={styles.Navigation__navigationListMovies} href="/">
             ONAs
           </a>

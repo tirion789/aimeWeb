@@ -6,10 +6,7 @@ import styles from './Home.module.scss';
 import AlphabetSearch from '../../componets/AlphabetSearch/AlphabetSearch';
 import Footer from '../../componets/Footer/Footer';
 import MainCategories from '../../componets/MainCategories/MainCategories';
-import {
-  useGetPopularAnimeQuery,
-  useGetTopAiringAnimeQuery,
-} from '../../redux/animeSlice/asyncAction';
+import { useGetPopularAnimeQuery, useGetTopAiringAnimeQuery } from '../../redux/api/asyncAction';
 import Loader from '../../componets/Loader/Loader';
 
 const Home: React.FC = () => {

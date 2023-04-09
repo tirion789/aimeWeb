@@ -17,7 +17,7 @@ const AlphabeticalSearchListItem = ({ latter, key }: AlphabeticalSearchListItemP
       <Link
         className={styles.AlphabeticalSearchListItem__listItemLink}
         onMouseDown={handleClickLetter}
-        to={`/AlphabetAnime/${latter}`}>
+        to={`/inDevelopment`}>
         {latter}
       </Link>
     </li>

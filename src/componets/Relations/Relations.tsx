@@ -1,14 +1,11 @@
 import React from 'react';
 import styles from './Relations.module.scss';
-import { useAppSelector } from '../../redux/hooks';
-import { currentItemSelector } from '../../redux/animeSlice/selectors';
 import { Link } from 'react-router-dom';
 import { ReactComponent as Star } from '../../assets/images/icons/star.svg';
 import { getNormalizeTitle } from '../../common/util';
+import { RelationsProps } from './interface';
 
-const Relations = () => {
-  const currentAnime = useAppSelector(currentItemSelector);
-
+const Relations = ({ currentAnime }: RelationsProps) => {
   return (
     <div className={styles.Relations}>
       <div className={styles.Relations__overlay}>

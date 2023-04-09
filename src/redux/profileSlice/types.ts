@@ -1,4 +1,4 @@
-import { AnimeArray } from '../animeSlice/types';
+import { AnimeArray } from '../api/types';
 
 export enum ListNames {
   FAVORITES = 'favorites',

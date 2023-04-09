@@ -1,34 +1,28 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useParams } from 'react-router-dom';
 import Discription from '../../componets/Discription/Discription';
 import Footer from '../../componets/Footer/Footer';
 import Header from '../../componets/Header/Header';
 import Player from '../../componets/Player/Player';
-import { fetchAnime } from '../../redux/animeSlice/asyncAction';
-import { currentItemSelector } from '../../redux/animeSlice/selectors';
+import { useGetCurrentAnimeQuery } from '../../redux/api/asyncAction';
 import styles from './Anime.module.scss';
 import AnimeControls from '../../componets/AnimeControls/AnimeControls';
 import { useAuth } from '../../hooks/useAuth';
-import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+import { useAppDispatch } from '../../redux/hooks';
 import Recommended from '../../componets/Recommended/Recommended';
 import Characters from '../../componets/Charatcer/Characters';
 import { setIsOpenPopupLogin } from '../../redux/filterSlice/filterSlice';
 import Relations from '../../componets/Relations/Relations';
+import Loader from '../../componets/Loader/Loader';
 
 const Anime = () => {
   const { id } = useParams();
   const dispatch = useAppDispatch();
-  const currentAnime = useAppSelector(currentItemSelector);
+  const { data: currentAnime, isFetching, isSuccess } = useGetCurrentAnimeQuery(id!);
   const { isAuth } = useAuth();
 
-  useEffect(() => {
-    if (id) {
-      dispatch(fetchAnime(id));
-    }
-  }, [id, dispatch]);
-
-  if (!currentAnime) {
-    return <p>Loading...</p>;
+  if (isFetching) {
+    return <Loader />;
   }
 
   const handleClickLogin = () => {
@@ -46,7 +40,7 @@ const Anime = () => {
                 <img className={styles.Anime__image} src={currentAnime?.image} alt="anime" />
                 <div className={styles.Anime__btnContainer}>
                   {isAuth ? (
-                    <AnimeControls />
+                    <AnimeControls currentAnime={currentAnime} />
                   ) : (
                     <button onClick={handleClickLogin} className={styles.Anime__loginButton}>
                       Login
@@ -54,14 +48,18 @@ const Anime = () => {
                   )}
                 </div>
               </div>
-              <Discription />
+              <Discription currentAnime={currentAnime} />
             </div>
           </div>
         </div>
-        {currentAnime.type === 'MANGA' ? '' : <Player />}
-        <Characters />
-        {currentAnime.recommendations.length ? <Recommended /> : null}
-        {currentAnime.relations.length ? <Relations /> : null}
+        {currentAnime?.type === 'MANGA' || !currentAnime?.episodes.length ? (
+          ''
+        ) : (
+          <Player currentAnime={currentAnime} isSuccess={isSuccess} />
+        )}
+        <Characters currentAnime={currentAnime} />
+        {currentAnime?.recommendations.length ? <Recommended currentAnime={currentAnime} /> : null}
+        {currentAnime?.relations.length ? <Relations currentAnime={currentAnime} /> : null}
       </main>
       <footer className={styles.FooterBackground}>
         <div className={styles.FooterOverlay}>

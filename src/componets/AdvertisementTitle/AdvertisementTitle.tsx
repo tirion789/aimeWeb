@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { fetchNagatoro } from '../../redux/animeSlice/asyncAction';
-import { nagatoroSanSelector } from '../../redux/animeSlice/selectors';
+import { fetchNagatoro } from '../../redux/api/asyncAction';
+import { nagatoroSanSelector } from '../../redux/api/selectors';
 import { setItems } from '../../redux/profileSlice/profileSlice';
 import styles from './AdvertisementTitle.module.scss';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';

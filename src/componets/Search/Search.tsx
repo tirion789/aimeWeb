@@ -1,11 +1,9 @@
-import React, { ChangeEvent, useEffect, useState } from 'react';
+import React, { ChangeEvent, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { fetchSearchAnime } from '../../redux/animeSlice/asyncAction';
-import { searchSelector } from '../../redux/animeSlice/selectors';
+import { useGetSearchAnimeQuery } from '../../redux/api/asyncAction';
 import { debounce } from 'lodash';
 import styles from './Search.module.scss';
 import { ReactComponent as SearchImg } from '../../assets/images/icons/search.svg';
-import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 
 const Search = () => {
   const LAST_INDEX_ELEMENT_SLICE_ARRAY = 5;
@@ -13,13 +11,11 @@ const Search = () => {
   const SEARCH_DELAY = 700;
 
   const [value, setValue] = useState('');
-  const dispatch = useAppDispatch();
   const [isSearchOpen, setIsSearchOpen] = useState(false);
-  const searchAnime = useAppSelector(searchSelector);
 
-  useEffect(() => {
-    dispatch(fetchSearchAnime(value));
-  }, [dispatch, value]);
+  const { data } = useGetSearchAnimeQuery(value);
+
+  console.log(data);
 
   const onChangeValue = (text: string) => {
     setValue(text);
@@ -48,9 +44,9 @@ const Search = () => {
       <button onClick={onClickSearchButton} className={styles.Search__inputButton}>
         <SearchImg />
       </button>
-      {!!searchAnime.length && (
+      {!!data?.results.length && (
         <ul className={styles.Search__list}>
-          {searchAnime
+          {data?.results
             .slice(FIRST_INDEX_ELEMENT_SLICE_ARRAY, LAST_INDEX_ELEMENT_SLICE_ARRAY)
             .map((obj) => (
               <li>

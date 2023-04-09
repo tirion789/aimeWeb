@@ -1,10 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
-import animeSlice from './animeSlice/animeSlice';
+import animeSlice from './api/animeSlice';
 import filterSlice from './filterSlice/filterSlice';
 import profileSlice, { initialState } from './profileSlice/profileSlice';
 import userSlice from './userSlice/userSlice';
 import { listenerMiddleware } from './middleware/listenerMiddleware';
-import { animeApi } from './animeSlice/asyncAction';
+import { animeApi } from './api/asyncAction';
 import { setupListeners } from '@reduxjs/toolkit/dist/query';
 
 const loadFromLocalStorage = JSON.parse(localStorage.getItem('animeList') || 'null');

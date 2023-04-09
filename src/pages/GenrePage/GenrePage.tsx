@@ -14,7 +14,7 @@ import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import Filter from '../../componets/Filters/Filters';
 import { setFormat, setGenre, setSeason, setType } from '../../redux/filterSlice/filterSlice';
 import { formatArray, genreArray, seasonArray, typeArray } from '../../common/const';
-import { useGetFiltersAnimeQuery } from '../../redux/animeSlice/asyncAction';
+import { useGetFiltersAnimeQuery } from '../../redux/api/asyncAction';
 import Loader from '../../componets/Loader/Loader';
 import { usePagination } from '../../hooks/usePagination';
 
@@ -37,7 +37,7 @@ const GenrePage = () => {
     currentPaginationButton,
   } = usePagination(buttonsArray);
 
-  const { data, isLoading } = useGetFiltersAnimeQuery(
+  const { data, isFetching } = useGetFiltersAnimeQuery(
     `type=${type}&page=${currentPaginationButton}${
       genreText === 'Any' ? '' : `&genres=["${genreText}"]`
     }${season === 'Any' ? '' : `&season=${season}`}${format === 'Any' ? '' : `&format=${format}`}`,
@@ -97,10 +97,11 @@ const GenrePage = () => {
     }
   }, [dispatch, type]);
 
-  console.log(format);
-  console.log(type);
+  if (isFetching) {
+    return <Loader />;
+  }
 
-  if (isLoading) {
+  if (!data) {
     return <Loader />;
   }
 

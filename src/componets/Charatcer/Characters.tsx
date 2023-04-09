@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
-import { useAppSelector } from '../../redux/hooks';
-import { currentItemSelector } from '../../redux/animeSlice/selectors';
 import styles from './Characters.module.scss';
 import CharactersList from './CharactersList/CharactersList';
+import { CharactersInterface } from './CharactersInterface';
 
-const Characters = () => {
-  const currentAnime = useAppSelector(currentItemSelector);
+const Characters = ({ currentAnime }: CharactersInterface) => {
   const [showSecondaryCharacters, setShowSecondaryCharacters] = useState<boolean>(false);
   const [showMainCharacterss, setShowMainCharacterss] = useState<boolean>(true);
 

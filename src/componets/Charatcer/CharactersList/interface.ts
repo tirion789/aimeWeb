@@ -1,13 +1,12 @@
 export interface CharactersListProps {
-  items:
-    | [
-        {
-          image: string;
-          name: { first: string; full: string; last: string | null; userPreffered: string };
-          role: string;
-        },
-      ]
-    | undefined;
+  items?: [
+    {
+      image: string;
+      name: { first: string; full: string; last: string | null; userPreffered: string };
+      role: string;
+    },
+  ];
+
   type: string;
   title: string;
   showCharacters: {

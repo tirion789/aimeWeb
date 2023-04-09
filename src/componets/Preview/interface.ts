@@ -1,4 +1,4 @@
-import { AnimeArray } from '../../redux/animeSlice/types';
+import { AnimeArray } from '../../redux/api/types';
 
 export interface PreviewProps {
   items?: AnimeArray;

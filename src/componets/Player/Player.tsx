@@ -1,29 +1,27 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { fetchVideoAnime } from '../../redux/animeSlice/asyncAction';
+import { useGetAnimeViedoQuery } from '../../redux/api/asyncAction';
 import styles from './Player.module.scss';
-import {
-  currentItemSelector,
-  statusPlayerSelector,
-  videoSelector,
-} from '../../redux/animeSlice/selectors';
 import { setCurrentSeries } from '../../redux/profileSlice/profileSlice';
 import { getCurrentAnimeSelector } from '../../redux/profileSlice/selectors';
-import Loader from '../Loader/Loader';
 import Select from '../Select/Select';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+import { PlayerProps } from './interface';
 
-const Player = () => {
+const Player = ({ currentAnime, isSuccess }: PlayerProps) => {
   const FIRST_SERIES = '1';
   const dispatch = useAppDispatch();
-  const { id } = useParams();
-  const animeVideo = useAppSelector(videoSelector);
-  const currentAnime = useAppSelector(currentItemSelector);
+  const [currentEpisode, setCurrentEpisode] = useState<string | null>(null);
 
-  const [currentEpisode, setCurrentEpisode] = useState<string | undefined>(
-    currentAnime?.episodes[0]?.id,
-  );
-  const statusVideo = useAppSelector(statusPlayerSelector);
+  useEffect(() => {
+    if (isSuccess) {
+      setCurrentEpisode(currentAnime.episodes[0].id);
+    }
+  }, [isSuccess]);
+
+  const { data: animeVideo, isFetching } = useGetAnimeViedoQuery(currentEpisode as string, {
+    skip: !isSuccess,
+  });
+
   const animeItem = useAppSelector((state) =>
     getCurrentAnimeSelector(state, currentAnime?.title.romaji),
   );
@@ -41,25 +39,23 @@ const Player = () => {
   };
 
   const handleSwapNextSeries = () => {
-    setCurrentEpisode(currentAnime?.episodes[Number(series)]?.id);
+    if (currentAnime?.episodes) {
+      setCurrentEpisode(currentAnime.episodes[Number(series)]?.id);
+    }
   };
 
   const handleSwapPrevSeries = () => {
-    setCurrentEpisode(currentAnime?.episodes[Number(series) - 2]?.id);
+    if (currentAnime?.episodes) {
+      setCurrentEpisode(currentAnime.episodes[Number(series) - 2]?.id);
+    }
   };
   const handleActiveSeriesClick = (episodeNumber: number, episodeId: string) => {
     handleOnSeriesClick(String(episodeNumber));
     setCurrentEpisode(episodeId);
   };
 
-  useEffect(() => {
-    if (id) {
-      dispatch(fetchVideoAnime({ currentEpisode }));
-    }
-  }, [id, dispatch, currentEpisode]);
-
-  if (statusVideo === 'loading') {
-    return <Loader />;
+  if (isFetching) {
+    return <p>Loading...</p>;
   }
 
   return (
@@ -67,13 +63,16 @@ const Player = () => {
       <div className={styles.Player__background}>
         <div className={styles.Player__overlay}>
           <div className={styles.Player__video}>
-            <Select
-              handleSwapNextSeries={handleSwapNextSeries}
-              handleSwapPrevSeries={handleSwapPrevSeries}
-              series={series}
-              setSeries={setSeries}
-              handleActiveSeriesClick={handleActiveSeriesClick}
-            />
+            {currentAnime.episodes.length > 1 && (
+              <Select
+                handleSwapNextSeries={handleSwapNextSeries}
+                handleSwapPrevSeries={handleSwapPrevSeries}
+                series={series}
+                setSeries={setSeries}
+                handleActiveSeriesClick={handleActiveSeriesClick}
+                currentAnime={currentAnime}
+              />
+            )}
             <div className={styles.Player__iframeContainer}>
               <iframe
                 className={styles.Player__iframe}

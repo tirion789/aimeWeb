@@ -3,11 +3,12 @@ import styles from './Loader.module.scss';
 
 const Loader = () => {
   return (
-    <div className={styles.lds_ring}>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
+    <div className={styles.Loader}>
+      <div className={styles.lds_facebook}>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
     </div>
   );
 };

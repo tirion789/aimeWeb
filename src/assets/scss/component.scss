@@ -1,3 +1,5 @@
+@import '../scss/mixin.scss';
+
 .scrollbar {
     scrollbar-color: #cdcdcd black;
     scrollbar-width: thin;
@@ -31,5 +33,29 @@
     height: 0;
     width: 0;
     }
+}
+
+.loginButton {
+    @include button;
+    width: 100%;
+
+    margin-right: 0;
+    
+    &::before {
+        content: '';
+    }
+}
+
+.loginMainPage {
+    @include mediumText;
+}
+
+.wrapper {
+    height: 100%;
+    margin: 0px auto;
+    max-width: 1920px;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
 }
 

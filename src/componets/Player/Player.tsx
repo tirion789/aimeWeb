@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { useGetAnimeViedoQuery } from '../../redux/api/asyncAction';
+import { useGetAnimeViedoQuery } from '../../redux/api/query';
 import styles from './Player.module.scss';
 import { setCurrentSeries } from '../../redux/profileSlice/profileSlice';
 import { getCurrentAnimeSelector } from '../../redux/profileSlice/selectors';
 import Select from '../Select/Select';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { PlayerProps } from './interface';
+import Loader from '../Loader/Loader';
 
 const Player = ({ currentAnime, isSuccess }: PlayerProps) => {
   const FIRST_SERIES = '1';
@@ -54,10 +55,6 @@ const Player = ({ currentAnime, isSuccess }: PlayerProps) => {
     setCurrentEpisode(episodeId);
   };
 
-  if (isFetching) {
-    return <p>Loading...</p>;
-  }
-
   return (
     <div className={styles.Player}>
       <div className={styles.Player__background}>
@@ -73,14 +70,18 @@ const Player = ({ currentAnime, isSuccess }: PlayerProps) => {
                 currentAnime={currentAnime}
               />
             )}
-            <div className={styles.Player__iframeContainer}>
-              <iframe
-                className={styles.Player__iframe}
-                src={animeVideo?.headers.Referer}
-                frameBorder="0"
-                scrolling="no"
-                allowFullScreen></iframe>
-            </div>
+            {isFetching ? (
+              <Loader />
+            ) : (
+              <div className={styles.Player__iframeContainer}>
+                <iframe
+                  className={styles.Player__iframe}
+                  src={animeVideo?.headers.Referer}
+                  frameBorder="0"
+                  scrolling="no"
+                  allowFullScreen></iframe>
+              </div>
+            )}
           </div>
         </div>
       </div>

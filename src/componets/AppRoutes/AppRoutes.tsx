@@ -2,7 +2,6 @@ import React from 'react';
 import Home from '../../pages/Home/Home';
 import { Routes, Route } from 'react-router-dom';
 import Anime from '../../pages/Anime/Anime';
-import GenrePage from '../../pages/GenrePage/GenrePage';
 import Profile from '../../pages/Profile/Profile';
 import '../../assets/scss/index.scss';
 import InDevelopment from '../../pages/InDevelopment/InDevelopment';
@@ -11,6 +10,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ProtectedRoute from './ProtectedRoute/ProtectedRoute';
 import Loader from '../Loader/Loader';
+import FiltersPage from '../../pages/GenrePage/FiltersPage';
 
 const AppRoutes = () => {
   const { isLoading, isAuth } = useAuth();
@@ -23,7 +23,7 @@ const AppRoutes = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/anime/:id" element={<Anime />} />
-        <Route path="/filters" element={<GenrePage />} />
+        <Route path="/filters" element={<FiltersPage />} />
         <Route
           path="/profile"
           element={

@@ -1,6 +1,12 @@
 @import '../../assets/scss/mixin.scss';
 @import '../../assets/scss/variables';
 
+.wrapper {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
+}
+
 
 .Profile {
     padding: 20px 60px;
@@ -45,13 +51,12 @@
     &__background {
         @include background;
         background-image: url("../../assets/images/wp5104313\ 1.png");
-        height: max-content
     }
     
     &__overlay {
         @include overlay;
         background: $basic-gradient-overlay;
-        height: max-content;
+        height: 100%
     }
     &__favoriteListItemButtonDeleted{
         @include button;

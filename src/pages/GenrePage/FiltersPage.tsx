@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import Footer from '../../componets/Footer/Footer';
 import Header from '../../componets/Header/Header';
 import Pagination from '../../componets/Pagination/Pagination';
@@ -9,16 +8,17 @@ import {
   seasonSelector,
   typeSelector,
 } from '../../redux/filterSlice/selectors';
-import styles from './GenrePage.module.scss';
+import styles from './FiltersPage.module.scss';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import Filter from '../../componets/Filters/Filters';
 import { setFormat, setGenre, setSeason, setType } from '../../redux/filterSlice/filterSlice';
 import { formatArray, genreArray, seasonArray, typeArray } from '../../common/const';
-import { useGetFiltersAnimeQuery } from '../../redux/api/asyncAction';
+import { useGetFiltersAnimeQuery } from '../../redux/api/query';
 import Loader from '../../componets/Loader/Loader';
 import { usePagination } from '../../hooks/usePagination';
+import FiltersListItem from './FiltersListItem/FiltersListItem';
 
-const GenrePage = () => {
+const FiltersPage = () => {
   const genreText = useAppSelector(genreTextSelector);
   const type = useAppSelector(typeSelector);
   const season = useAppSelector(seasonSelector);
@@ -37,7 +37,7 @@ const GenrePage = () => {
     currentPaginationButton,
   } = usePagination(buttonsArray);
 
-  const { data, isFetching } = useGetFiltersAnimeQuery(
+  const { data, isFetching, isLoading } = useGetFiltersAnimeQuery(
     `type=${type}&page=${currentPaginationButton}${
       genreText === 'Any' ? '' : `&genres=["${genreText}"]`
     }${season === 'Any' ? '' : `&season=${season}`}${format === 'Any' ? '' : `&format=${format}`}`,
@@ -97,43 +97,29 @@ const GenrePage = () => {
     }
   }, [dispatch, type]);
 
-  if (isFetching) {
-    return <Loader />;
-  }
-
-  if (!data) {
+  if (isLoading) {
     return <Loader />;
   }
 
   return (
-    <>
+    <div className="wrapper">
       <Header />
       <main className={styles.GenrePage}>
         <div className={styles.GenrePage__overlay}>
-          {/* <h1 className={styles.GenrePage__title}>{genreText}</h1> */}
           <div className={styles.GenrePage__filtersContainer}>
             {filtersMap.map((props, index) => (
               <Filter key={index} {...props} />
             ))}
           </div>
-          <ul className={styles.GenrePage__list}>
-            {data?.results.map(({ id, image, title }) => (
-              <li key={id} className={styles.GenrePage__listItem}>
-                <Link to={`/anime/${id}`}>
-                  <img
-                    className={styles.GenrePage__image}
-                    width={257}
-                    height={400}
-                    src={image}
-                    alt="imageAnime"
-                  />
-                  <div className={styles.GenrePage__container}>
-                    <h2 className={styles.GenrePage__listItemName}>{title.romaji}</h2>
-                  </div>
-                </Link>
-              </li>
-            ))}
-          </ul>
+          {isFetching ? (
+            <Loader />
+          ) : (
+            <ul className={styles.GenrePage__list}>
+              {data?.results.map((props) => (
+                <FiltersListItem {...props} />
+              ))}
+            </ul>
+          )}
           <Pagination
             buttonsArray={buttonsArray}
             handleClickOnFirstPage={handleClickOnFirstPage}
@@ -152,8 +138,8 @@ const GenrePage = () => {
           <Footer />
         </div>
       </footer>
-    </>
+    </div>
   );
 };
 
-export default GenrePage;
+export default FiltersPage;

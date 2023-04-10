@@ -84,28 +84,6 @@ export interface CurrentAnime extends AnimeArray {
   };
 }
 
-export interface SearchAnime {
-  animeId: string;
-  animeTitle: string;
-  animeImg: string;
-  releasedData: string;
-}
-
-export interface AnimeObject extends SearchAnime {
-  status: string;
-}
-
 export type Video = {
   headers: { Referer: string };
 };
-
-export enum StatusServer {
-  LOADING = 'loading',
-  SUCCESS = 'success',
-  ERROR = 'error',
-}
-
-export interface AnimeSliceState {
-  nagatoro: CurrentAnime | null;
-  status: StatusServer;
-}

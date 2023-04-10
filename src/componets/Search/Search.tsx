@@ -1,6 +1,6 @@
 import React, { ChangeEvent, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useGetSearchAnimeQuery } from '../../redux/api/asyncAction';
+import { useGetSearchAnimeQuery } from '../../redux/api/query';
 import { debounce } from 'lodash';
 import styles from './Search.module.scss';
 import { ReactComponent as SearchImg } from '../../assets/images/icons/search.svg';

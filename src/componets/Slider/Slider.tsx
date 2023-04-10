@@ -11,10 +11,8 @@ const Slider = ({ items }: SliderProps) => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   const handleClickNextAnime = () => {
-    if (items) {
-      if (activeIndex <= items.length - 6) {
-        setActiveIndex((prev) => prev + 1);
-      }
+    if (items && activeIndex <= items.length - 6) {
+      setActiveIndex((prev) => prev + 1);
     }
   };
 
@@ -23,8 +21,6 @@ const Slider = ({ items }: SliderProps) => {
       setActiveIndex((prev) => prev - 1);
     }
   };
-
-  console.log(items);
 
   return (
     <div className={styles.Slider__slider}>
@@ -35,7 +31,7 @@ const Slider = ({ items }: SliderProps) => {
         <Arrow transform="rotate(180)" />
       </button>
       <ul className={styles.Slider__list}>
-        {items?.map(({ episodes, id, image, rating, title, totalEpisodes }) => (
+        {items?.map(({ episodes, id, image, rating, title, totalEpisodes, type }) => (
           <li
             key={id}
             style={{ transform: `translateX(-${activeIndex * WIDTH_BLOCK_OFFSET}px)` }}
@@ -46,7 +42,7 @@ const Slider = ({ items }: SliderProps) => {
                 <h2 className={styles.Slider__titleListItemNames}>{title.romaji}</h2>
                 <div style={{ display: 'flex' }}>
                   <p className={styles.Slider__episodes}>
-                    {episodes || totalEpisodes ? 'Episodes: ' : 'Chapters'}
+                    {type === 'MANGA' ? 'Chapters: ' : 'Episodes: '}
                     {totalEpisodes || episodes ? totalEpisodes || episodes : '?'}
                   </p>
                   <div style={{ marginLeft: 'auto' }}>

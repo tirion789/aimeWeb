@@ -11,6 +11,12 @@
 
 }
 
+.wrapper {
+    height: 100%;
+    margin: 0px auto;
+    max-width: 1920px;
+}
+
 .previewOverlay {
     @include overlay;
     background: $basic-prewiev-first-overlay;

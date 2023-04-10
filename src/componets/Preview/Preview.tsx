@@ -9,15 +9,22 @@ import { Link } from 'react-router-dom';
 import { useAppDispatch } from '../../redux/hooks';
 import { PreviewProps } from './interface';
 import Loader from '../Loader/Loader';
+import { useAuth } from '../../hooks/useAuth';
+import { setIsOpenPopupLogin } from '../../redux/filterSlice/filterSlice';
 
 const Preview = ({ items, loading }: PreviewProps) => {
   const iconArray = [R, HD, DUB, SUB];
   const dispatch = useAppDispatch();
+  const { isAuth } = useAuth();
 
   const handleClickAddListButton = () => {
     if (items) {
       dispatch(setItems(items));
     }
+  };
+
+  const handleClickLogin = () => {
+    dispatch(setIsOpenPopupLogin(true));
   };
 
   if (loading) {
@@ -55,11 +62,17 @@ const Preview = ({ items, loading }: PreviewProps) => {
             <Link to={`/anime/${items?.id}`} className={styles.preview__buttonsContainer_watchLink}>
               Watch Now
             </Link>
-            <button
-              onClick={handleClickAddListButton}
-              className={styles.preview__buttonsContainer_addToList}>
-              Add to List
-            </button>
+            {isAuth ? (
+              <button
+                onClick={handleClickAddListButton}
+                className={styles.preview__buttonsContainer_addToList}>
+                Add to List
+              </button>
+            ) : (
+              <button onClick={handleClickLogin} className="loginMainPage">
+                Login
+              </button>
+            )}
           </div>
         </div>
       </div>

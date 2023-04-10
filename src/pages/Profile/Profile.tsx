@@ -56,11 +56,11 @@ const Profile = () => {
       <Header />
       <main className={styles.Profile__background}>
         <div className={styles.Profile__overlay}>
-          <main className={styles.Profile}>
+          <div className={styles.Profile}>
             {profileListMap.map((props, index) => (
               <ProfileList key={index} {...props} />
             ))}
-          </main>
+          </div>
         </div>
       </main>
       <footer className={styles.FooterBackground}>

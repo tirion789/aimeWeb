@@ -16,7 +16,7 @@ const Discription = ({ currentAnime }: DescriptionProps) => {
           <dt className={styles.Discription__rowFirstColumn}>Type</dt>
           <dd className={styles.Discription__rowTwoColumn}>{currentAnime?.type}</dd>
           <dt className={styles.Discription__rowFirstColumn}>
-            {!currentAnime?.totalEpisodes ? 'Chapters' : 'Episodes'}
+            {currentAnime?.type === 'MANGA' ? 'Chapters: ' : 'Episodes: '}
           </dt>
           <dd className={styles.Discription__rowTwoColumn}>
             {currentAnime?.totalEpisodes ? currentAnime?.totalEpisodes : '?'}

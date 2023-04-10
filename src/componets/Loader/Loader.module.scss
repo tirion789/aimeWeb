@@ -1,37 +1,51 @@
 @import '../../assets/scss/_variables';
 
-.lds_ring {
-  position: fixed;
-  top: 45%;
-  left: 48%;
-  transform: translate(-48%, -45%);
-  }
-  .lds_ring div {
-    box-sizing: border-box;
-    display: block;
-    position: absolute;
-    width: 64px;
+.Loader {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  overflow: auto;
+  justify-content: center;
+  align-items: center;
+}
+
+.lds_facebook {
+  display: flex;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+
+.lds_facebook div {
+  display: inline-block;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 16px;
+  background: #fff;
+  animation: lds_facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+}
+.lds_facebook div:nth-child(1) {
+  left: 8px;
+  animation-delay: -0.24s;
+}
+.lds_facebook div:nth-child(2) {
+  left: 32px;
+  animation-delay: -0.12s;
+}
+.lds_facebook div:nth-child(3) {
+  left: 56px;
+  animation-delay: 0;
+}
+@keyframes lds_facebook {
+  0% {
+    top: 8px;
     height: 64px;
-    margin: 8px;
-    border: 8px solid $basic-white;
-    border-radius: 50%;
-    animation: lds_ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-    border-color: $basic-white transparent transparent transparent;
   }
-  .lds_ring div:nth-child(1) {
-    animation-delay: -0.45s;
+  50%, 100% {
+    top: 24px;
+    height: 32px;
   }
-  .lds_ring div:nth-child(2) {
-    animation-delay: -0.3s;
-  }
-  .lds_ring div:nth-child(3) {
-    animation-delay: -0.15s;
-  }
-  @keyframes lds_ring {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
-  }
+}

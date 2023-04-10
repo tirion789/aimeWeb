@@ -4,7 +4,7 @@ import Discription from '../../componets/Discription/Discription';
 import Footer from '../../componets/Footer/Footer';
 import Header from '../../componets/Header/Header';
 import Player from '../../componets/Player/Player';
-import { useGetCurrentAnimeQuery } from '../../redux/api/asyncAction';
+import { useGetCurrentAnimeQuery } from '../../redux/api/query';
 import styles from './Anime.module.scss';
 import AnimeControls from '../../componets/AnimeControls/AnimeControls';
 import { useAuth } from '../../hooks/useAuth';
@@ -42,7 +42,7 @@ const Anime = () => {
                   {isAuth ? (
                     <AnimeControls currentAnime={currentAnime} />
                   ) : (
-                    <button onClick={handleClickLogin} className={styles.Anime__loginButton}>
+                    <button onClick={handleClickLogin} className="loginButton">
                       Login
                     </button>
                   )}

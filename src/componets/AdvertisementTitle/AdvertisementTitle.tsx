@@ -1,24 +1,28 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { fetchNagatoro } from '../../redux/api/asyncAction';
-import { nagatoroSanSelector } from '../../redux/api/selectors';
 import { setItems } from '../../redux/profileSlice/profileSlice';
 import styles from './AdvertisementTitle.module.scss';
-import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+import { useGetAnimeNagataroQuery } from '../../redux/api/query';
+import { useAppDispatch } from '../../redux/hooks';
+import { useAuth } from '../../hooks/useAuth';
+import { setIsOpenPopupLogin } from '../../redux/filterSlice/filterSlice';
 
 const AdvertisementTitle = () => {
-  const nagatoro = useAppSelector(nagatoroSanSelector);
   const dispatch = useAppDispatch();
+  const { isAuth } = useAuth();
 
-  useEffect(() => {
-    dispatch(fetchNagatoro());
-  }, [dispatch]);
+  const { data: nagatoro } = useGetAnimeNagataroQuery('/info/140596');
 
   const onClickAddButton = () => {
     if (nagatoro) {
       dispatch(setItems(nagatoro));
     }
   };
+
+  const handleClickLogin = () => {
+    dispatch(setIsOpenPopupLogin(true));
+  };
+
   return (
     <div className={styles.AdvertisementTitle}>
       <div className={styles.AdvertisementTitle__imageContainer}>
@@ -40,15 +44,21 @@ const AdvertisementTitle = () => {
         </p>
         <div className={styles.AdvertisementTitle__buttonContainer}>
           <Link
-            to={'/anime/ijiranaide-nagatoro-san-2nd-attack'}
+            to={`/anime/${nagatoro?.id}`}
             className={styles.AdvertisementTitle__informationButton_watch}>
             Watch Now
           </Link>
-          <button
-            onClick={onClickAddButton}
-            className={styles.AdvertisementTitle__informationButton_addToList}>
-            Add to list
-          </button>
+          {isAuth ? (
+            <button
+              onClick={onClickAddButton}
+              className={styles.AdvertisementTitle__informationButton_addToList}>
+              Add to list
+            </button>
+          ) : (
+            <button onClick={handleClickLogin} className="loginMainPage">
+              Login
+            </button>
+          )}
         </div>
       </div>
     </div>

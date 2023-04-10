@@ -6,7 +6,7 @@ import styles from './Home.module.scss';
 import AlphabetSearch from '../../componets/AlphabetSearch/AlphabetSearch';
 import Footer from '../../componets/Footer/Footer';
 import MainCategories from '../../componets/MainCategories/MainCategories';
-import { useGetPopularAnimeQuery, useGetTopAiringAnimeQuery } from '../../redux/api/asyncAction';
+import { useGetPopularAnimeQuery, useGetTopAiringAnimeQuery } from '../../redux/api/query';
 import Loader from '../../componets/Loader/Loader';
 
 const Home: React.FC = () => {
@@ -42,9 +42,7 @@ const Home: React.FC = () => {
     <div className={styles.wrapper}>
       <Header />
       <main>
-        <div className={styles.preview__container}>
-          <Preview items={trendingAnimeArray?.results[2]} loading={trendingLoading} />
-        </div>
+        <Preview items={trendingAnimeArray?.results[2]} loading={trendingLoading} />
         <div className={styles.Recommended}>
           <div className={styles.Recommended__overlay}>
             {mainCategoriesArray.map((props, index) => (

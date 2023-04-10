@@ -4,6 +4,12 @@
 
 .Anime {
 
+    // main {
+    //     display: grid;
+    //     grid-template-rows: auto 1fr auto auto auto;
+    //     min-height: 100vh;
+    // }
+
     &__background{
         @include background;
         background-image: url(../../assets/images/naruto.png);

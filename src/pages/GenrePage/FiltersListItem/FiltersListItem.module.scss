@@ -1,11 +1,10 @@
-@import '../../assets/scss/mixin.scss';
-@import '../../assets/scss/variables'; 
+@import '../../../assets/scss/mixin.scss';
+@import '../../../assets/scss/variables';
 
 
 .GenrePage {
     @include background;
-    background-image: url("../../assets/images/naruto.png");
-    height: max-content;
+    background-image: url("../../../assets/images/naruto.png");
     position: relative;
     &__list {
         display: flex;
@@ -17,6 +16,26 @@
 
     &__listItemName {
         @include listItemName
+    }
+
+    &__episodes {
+        @include mediumText;
+        margin-top: 0;
+    }
+
+    &__titleListContainer {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        overflow: hidden;
+        bottom: 4px;
+        width: 100%;
+        background: linear-gradient(90deg, #101010 0%, rgba(0, 0, 0, 0.9) 100%);
+        flex-direction: column;
+    }
+
+    &__titleListItemNames {
+        @include listItemName;
     }
 
     &__listItem {
@@ -40,7 +59,10 @@
         @include overlay;
         background: $basic-gradient-overlay;
         padding: 20px 60px;
-        height: max-content;
+        height: 100%;
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+        min-height: 100vh;
     }
 
     &__container {
@@ -80,7 +102,7 @@
 
 .FooterBackground {
     @include background;
-    background-image: url('../../assets/images/footer.png');
+    background-image: url('../../../assets/images/footer.png');
 }
 
 .FooterOverlay {

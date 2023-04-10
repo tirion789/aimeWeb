@@ -1,6 +1,4 @@
-import { createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
-import { AnimeApi, CurrentAnime, SearchAnime, Video } from './types';
+import { AnimeApi, CurrentAnime, Video } from './types';
 
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
@@ -29,6 +27,9 @@ export const animeApi = createApi({
     getSearchAnime: builder.query<AnimeApi, string>({
       query: (value) => `${value === '' ? 'empty value' : value}`,
     }),
+    getAnimeNagataro: builder.query<CurrentAnime, string>({
+      query: (nagatoro) => nagatoro,
+    }),
   }),
 });
 
@@ -40,21 +41,5 @@ export const {
   useGetFiltersAnimeQuery,
   useGetAZListAnimeQuery,
   useGetSearchAnimeQuery,
+  useGetAnimeNagataroQuery,
 } = animeApi;
-
-export const fetchMoviesAnimeAph = createAsyncThunk(
-  'anime/moviesAnimeAph',
-  async (currentLetter: string) => {
-    const { data } = await axios.get<SearchAnime[]>(
-      `https://gogoanime.consumet.stream/anime-movies?aph=${currentLetter}`,
-    );
-    return data;
-  },
-);
-
-export const fetchNagatoro = createAsyncThunk('anime/Nagatoro', async () => {
-  const { data } = await axios.get<CurrentAnime>(
-    `https://api.consumet.org/meta/anilist/info/${142853}`,
-  );
-  return data;
-});

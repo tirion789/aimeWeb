@@ -11,9 +11,9 @@ const Footer = () => {
     <Gmail width={30} height={30} />,
   ];
   return (
-    <ul className={styles.Footer__container}>
-      {icons.map((icon) => (
-        <li>{icon}</li>
+    <ul className={styles.Container}>
+      {icons.map((icon, index) => (
+        <li key={index}>{icon}</li>
       ))}
     </ul>
   );

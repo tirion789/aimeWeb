@@ -8,11 +8,11 @@ export enum ListNames {
 
 export interface CurrentSeries {
   title: string;
-  series: string;
+  series: number;
 }
 
 export interface ProfileAnime extends AnimeArray {
-  currentAnimeSeries?: string;
+  currentAnimeSeries?: number;
 }
 
 export interface ProfileSlice {

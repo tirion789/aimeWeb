@@ -8,24 +8,22 @@ import { RelationsProps } from './interface';
 const Relations = ({ currentAnime }: RelationsProps) => {
   return (
     <div className={styles.Relations}>
-      <div className={styles.Relations__overlay}>
-        <h1 className={styles.Relations__header}>Relations</h1>
-        <ul className={styles.Relations__list}>
+      <div className={styles.Overlay}>
+        <h1 className={styles.Header}>Relations</h1>
+        <ul className={styles.List}>
           {currentAnime?.relations.map(
             ({ cover, id, rating, relationType, status, type, title }) => (
-              <li
-                className={`${styles.Relations__item}`}
-                style={{ backgroundImage: `url(${cover})` }}>
+              <li className={`${styles.Item}`} style={{ backgroundImage: `url(${cover})` }}>
                 <Link to={`/anime/${id}`}>
-                  <div className={styles.Relations__itemsBackground}>
-                    <h2>{title.romaji.toUpperCase()}</h2>
+                  <div className={styles.ItemsBackground}>
+                    <p>{title.romaji.toUpperCase()}</p>
                     <p>Status: {getNormalizeTitle(status)}</p>
                     <p>Type: {type}</p>
                     <p>Relation type: {getNormalizeTitle(relationType)}</p>
-                    <div style={{ marginLeft: 'auto', display: 'flex' }}>
+                    <div className={styles.Container}>
                       <p>Rating:</p>
                       <Star width={19} height={19} />
-                      <span style={{ marginLeft: '10px' }}>
+                      <span className={styles.Rating}>
                         {String(rating ? rating : '')
                           .split('')
                           .join('.')}

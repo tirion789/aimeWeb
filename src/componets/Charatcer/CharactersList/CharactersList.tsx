@@ -19,35 +19,25 @@ const CharactersList = ({
   return (
     <>
       {showCharacters.type === 'secondary' ? (
-        <section className={styles.CharactersList__charactersConteiner}>
-          <h2 className={styles.CharactersList__headerText}>{title}</h2>
-          <button
-            className={styles.CharactersList__swapButton}
-            onClick={handleShowSecondaryCharacters}>
-            {showCharacters.characters ? (
-              <Sort transform="rotate(180)" width={30} height={30} />
-            ) : (
-              <Sort width={30} height={30} />
-            )}
-          </button>
-        </section>
+        <button onClick={handleShowSecondaryCharacters} className={styles.CharactersConteiner}>
+          <p className={styles.HeaderText}>{title}</p>
+          {showCharacters.characters ? (
+            <Sort transform="rotate(180)" width={30} height={30} />
+          ) : (
+            <Sort width={30} height={30} />
+          )}
+        </button>
       ) : (
-        <h2 className={styles.CharactersList__charactersConteiner}>{title}</h2>
+        <p className={styles.CharactersConteiner}>{title}</p>
       )}
       {showCharacters.characters && (
-        <ul className={styles.CharactersList__list}>
+        <ul className={styles.List}>
           {items?.map(({ image, name, role }) =>
             role === type ? (
-              <li className={styles.CharactersList__item}>
-                <img
-                  className={styles.CharactersList__image}
-                  width={250}
-                  height={350}
-                  src={image}
-                  alt=""
-                />
-                <div className={styles.CharactersList__nameContainer}>
-                  <p className={styles.CharactersList__name}>{name.first}</p>
+              <li className={styles.Item}>
+                <img className={styles.Image} width={250} height={350} src={image} alt="" />
+                <div className={styles.NameContainer}>
+                  <p className={styles.Name}>{name.first}</p>
                 </div>
               </li>
             ) : (

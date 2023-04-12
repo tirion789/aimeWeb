@@ -1,81 +1,79 @@
 @import '../../assets/scss/variables';
 @import '../../assets/scss/mixin.scss';
 
-.Search{
-
+.Search {
     margin-left: auto;
     display: flex;
+}
 
-    &__input {
-        @include mediumText;
-        margin-left: auto;
-        margin-top: 0;
+.Input {
+    @include mediumText;
+    margin-left: auto;
+    margin-top: 0;
 
-        border: 2px solid $basic-search-border-color;
-        border-radius: 10px;
-        background: inherit;
-        height: 37.0461540222168px;
-        padding: 22px;
-        display: block;
-        width: 300px;
-    
-    
-        &::placeholder{
-            font-family: 'Inter', sans-serif;
-            font-size: 20px;
-            font-weight: 500;
-            line-height: 24px;
-            letter-spacing: 0em;
-            text-align: center;
-    
-        }
+    border: 2px solid $basic-search-border-color;
+    border-radius: 10px;
+    background: inherit;
+    height: 37.0461540222168px;
+    padding: 22px;
+    display: block;
+    width: 300px;
+
+
+    &::placeholder{
+        font-family: 'Inter', sans-serif;
+        font-size: 20px;
+        font-weight: 500;
+        line-height: 24px;
+        letter-spacing: 0em;
+        text-align: center;
+
     }
+}
 
-    &__inputButton {
-        display: none;
-        margin-left: auto;
-        background-color: inherit;
-        cursor: pointer;
-        position: relative;
-    }
+.InputButton {
+    display: none;
+    margin-left: auto;
+    background-color: inherit;
+    cursor: pointer;
+    position: relative;
+}
 
-    &__list {
-        position: absolute;
-        z-index: 2;
-        border: 1px solid;
-        border-radius: 12px;
-        top: 79px;
-        padding: 15px;
-        display: grid;
-        gap: 6px;
-        background: #090909;
-        width: 300px;
-    };
+.List {
+    position: absolute;
+    z-index: 2;
+    border: 1px solid;
+    border-radius: 12px;
+    top: 79px;
+    padding: 15px;
+    display: grid;
+    gap: 6px;
+    background: #090909;
+    width: 300px;
+};
 
-    &__buttonActive {
-        display: block;
-    }
-
+.ButtonActive {
+    display: block;
 }
 
 @media (max-width: $tablet) {
-    .Search__input {
+    .Input {
         display: none;
         width: 100%;
     }
 
-    .Search__list {
+    .List {
         left: 0;
         top: 128px;
         width: 100%;
     }
 
-    .Search__inputButton {
+    .InputButton {
         display: block;
         border: none;
     }
 
-    .Search__buttonActive {
+    .ButtonActive {
         display: block;
         left: 0;
         top: 81px;

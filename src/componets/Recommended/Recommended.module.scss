@@ -10,88 +10,26 @@
     &::after {
         @include border;
     }
+}
 
+.Overlay {
+    @include overlay;
+    padding: 20px 60px
+}
 
-    &__overlay {
-        @include overlay;
-        padding: 20px 60px
-    }
-
-    &__episodes {
-        @include mediumText;
-        margin-top: 0;
-    }
-
-    &__swapSlideButton {
-        &:disabled {   
-            svg {
-              path {
-                fill:#6b6b6b ;
-              }
-            }
-          }
-        
-    }
-
-    &__item {
-        transition: 1s;
-    }
-
-    &__slider {
-        display: flex;
-    }
-
-    &__list {
-        display: flex;
-        overflow-x: hidden;
-        gap: 40px;
-        transition: 1s;
-    }
-
-    &__image {
-        width: 250px;
-        height: 350px;
-        filter: brightness(0.6);
-    }
-
-    &__contentContainer {
-        position: absolute;
-        bottom: 0;
-    }
-
-    &__title {
-        @include componentHeader;
-    }
-
-    &__titleListContainer {
-        position: absolute;
-        display: flex;
-        justify-content: center;
-        overflow: hidden;
-        bottom: 4px;
-        width: 250px;
-        background: $basic-mainCategories-background;
-        flex-direction: column;
-    }
-
-    &__recommendationsTitle {
-        text-align: left;
-        font-family: 'Montserrat', sans-serif;
-        font-size: 30px;
-        font-weight: 600;
-        line-height: 37px;
-        border-bottom: 2px solid $basic-white;
-        width: max-content;
-        margin-bottom: 15px;
-    }
-
-    &__titleListItemNames {
-        @include listItemName;
-    }
+.RecommendationsTitle {
+    text-align: left;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 30px;
+    font-weight: 600;
+    line-height: 37px;
+    border-bottom: 2px solid $basic-white;
+    width: max-content;
+    margin-bottom: 15px;
 }
 
 @media (max-width: $modile) {
-    .Recommended__overlay {
+    .Overlay {
         padding: 20px;
     }
 }

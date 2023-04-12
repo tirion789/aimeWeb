@@ -38,14 +38,14 @@ const Search = () => {
       <input
         onChange={onChangeSearch}
         placeholder="Search anime"
-        className={`${styles.Search__input} ${isSearchOpen && styles.Search__buttonActive}`}
+        className={`${styles.Input} ${isSearchOpen && styles.ButtonActive}`}
         type="text"
       />
-      <button onClick={onClickSearchButton} className={styles.Search__inputButton}>
+      <button onClick={onClickSearchButton} className={styles.InputButton}>
         <SearchImg />
       </button>
       {!!data?.results.length && (
-        <ul className={styles.Search__list}>
+        <ul className={styles.List}>
           {data?.results
             .slice(FIRST_INDEX_ELEMENT_SLICE_ARRAY, LAST_INDEX_ELEMENT_SLICE_ARRAY)
             .map((obj) => (

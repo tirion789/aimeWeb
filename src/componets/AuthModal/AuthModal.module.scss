@@ -3,160 +3,156 @@
 
 .Login {
     display: flex;
+}
 
-    &__container {
-        padding: 44px;
-        max-width: 600px;
-    }
+.Container {
+    padding: 44px;
+    max-width: 600px;
+}
 
-    &__title {
-        font-family: 'Roboto', sans-serif;
-        font-size: 64px;
-        line-height: 75px;
-        width: max-content;
-        margin-bottom: 15px;
-    }
+.Title {
+    font-family: 'Roboto', sans-serif;
+    font-size: 64px;
+    line-height: 75px;
+    width: max-content;
+    margin-bottom: 15px;
+}
 
-    &__inputsContainer {
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-        width: 510px;
-    }
+.InputsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 510px;
+}
 
-    &__input {
-        width: 100%;
-        height: 87px;
-        padding: 26px 16px;
-        background: rgba(48, 45, 45, 1);
-        border-radius: 5px;
-    }
+.Input {
+    width: 100%;
+    height: 87px;
+    padding: 26px 16px;
+    background: rgba(48, 45, 45, 1);
+    border-radius: 5px;
+}
 
-    &__inputContainer {
-        width: 510px;
-    }
+.InputContainer {
+    width: 510px;
+}
 
-    &__inputName {
-        font-family: 'Roboto', sans-serif;
-        font-size: 24px;
-        line-height: 28px;
-        width: max-content;
-        margin-bottom: 15px;
-    }
+.InputName {
+    font-family: 'Roboto', sans-serif;
+    font-size: 24px;
+    line-height: 28px;
+    width: max-content;
+    margin-bottom: 15px;
+}
 
-    &__buttonSubmit {
-        border: 4px solid rgba(189, 0, 255, 1);
-        border-radius: 5px;
-        width: 100%;
-        height: 87px;
-        text-align: center;
-        background: transparent;
-        cursor: pointer;
-        &:disabled {
-            border-color: grey;
-            color: grey;
-        }
+.ButtonSubmit {
+    border: 4px solid rgba(189, 0, 255, 1);
+    border-radius: 5px;
+    width: 100%;
+    height: 87px;
+    text-align: center;
+    background: transparent;
+    cursor: pointer;
+    &:disabled {
+        border-color: grey;
+        color: grey;
     }
+}
 
-    &__buttonText {
-        font-family: 'Roboto', sans-serif;
-        font-size: 24px;
-        line-height: 28px;
-    }
+.ButtonText {
+    font-family: 'Roboto', sans-serif;
+    font-size: 24px;
+    line-height: 28px;
+}
 
-    &__additionalInformationText {
-        font-family: 'Roboto', sans-serif;
-        font-size: 24px;
-        line-height: 28px;
-    }
-    &__additionalInformation {
-        display: flex;
-        justify-content: center;
-        margin-top: 25px;
-    }
+.AdditionalInformationText {
+    font-family: 'Roboto', sans-serif;
+    font-size: 24px;
+    line-height: 28px;
+}
+.AdditionalInformation {
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+}
 
-    &__additionalInformationButton {
-        font-family: 'Roboto', sans-serif;
-        font-size: 24px;
-        line-height: 28px;
-        color: rgba(189, 0, 255, 1);
-        background-color: transparent;
-        cursor: pointer;
-        border: none;
-        min-width: 188px;
-    }
+.AdditionalInformationButton {
+    font-family: 'Roboto', sans-serif;
+    font-size: 24px;
+    line-height: 28px;
+    color: rgba(189, 0, 255, 1);
+    background-color: transparent;
+    cursor: pointer;
+    border: none;
+    min-width: 188px;
+}
 
-    &__validationError {
-        @include mediumText;
-        margin-top: 10px
-    }
+.ValidationError {
+    @include mediumText;
+    margin-top: 10px
+}
 
-    &__modal {
-        width: 1129px;
-        background: $basic-black;
-        height: max-content;
-        position: fixed;
-        top: 12%;
-        left: 50%;
-        margin: 0;
-        padding: 0;
-        transform: translateX(-1000%);
-        transition: transform 1s ease;
-        transition: 1s;
-        display: flex;
-        flex-direction: column;
-        z-index: 1000;
-    }
-    
-    &__overlay {
-        background: $basic-modal-overlay;
-        position: fixed;
-        top: 0;
-        left: 0;
-        z-index: 999;
-        width: 100%;
-        height: 100vh;
-        margin: 0;
-        padding: 0;
-        visibility: visible;
-        opacity: 1;
-        transition: 1s;
-    }
-    
-    &__show {
-        opacity: 1;
-        visibility: visible;
-        transform: translateX(-50%);
-    }
+.Modal {
+    width: 1129px;
+    background: $basic-black;
+    height: max-content;
+    position: fixed;
+    top: 12%;
+    left: 50%;
+    margin: 0;
+    padding: 0;
+    transform: translateX(-1000%);
+    transition: transform 1s ease;
+    transition: 1s;
+    display: flex;
+    flex-direction: column;
+    z-index: 1000;
+}
+
+.Overlay {
+    background: $basic-modal-overlay;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    visibility: visible;
+    opacity: 1;
+    transition: 1s;
+}
+
+.Show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%);
 }
 
 
 @media (max-width: 1148px) {
-    .Login {
-        &__imageContainer {
-            display: none;
-        }
+    .ImageContainer {
+        display: none;
+    }
 
-        &__modal {
-            width: auto;
-        }
+    .Modal {
+        width: auto;
+    }
 
-        &__container {
-            padding: 44px;
-            /* max-width: 600px; */
-            width: 100%;
-            /* width: 10000px; */
-            min-width: 343px;
-            max-width: 600px;
-        }
+    .Container {
+        padding: 44px;
+        width: 100%;
+        min-width: 343px;
+        max-width: 600px;
+    }
 
-        &__inputsContainer {
-            width: auto;
-        }
+    .InputsContainer {
+        width: auto;
+    }
 
-        &__inputContainer {
-            width: auto;
-        }
+    .InputContainer {
+        width: auto;
     }
 }
 

@@ -37,36 +37,32 @@ const Header = () => {
 
   return (
     <header className={styles.Header}>
-      <div className={styles.Header__menuLogo}>
+      <div className={styles.MenuLogo}>
         <button
           onClick={handleClickDropdownButton}
-          className={
-            !isDropdownOpen ? styles.Header__dropdownMenu : styles.Header__dropdownMenuClose
-          }>
+          className={!isDropdownOpen ? styles.DropdownMenu : styles.DropdownMenuClose}>
           <span></span>
         </button>
-        <div className={styles.Header__logoContainer}>
+        <div className={styles.LogoContainer}>
           <Link to={'/'}>
             <Logo />
           </Link>
         </div>
         <Navigation isDropdownOpen={isDropdownOpen} />
       </div>
-      <div className={styles.Header__searchContainer}>
+      <div className={styles.SearchContainer}>
         <Search />
         {isAuth ? (
-          <div className={styles.Header__userButton}>
-            <p className={styles.Header__profileLink}>
+          <div className={styles.UserButton}>
+            <p className={styles.ProfileLink}>
               <Link to={'/profile'}>P</Link>
             </p>
-            <button className={styles.Header__buttonExit} onClick={handleClickExitButton}>
+            <button className={styles.ButtonExit} onClick={handleClickExitButton}>
               <Exit />
             </button>
           </div>
         ) : (
-          <button
-            onClick={handleClickLoginButton}
-            className={styles.Header__searchContainer_account}>
+          <button onClick={handleClickLoginButton} className={styles.SearchContainer_account}>
             <Account />
           </button>
         )}

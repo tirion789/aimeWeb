@@ -5,22 +5,22 @@
     padding: 24px 41px 0;
     display: flex;
     margin-bottom: 48px;
+}
 
-    &__navigationList {
-        display: flex;
-        color: white;
-        margin-left: 93px;
-        margin-top: 17px;
-        gap: 74px;
-    }
+.NavigationList {
+    display: flex;
+    color: white;
+    margin-left: 93px;
+    margin-top: 17px;
+    gap: 74px;
+}
 
-    &__navigationListMovies {
-        @include navLinks;
-    }
+.NavigationListMovies {
+    @include navLinks;
+}
 
-    &__genreButton {
-        @include navLinks
-    }
+.GenreButton {
+    @include navLinks
 }
 
 @media (max-width: $modile) {
@@ -30,14 +30,14 @@
     }
 
 
-    .Navigation__navigationList {
+    .NavigationList {
         display: none;
         margin-left: 0;
         gap: 25px;
     }
 
 
-    .Navigation__active {
+    .Active {
         display: flex;
         flex-direction: column;
         position: absolute;

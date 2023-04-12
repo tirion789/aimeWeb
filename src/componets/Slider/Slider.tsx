@@ -23,31 +23,31 @@ const Slider = ({ items }: SliderProps) => {
   };
 
   return (
-    <div className={styles.Slider__slider}>
+    <div className={styles.Slider}>
       <button
-        className={styles.Slider__swapSlideButton}
+        className={styles.SwapSlideButton}
         disabled={activeIndex === 0}
         onClick={handleClickPrevAnime}>
         <Arrow transform="rotate(180)" />
       </button>
-      <ul className={styles.Slider__list}>
+      <ul className={styles.List}>
         {items?.map(({ episodes, id, image, rating, title, totalEpisodes, type }) => (
           <li
             key={id}
             style={{ transform: `translateX(-${activeIndex * WIDTH_BLOCK_OFFSET}px)` }}
-            className={styles.Slider__item}>
+            className={styles.Item}>
             <Link to={`/anime/${id}`}>
-              <img className={styles.Slider__image} src={image} alt="" />
-              <div className={styles.Slider__titleListContainer}>
-                <h2 className={styles.Slider__titleListItemNames}>{title.romaji}</h2>
+              <img className={styles.Image} src={image} alt="" />
+              <div className={styles.TitleListContainer}>
+                <h2 className={styles.TitleListItemNames}>{title.romaji}</h2>
                 <div style={{ display: 'flex' }}>
-                  <p className={styles.Slider__episodes}>
+                  <p className={styles.Episodes}>
                     {type === 'MANGA' ? 'Chapters: ' : 'Episodes: '}
                     {totalEpisodes || episodes ? totalEpisodes || episodes : '?'}
                   </p>
-                  <div style={{ marginLeft: 'auto' }}>
+                  <div className={styles.Container}>
                     <Star width={19} height={19} />
-                    <span style={{ marginLeft: '10px' }}>
+                    <span className={styles.Rating}>
                       {String(rating ? rating : '')
                         .split('')
                         .join('.')}
@@ -60,7 +60,7 @@ const Slider = ({ items }: SliderProps) => {
         ))}
       </ul>
       <button
-        className={styles.Slider__swapSlideButton}
+        className={styles.SwapSlideButton}
         disabled={items ? activeIndex === items.length - 6 : undefined}
         onClick={handleClickNextAnime}>
         <Arrow />

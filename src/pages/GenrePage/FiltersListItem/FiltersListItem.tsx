@@ -6,19 +6,13 @@ import styles from './FiltersListItem.module.scss';
 
 const FiltersListItem = ({ image, title, totalEpisodes, rating, id }: FiltersListItemProps) => {
   return (
-    <li className={styles.GenrePage__listItem}>
+    <li className={styles.ListItem}>
       <Link to={`/anime/${id}`}>
-        <img
-          className={styles.GenrePage__image}
-          width={257}
-          height={400}
-          src={image}
-          alt="imageAnime"
-        />
-        <div className={styles.GenrePage__titleListContainer}>
-          <h2 className={styles.GenrePage__titleListItemNames}>{title.romaji}</h2>
+        <img className={styles.Image} width={257} height={400} src={image} alt="imageAnime" />
+        <div className={styles.TitleListContainer}>
+          <h2 className={styles.TitleListItemNames}>{title.romaji}</h2>
           <div style={{ display: 'flex' }}>
-            <p className={styles.GenrePage__episodes}>
+            <p className={styles.Episodes}>
               {totalEpisodes ? 'Episodes: ' : 'Chapters: '}
               {totalEpisodes ? totalEpisodes : '?'}
             </p>

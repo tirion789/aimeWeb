@@ -7,135 +7,135 @@
     width: 250px;
     margin: 0 auto;
     position: relative;
+}
 
-    &__buttonsContainer {
-        display: flex;
-        gap: 15px;
-    }
+.ButtonsContainer {
+    display: flex;
+    gap: 15px;
+}
 
-    &__buttons {
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 700;
-        line-height: 24px;
-        background-color: transparent;
-        font-size: 10px;
-        color: white;
-        border: 2px solid transparent;
-        position: relative;
-        cursor: pointer;
-        background: linear-gradient(#090909 0 0) padding-box, linear-gradient(to right, #CF427B 0%, #154587 100%) border-box;
-        margin-right: 0;
-        border-radius: 5px;
-        text-align: center;
-        height: 37px;
-          &::before{
-              content: ''
-          }
+.Buttons {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    line-height: 24px;
+    background-color: transparent;
+    font-size: 10px;
+    color: white;
+    border: 2px solid transparent;
+    position: relative;
+    cursor: pointer;
+    background: linear-gradient(#090909 0 0) padding-box, linear-gradient(to right, #CF427B 0%, #154587 100%) border-box;
+    margin-right: 0;
+    border-radius: 5px;
+    text-align: center;
+    height: 37px;
+      &::before{
+          content: ''
+      }
 
-          &:disabled {
-            border-color: #6b6b6b;
-          }
-    }
+      &:disabled {
+        border-color: #6b6b6b;
+      }
+}
 
-    
-    
-    &__selectorHidden {
-        @include playerSelectAndSearchInput;
-        border: 2px solid transparent;
-        position: relative;
-        cursor: pointer;
-        background: $basic-gradient-border-red-darkBlue;
-        border-radius: 5px;
-        width: 80px;
-        margin-bottom: 10px;
-        text-align: center;
-        height: 37px;
-        width: 100%;
 
-        &::before {
-            content: url(../../assets/images/icons/sort.svg);
-            background-size: 25px 25px;
-            position: absolute;
-            right: 0;
-            top: 5px
-        }
-    }
 
-    &__selectorOpen {
-        @include playerSelectAndSearchInput;
-        border: 2px solid transparent;
-        position: relative;
-        cursor: pointer;
-        background: $basic-gradient-border-red-darkBlue;
-        border-radius: 5px;
-        width: 80px;
-        margin-bottom: 10px;
-        text-align: center;
-        height: 37px;
-        width: 100%;
-        ::before {
-            content: url(../../assets/images/icons/sort.svg);
-            background-size: 25px 25px;
-            position: absolute;
-            right: 0;
-            bottom: 4px;
-            transform: rotate(180deg);
-        }
-    }
+.SelectorHidden {
+    @include playerSelectAndSearchInput;
+    border: 2px solid transparent;
+    position: relative;
+    cursor: pointer;
+    background: $basic-gradient-border-red-darkBlue;
+    border-radius: 5px;
+    width: 80px;
+    margin-bottom: 10px;
+    text-align: center;
+    height: 37px;
+    width: 100%;
 
-    &__container {
-        overflow-y: scroll;
-        scrollbar-color: #6969dd #e0e0e0;
-        scrollbar-width: thin;
-        scrollbar-width: thin;
-        height: 247px;
-        gap: 14px;
-        display: flex;
-        flex-direction: column;
-        background: $basic-gradient-border-black-purple-red;
-        border: 2px solid transparent;
+    &::before {
+        content: url(../../assets/images/icons/sort.svg);
+        background-size: 25px 25px;
         position: absolute;
-        top: 38px;
-        z-index: 4;
-        width: 147px;
-        left: 53px;
+        right: 0;
+        top: 5px
     }
-    
-    &__inputContainer {
-        position: sticky;
-        top: 0;
-        z-index: 1000;
-        background: black;
-    }
+}
 
-    &__selectList {
-        padding: 7px;
+.SelectorOpen {
+    @include playerSelectAndSearchInput;
+    border: 2px solid transparent;
+    position: relative;
+    cursor: pointer;
+    background: $basic-gradient-border-red-darkBlue;
+    border-radius: 5px;
+    width: 80px;
+    margin-bottom: 10px;
+    text-align: center;
+    height: 37px;
+    width: 100%;
+    ::before {
+        content: url(../../assets/images/icons/sort.svg);
+        background-size: 25px 25px;
+        position: absolute;
+        right: 0;
+        bottom: 4px;
+        transform: rotate(180deg);
     }
+}
 
-    &__searchSeries {
-        border: 2px solid #6b6b6b;
-        border-radius: 10px;
-        background: inherit;
-        height: 37.0461540222168px;
-        width: 100%;
-        padding: 11px;
-        position: sticky;
-        top: 0;
-        z-index: 40;
-        @include playerSelectAndSearchInput;
-    }
+.Container {
+    overflow-y: scroll;
+    scrollbar-color: #6969dd #e0e0e0;
+    scrollbar-width: thin;
+    scrollbar-width: thin;
+    height: 247px;
+    gap: 14px;
+    display: flex;
+    flex-direction: column;
+    background: $basic-gradient-border-black-purple-red;
+    border: 2px solid transparent;
+    position: absolute;
+    top: 38px;
+    z-index: 4;
+    width: 147px;
+    left: 53px;
+}
 
-    &__selectorButtons {
-        @include playerSelectAndSearchInput;
-        border: 2px solid transparent;
-        position: relative;
-        cursor: pointer;
-        background: $basic-gradient-border-red-darkBlue;
-        border-radius: 5px;
-        width: 80px;
-        margin-bottom: 10px;
-        text-align: center;
-        height: 37px;
-        width: 100%;
-    }
+.InputContainer {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: black;
+}
+
+.SelectList {
+    padding: 7px;
+}
+
+.SearchSeries {
+    border: 2px solid #6b6b6b;
+    border-radius: 10px;
+    background: inherit;
+    height: 37.0461540222168px;
+    width: 100%;
+    padding: 11px;
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    @include playerSelectAndSearchInput;
+}
+
+.SelectorButtons {
+    @include playerSelectAndSearchInput;
+    border: 2px solid transparent;
+    position: relative;
+    cursor: pointer;
+    background: $basic-gradient-border-red-darkBlue;
+    border-radius: 5px;
+    width: 80px;
+    margin-bottom: 10px;
+    text-align: center;
+    height: 37px;
+    width: 100%;
 }

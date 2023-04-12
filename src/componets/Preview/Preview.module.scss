@@ -1,132 +1,132 @@
 @import '../../assets/scss/mixin.scss';
 
-.preview {
+.Preview {
     padding: 76px 113px;
+}
 
-    &__background {
-        @include background;
-        background: $basic-prewiev-two-overlay ,url("../../assets//images/tokyorevenge.png");
-        background-size: no-repeat;
-        background-position: center;;
-        background-size: cover;
-    }
+.Background {
+    @include background;
+    background: $basic-prewiev-two-overlay ,url("../../assets//images/tokyorevenge.png");
+    background-size: no-repeat;
+    background-position: center;;
+    background-size: cover;
+}
 
-    &__overlay {
-        @include overlay;
-        background: $basic-prewiev-first-overlay;
-    }
+.Overlay {
+    @include overlay;
+    background: $basic-prewiev-first-overlay;
+}
 
-    &__spotlight {
-        font-family: 'Montserrat', sans-serif;
-        font-size: 18px;
-        font-weight: 500;
-        line-height: 28px;
-    }
+.Spotlight {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 28px;
+}
 
-    &__title{
-        margin-bottom: 39px;
-        margin-top: 9px;
+.Title{
+    margin-bottom: 39px;
+    margin-top: 9px;
 
-        max-width: 874px;
+    max-width: 874px;
 
-        font-family: 'Montserrat', sans-serif;
-        font-size: 75px;
-        font-weight: 600;
-        line-height: 91px;
-        text-align: left;
-    }
+    font-family: 'Montserrat', sans-serif;
+    font-size: 75px;
+    font-weight: 600;
+    line-height: 91px;
+    text-align: left;
+}
 
-    &__listContaier{
-        display: flex;
-        flex-wrap: wrap;
-    }
+.ListContaier{
+    display: flex;
+    flex-wrap: wrap;
+}
 
-    &__iconList{
-        margin-right: 16px;
+.IconList{
+    margin-right: 16px;
 
-        display: flex;
+    display: flex;
 
-        li:not(:last-child){
-            margin-right: 15px;
-        }
-    }
-
-    &__seriesList{
-        display: flex;
-
-        font-family: 'Montserrat', sans-serif;
-        font-size: 20px;
-        font-weight: 600;
-        line-height: 24px;
-        text-align: left;
-    }
-
-    &__seriesListItem {
-        font-family: 'Montserrat', sans-serif;
-        font-size: 20px;
-        line-height: 24px;
-    }
-
-    &__seriesListItem:not(:last-child) {
-        margin-right: 61px;
-    }
-
-    
-    &__seriesListItem:nth-child(1) {
-        position: relative;
-        &::after {
-            content: '';
-            height: 10px;
-            width: 10px;
-            border-radius: 5px;
-            position: absolute;
-            background: #343333;
-            left: 45px;
-            top: 8px;
-        }
-    }
-
-    &__seriesListItem:nth-child(3) {
-        margin-right: 60px;
-        position: relative;
-        &::before{
-            content: '';
-            height: 10px;
-            width: 10px;
-            border-radius: 5px;
-            position: absolute;
-            background: #343333;
-            top: 8px;
-            right: 60px;
-        }
-    }
-
-    &__description {
-        @include mediumText;
-        margin-top: 40px;
-        max-width: 1000px;
-    }
-
-    &__buttonsContainer {
-        margin-top: 44px;
-        &_watchLink {
-            @include button;
-            margin-right: 48px;
-            border: 3px solid transparent;
-        }
-
-        &_addToList {
-            @include buttonAddToList
-        }
+    li:not(:last-child){
+        margin-right: 15px;
     }
 }
 
-@media (max-width: $modile) {
+.SeriesList{
+    display: flex;
 
-    .preview {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 24px;
+    text-align: left;
+}
+
+.SeriesListItem {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    line-height: 24px;
+}
+
+.SeriesListItem:not(:last-child) {
+    margin-right: 61px;
+}
+
+
+.SeriesListItem:nth-child(1) {
+    position: relative;
+    &::after {
+        content: '';
+        height: 10px;
+        width: 10px;
+        border-radius: 5px;
+        position: absolute;
+        background: #343333;
+        left: 45px;
+        top: 8px;
+    }
+}
+
+.SeriesListItem:nth-child(3) {
+    margin-right: 60px;
+    position: relative;
+    &::before{
+        content: '';
+        height: 10px;
+        width: 10px;
+        border-radius: 5px;
+        position: absolute;
+        background: #343333;
+        top: 8px;
+        right: 60px;
+    }
+}
+
+.Description {
+    @include mediumText;
+    margin-top: 40px;
+    max-width: 1000px;
+}
+
+.ButtonsContainer {
+    margin-top: 44px;
+}
+
+.WatchLink {
+    @include button;
+    margin-right: 48px;
+    border: 3px solid transparent;
+}
+
+.AddToList {
+    @include buttonAddToList
+}
+
+@media (max-width: $modile) {
+    .Preview {
         padding: 76px 20px;
     }
-    .preview__title {
+    .Title {
         font-family: 'Montserrat', sans-serif;
         font-size: 33px;
         font-weight: 600;
@@ -135,25 +135,25 @@
         max-width: 750px;
     }
 
-    .preview__description {
+    .Description {
         margin-top: 10px;
         text-align: center;
     }
 
-    .preview__seriesListItem:not(:last-child) {
+    .SeriesListItem:not(:last-child) {
         margin-right: 36px
     }
 
-    .preview__seriesListItem:nth-child(3) {
+    .SeriesListItem:nth-child(3) {
         margin-right: 0
     }
 
-    .preview__buttonsContainer {
+    .ButtonsContainer {
         display: flex;
         justify-content: center;
     }
 
-    .preview__buttonsContainer_watchLink {
+    .WatchLink {
             padding: 5px 5px 5px 5px;
             font-size: 13px;
             font-weight: 600;
@@ -165,7 +165,7 @@
             }
     }
 
-    .preview__buttonsContainer_addToList {
+    .AddToList {
         font-size: 13px;
         font-weight: 600;
         line-height: 30px;

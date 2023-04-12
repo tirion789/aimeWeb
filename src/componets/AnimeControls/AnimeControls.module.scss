@@ -3,46 +3,47 @@
 
 .AnimeControls {
     position: relative;
-    &__button{
-        @include button;
-        width: 250px;
-        border-radius: 0;
-        margin-right: 0;
-        &::before {
-            content: url(../../assets/images/icons/Plusicon.svg)
-        };
-    }
+}
 
-    &__activeButton {
-        @include button;
-        width: 250px;
-        border-radius: 0;
-        margin-right: 0;
-        &::before {
-            content: url(../../assets/images/icons/tick.svg)
-        };
-    }
+.Button{
+    @include button;
+    width: 250px;
+    border-radius: 0;
+    margin-right: 0;
+    &::before {
+        content: url(../../assets/images/icons/Plusicon.svg)
+    };
+}
 
-    &__showButton {
-        position: absolute;
-        z-index: 2;
-        right: 15px;
-        top: 18px;
-        svg {
-            transition: $animate-for-svg;
-            display: block;
-        }
-    }
+.ActiveButton {
+    @include button;
+    width: 250px;
+    border-radius: 0;
+    margin-right: 0;
+    &::before {
+        content: url(../../assets/images/icons/tick.svg)
+    };
+}
 
-    &__hiddenBtn {
-        max-height: 0;
-        transition: max-height 1.5s ease-out;
-        overflow: hidden;
+.ShowButton {
+    position: absolute;
+    z-index: 2;
+    right: 15px;
+    top: 18px;
+    svg {
+        transition: $animate-for-svg;
+        display: block;
     }
+}
 
-    &__hiddenBtnShow {
-        max-height: 500px;
-        overflow: hidden;
-        transition: max-height 1.5s ease-in;
-    }
+.HiddenBtn {
+    max-height: 0;
+    transition: max-height 1.5s ease-out;
+    overflow: hidden;
+}
+
+.HiddenBtnShow {
+    max-height: 500px;
+    overflow: hidden;
+    transition: max-height 1.5s ease-in;
 }

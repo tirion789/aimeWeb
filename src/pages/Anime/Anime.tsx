@@ -33,12 +33,12 @@ const Anime = () => {
     <>
       <Header />
       <main>
-        <div className={styles.Anime__background}>
-          <div className={styles.Anime__overlay}>
-            <div className={styles.Anime__container}>
-              <div className={styles.Anime__imgContaier}>
-                <img className={styles.Anime__image} src={currentAnime?.image} alt="anime" />
-                <div className={styles.Anime__btnContainer}>
+        <div className={styles.Background}>
+          <div className={styles.Overlay}>
+            <div className={styles.Container}>
+              <div className={styles.ImgContaier}>
+                <img className={styles.Image} src={currentAnime?.image} alt="anime" />
+                <div className={styles.BtnContainer}>
                   {isAuth ? (
                     <AnimeControls currentAnime={currentAnime} />
                   ) : (

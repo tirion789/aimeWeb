@@ -12,6 +12,8 @@ import AnimeControlsListItems from './AnimeControlsListItem/AnimeControlsListIte
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { ReactComponent as Sort } from '../../assets/images/icons/sort.svg';
 import { AnimeControlsInterface } from './AnimeControlsInterface';
+import 'react-toastify/dist/ReactToastify.css';
+import { getToast } from '../../common/util';
 
 const buttonsList = Object.values(ListNames);
 
@@ -30,12 +32,15 @@ const AnimeControls = ({ currentAnime }: AnimeControlsInterface) => {
   const handleButtonClickActive = () => {
     if (currentAnime && currentActiveButton === ListNames.PLANNED && !currentAnimeListName) {
       dispatch(setPlanned(currentAnime));
+      getToast(currentAnime.title.romaji, 'planned');
     }
     if (currentAnime && currentActiveButton === ListNames.FAVORITES && !currentAnimeListName) {
       dispatch(setItems(currentAnime));
+      getToast(currentAnime.title.romaji, 'favorites');
     }
     if (currentAnime && currentActiveButton === ListNames.REVIEWING && !currentAnimeListName) {
       dispatch(setReviewing(currentAnime));
+      getToast(currentAnime.title.romaji, 'reviewing');
     }
   };
 
@@ -51,7 +56,7 @@ const AnimeControls = ({ currentAnime }: AnimeControlsInterface) => {
 
   return (
     <div className={styles.AnimeControls}>
-      <button className={styles.AnimeControls__showButton} onClick={handleShowHiddenButtons}>
+      <button className={styles.ShowButton} onClick={handleShowHiddenButtons}>
         {!showHiddenButton ? (
           <Sort width={30} height={30} />
         ) : (
@@ -60,15 +65,10 @@ const AnimeControls = ({ currentAnime }: AnimeControlsInterface) => {
       </button>
       <button
         onClick={handleButtonClickActive}
-        className={`${
-          currentAnimeListName ? styles.AnimeControls__activeButton : styles.AnimeControls__button
-        }`}>
+        className={`${currentAnimeListName ? styles.ActiveButton : styles.Button}`}>
         {currentActiveButton}
       </button>
-      <ul
-        className={`${
-          showHiddenButton ? styles.AnimeControls__hiddenBtnShow : styles.AnimeControls__hiddenBtn
-        }`}>
+      <ul className={`${showHiddenButton ? styles.HiddenBtnShow : styles.HiddenBtn}`}>
         {filteredButtons.map((button, index) => (
           <AnimeControlsListItems button={button} key={index} currentAnime={currentAnime} />
         ))}

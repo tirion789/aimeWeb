@@ -7,31 +7,31 @@ const Discription = ({ currentAnime }: DescriptionProps) => {
 
   return (
     <div className={styles.Discription}>
-      <div className={styles.Anime__discriptionAnimeTitle}>
+      <div className={styles.DiscriptionAnimeTitle}>
         <h1>{currentAnime?.title.romaji}</h1>
         <h2>{currentAnime?.title.native}</h2>
       </div>
-      <div className={styles.Discription__info}>
-        <dl className={styles.Discription__row}>
-          <dt className={styles.Discription__rowFirstColumn}>Type</dt>
-          <dd className={styles.Discription__rowTwoColumn}>{currentAnime?.type}</dd>
-          <dt className={styles.Discription__rowFirstColumn}>
+      <div className={styles.Info}>
+        <dl className={styles.Row}>
+          <dt className={styles.RowFirstColumn}>Type</dt>
+          <dd className={styles.RowTwoColumn}>{currentAnime?.type}</dd>
+          <dt className={styles.RowFirstColumn}>
             {currentAnime?.type === 'MANGA' ? 'Chapters: ' : 'Episodes: '}
           </dt>
-          <dd className={styles.Discription__rowTwoColumn}>
+          <dd className={styles.RowTwoColumn}>
             {currentAnime?.totalEpisodes ? currentAnime?.totalEpisodes : '?'}
           </dd>
-          <dt className={styles.Discription__rowFirstColumn}>Status</dt>
-          <dd className={styles.Discription__rowTwoColumn}>{currentAnime?.status}</dd>
-          <dt className={styles.Discription__rowFirstColumn}>Genres</dt>
-          <dd className={styles.Discription__rowTwoColumn}>{genresArray}</dd>
-          <dt className={styles.Discription__rowFirstColumn}>Released Date</dt>
-          <dd className={styles.Discription__rowTwoColumn}>{currentAnime?.releaseDate}</dd>
+          <dt className={styles.RowFirstColumn}>Status</dt>
+          <dd className={styles.RowTwoColumn}>{currentAnime?.status}</dd>
+          <dt className={styles.RowFirstColumn}>Genres</dt>
+          <dd className={styles.RowTwoColumn}>{genresArray}</dd>
+          <dt className={styles.RowFirstColumn}>Released Date</dt>
+          <dd className={styles.RowTwoColumn}>{currentAnime?.releaseDate}</dd>
         </dl>
       </div>
       {currentAnime?.description && (
         <div
-          className={styles.Discription__text}
+          className={styles.Text}
           dangerouslySetInnerHTML={{ __html: currentAnime?.description }}
         />
       )}

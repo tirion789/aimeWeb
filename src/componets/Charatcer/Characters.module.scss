@@ -2,22 +2,22 @@
 
 .Characters {
     @include background;
+}
 
-    &__overlay {
-        @include overlay;
-        padding: 20px 60px;
-    }
+.Overlay {
+    @include overlay;
+    padding: 20px 60px;
+}
 
-    &__header {
-        @include componentHeader;
-    }
+.Header {
+    @include componentHeader;
 }
 
 @media (max-width: $modile) {
-    .Characters__overlay {
+    .Overlay {
         padding: 20px;
-        &__list {
-            justify-content: center;
-        }
+    }
+    .List {
+        justify-content: center;
     }
 }

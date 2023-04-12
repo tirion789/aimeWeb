@@ -6,17 +6,14 @@ import { NavigationProps } from './interface';
 const Navigation = ({ isDropdownOpen }: NavigationProps) => {
   return (
     <nav className={styles.Navigation__navigation}>
-      <ul
-        className={`${styles.Navigation__navigationList} ${
-          isDropdownOpen && styles.Navigation__active
-        }`}>
+      <ul className={`${styles.NavigationList} ${isDropdownOpen && styles.Active}`}>
         <li>
-          <Link to={'/filters'} className={styles.Navigation__genreButton}>
+          <Link to={'/filters'} className={styles.GenreButton}>
             Anime
           </Link>
         </li>
-        <li className={styles.Navigation__navigationListItem}>
-          <a className={styles.Navigation__navigationListMovies} href="/">
+        <li className={styles.NavigationListItem}>
+          <a className={styles.NavigationListMovies} href="/">
             ONAs
           </a>
         </li>

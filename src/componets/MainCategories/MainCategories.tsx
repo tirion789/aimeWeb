@@ -6,12 +6,12 @@ import Slider from '../Slider/Slider';
 const MainCategories = ({ items, isError, name }: MainCategoriesProps) => {
   return (
     <div className={styles.MainCategories}>
-      <div className={styles.MainCategories__container}>
-        <div className={styles.MainCategories__headerContainer}>
-          <h2 className={styles.MainCategories__title}>{name}</h2>
+      <div className={styles.Container}>
+        <div className={styles.HeaderContainer}>
+          <p className={styles.Title}>{name}</p>
         </div>
         {isError ? (
-          <p className={styles.MainCategories__error}>Server error</p>
+          <p className={styles.Error}>Server error</p>
         ) : (
           <>
             <Slider items={items} />

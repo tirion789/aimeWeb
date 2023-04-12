@@ -2,14 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { useGetAnimeViedoQuery } from '../../redux/api/query';
 import styles from './Player.module.scss';
 import { setCurrentSeries } from '../../redux/profileSlice/profileSlice';
-import { getCurrentAnimeSelector } from '../../redux/profileSlice/selectors';
 import Select from '../Select/Select';
-import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+import { useAppDispatch } from '../../redux/hooks';
 import { PlayerProps } from './interface';
 import Loader from '../Loader/Loader';
 
 const Player = ({ currentAnime, isSuccess }: PlayerProps) => {
-  const FIRST_SERIES = '1';
+  const FIRST_SERIES = 1;
   const dispatch = useAppDispatch();
   const [currentEpisode, setCurrentEpisode] = useState<string | null>(null);
 
@@ -23,12 +22,9 @@ const Player = ({ currentAnime, isSuccess }: PlayerProps) => {
     skip: !isSuccess,
   });
 
-  const animeItem = useAppSelector((state) =>
-    getCurrentAnimeSelector(state, currentAnime?.title.romaji),
-  );
-  const [series, setSeries] = useState<string>(animeItem?.currentAnimeSeries || FIRST_SERIES);
+  const [series, setSeries] = useState<number>(FIRST_SERIES);
 
-  const handleOnSeriesClick = (value: string) => {
+  const handleOnSeriesClick = (value: number) => {
     setSeries(value);
     if (currentAnime) {
       const options = {
@@ -51,15 +47,15 @@ const Player = ({ currentAnime, isSuccess }: PlayerProps) => {
     }
   };
   const handleActiveSeriesClick = (episodeNumber: number, episodeId: string) => {
-    handleOnSeriesClick(String(episodeNumber));
+    handleOnSeriesClick(episodeNumber);
     setCurrentEpisode(episodeId);
   };
 
   return (
     <div className={styles.Player}>
-      <div className={styles.Player__background}>
-        <div className={styles.Player__overlay}>
-          <div className={styles.Player__video}>
+      <div className={styles.Background}>
+        <div className={styles.Overlay}>
+          <div className={styles.Video}>
             {currentAnime.episodes.length > 1 && (
               <Select
                 handleSwapNextSeries={handleSwapNextSeries}
@@ -73,14 +69,25 @@ const Player = ({ currentAnime, isSuccess }: PlayerProps) => {
             {isFetching ? (
               <Loader />
             ) : (
-              <div className={styles.Player__iframeContainer}>
-                <iframe
-                  className={styles.Player__iframe}
-                  src={animeVideo?.headers.Referer}
-                  frameBorder="0"
-                  scrolling="no"
-                  allowFullScreen></iframe>
-              </div>
+              <>
+                <div className={styles.IframeContainer}>
+                  <iframe
+                    className={styles.Iframe}
+                    src={animeVideo?.headers.Referer}
+                    frameBorder="0"
+                    scrolling="no"
+                    allowFullScreen></iframe>
+                </div>
+                <div className={styles.SeriesDescriptionContainer}>
+                  <p className={styles.SeriesDescriptionHeader}>Series description</p>
+                  <p className={styles.SeriesDescriptionText}>
+                    Description: {currentAnime.episodes[series - 1].description}
+                  </p>
+                  <p className={styles.SeriesDescriptionText}>
+                    Title: {currentAnime.episodes[series - 1].title}
+                  </p>
+                </div>
+              </>
             )}
           </div>
         </div>

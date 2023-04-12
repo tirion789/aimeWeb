@@ -54,13 +54,11 @@ const Profile = () => {
   return (
     <div className={styles.wrapper}>
       <Header />
-      <main className={styles.Profile__background}>
-        <div className={styles.Profile__overlay}>
-          <div className={styles.Profile}>
-            {profileListMap.map((props, index) => (
-              <ProfileList key={index} {...props} />
-            ))}
-          </div>
+      <main className={styles.Background}>
+        <div className={styles.Overlay}>
+          {profileListMap.map((props, index) => (
+            <ProfileList key={index} {...props} />
+          ))}
         </div>
       </main>
       <footer className={styles.FooterBackground}>

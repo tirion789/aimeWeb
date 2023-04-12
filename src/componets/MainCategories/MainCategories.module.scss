@@ -3,73 +3,23 @@
 
 .MainCategories {
     padding: 70px 60px 113px;
+}
 
-    &__title {
-        @include componentHeader
-    }
+.Title {
+    @include componentHeader
+}
 
-    &__titleList {
-        margin-top: 50px;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 37px;
-        justify-content: center;
-    }
+.Error {
+    @include mediumText
+}
 
-    &__closeButton {
-        margin: 0 auto;
-        justify-content: center;
-        display: flex;
-        margin-top: 40px;
-    }
+.HeaderContainer {
+    display: flex;
+    justify-content: space-between;
+}
 
-    &__error {
-        @include mediumText
-    }
-
-    &__headerContainer {
-        display: flex;
-        justify-content: space-between;
-    }
-
-    &__viewMore {
-        @include mediumText;
-        height: max-content;
-        margin: auto 0;
-        font-family: 'Montserrat', sans-serif;
-    }
-
-    &__titleListItem{
-        position: relative;
-        display: flex;
-        justify-content: center;
-    }
-
-    &__image{
-        border-radius: 10px;
-        width: 257px;
-        height: 400px;
-    }
-    
-    
-    &__titleListContainer {
-        position: absolute;
-        display: flex;
-        justify-content: center;
-        overflow: hidden;
-        bottom: 4px;
-        width: 260px;
-        background: $basic-mainCategories-background;
-        flex-direction: column;
-    }
-
-    &__container:not(:first-child) {
-        margin-top: 94px;
-    }
-
-    &__titleListItemNames {
-        @include listItemName;
-    }
+.Container:not(:first-child) {
+    margin-top: 94px;
 }
 
 @media (max-width: $modile) {
@@ -78,40 +28,8 @@
     }
 }
 
-@media (max-width: $main-categories-width) {
-    .MainCategories {
-        &__titleList {
-            display: grid;
-            grid-template-columns: repeat(4,1fr);
-            grid-template-rows: repeat(2,1fr);
-            grid-gap: 50px;
-        }
-    }
-}
-
-@media (max-width: 1300px ) {
-    .MainCategories {
-        &__titleList {
-            grid-template-columns: repeat(3,1fr);
-            grid-column-gap: 50px;
-        }
-    }
-}
-
-@media (max-width: 1048px ) {
-    .MainCategories {
-        &__titleList {
-            grid-template-columns: repeat(2,1fr);
-        }
-    }
-}
-
 @media (max-width: 670px ) {
-    
     .MainCategories {
         padding: 70px 20px 113px;
-        &__titleList {
-            grid-template-columns: repeat(1,1fr);
-        }
     }
 }

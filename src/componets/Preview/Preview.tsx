@@ -32,40 +32,38 @@ const Preview = ({ items, loading }: PreviewProps) => {
   }
 
   return (
-    <div style={{ backgroundImage: `url(${items?.cover})` }} className={styles.preview__background}>
-      <div className={styles.preview__overlay}>
-        <div className={styles.preview}>
+    <div style={{ backgroundImage: `url(${items?.cover})` }} className={styles.Background}>
+      <div className={styles.Overlay}>
+        <div className={styles.Preview}>
           {loading && <Loader />}
-          <p className={styles.preview__spotlight}>#1 spotlight</p>
-          <h1 className={styles.preview__title}>{items?.title.english}</h1>
-          <div className={styles.preview__listContaier}>
-            <ul className={styles.preview__iconList}>
+          <p className={styles.Spotlight}>#1 spotlight</p>
+          <h1 className={styles.Title}>{items?.title.english}</h1>
+          <div className={styles.ListContaier}>
+            <ul className={styles.IconList}>
               {iconArray.map((icon, index) => (
                 <li key={index}>
                   <img src={icon} alt="icon" />
                 </li>
               ))}
             </ul>
-            <ul className={styles.preview__seriesList}>
-              <li className={styles.preview__seriesListItem}>{items?.type}</li>
-              <li className={styles.preview__seriesListItem}>Ep 1 / {items?.totalEpisodes} </li>
-              <li className={styles.preview__seriesListItem}>{items?.duration}m</li>
+            <ul className={styles.SeriesList}>
+              <li className={styles.SeriesListItem}>{items?.type}</li>
+              <li className={styles.SeriesListItem}>Ep 1 / {items?.totalEpisodes} </li>
+              <li className={styles.SeriesListItem}>{items?.duration}m</li>
             </ul>
           </div>
           {items?.description && (
             <div
-              className={styles.preview__description}
+              className={styles.Description}
               dangerouslySetInnerHTML={{ __html: items?.description }}
             />
           )}
-          <div className={styles.preview__buttonsContainer}>
-            <Link to={`/anime/${items?.id}`} className={styles.preview__buttonsContainer_watchLink}>
+          <div className={styles.ButtonsContainer}>
+            <Link to={`/anime/${items?.id}`} className={styles.WatchLink}>
               Watch Now
             </Link>
             {isAuth ? (
-              <button
-                onClick={handleClickAddListButton}
-                className={styles.preview__buttonsContainer_addToList}>
+              <button onClick={handleClickAddListButton} className={styles.AddToList}>
                 Add to List
               </button>
             ) : (

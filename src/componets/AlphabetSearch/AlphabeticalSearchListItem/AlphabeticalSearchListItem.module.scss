@@ -1,38 +1,36 @@
-.AlphabeticalSearchListItem {
-    &__listItem {
-        font-family: 'Montserrat', sans-serif;
-        font-size: 20px;
-        font-weight: 700;
-        line-height: 24px;
-        background-color: transparent;
-        font-family: 'Montserrat', sans-serif;
-        border: 2px solid transparent;
-        border-radius: 15px;
-        margin-right: 42px;
-        position: relative;
-        cursor: pointer;
-        background: linear-gradient(#090909 0 0) padding-box, linear-gradient( #CF427B 0%, #154587 100%) border-box;
-        margin-right: 0;
-        border-radius: 5px;
-        width: 35px;
-        text-align: center;
-          &::before{
-              content: ''
-          }
-       }
-    
-       &__listItemLink {
-        font-size: 20px;
-        font-weight: 600;
-        line-height: 31px;
-        color: white;
-        display: block;
-        &::first-letter {
-           background: linear-gradient(188.73deg, #1DA1F2 11.03%, #C93677 79.85%, rgba(255, 255, 255, 0) 79.85%),
-           linear-gradient(0deg, #FFFFFF, #FFFFFF);
-           -webkit-background-clip: text;
-           background-clip: text;
-           color: transparent;
-       }
-       }
-}
+.ListItem {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 24px;
+    background-color: transparent;
+    font-family: 'Montserrat', sans-serif;
+    border: 2px solid transparent;
+    border-radius: 15px;
+    margin-right: 42px;
+    position: relative;
+    cursor: pointer;
+    background: linear-gradient(#090909 0 0) padding-box, linear-gradient( #CF427B 0%, #154587 100%) border-box;
+    margin-right: 0;
+    border-radius: 5px;
+    width: 35px;
+    text-align: center;
+      &::before{
+          content: ''
+      }
+   }
+
+   .ListItemLink {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 31px;
+    color: white;
+    display: block;
+    &::first-letter {
+       background: linear-gradient(188.73deg, #1DA1F2 11.03%, #C93677 79.85%, rgba(255, 255, 255, 0) 79.85%),
+       linear-gradient(0deg, #FFFFFF, #FFFFFF);
+       -webkit-background-clip: text;
+       background-clip: text;
+       color: transparent;
+   }
+   }

@@ -1,57 +1,52 @@
 @import '../../assets/scss/mixin.scss';
 
-.Discription {
+.Info{
+    margin-bottom: 20px;
 
-    &__info{
-        margin-bottom: 20px;
+    display: flex;
+    width: 500px;
+}
 
-        display: flex;
-        width: 500px;
-    }
+.Row {
+    display: flex;
+    flex-wrap: wrap;
+}
 
-    &__row {
-        display: flex;
-        flex-wrap: wrap;
-    }
+.RowFirstColumn{
+    margin-top: 15px;
 
-    &__rowFirstColumn{
-        margin-top: 15px;
+    @include mediumText;
 
-        @include mediumText;
+    width: 250px;
+}
 
-        width: 250px;
-    }
+.RowTwoColumn {
+    margin-top: 15px;
 
-    &__rowTwoColumn {
-        margin-top: 15px;
+    @include mediumText;
+    
+    width: 250px;
 
-        @include mediumText;
-        
-        width: 250px;
+}
 
-    }
+.Player {
+    padding: 20px
+}
 
-    &__player {
-        padding: 20px
-    }
-
-    &__text {
-        @include mediumText;
-    }
+.Text {
+    @include mediumText;
 }
 
 @media (max-width: $tablet) {
-    .Discription {
-        &__rowFirstColumn {
-            width: 50%;
-        }
+    .RowFirstColumn {
+        width: 50%;
+    }
 
-        &__rowTwoColumn {
-            width: 50%;
-        }
+    .RowTwoColumn {
+        width: 50%;
+    }
 
-        &__info {
-            width: auto;
-        }
+    .Info {
+        width: auto;
     }
 }

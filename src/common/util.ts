@@ -1,4 +1,6 @@
+import { toast } from 'react-toastify';
 import { ProfileAnime } from '../redux/profileSlice/types';
+import 'react-toastify/dist/ReactToastify.css';
 
 interface ReplacedAnime {
   mainArray: ProfileAnime[];
@@ -48,4 +50,17 @@ export const getPushCurrentlyObjectInArray = (
 export const getNormalizeTitle = (string: string) => {
   const lowerCaseString = string.toLowerCase();
   return lowerCaseString.charAt(0).toUpperCase() + lowerCaseString.slice(1);
+};
+
+export const getToast = (title: string, list: string) => {
+  toast.success(`${title} adding to your ${list} list`, {
+    position: 'bottom-right',
+    autoClose: 3000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: 'dark',
+  });
 };

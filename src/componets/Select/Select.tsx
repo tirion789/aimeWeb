@@ -26,12 +26,12 @@ const Select = ({
   };
 
   const handleClickSetNextSeries = () => {
-    setSeries((prev: string) => Number(prev) + SERIES);
+    setSeries((prev: number) => prev + SERIES);
     handleSwapNextSeries();
   };
 
   const handleClickSetPrevSeries = () => {
-    setSeries((prev: string) => Number(prev) - SERIES);
+    setSeries((prev: number) => prev - SERIES);
     handleSwapPrevSeries();
   };
 
@@ -41,42 +41,40 @@ const Select = ({
 
   return (
     <div className={styles.Select}>
-      <div className={styles.Select__buttonsContainer}>
+      <div className={styles.ButtonsContainer}>
         <button
-          className={styles.Select__buttons}
-          disabled={Number(series) === SERIES}
+          className={styles.Buttons}
+          disabled={series === SERIES}
           onClick={handleClickSetPrevSeries}>
           <Arrow transform="rotate(180)" />
         </button>
         <button
-          className={
-            showSeriesSelector ? styles.Select__selectorOpen : styles.Select__selectorHidden
-          }
+          className={showSeriesSelector ? styles.SelectorOpen : styles.SelectorHidden}
           onClick={handleClickShowSeries}>
           <span>{series}</span>
         </button>
         <button
-          className={styles.Select__buttons}
-          disabled={Number(series) === currentAnime?.episodes.length}
+          className={styles.Buttons}
+          disabled={series === currentAnime?.episodes.length}
           onClick={handleClickSetNextSeries}>
           <Arrow />
         </button>
       </div>
       {showSeriesSelector && (
-        <div className={`${styles.Select__container} scrollbar`}>
-          <div className={styles.Select__inputContainer}>
+        <div className={`${styles.Container} scrollbar`}>
+          <div className={styles.InputContainer}>
             <input
               onChange={handleActiveSeriesSearch}
-              className={styles.Select__searchSeries}
+              className={styles.SearchSeries}
               placeholder="Search"
               type="text"
             />
           </div>
-          <ul className={styles.Select__selectList}>
+          <ul className={styles.SelectList}>
             {filterArray?.map(({ id, number }) => (
               <li>
                 <button
-                  className={styles.Select__selectorButtons}
+                  className={styles.SelectorButtons}
                   onClick={() => handleActiveSeriesClick(number, id)}>
                   {number}
                 </button>

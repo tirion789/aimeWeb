@@ -32,8 +32,8 @@ const Characters = ({ currentAnime }: CharactersInterface) => {
 
   return (
     <div className={styles.Characters}>
-      <div className={styles.Characters__overlay}>
-        <h1 className={styles.Characters__header}>Characters</h1>
+      <div className={styles.Overlay}>
+        <h1 className={styles.Header}>Characters</h1>
         {CharactersListMap.map((props) => (
           <CharactersList {...props} />
         ))}

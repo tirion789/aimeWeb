@@ -13,11 +13,8 @@ const AlphabeticalSearchListItem = ({ latter, key }: AlphabeticalSearchListItemP
   };
 
   return (
-    <li key={key} className={styles.AlphabeticalSearchListItem__listItem}>
-      <Link
-        className={styles.AlphabeticalSearchListItem__listItemLink}
-        onMouseDown={handleClickLetter}
-        to={`/inDevelopment`}>
+    <li key={key} className={styles.ListItem}>
+      <Link className={styles.ListItemLink} onMouseDown={handleClickLetter} to={`/inDevelopment`}>
         {latter}
       </Link>
     </li>

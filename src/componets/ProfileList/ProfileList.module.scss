@@ -4,72 +4,75 @@
 
 .Profile {
     padding: 20px 60px;
-    &__favoriteList {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
+}
 
-    &__favoriteListItem {
-        display: flex;
-        width: 100%;
-        margin-bottom: 25px;
-        align-items: center
-    }
+.List {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 
-    &__favoriteListItemTitle {
-        @include mediumText;
-    }
+.ListItem {
+    display: flex;
+    width: 100%;
+    margin-bottom: 25px;
+    align-items: center
+}
 
-    &__favoritelistItemEpisodes {
-        font-size: 20px;
-        font-weight: 600;
-        line-height: 31px;
-        margin-left: auto;
-        margin-right: 15px;
-    }
+.ListItemTitle {
+    @include mediumText;
+}
 
-    &__favoritesTitle {
-        border: 2px white solid;
-        background: black;
-        border-radius: 14px;
-        z-index: 3;
-        color: white;
-        padding: 10px;
-        background: $basic-gradient-text-border-blue-red;
-        border: 1px solid transparent;
-        border-radius: 9px;
-        margin-bottom: 15px
-    }
+.ListItemEpisodes {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 31px;
+    margin-left: auto;
+    margin-right: 15px;
+}
 
-    &__background {
-        @include background;
-        background-image: url("../../assets/images/wp5104313\ 1.png");
-        height: max-content
-    }
-    
-    &__overlay {
-        @include overlay;
-        background: $basic-gradient-overlay;
-        height: max-content;
-    }
-    &__favoriteListItemButtonDeleted{
-        @include button;
-        margin-right: 0;
-        padding: 10px 10px 10px 10px;
-        &:before {
-            content: '';
-        }
+.Title {
+    border: 2px white solid;
+    background: black;
+    border-radius: 14px;
+    z-index: 3;
+    color: white;
+    padding: 10px;
+    background: $basic-gradient-text-border-blue-red;
+    border: 1px solid transparent;
+    border-radius: 9px;
+    margin-bottom: 15px
+}
+
+.Background {
+    @include background;
+    background-image: url("../../assets/images/wp5104313\ 1.png");
+    height: max-content
+}
+
+.Overlay {
+    @include overlay;
+    background: $basic-gradient-overlay;
+    height: max-content;
+}
+.ListItemButtonDeleted{
+    @include button;
+    margin-right: 0;
+    padding: 10px 10px 10px 10px;
+    &:before {
+        content: '';
     }
 }
 
 @media (max-width: $modile) {
-    .Profile {
-        &__favoriteListItem {
-            flex-direction: column;
-        }
-        &__favoritelistItemEpisodes {
-            margin: 5px 0;
-        }
+    .ListItem {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .ListItemEpisodes {
+        margin: 5px 0;
+    }
+    .ListItemButtonDeleted {
+        width: 100%;
     }
 }

@@ -35,66 +35,66 @@ const AuthModal = () => {
   useOutsideClick(refModal, handleClickOutside, popupModal);
 
   return (
-    <div className={`${popupModal && styles.Login__overlay}`}>
-      <div ref={refModal} className={` ${styles.Login__modal} ${popupModal && styles.Login__show}`}>
+    <div className={`${popupModal && styles.Overlay}`}>
+      <div ref={refModal} className={` ${styles.Modal} ${popupModal && styles.Show}`}>
         <div className={styles.Login}>
-          <div className={styles.Login__container}>
-            <h1 className={styles.Login__title}>{isLoginModal ? 'Sing In' : 'Sing Up'}</h1>
-            <div className={styles.Login__inputsContainer}>
-              <div className={styles.Login__inputContainer}>
-                <h2 className={styles.Login__inputName}>Email</h2>
+          <div className={styles.Container}>
+            <p className={styles.Title}>{isLoginModal ? 'Sing In' : 'Sing Up'}</p>
+            <div className={styles.InputsContainer}>
+              <div className={styles.InputContainer}>
+                <p className={styles.InputName}>Email</p>
                 <input
                   value={email}
                   onChange={(event) => handleEmailChange(event)}
                   placeholder="email"
-                  className={styles.Login__input}
+                  className={styles.Input}
                   type="text"
                 />
                 {emailsValidation.isEmpty && (
-                  <p className={styles.Login__validationError}>The field cannot be empty</p>
+                  <p className={styles.ValidationError}>The field cannot be empty</p>
                 )}
                 {emailsValidation.emailError && (
-                  <p className={styles.Login__validationError}>No valid email</p>
+                  <p className={styles.ValidationError}>No valid email</p>
                 )}
               </div>
-              <div className={styles.Login__inputContainer}>
-                <h2 className={styles.Login__inputName}>Password</h2>
+              <div className={styles.InputContainer}>
+                <p className={styles.InputName}>Password</p>
                 <input
                   value={password}
                   onChange={(event) => handlePasswordChange(event)}
                   placeholder="password"
-                  className={styles.Login__input}
+                  className={styles.Input}
                   type="password"
                 />
                 {passwordValidation.isEmpty && (
-                  <p className={styles.Login__validationError}>The field cannot be empty</p>
+                  <p className={styles.ValidationError}>The field cannot be empty</p>
                 )}
                 {passwordValidation.minLength && (
-                  <p className={styles.Login__validationError}>Minimum number of characters: 5</p>
+                  <p className={styles.ValidationError}>Minimum number of characters: 5</p>
                 )}
                 {passwordValidation.maxLength && (
-                  <p className={styles.Login__validationError}>Maximum number of characters: 12</p>
+                  <p className={styles.ValidationError}>Maximum number of characters: 12</p>
                 )}
               </div>
               <button
                 disabled={!emailsValidation.inputValid || !passwordValidation.inputValid}
                 onClick={handleClickSubmitButton}
-                className={styles.Login__buttonSubmit}>
-                <p className={styles.Login__buttonText}>{isLoginModal ? 'Sign in' : 'Sing Up'}</p>
+                className={styles.ButtonSubmit}>
+                <p className={styles.ButtonText}>{isLoginModal ? 'Sign in' : 'Sing Up'}</p>
               </button>
             </div>
-            <div className={styles.Login__additionalInformation}>
-              <p className={styles.Login__additionalInformationText}>
+            <div className={styles.AdditionalInformation}>
+              <p className={styles.AdditionalInformationText}>
                 {isLoginModal ? 'It`s not registered?' : 'Already registered?'}{' '}
               </p>
               <button
                 onClick={handleClickChangeButton}
-                className={styles.Login__additionalInformationButton}>
+                className={styles.AdditionalInformationButton}>
                 {isLoginModal ? 'Create in account' : 'Sign in'}
               </button>
             </div>
           </div>
-          <div className={styles.Login__imageContainer}>
+          <div className={styles.ImageContainer}>
             <img width={530} src={isLoginModal ? onePanchMan : rectangle} alt="one panch man" />
           </div>
         </div>

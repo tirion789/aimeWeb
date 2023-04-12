@@ -2,103 +2,37 @@
 @import '../../assets/scss/variables'; 
 
 
-.GenrePage {
+.FiltersPage {
     @include background;
     background-image: url("../../assets/images/naruto.png");
     position: relative;
-    &__list {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 40px;
-        margin-top: 25px;
-    }
-
-    &__listItemName {
-        @include listItemName
-    }
-
-    &__episodes {
-        @include mediumText;
-        margin-top: 0;
-    }
-
-    &__titleListContainer {
-        position: absolute;
-        display: flex;
-        justify-content: center;
-        overflow: hidden;
-        bottom: 4px;
-        width: 100%;
-        background: linear-gradient(90deg, #101010 0%, rgba(0, 0, 0, 0.9) 100%);
-        flex-direction: column;
-    }
-
-    &__titleListItemNames {
-        @include listItemName;
-    }
-
-    &__listItem {
-        width: 257px;
-        position: relative
-    }
-
-    &__pagination {
-        display: flex;
-        gap: 15px;
-        margin-top: 15px;
-        justify-content: center
-    }
-
-    &__title {
-        @include mediumText;
-        font-size: 38px;
-    }
-
-    &__overlay {
-        @include overlay;
-        background: $basic-gradient-overlay;
-        padding: 20px 60px;
-        height: 100%;
-        display: grid;
-        grid-template-rows: auto 1fr auto;
-        min-height: 100vh;
-    }
-
-    &__container {
-        position: absolute;
-        display: flex;
-        justify-content: center;
-        overflow: hidden;
-        bottom: 4px;
-        width: 260px;
-        background: $basic-mainCategories-background
-    }
-
-    &__filtersContainer {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 40px;
-        
-    }
-
-    &__image {
-        width: 257px;
-        height: 400px;
-    }
-
-    &__listButton {
-        font-family: 'Montserrat', sans-serif;
-        font-size: 18px;
-        font-weight: 600;
-        line-height: 28px;
-        display: flex;
-        gap: 45px;
-        flex-wrap: wrap
-     }
 } 
 
+.List {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 25px;
+}
+
+.Overlay {
+    @include overlay;
+    background: $basic-gradient-overlay;
+    padding: 20px 60px;
+    height: 100%;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
+}
+
+.FiltersContainer {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 40px;
+    
+}
 
 .FooterBackground {
     @include background;

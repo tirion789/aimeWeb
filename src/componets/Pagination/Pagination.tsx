@@ -23,29 +23,27 @@ const Pagination = ({
   return (
     <div className={styles.Pagination}>
       <button
-        className={styles.Pagination__buttonSwapPage}
+        className={styles.ButtonSwapPage}
         disabled={firestIndexSlice === 0 && currentPaginationButton === 1}
         onClick={handlePaginationClickPrev}>
         <Arrow transform="rotate(180)" />
       </button>
       {firestIndexSlice !== 0 && (
         <>
-          <button
-            onClick={handleClickOnFirstPage}
-            className={styles.Pagination__listItemInactiveButton}>
+          <button onClick={handleClickOnFirstPage} className={styles.ListItemInactiveButton}>
             1
           </button>
-          <p style={{ paddingTop: '25px' }}>. . .</p>
+          <p className={styles.Ellipsis}>. . .</p>
         </>
       )}
-      <ul className={styles.Pagination__listButton}>
+      <ul className={styles.ListButton}>
         {buttonsArray.slice(PREV, VISIBLE).map((button, index) => (
           <li key={index}>
             <button
               className={
                 button === currentPaginationButton
-                  ? styles.Pagination__listItemButton
-                  : styles.Pagination__listItemInactiveButton
+                  ? styles.ListItemButton
+                  : styles.ListItemInactiveButton
               }
               onClick={() => handleClickPaginationButton(button)}>
               {button}
@@ -55,16 +53,14 @@ const Pagination = ({
       </ul>
       {lastIndexSlice !== buttonsArray.length - 1 && (
         <>
-          <p style={{ paddingTop: '25px' }}>. . .</p>
-          <button
-            onClick={handleClickOnLastPage}
-            className={styles.Pagination__listItemInactiveButton}>
+          <p className={styles.Ellipsis}>. . .</p>
+          <button onClick={handleClickOnLastPage} className={styles.ListItemInactiveButton}>
             {buttonsArray.length}
           </button>
         </>
       )}
       <button
-        className={styles.Pagination__buttonSwapPage}
+        className={styles.ButtonSwapPage}
         disabled={
           lastIndexSlice === LAST_ELEMENT_OF_ARRAY &&
           currentPaginationButton === buttonsArray.length

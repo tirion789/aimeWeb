@@ -2,61 +2,62 @@
 @import '../../../assets/scss/variables';
 
 .CharactersList {
-    &__list {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 35px;
-        justify-content: center;
-        &:not(:last-child) {
-            margin-bottom: 25px;
-        }
-    }
+}
 
-    &__item {
-        position: relative;
-    }
-
-    &__name {
-        @include mediumText;
-    }
-
-    &__swapButton {
-        svg {
-            transition: $animate-for-svg;
-            display: block;
-        }
-    }
-
-    &__charactersConteiner {
-        @include mediumText;
-        display: flex;
+.List {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 35px;
+    justify-content: center;
+    &:not(:last-child) {
         margin-bottom: 25px;
-        background: $basic-gradient-text-border-blue-red;
-        border: 2px solid transparent;
-        border-radius: 20px;
-        padding: 8px;
-        width: 100%;
-        justify-content: center;
-        align-items: center;
     }
+}
 
-    &__headerText {
-        @include mediumText;
-    }
+.Item {
+    position: relative;
+}
 
-    &__nameContainer {
-        position: absolute;
-        display: flex;
-        justify-content: center;
-        overflow: hidden;
-        bottom: 4px;
-        width: 150px;
-        background: linear-gradient(90deg, #101010 0%, rgba(0, 0, 0, 0.9) 100%);
-        flex-direction: column;
-    }
+.Name {
+    @include mediumText;
+}
 
-    &__image {
-        width: 150px;
-        height: 250px;
+.SwapButton {
+    svg {
+        transition: $animate-for-svg;
+        display: block;
     }
+}
+
+.CharactersConteiner {
+    @include mediumText;
+    display: flex;
+    margin-bottom: 25px;
+    background: $basic-gradient-text-border-blue-red;
+    border: 2px solid transparent;
+    border-radius: 20px;
+    padding: 8px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.HeaderText {
+    @include mediumText;
+}
+
+.NameContainer {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    bottom: 4px;
+    width: 150px;
+    background: linear-gradient(90deg, #101010 0%, rgba(0, 0, 0, 0.9) 100%);
+    flex-direction: column;
+}
+
+.Image {
+    width: 150px;
+    height: 250px;
 }

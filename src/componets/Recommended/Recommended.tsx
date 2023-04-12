@@ -8,8 +8,8 @@ const Recommended = ({ currentAnime }: RecommendedProps) => {
 
   return (
     <div className={styles.Recommended}>
-      <div className={styles.Recommended__overlay}>
-        <h1 className={styles.Recommended__recommendationsTitle}>Recommended</h1>
+      <div className={styles.Overlay}>
+        <h1 className={styles.RecommendationsTitle}>Recommended</h1>
         <Slider items={LENGHT} />
       </div>
     </div>

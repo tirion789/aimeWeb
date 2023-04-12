@@ -104,9 +104,9 @@ const FiltersPage = () => {
   return (
     <div className="wrapper">
       <Header />
-      <main className={styles.GenrePage}>
-        <div className={styles.GenrePage__overlay}>
-          <div className={styles.GenrePage__filtersContainer}>
+      <main className={styles.FiltersPage}>
+        <div className={styles.Overlay}>
+          <div className={styles.FiltersContainer}>
             {filtersMap.map((props, index) => (
               <Filter key={index} {...props} />
             ))}
@@ -114,7 +114,7 @@ const FiltersPage = () => {
           {isFetching ? (
             <Loader />
           ) : (
-            <ul className={styles.GenrePage__list}>
+            <ul className={styles.List}>
               {data?.results.map((props) => (
                 <FiltersListItem {...props} />
               ))}

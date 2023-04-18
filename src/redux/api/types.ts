@@ -1,13 +1,14 @@
-export type Recommendations = {
+export interface Recommendations {
   cover: string;
   episodes: number;
-  id: number;
+  id: string;
   image: string;
   rating: number;
   status: string;
   title: { romaji: string; english: string; native: string };
   totalEpisodes?: number;
-};
+  type: string;
+}
 
 export interface AnimeArray {
   cover: string;

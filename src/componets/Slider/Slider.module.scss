@@ -1,31 +1,15 @@
 @import '../../assets/scss/mixin.scss';
 @import '../../assets/scss/variables';
-.Episodes {
-    @include mediumText;
-    margin-top: 0;
-}
 
 .SwapSlideButton {
     &:disabled {   
         svg {
           path {
-            fill:#6b6b6b ;
+            fill:$basic-grey ;
           }
         }
       }
     
-}
-
-.Container {
-    margin-left: auto;
-}
-
-.Rating {
-    margin-left: 10px;
-}
-
-.Item {
-    transition: 1s;
 }
 
 .Slider {
@@ -37,47 +21,4 @@
     overflow-x: hidden;
     gap: 55px;
     transition: 1s;
-}
-
-.Image {
-    width: 240px;
-    height: 350px;
-    filter: brightness(0.6);
-}
-
-.ContentContainer {
-    position: absolute;
-    bottom: 0;
-}
-
-.Title {
-    @include componentHeader;
-}
-
-
-
-.RecommendationsTitle {
-    text-align: left;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 30px;
-    font-weight: 600;
-    line-height: 37px;
-    border-bottom: 2px solid $basic-white;
-    width: max-content;
-    margin-bottom: 15px;
-}
-
-.TitleListContainer {
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    overflow: hidden;
-    bottom: 4px;
-    width: 240px;
-    background: linear-gradient(90deg, #101010 0%, rgba(0, 0, 0, 0.9) 100%);
-    flex-direction: column;
-}
-
-.TitleListItemNames {
-    @include listItemName;
 }

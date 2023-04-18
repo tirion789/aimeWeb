@@ -48,13 +48,19 @@
     background: $basic-gradient-overlay;
 }
 
+.wrapper {
+    height: 100%;
+    margin: 0px auto;
+    max-width: 1920px;
+}
+
 @media (max-width: $tablet) {
     .Container {
         flex-direction: column;
     }
 
     .ImgContaier {
-        margin: 0 auto;
+        margin: 0 auto 50px;
     }
 }
 

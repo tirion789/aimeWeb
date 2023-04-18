@@ -43,3 +43,8 @@
     @include overlay;
     background: $basic-gradient-overlay;
 }
+@media (max-width: $modile) {
+    .Overlay {
+        padding: 20px;
+    }
+}

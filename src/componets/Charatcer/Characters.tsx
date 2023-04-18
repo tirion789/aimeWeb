@@ -5,7 +5,7 @@ import { CharactersInterface } from './CharactersInterface';
 
 const Characters = ({ currentAnime }: CharactersInterface) => {
   const [showSecondaryCharacters, setShowSecondaryCharacters] = useState<boolean>(false);
-  const [showMainCharacterss, setShowMainCharacterss] = useState<boolean>(true);
+  const [showMainCharacterss, setShowMainCharacters] = useState<boolean>(true);
 
   const CharactersListMap = [
     {
@@ -16,7 +16,7 @@ const Characters = ({ currentAnime }: CharactersInterface) => {
         characters: showMainCharacterss,
         type: 'main',
       },
-      setShowCharacters: setShowMainCharacterss,
+      setShowCharacters: setShowMainCharacters,
     },
     {
       items: currentAnime?.characters,

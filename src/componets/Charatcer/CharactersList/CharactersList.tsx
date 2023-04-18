@@ -22,9 +22,9 @@ const CharactersList = ({
         <button onClick={handleShowSecondaryCharacters} className={styles.CharactersConteiner}>
           <p className={styles.HeaderText}>{title}</p>
           {showCharacters.characters ? (
-            <Sort transform="rotate(180)" width={30} height={30} />
+            <Sort className={styles.SwapButton} transform="rotate(180)" width={30} height={30} />
           ) : (
-            <Sort width={30} height={30} />
+            <Sort className={styles.SwapButton} width={30} height={30} />
           )}
         </button>
       ) : (

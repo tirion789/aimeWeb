@@ -4,6 +4,7 @@ import { useGetSearchAnimeQuery } from '../../redux/api/query';
 import { debounce } from 'lodash';
 import styles from './Search.module.scss';
 import { ReactComponent as SearchImg } from '../../assets/images/icons/search.svg';
+import Loader from '../Loader/Loader';
 
 const Search = () => {
   const LAST_INDEX_ELEMENT_SLICE_ARRAY = 5;
@@ -13,7 +14,7 @@ const Search = () => {
   const [value, setValue] = useState('');
   const [isSearchOpen, setIsSearchOpen] = useState(false);
 
-  const { data } = useGetSearchAnimeQuery(value);
+  const { data, isFetching } = useGetSearchAnimeQuery(value);
 
   console.log(data);
 
@@ -48,13 +49,17 @@ const Search = () => {
         <ul className={styles.List}>
           {data?.results
             .slice(FIRST_INDEX_ELEMENT_SLICE_ARRAY, LAST_INDEX_ELEMENT_SLICE_ARRAY)
-            .map((obj) => (
-              <li>
-                <Link to={`/anime/${obj.id}`}>
-                  <p>{obj.title.romaji}</p>
-                </Link>
-              </li>
-            ))}
+            .map((obj) =>
+              isFetching ? (
+                <Loader />
+              ) : (
+                <li>
+                  <Link to={`/anime/${obj.id}`}>
+                    <p>{obj.title.romaji}</p>
+                  </Link>
+                </li>
+              ),
+            )}
         </ul>
       )}
     </div>

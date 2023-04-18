@@ -19,7 +19,9 @@ const Discription = ({ currentAnime }: DescriptionProps) => {
             {currentAnime?.type === 'MANGA' ? 'Chapters: ' : 'Episodes: '}
           </dt>
           <dd className={styles.RowTwoColumn}>
-            {currentAnime?.totalEpisodes ? currentAnime?.totalEpisodes : '?'}
+            {currentAnime?.totalEpisodes
+              ? `${currentAnime.episodes.length} / ${currentAnime?.totalEpisodes}`
+              : '?'}
           </dd>
           <dt className={styles.RowFirstColumn}>Status</dt>
           <dd className={styles.RowTwoColumn}>{currentAnime?.status}</dd>

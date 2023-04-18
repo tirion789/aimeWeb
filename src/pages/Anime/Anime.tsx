@@ -14,15 +14,20 @@ import Characters from '../../componets/Charatcer/Characters';
 import { setIsOpenPopupLogin } from '../../redux/filterSlice/filterSlice';
 import Relations from '../../componets/Relations/Relations';
 import Loader from '../../componets/Loader/Loader';
+import Error from '../Error/Error';
 
 const Anime = () => {
   const { id } = useParams();
   const dispatch = useAppDispatch();
-  const { data: currentAnime, isFetching, isSuccess } = useGetCurrentAnimeQuery(id!);
+  const { data: currentAnime, isFetching, isSuccess, isError } = useGetCurrentAnimeQuery(id!);
   const { isAuth } = useAuth();
 
   if (isFetching) {
     return <Loader />;
+  }
+
+  if (isError) {
+    return <Error />;
   }
 
   const handleClickLogin = () => {
@@ -30,7 +35,7 @@ const Anime = () => {
   };
 
   return (
-    <>
+    <div className={styles.wrapper}>
       <Header />
       <main>
         <div className={styles.Background}>
@@ -66,7 +71,7 @@ const Anime = () => {
           <Footer />
         </div>
       </footer>
-    </>
+    </div>
   );
 };
 

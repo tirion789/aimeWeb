@@ -4,13 +4,11 @@ import Slider from '../Slider/Slider';
 import { RecommendedProps } from './interface';
 
 const Recommended = ({ currentAnime }: RecommendedProps) => {
-  const LENGHT = currentAnime.recommendations;
-
   return (
     <div className={styles.Recommended}>
       <div className={styles.Overlay}>
         <h1 className={styles.RecommendationsTitle}>Recommended</h1>
-        <Slider items={LENGHT} />
+        <Slider items={currentAnime.recommendations} />
       </div>
     </div>
   );

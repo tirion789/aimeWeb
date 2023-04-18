@@ -1,9 +1,6 @@
 @import '../../../assets/scss/mixin.scss';
 @import '../../../assets/scss/variables';
 
-.CharactersList {
-}
-
 .List {
     display: flex;
     flex-wrap: wrap;
@@ -23,10 +20,8 @@
 }
 
 .SwapButton {
-    svg {
-        transition: $animate-for-svg;
-        display: block;
-    }
+    transition: $animate-for-svg;
+    display: block;
 }
 
 .CharactersConteiner {

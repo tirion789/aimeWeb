@@ -1,13 +1,10 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import styles from './Slider.module.scss';
-import { ReactComponent as Star } from '../../assets/images/icons/star.svg';
 import { ReactComponent as Arrow } from '../../assets/images/icons/paginationArrow.svg';
 import { SliderProps } from './interface';
+import SliderListItem from './SliderListItem/SliderListItem';
 
 const Slider = ({ items }: SliderProps) => {
-  const WIDTH_BLOCK_OFFSET = 295;
-
   const [activeIndex, setActiveIndex] = useState(0);
 
   const handleClickNextAnime = () => {
@@ -32,31 +29,16 @@ const Slider = ({ items }: SliderProps) => {
       </button>
       <ul className={styles.List}>
         {items?.map(({ episodes, id, image, rating, title, totalEpisodes, type }) => (
-          <li
-            key={id}
-            style={{ transform: `translateX(-${activeIndex * WIDTH_BLOCK_OFFSET}px)` }}
-            className={styles.Item}>
-            <Link to={`/anime/${id}`}>
-              <img className={styles.Image} src={image} alt="" />
-              <div className={styles.TitleListContainer}>
-                <h2 className={styles.TitleListItemNames}>{title.romaji}</h2>
-                <div style={{ display: 'flex' }}>
-                  <p className={styles.Episodes}>
-                    {type === 'MANGA' ? 'Chapters: ' : 'Episodes: '}
-                    {totalEpisodes || episodes ? totalEpisodes || episodes : '?'}
-                  </p>
-                  <div className={styles.Container}>
-                    <Star width={19} height={19} />
-                    <span className={styles.Rating}>
-                      {String(rating ? rating : '')
-                        .split('')
-                        .join('.')}
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </Link>
-          </li>
+          <SliderListItem
+            activeIndex={activeIndex}
+            episodes={episodes}
+            id={id}
+            title={title}
+            image={image}
+            rating={rating}
+            totalEpisodes={totalEpisodes}
+            type={type}
+          />
         ))}
       </ul>
       <button

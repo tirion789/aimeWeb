@@ -156,3 +156,17 @@
     }
 }
 
+@media (max-width: $modile) {
+    .Input {
+        width: 100%;
+        height: 56px;
+        padding: 15px 16px;
+        background: #302d2d;
+        border-radius: 5px;
+    }
+
+    .ButtonSubmit {
+        height: 56px;
+    }
+}
+

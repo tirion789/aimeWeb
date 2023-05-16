@@ -4,27 +4,28 @@ import R from '../../assets/images/icons/R.svg';
 import HD from '../../assets/images/icons/4K.svg';
 import DUB from '../../assets/images/icons/DUB.svg';
 import SUB from '../../assets/images/icons/SUB.svg';
-import { setItems } from '../../redux/profileSlice/profileSlice';
-import { Link } from 'react-router-dom';
+import { deleteAnimes, setItems } from '../../redux/profileSlice/profileSlice';
 import { useAppDispatch } from '../../redux/hooks';
 import { PreviewProps } from './interface';
 import Loader from '../Loader/Loader';
-import { useAuth } from '../../hooks/useAuth';
-import { setIsOpenPopupLogin } from '../../redux/filterSlice/filterSlice';
+import { deleteAnimeToast, getToast } from '../../common/util';
+import PrewiewButtons from '../PrewiewButtons/PrewiewButton';
 
 const Preview = ({ items, loading }: PreviewProps) => {
   const iconArray = [R, HD, DUB, SUB];
   const dispatch = useAppDispatch();
-  const { isAuth } = useAuth();
-
   const handleClickAddListButton = () => {
     if (items) {
       dispatch(setItems(items));
+      getToast(items.title.romaji, 'favorites');
     }
   };
 
-  const handleClickLogin = () => {
-    dispatch(setIsOpenPopupLogin(true));
+  const handleClickDeleteFromList = () => {
+    if (items) {
+      dispatch(deleteAnimes(items?.title.romaji));
+      deleteAnimeToast(items?.title.romaji, 'favorites');
+    }
   };
 
   if (loading) {
@@ -58,20 +59,12 @@ const Preview = ({ items, loading }: PreviewProps) => {
               dangerouslySetInnerHTML={{ __html: items?.description }}
             />
           )}
-          <div className={styles.ButtonsContainer}>
-            <Link to={`/anime/${items?.id}`} className={styles.WatchLink}>
-              Watch Now
-            </Link>
-            {isAuth ? (
-              <button onClick={handleClickAddListButton} className={styles.AddToList}>
-                Add to List
-              </button>
-            ) : (
-              <button onClick={handleClickLogin} className="loginMainPage">
-                Login
-              </button>
-            )}
-          </div>
+          <PrewiewButtons
+            title={items?.title.romaji}
+            item={items?.id}
+            handleAdd={handleClickAddListButton}
+            handleDelete={handleClickDeleteFromList}
+          />
         </div>
       </div>
     </div>

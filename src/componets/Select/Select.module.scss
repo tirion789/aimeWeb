@@ -96,10 +96,12 @@
     background: $basic-gradient-border-black-purple-red;
     border: 2px solid transparent;
     position: absolute;
-    top: 38px;
+    top: 43px;
     z-index: 4;
     width: 147px;
     left: 53px;
+    opacity: 0;
+    animation: ani 0.5s forwards;
 }
 
 .InputContainer {
@@ -111,7 +113,14 @@
 
 .SelectList {
     padding: 7px;
+
 }
+
+@keyframes ani {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+  }
+  
 
 .SearchSeries {
     border: 2px solid #6b6b6b;

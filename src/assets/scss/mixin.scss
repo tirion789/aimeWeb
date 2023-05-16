@@ -52,13 +52,6 @@
     border: none;
     cursor: pointer;
     position: relative;
-
-    &::before {
-        content: url(../../assets/images/icons/Plusicon.svg);
-        position: absolute;
-        top: 2px;
-        left: -23px;
-    }
 }
 
 @mixin background {

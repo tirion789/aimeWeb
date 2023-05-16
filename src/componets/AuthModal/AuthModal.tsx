@@ -14,10 +14,12 @@ const AuthModal = () => {
   const {
     email,
     password,
+    nickname,
     handleClickSubmitButton,
     handleEmailChange,
     handlePasswordChange,
     handleClickChangeButton,
+    handleNicknameChange,
     formType,
   } = useUserModal();
   const emailsValidation = useInput(email, { isEmpty: true, emailError: true });
@@ -57,6 +59,18 @@ const AuthModal = () => {
                   <p className={styles.ValidationError}>No valid email</p>
                 )}
               </div>
+              {formType === FORM_TYPES.signUp && (
+                <div className={styles.InputContainer}>
+                  <p className={styles.InputName}>Nickname</p>
+                  <input
+                    value={nickname}
+                    onChange={(event) => handleNicknameChange(event)}
+                    placeholder="text"
+                    className={styles.Input}
+                    type="text"
+                  />
+                </div>
+              )}
               <div className={styles.InputContainer}>
                 <p className={styles.InputName}>Password</p>
                 <input

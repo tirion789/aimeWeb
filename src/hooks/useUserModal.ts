@@ -32,7 +32,7 @@ export const useUserModal = () => {
 
   const handleClickSubmitButton = () => {
     if (formType === FORM_TYPES.singIn) {
-      dispatch(getAuthentication({ nickname, email, password }));
+      dispatch(getAuthentication({ email, password }));
     } else {
       dispatch(getRegister({ nickname, email, password }));
     }
@@ -49,11 +49,6 @@ export const useUserModal = () => {
   };
 
   useEffect(() => {
-    const loggedInUser = localStorage.getItem('users');
-    if (loggedInUser) {
-      const foundUser = JSON.parse(loggedInUser);
-      dispatch(setUser(foundUser));
-    }
     if (serverStatusLogin === 'success') {
       toast.success('You have successfully login!');
       dispatch(setStatusMessage('loading'));
@@ -69,6 +64,14 @@ export const useUserModal = () => {
       toast.error('It looks like something went wrong, check your data');
     }
   }, [dispatch, serverStatusLogin, serverStatusRegister]);
+
+  useEffect(() => {
+    const loggedInUser = localStorage.getItem('users');
+    if (loggedInUser) {
+      const foundUser = JSON.parse(loggedInUser);
+      dispatch(setUser(foundUser));
+    }
+  }, [dispatch]);
 
   return {
     email,

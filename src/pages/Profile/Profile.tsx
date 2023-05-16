@@ -14,6 +14,7 @@ import {
 } from '../../redux/profileSlice/selectors';
 import styles from './Profile.module.scss';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+import { deleteAnimeToast } from '../../common/util';
 
 const Profile = () => {
   const favoritesArray = useAppSelector(favoriteSelector);
@@ -23,14 +24,17 @@ const Profile = () => {
 
   const onDeletedFavoriteItem = (value: string) => {
     dispatch(deleteAnimes(value));
+    deleteAnimeToast(value, 'favorites');
   };
 
   const onDeletedPlannedItem = (value: string) => {
     dispatch(deletePlanned(value));
+    deleteAnimeToast(value, 'planned');
   };
 
   const onDeletedReviewingItem = (value: string) => {
     dispatch(deleteReviewing(value));
+    deleteAnimeToast(value, 'reviewing');
   };
 
   const profileListMap = [

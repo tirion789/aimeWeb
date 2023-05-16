@@ -11,20 +11,20 @@ const ProfileList = ({ title, items, handleDeleteButtonClick }: ProfileListProps
       </h1>
       <ul className={styles.List}>
         {items.map(({ title, currentAnimeSeries, totalEpisodes, id }) => (
-          <Link key={title.romaji} to={`/anime/${id}`}>
-            <li className={styles.ListItem}>
+          <li key={title.romaji} className={styles.ListItem}>
+            <Link to={`/anime/${id}`}>
               <p className={styles.ListItemTitle}>{title.romaji}</p>
-              <div className={styles.ListItemEpisodes}>
-                <span>{currentAnimeSeries ? currentAnimeSeries : '0'}</span>/
-                <span>{totalEpisodes}</span>
-              </div>
-              <button
-                className={styles.ListItemButtonDeleted}
-                onClick={() => handleDeleteButtonClick(title.romaji)}>
-                Удалить
-              </button>
-            </li>
-          </Link>
+            </Link>
+            <div className={styles.ListItemEpisodes}>
+              <span>{currentAnimeSeries ? currentAnimeSeries : '0'}</span>/
+              <span>{totalEpisodes}</span>
+            </div>
+            <button
+              className={styles.ListItemButtonDeleted}
+              onClick={() => handleDeleteButtonClick(title.romaji)}>
+              Удалить
+            </button>
+          </li>
         ))}
       </ul>
     </>

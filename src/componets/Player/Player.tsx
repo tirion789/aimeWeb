@@ -37,13 +37,13 @@ const Player = ({ currentAnime, isSuccess }: PlayerProps) => {
 
   const handleSwapNextSeries = () => {
     if (currentAnime?.episodes) {
-      setCurrentEpisode(currentAnime.episodes[Number(series)]?.id);
+      setCurrentEpisode(currentAnime.episodes[series]?.id);
     }
   };
 
   const handleSwapPrevSeries = () => {
     if (currentAnime?.episodes) {
-      setCurrentEpisode(currentAnime.episodes[Number(series) - 2]?.id);
+      setCurrentEpisode(currentAnime.episodes[series - 2]?.id);
     }
   };
   const handleActiveSeriesClick = (episodeNumber: number, episodeId: string) => {
@@ -78,15 +78,18 @@ const Player = ({ currentAnime, isSuccess }: PlayerProps) => {
                     scrolling="no"
                     allowFullScreen></iframe>
                 </div>
-                <div className={styles.SeriesDescriptionContainer}>
-                  <p className={styles.SeriesDescriptionHeader}>Series description</p>
-                  <p className={styles.SeriesDescriptionText}>
-                    Description: {currentAnime.episodes[series - 1].description}
-                  </p>
-                  <p className={styles.SeriesDescriptionText}>
-                    Title: {currentAnime.episodes[series - 1].title}
-                  </p>
-                </div>
+                {currentAnime.episodes[series - 1].description &&
+                  currentAnime.episodes[series - 1].title && (
+                    <div className={styles.SeriesDescriptionContainer}>
+                      <p className={styles.SeriesDescriptionHeader}>Series description</p>
+                      <p className={styles.SeriesDescriptionText}>
+                        Description: {currentAnime.episodes[series - 1].description}
+                      </p>
+                      <p className={styles.SeriesDescriptionText}>
+                        Title: {currentAnime.episodes[series - 1].title}
+                      </p>
+                    </div>
+                  )}
               </>
             )}
           </div>

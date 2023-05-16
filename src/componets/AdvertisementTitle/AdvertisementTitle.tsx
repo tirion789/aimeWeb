@@ -1,26 +1,27 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { setItems } from '../../redux/profileSlice/profileSlice';
+import { deleteAnimes, setItems } from '../../redux/profileSlice/profileSlice';
 import styles from './AdvertisementTitle.module.scss';
 import { useGetAnimeNagataroQuery } from '../../redux/api/query';
 import { useAppDispatch } from '../../redux/hooks';
-import { useAuth } from '../../hooks/useAuth';
-import { setIsOpenPopupLogin } from '../../redux/filterSlice/filterSlice';
+import PrewiewButtons from '../PrewiewButtons/PrewiewButton';
+import { deleteAnimeToast, getToast } from '../../common/util';
 
 const AdvertisementTitle = () => {
   const dispatch = useAppDispatch();
-  const { isAuth } = useAuth();
 
   const { data: nagatoro } = useGetAnimeNagataroQuery('/info/140596');
 
-  const onClickAddButton = () => {
+  const handleClickAddButton = () => {
     if (nagatoro) {
       dispatch(setItems(nagatoro));
+      getToast(nagatoro.title.romaji, 'favorites');
     }
   };
-
-  const handleClickLogin = () => {
-    dispatch(setIsOpenPopupLogin(true));
+  const handleClickDeleteFromList = () => {
+    if (nagatoro) {
+      dispatch(deleteAnimes(nagatoro?.title.romaji));
+      deleteAnimeToast(nagatoro?.title.romaji, 'favorites');
+    }
   };
 
   return (
@@ -40,20 +41,12 @@ const AdvertisementTitle = () => {
           torments, and tantalizes Senpai is "Nagatoro!" She's annoying yet adorable. It's painf...
           More
         </p>
-        <div className={styles.ButtonContainer}>
-          <Link to={`/anime/${nagatoro?.id}`} className={styles.InformationButton_watch}>
-            Watch Now
-          </Link>
-          {isAuth ? (
-            <button onClick={onClickAddButton} className={styles.InformationButton_addToList}>
-              Add to list
-            </button>
-          ) : (
-            <button onClick={handleClickLogin} className="loginMainPage">
-              Login
-            </button>
-          )}
-        </div>
+        <PrewiewButtons
+          item={nagatoro?.id}
+          title={nagatoro?.title.romaji}
+          handleAdd={handleClickAddButton}
+          handleDelete={handleClickDeleteFromList}
+        />
       </div>
     </div>
   );

@@ -15,8 +15,16 @@ import { useAppDispatch } from '../../redux/hooks';
 
 const Header = () => {
   const dispatch = useAppDispatch();
-  const { isAuth } = useAuth();
+  const { isAuth, uid, displayName, email, refreshToken } = useAuth();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+  console.log(uid);
+
+  console.log(refreshToken);
+
+  console.log(displayName);
+
+  console.log(email);
 
   const handleClickLoginButton = () => {
     dispatch(setIsOpenPopupLogin(true));
@@ -55,7 +63,7 @@ const Header = () => {
         {isAuth ? (
           <div className={styles.UserButton}>
             <p className={styles.ProfileLink}>
-              <Link to={'/profile'}>P</Link>
+              <Link to={'/profile'}>{displayName}</Link>
             </p>
             <button className={styles.ButtonExit} onClick={handleClickExitButton}>
               <Exit />

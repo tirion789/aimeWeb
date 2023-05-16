@@ -6,19 +6,20 @@ import { useAppSelector } from '../redux/hooks';
 export const useAuth = () => {
   const [userData, setUserData] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const { email, refreshToken, uid, displayName } = useAppSelector(userSelector);
 
   useEffect(() => {
     const auth = getAuth();
     auth.onAuthStateChanged((user) => {
-      setIsLoading(false);
       setUserData(user);
+      setIsLoading(false);
     });
   }, []);
-  const { email, token, id } = useAppSelector(userSelector);
   return {
     email,
-    id,
-    token,
+    uid,
+    displayName,
+    refreshToken,
     isAuth: Boolean(userData),
     isLoading,
   };

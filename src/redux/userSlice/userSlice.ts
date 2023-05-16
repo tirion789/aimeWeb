@@ -4,13 +4,12 @@ import { User, StatusLogin, StatusRegister } from './types';
 
 const initialState: User = {
   email: null,
-  token: null,
-  id: null,
-  nickName: null,
+  refreshToken: null,
+  uid: null,
+  displayName: null,
   statusLogin: StatusLogin.LOADING,
   statusRegister: StatusRegister.LOADING,
   error: false,
-  toast: null,
 };
 
 const userSlice = createSlice({
@@ -19,15 +18,15 @@ const userSlice = createSlice({
   reducers: {
     setUser(state, action) {
       state.email = action.payload.email;
-      state.id = action.payload.id;
-      state.token = action.payload.token;
-      state.nickName = action.payload.nickName;
+      state.uid = action.payload.uid;
+      state.refreshToken = action.payload.refreshToken;
+      state.displayName = action.payload.displayName;
     },
     removeUser(state) {
       state.email = null;
-      state.id = null;
-      state.token = null;
-      state.nickName = null;
+      state.uid = null;
+      state.refreshToken = null;
+      state.displayName = null;
     },
     setError(state, action: PayloadAction<boolean>) {
       state.error = action.payload;

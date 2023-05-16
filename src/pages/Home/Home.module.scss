@@ -17,6 +17,10 @@
     max-width: 1920px;
 }
 
+.LoaderContainer {
+    height: 100vh
+}
+
 .previewOverlay {
     @include overlay;
     background: $basic-prewiev-first-overlay;

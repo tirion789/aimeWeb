@@ -64,3 +64,16 @@ export const getToast = (title: string, list: string) => {
     theme: 'dark',
   });
 };
+
+export const deleteAnimeToast = (title: string, list: string) => {
+  toast.info(`${title} delete from your ${list} list`, {
+    position: 'bottom-right',
+    autoClose: 3000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: 'dark',
+  });
+};

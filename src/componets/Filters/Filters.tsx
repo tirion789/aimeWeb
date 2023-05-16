@@ -27,8 +27,8 @@ const Filter = ({ items, title, handleClickCurrentInput, header, disabled }: Fil
           {getNormalizeTitle(title)}
         </button>
       </div>
-      {isOpen && (
-        <ul className={`${styles.List} scrollbar`}>
+      {
+        <ul className={`${isOpen ? styles.List : styles.HiddeList} scrollbar`}>
           {filterItems.map((value) => (
             <li className={styles.Item} key={value}>
               <button onClick={() => handleClickCurrentInput(value)}>
@@ -37,7 +37,7 @@ const Filter = ({ items, title, handleClickCurrentInput, header, disabled }: Fil
             </li>
           ))}
         </ul>
-      )}
+      }
     </section>
   );
 };

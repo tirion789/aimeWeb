@@ -11,8 +11,7 @@
     position: relative;
 }
 
-
-.List {
+  .List {
     border: 1px solid transparent;
     background: $basic-gradient-text-border-blue-red;
     position: absolute;
@@ -22,10 +21,34 @@
     background-color: black;
     height: 116px;
     overflow-y: scroll;
-}
+    opacity: 1;
+    transition: all 0.5s ease;
+    top: 40px;
+    max-height: 116px;
+  }
+  
+  .HiddeList {
+    opacity: 0;
+    transition: all 0.5s ease;
+    position: absolute;
+    z-index: 2;
+    left: 148px;
+    top: 40px;
+    border: 1px solid transparent;
+    background: $basic-gradient-text-border-blue-red;
+    z-index: 2;
+    text-align: center;
+    background-color: black;
+    overflow-y: scroll;
+    max-height: 0;
+  }
+
+
+
+
 
 .Item {
-    width: 140px;
+    width: 138px;
     padding: 5px;
     @include mediumText;
     border-bottom: 1px solid transparent;

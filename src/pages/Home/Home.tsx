@@ -9,7 +9,7 @@ import MainCategories from '../../componets/MainCategories/MainCategories';
 import { useGetPopularAnimeQuery, useGetTopAiringAnimeQuery } from '../../redux/api/query';
 import Loader from '../../componets/Loader/Loader';
 
-const Home: React.FC = () => {
+const Home = () => {
   const {
     data: popularAnimeArray,
     isLoading: popularLoading,
@@ -35,14 +35,18 @@ const Home: React.FC = () => {
   ];
 
   if (popularLoading || trendingLoading) {
-    return <Loader />;
+    return (
+      <div className={styles.LoaderContainer}>
+        <Loader />
+      </div>
+    );
   }
 
   return (
     <div className={styles.wrapper}>
       <Header />
       <main>
-        <Preview items={trendingAnimeArray?.results[2]} loading={trendingLoading} />
+        <Preview items={trendingAnimeArray?.results[5]} loading={trendingLoading} />
         <div className={styles.Recommended}>
           <div className={styles.Recommended__overlay}>
             {mainCategoriesArray.map((props, index) => (

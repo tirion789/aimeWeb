@@ -12,11 +12,10 @@ export enum StatusRegister {
 
 export interface User {
   email: null;
-  token: null;
-  id: null;
-  nickName: null;
+  refreshToken: null;
+  uid: null;
+  displayName: null;
   statusLogin: StatusLogin;
   statusRegister: StatusRegister;
   error: boolean;
-  toast: any;
 }

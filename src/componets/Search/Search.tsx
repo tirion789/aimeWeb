@@ -50,7 +50,7 @@ const Search = () => {
             {data?.results
               .slice(FIRST_INDEX_ELEMENT_SLICE_ARRAY, LAST_INDEX_ELEMENT_SLICE_ARRAY)
               .map((obj) => (
-                <li>
+                <li key={obj.id}>
                   <Link to={`/anime/${obj.id}`}>
                     <p>{obj.title.romaji}</p>
                   </Link>

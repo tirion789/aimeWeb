@@ -9,12 +9,14 @@ import Loader from '../Loader/Loader';
 
 const Player = ({ currentAnime, isSuccess }: PlayerProps) => {
   const FIRST_SERIES = 1;
+  const episodesArray = [...currentAnime.episodes];
+  const episodesArrayReversed = episodesArray.reverse();
   const dispatch = useAppDispatch();
   const [currentEpisode, setCurrentEpisode] = useState<string | null>(null);
 
   useEffect(() => {
     if (isSuccess) {
-      setCurrentEpisode(currentAnime.episodes[0].id);
+      setCurrentEpisode(episodesArrayReversed[0].id);
     }
   }, [isSuccess]);
 
@@ -36,14 +38,14 @@ const Player = ({ currentAnime, isSuccess }: PlayerProps) => {
   };
 
   const handleSwapNextSeries = () => {
-    if (currentAnime?.episodes) {
-      setCurrentEpisode(currentAnime.episodes[series]?.id);
+    if (episodesArrayReversed) {
+      setCurrentEpisode(episodesArrayReversed[series]?.id);
     }
   };
 
   const handleSwapPrevSeries = () => {
-    if (currentAnime?.episodes) {
-      setCurrentEpisode(currentAnime.episodes[series - 2]?.id);
+    if (episodesArrayReversed) {
+      setCurrentEpisode(episodesArrayReversed[series - 2]?.id);
     }
   };
   const handleActiveSeriesClick = (episodeNumber: number, episodeId: string) => {
@@ -56,7 +58,7 @@ const Player = ({ currentAnime, isSuccess }: PlayerProps) => {
       <div className={styles.Background}>
         <div className={styles.Overlay}>
           <div className={styles.Video}>
-            {currentAnime.episodes.length > 1 && (
+            {episodesArrayReversed.length > 1 && (
               <Select
                 handleSwapNextSeries={handleSwapNextSeries}
                 handleSwapPrevSeries={handleSwapPrevSeries}
@@ -78,15 +80,15 @@ const Player = ({ currentAnime, isSuccess }: PlayerProps) => {
                     scrolling="no"
                     allowFullScreen></iframe>
                 </div>
-                {currentAnime.episodes[series - 1].description &&
-                  currentAnime.episodes[series - 1].title && (
+                {episodesArrayReversed[series - 1].description &&
+                  episodesArrayReversed[series - 1].title && (
                     <div className={styles.SeriesDescriptionContainer}>
                       <p className={styles.SeriesDescriptionHeader}>Series description</p>
                       <p className={styles.SeriesDescriptionText}>
-                        Description: {currentAnime.episodes[series - 1].description}
+                        Description: {episodesArrayReversed[series - 1].description}
                       </p>
                       <p className={styles.SeriesDescriptionText}>
-                        Title: {currentAnime.episodes[series - 1].title}
+                        Title: {episodesArrayReversed[series - 1].title}
                       </p>
                     </div>
                   )}

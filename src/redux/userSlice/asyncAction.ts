@@ -45,7 +45,6 @@ export const getRegister = createAsyncThunk(
         displayName: nickname,
       }),
     );
-    console.log(user);
 
     localStorage.setItem('users', JSON.stringify(user));
     dispatch(setIsOpenPopupLogin(false));

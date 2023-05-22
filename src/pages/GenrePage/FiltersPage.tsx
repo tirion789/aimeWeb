@@ -116,7 +116,7 @@ const FiltersPage = () => {
           ) : (
             <ul className={styles.List}>
               {data?.results.map((props) => (
-                <FiltersListItem {...props} />
+                <FiltersListItem key={props.id} {...props} />
               ))}
             </ul>
           )}

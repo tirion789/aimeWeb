@@ -25,7 +25,7 @@ export const animeApi = createApi({
       query: (latter) => `/advanced-search?query=${latter.toLowerCase()}`,
     }),
     getSearchAnime: builder.query<AnimeApi, string>({
-      query: (value) => `${value === '' ? 'empty value' : value}`,
+      query: (value) => `${value === '' ? 'zxcvvcxzzxcvxzxcv' : value}`,
     }),
     getAnimeNagataro: builder.query<CurrentAnime, string>({
       query: (nagatoro) => nagatoro,

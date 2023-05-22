@@ -15,16 +15,8 @@ import { useAppDispatch } from '../../redux/hooks';
 
 const Header = () => {
   const dispatch = useAppDispatch();
-  const { isAuth, uid, displayName, email, refreshToken } = useAuth();
+  const { isAuth, displayName } = useAuth();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-
-  console.log(uid);
-
-  console.log(refreshToken);
-
-  console.log(displayName);
-
-  console.log(email);
 
   const handleClickLoginButton = () => {
     dispatch(setIsOpenPopupLogin(true));

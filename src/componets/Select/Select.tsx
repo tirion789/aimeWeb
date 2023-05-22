@@ -35,9 +35,9 @@ const Select = ({
     handleSwapPrevSeries();
   };
 
-  const filterArray = currentAnime?.episodes.filter((obj) =>
-    String(obj.number).includes(filterSeries),
-  );
+  const filterArray = currentAnime?.episodes
+    .filter((obj) => String(obj.number).includes(filterSeries))
+    .reverse();
 
   return (
     <div className={styles.Select}>
